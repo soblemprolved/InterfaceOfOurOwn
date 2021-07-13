@@ -6,6 +6,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 import retrofit2.http.QueryMap
+import service.query.WorkFilterQueryMap
 
 interface AO3Service {
     @GET("autocomplete/{type}")
@@ -24,6 +25,7 @@ interface AO3Service {
     @GET("tags/{tag}/works")
     fun listWorks(
         @Path("tag") tag: String,    // should be encoded? should i dedicate a class to it?
-        @QueryMap filterParameters: Map<String, String> // should use another class for this?
+        @QueryMap(encoded = true) filterQueryMap: WorkFilterQueryMap,   // disable encoding
+        @Query("page") page: Int    // 1-indexed
     )
 }
