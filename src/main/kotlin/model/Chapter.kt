@@ -5,6 +5,6 @@ data class Chapter(
     val title: String,
     val summary: String,
     val preChapterNotes: String,
+    val body: String,
     val postChapterNotes: String,
-    val body: String
 )

@@ -9,15 +9,15 @@ data class Work(
     val giftees: List<String>,
     val publishedDate: LocalDate,
     val lastUpdatedDate: LocalDate,
-    val fandoms: List<String>,
     val rating: Rating,
     val warnings: List<Warning>,
     val categories: List<Category>,
-    val characters: List<String>,
+    val fandoms: List<String>,  // leave tags as strings
     val relationships: List<String>,
+    val characters: List<String>,
     val freeforms: List<String>,
-    val summary: String,
-    val language: String,
+    val summary: Html,
+    val language: String,   // No choice but to leave it as a string?
     val wordCount: Int,
     val chapterCount: Int,
     val maxChapterCount: Int,
@@ -30,5 +30,5 @@ data class Work(
     val postWorkNotes: String,
     val workskin: String    // should convert to CSS class?
 ) {
-    val isComplete: Boolean = chapterCount == maxChapterCount
+    val isComplete: Boolean = chapterCount == maxChapterCount   // AFAIK this is the logic implemented in the Archive
 }
