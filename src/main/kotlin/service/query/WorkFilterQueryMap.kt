@@ -140,14 +140,15 @@ data class WorkFilterQueryMap(
                 )
             )
 
-            // misc
+            // search within works
             if (searchTerm.isNotBlank()) {
                 backingMap["work_search[query]"] = listOf(encodeString(searchTerm))
             }
 
-            // TODO: handle language in a graceful manner
-            backingMap["work_search[language_id]"] = listOf(language)
+            // language
+            backingMap["work_search[language_id]"] = listOf(language.code)
 
+            // sort order
             backingMap["work_search[sort_column]"] = listOf(sortOrder.code)
 
             return backingMap

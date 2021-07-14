@@ -49,6 +49,6 @@ data class WorkFilterParameters(
     var excludedTags: MutableList<String> = mutableListOf<String>(),
 
     var searchTerm: String = "",
-    var language: String = "",
+    var language: Language = Language.ALL,
     var sortOrder: SortOrder = SortOrder.DATE_UPDATED
 )
