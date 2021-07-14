@@ -19,52 +19,52 @@ data class WorkFilterQueryMap(
 
             // ratings
             val ratingsList = mutableListOf<String>()
-            if (showRatingNotRated) ratingsList.add(Rating.NONE.code.toString())
-            if (showRatingGeneral) ratingsList.add(Rating.GENERAL.code.toString())
-            if (showRatingTeen) ratingsList.add(Rating.TEEN.code.toString())
-            if (showRatingMature) ratingsList.add(Rating.MATURE.code.toString())
-            if (showRatingExplicit) ratingsList.add(Rating.EXPLICIT.code.toString())
+            if (showRatingNotRated) ratingsList.add(Rating.NONE.code)
+            if (showRatingGeneral) ratingsList.add(Rating.GENERAL.code)
+            if (showRatingTeen) ratingsList.add(Rating.TEEN.code)
+            if (showRatingMature) ratingsList.add(Rating.MATURE.code)
+            if (showRatingExplicit) ratingsList.add(Rating.EXPLICIT.code)
             backingMap["exclude_work_search[rating_ids][]"] = ratingsList
 
             // warnings - handle both cases
             if (mustContainAllWarnings) {
                 val warningsList = mutableListOf<String>()
-                if (showWarningChoseNotToUseWarnings) warningsList.add(Warning.CREATOR_CHOSE_NOT_TO_USE_WARNINGS.code.toString())
-                if (showWarningNone) warningsList.add(Warning.NO_WARNINGS.code.toString())
-                if (showWarningViolence) warningsList.add(Warning.GRAPHIC_VIOLENCE.code.toString())
-                if (showWarningCharacterDeath) warningsList.add(Warning.MAJOR_CHARACTER_DEATH.code.toString())
-                if (showWarningRape) warningsList.add(Warning.RAPE.code.toString())
-                if (showWarningUnderage) warningsList.add(Warning.UNDERAGE.code.toString())
+                if (showWarningChoseNotToUseWarnings) warningsList.add(Warning.CREATOR_CHOSE_NOT_TO_USE_WARNINGS.code)
+                if (showWarningNone) warningsList.add(Warning.NO_WARNINGS.code)
+                if (showWarningViolence) warningsList.add(Warning.GRAPHIC_VIOLENCE.code)
+                if (showWarningCharacterDeath) warningsList.add(Warning.MAJOR_CHARACTER_DEATH.code)
+                if (showWarningRape) warningsList.add(Warning.RAPE.code)
+                if (showWarningUnderage) warningsList.add(Warning.UNDERAGE.code)
                 backingMap["include_work_search[archive_warning_ids][]"] = warningsList
             } else {
                 val warningsList = mutableListOf<String>()
-                if (!showWarningChoseNotToUseWarnings) warningsList.add(Warning.CREATOR_CHOSE_NOT_TO_USE_WARNINGS.code.toString())
-                if (!showWarningNone) warningsList.add(Warning.NO_WARNINGS.code.toString())
-                if (!showWarningViolence) warningsList.add(Warning.GRAPHIC_VIOLENCE.code.toString())
-                if (!showWarningCharacterDeath) warningsList.add(Warning.MAJOR_CHARACTER_DEATH.code.toString())
-                if (!showWarningRape) warningsList.add(Warning.RAPE.code.toString())
-                if (!showWarningUnderage) warningsList.add(Warning.UNDERAGE.code.toString())
+                if (!showWarningChoseNotToUseWarnings) warningsList.add(Warning.CREATOR_CHOSE_NOT_TO_USE_WARNINGS.code)
+                if (!showWarningNone) warningsList.add(Warning.NO_WARNINGS.code)
+                if (!showWarningViolence) warningsList.add(Warning.GRAPHIC_VIOLENCE.code)
+                if (!showWarningCharacterDeath) warningsList.add(Warning.MAJOR_CHARACTER_DEATH.code)
+                if (!showWarningRape) warningsList.add(Warning.RAPE.code)
+                if (!showWarningUnderage) warningsList.add(Warning.UNDERAGE.code)
                 backingMap["exclude_work_search[archive_warning_ids][]"] = warningsList
             }
 
             // categories
             if (mustContainAllCategories) {
                 val categoriesList = mutableListOf<String>()
-                if (showCategoryGen) categoriesList.add(Category.GEN.code.toString())
-                if (showCategoryFM) categoriesList.add(Category.FEMALE_MALE.code.toString())
-                if (showCategoryFF) categoriesList.add(Category.FEMALE_FEMALE.code.toString())
-                if (showCategoryMM) categoriesList.add(Category.MALE_MALE.code.toString())
-                if (showCategoryMulti) categoriesList.add(Category.MULTI.code.toString())
-                if (showCategoryOther) categoriesList.add(Category.OTHER.code.toString())
+                if (showCategoryGen) categoriesList.add(Category.GEN.code)
+                if (showCategoryFM) categoriesList.add(Category.FEMALE_MALE.code)
+                if (showCategoryFF) categoriesList.add(Category.FEMALE_FEMALE.code)
+                if (showCategoryMM) categoriesList.add(Category.MALE_MALE.code)
+                if (showCategoryMulti) categoriesList.add(Category.MULTI.code)
+                if (showCategoryOther) categoriesList.add(Category.OTHER.code)
                 backingMap["include_work_search[category_ids][]"] = categoriesList
             } else {
                 val categoriesList = mutableListOf<String>()
-                if (!showCategoryGen) categoriesList.add(Category.GEN.code.toString())
-                if (!showCategoryFM) categoriesList.add(Category.FEMALE_MALE.code.toString())
-                if (!showCategoryFF) categoriesList.add(Category.FEMALE_FEMALE.code.toString())
-                if (!showCategoryMM) categoriesList.add(Category.MALE_MALE.code.toString())
-                if (!showCategoryMulti) categoriesList.add(Category.MULTI.code.toString())
-                if (!showCategoryOther) categoriesList.add(Category.OTHER.code.toString())
+                if (!showCategoryGen) categoriesList.add(Category.GEN.code)
+                if (!showCategoryFM) categoriesList.add(Category.FEMALE_MALE.code)
+                if (!showCategoryFF) categoriesList.add(Category.FEMALE_FEMALE.code)
+                if (!showCategoryMM) categoriesList.add(Category.MALE_MALE.code)
+                if (!showCategoryMulti) categoriesList.add(Category.MULTI.code)
+                if (!showCategoryOther) categoriesList.add(Category.OTHER.code)
                 backingMap["exclude_work_search[category_ids][]"] = categoriesList
             }
 

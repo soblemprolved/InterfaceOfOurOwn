@@ -45,8 +45,8 @@ data class WorkFilterParameters(
     var dateUpdatedMin: LocalDate? = null,
     var dateUpdatedMax: LocalDate? = null,
 
-    var includedTags: MutableList<String> = mutableListOf<String>(),
-    var excludedTags: MutableList<String> = mutableListOf<String>(),
+    var includedTags: MutableList<String> = mutableListOf(),
+    var excludedTags: MutableList<String> = mutableListOf(),
 
     var searchTerm: String = "",
     var language: Language = Language.ALL,
