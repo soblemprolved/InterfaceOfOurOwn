@@ -16,7 +16,7 @@ data class WorkBlurb(
     val characters: List<String>,
     val freeforms: List<String>,
     val summary: Html,
-    val language: String,   // No choice but to leave it as a string?
+    val language: Language,
     val wordCount: Int,
     val chapterCount: Int,
     val maxChapterCount: Int,

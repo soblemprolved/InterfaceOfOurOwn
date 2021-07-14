@@ -1,8 +1,11 @@
 package model
 
-import model.SortOrder
 import java.time.LocalDate
 
+/**
+ * Represents the parameters used to filter works when requesting a list of works associated with a tag.
+ * The default [WorkFilterParameters] does not place any restrictions on the works returned; all works will be returned.
+ */
 data class WorkFilterParameters(
     var showRatingGeneral: Boolean = true,
     var showRatingTeen: Boolean = true,

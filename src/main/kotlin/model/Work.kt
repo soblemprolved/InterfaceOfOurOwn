@@ -17,7 +17,7 @@ data class Work(
     val characters: List<String>,
     val freeforms: List<String>,
     val summary: Html,
-    val language: String,   // No choice but to leave it as a string?
+    val language: Language,
     val wordCount: Int,
     val chapterCount: Int,
     val maxChapterCount: Int,
@@ -25,10 +25,10 @@ data class Work(
     val kudosCount: Int,    // kudos is singular, from the Greek.
     val bookmarkCount: Int,
     val hitCount: Int,
-    val preWorkNotes: String,   // should convert to Html class?
+    val preWorkNotes: Html,
     val chapters: List<Chapter>,
-    val postWorkNotes: String,
-    val workskin: String    // should convert to CSS class?
+    val postWorkNotes: Html,
+    val workskin: Css
 ) {
     val isComplete: Boolean = chapterCount == maxChapterCount   // AFAIK this is the logic implemented in the Archive
 }
