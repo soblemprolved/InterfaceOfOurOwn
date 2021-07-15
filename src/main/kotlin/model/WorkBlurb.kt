@@ -5,8 +5,8 @@ import java.time.LocalDate
 data class WorkBlurb(
     val workId: Long,
     val title: String,
-    val authors: List<String>,
-    val giftees: List<String>,
+    val authors: List<User>,
+    val giftees: List<User>,
     val lastUpdatedDate: LocalDate,
     val rating: Rating,
     val warnings: List<Warning>,
@@ -25,5 +25,17 @@ data class WorkBlurb(
     val bookmarkCount: Int,
     val hitCount: Int
 ) {
+    init {
+        require(workId >= 0) { "ID cannot be negative!" }
+        require(authors.isNotEmpty()) { "There must be at least one author!" }
+        require(wordCount >= 0) { "Word count cannot be negative!" }
+        require(chapterCount >= 1) { "Chapter count must be at least 1!" }
+        require(maxChapterCount >= 0) { "Max chapters cannot be negative!" }
+        require(commentCount >= 0) { "Comment count cannot be negative!" }
+        require(kudosCount >= 0) { "Kudos count cannot be negative!" }
+        require(bookmarkCount >= 0) { "Bookmark count cannot be negative!" }
+        require(hitCount >= 0) { "Hit count cannot be negative!" }
+    }
+
     val isComplete: Boolean = chapterCount == maxChapterCount
 }

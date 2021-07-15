@@ -3,7 +3,9 @@ package service.query
 import java.util.AbstractMap.SimpleEntry
 
 /**
- * Allows for queries to be repeated (i.e. exploded) when used as a Retrofit QueryMap.
+ * Forces Retrofit to generate separate parameters for each item in the value-list (i.e. exploding) for every entry in
+ * the [original], when an [ExplodingRetrofitQueryMap] object is used as a Retrofit QueryMap.
+ *
  * Original code from user fmmr on Github: https://github.com/square/retrofit/issues/1324
  */
 open class ExplodingRetrofitQueryMap(
