@@ -1,4 +1,4 @@
-package service
+package service.models
 
 enum class AutocompleteType(
     val value: String
