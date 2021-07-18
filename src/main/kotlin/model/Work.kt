@@ -2,7 +2,39 @@ package model
 
 import java.time.LocalDate
 
-data class Work(
+sealed interface Work
+
+data class SingleChapterWork(
+    val id: Long,
+    val title: String,
+    val authors: List<User>,
+    val giftees: List<User>,
+    val publishedDate: LocalDate,
+    val lastUpdatedDate: LocalDate, // only found in work
+    val rating: Rating,
+    val warnings: List<Warning>,
+    val categories: List<Category>,
+    val fandoms: List<String>,  // is there even a point in wrapping this as a tag? maintag is understandable but not this.
+    val relationships: List<String>,
+    val characters: List<String>,
+    val freeforms: List<String>,
+    val summary: Html,
+    val language: Language,
+    val wordCount: Int,
+    val chapterCount: Int,
+    val maxChapterCount: Int,
+    val commentCount: Int,
+    val kudosCount: Int,    // kudos is singular, from the Greek.
+    val bookmarkCount: Int,
+    val hitCount: Int,
+    // work-specific properties
+    val preWorkNotes: Html,
+    val body: Html,     // oneshots only need a body
+    val postWorkNotes: Html,
+    val workskin: Css
+) : Work
+
+data class MultiChapterOrIncompleteWork(
     val id: Long,
     val title: String,
     val authors: List<User>,
@@ -30,7 +62,7 @@ data class Work(
     val chapters: List<Chapter>,   // if I make the id nullable, I can handle both oneshots and other works in 1 call
     val postWorkNotes: Html,
     val workskin: Css
-) {
+): Work {
     init {
         require(id >= 0) { "ID cannot be negative!" }
         require(authors.isNotEmpty()) { "There must be at least one author!" }
