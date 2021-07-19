@@ -16,8 +16,12 @@ import service.requests.GetRequest
  * with the specifications it needs.
  */
 class AO3Client(
-    val okHttpClient: OkHttpClient
+    userOkHttpClient: OkHttpClient
 ) {
+    private val okHttpClient = userOkHttpClient.newBuilder()
+        .followRedirects(false)
+        .build()
+
     /**
      * Suspends the current thread and executes the network request in [Dispatchers.IO].
      */

@@ -17,6 +17,7 @@ dependencies {
     implementation("com.squareup.moshi:moshi-kotlin:1.11.0")
     implementation("org.jsoup:jsoup:1.13.1")
     implementation("ru.gildor.coroutines:kotlin-coroutines-okhttp:1.0")
+    implementation("org.junit.jupiter:junit-jupiter:5.7.0")
 
     testImplementation(kotlin("test"))
     testImplementation("com.squareup.okhttp3:mockwebserver:4.9.1")
