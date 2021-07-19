@@ -27,4 +27,10 @@ class WorkRequest<T>(
         .build()
 
     override val headers = HTML_HEADERS
+
+    companion object {
+        fun WorkRequest(id: Long): WorkRequest<Work> {
+            TODO("Not implemented yet")
+        }
+    }
 }

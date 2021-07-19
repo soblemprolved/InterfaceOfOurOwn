@@ -1,29 +1,68 @@
 package model
 
-enum class Rating(val code: String) {
-    NONE("9"),
-    GENERAL("10"),
-    TEEN("11"),
-    MATURE("12"),
-    EXPLICIT("13")
+enum class Rating(val description: String, val code: String) {
+    NONE("Not Rated", "9"),
+    GENERAL("General Audiences", "10"),
+    TEEN("Teen And Up Audiences", "11"),
+    MATURE("Mature", "12"),
+    EXPLICIT("Explicit", "13");
+
+    companion object {
+        private val mapByDescription = values().associateBy { it.description }
+        private val mapByCode = values().associateBy { it.code }
+
+        fun fromName(name: String): Rating {
+            return mapByDescription[name]!!
+        }
+
+        fun fromCode(code: String): Rating {
+            return mapByCode[code]!!
+        }
+    }
 }
 
-enum class Category(val code: String) {
-    GEN("21"),
-    FEMALE_MALE("22"),
-    MALE_MALE("23"),
-    OTHER("24"),
-    FEMALE_FEMALE("116"),
-    MULTI("2246")
+enum class Category(val description: String, val code: String) {
+    GEN("Gen", "21"),
+    FEMALE_MALE("F/M", "22"),
+    MALE_MALE("M/M", "23"),
+    OTHER("Other", "24"),
+    FEMALE_FEMALE("F/F", "116"),
+    MULTI("Multi", "2246");
+
+    companion object {
+        private val mapByDescription = values().associateBy { it.description }
+        private val mapByCode = values().associateBy { it.code }
+
+        fun fromName(name: String): Category {
+            return mapByDescription[name]!!
+        }
+
+        fun fromCode(code: String): Category {
+            return mapByCode[code]!!
+        }
+    }
 }
 
-enum class Warning(val code: String) {
-    CREATOR_CHOSE_NOT_TO_USE_WARNINGS("14"),
-    NO_WARNINGS("16"),
-    GRAPHIC_VIOLENCE("17"),
-    MAJOR_CHARACTER_DEATH("18"),
-    RAPE("19"),
-    UNDERAGE("20")
+enum class Warning(val description: String, val code: String) {
+    CREATOR_CHOSE_NOT_TO_USE_WARNINGS("Creator Chose Not To Use Archive Warnings", "14"),
+    NO_WARNINGS("No Archive Warnings Apply", "16"),
+    GRAPHIC_VIOLENCE("Graphic Depictions Of Violence", "17"),
+    MAJOR_CHARACTER_DEATH("Major Character Death", "18"),
+    RAPE("Rape/Non-Con", "19"),
+    UNDERAGE("Underage", "20");
+
+    companion object {
+        private val mapByDescription = values().associateBy { it.description }
+        private val mapByCode = values().associateBy { it.code }
+
+        fun fromName(name: String): Warning {
+            return mapByDescription[name]!!
+        }
+
+        fun fromCode(code: String): Warning {
+            return mapByCode[code]!!
+        }
+    }
 }
 
 enum class SortOrder(val code: String) {
@@ -139,105 +178,15 @@ enum class Language(val description: String, val code: String) {
     ZH("中文-普通话 國語", "zh");
 
     companion object {
-        val CodeToLanguageMap: Map<String, Language> = mapOf(
-            ""      to      ALL,
-            "so"    to      SO,
-            "afr"   to      AFR,
-            "ar"    to      AR,
-            "arc"   to      ARC,
-            "hy"    to      HY,
-            "id"    to      ID,
-            "ms"    to      MS,
-            "bg"    to      BG,
-            "bn"    to      BN,
-            "jv"    to      JV,
-            "be"    to      BE,
-            "bos"   to      BOS,
-            "br"    to      BR,
-            "ca"    to      CA,
-            "cs"    to      CS,
-            "chn"   to      CHN,
-            "cy"    to      CY,
-            "da"    to      DA,
-            "de"    to      DE,
-            "et"    to      ET,
-            "el"    to      EL,
-            "en"    to      EN,
-            "es"    to      ES,
-            "eo"    to      EO,
-            "eu"    to      EU,
-            "fa"    to      FA,
-            "fil"   to      FIL,
-            "fr"    to      FR,
-            "fur"   to      FUR,
-            "ga"    to      GA,
-            "gd"    to      GD,
-            "gl"    to      GL,
-            "got"   to      GOT,
-            "hak"   to      HAK,
-            "ko"    to      KO,
-            "hau"   to      HAU,
-            "hi"    to      HI,
-            "hr"    to      HR,
-            "ia"    to      IA,
-            "zu"    to      ZU,
-            "is"    to      IS,
-            "it"    to      IT,
-            "he"    to      HE,
-            "kat"   to      KAT,
-            "qkz"   to      QKZ,
-            "kir"   to      KIR,
-            "sw"    to      SW,
-            "ht"    to      HT,
-            "fcs"   to      FCS,
-            "lv"    to      LV,
-            "lb"    to      LB,
-            "lt"    to      LT,
-            "la"    to      LA,
-            "hu"    to      HU,
-            "mk"    to      MK,
-            "ml"    to      ML,
-            "mnc"   to      MNC,
-            "mr"    to      MR,
-            "mon"   to      MON,
-            "my"    to      MY,
-            "nan"   to      NAN,
-            "nl"    to      NL,
-            "ja"    to      JA,
-            "no"    to      NO,
-            "ps"    to      PS,
-            "nds"   to      NDS,
-            "pl"    to      PL,
-            "ptBR"  to      PTBR,
-            "ptPT"  to      PTPT,
-            "pa"    to      PA,
-            "qya"   to      QYA,
-            "ro"    to      RO,
-            "ru"    to      RU,
-            "sco"   to      SCO,
-            "sq"    to      SQ,
-            "sjn"   to      SJN,
-            "si"    to      SI,
-            "sk"    to      SK,
-            "slv"   to      SLV,
-            "gem"   to      GEM,
-            "sr"    to      SR,
-            "fi"    to      FI,
-            "sv"    to      SV,
-            "ta"    to      TA,
-            "th"    to      TH,
-            "tqx"   to      TQX,
-            "bod"   to      BOD,
-            "vi"    to      VI,
-            "tlh"   to      TLH,
-            "qtp"   to      QTP,
-            "tr"    to      TR,
-            "uk"    to      UK,
-            "uig"   to      UIG,
-            "wuu"   to      WUU,
-            "yi"    to      YI,
-            "yue"   to      YUE,
-            "zh"    to      ZH,
-        )
+        private val mapByDescription = values().associateBy { it.description }
+        private val mapByCode = values().associateBy { it.code }
+
+        fun fromName(name: String): Language {
+            return mapByDescription[name]!!
+        }
+
+        fun fromCode(code: String): Language {
+            return mapByCode[code]!!
+        }
     }
 }

@@ -37,8 +37,8 @@ class AO3Client(
 
         try {
             val response = withContext(Dispatchers.IO) { call.execute() }
-            val (value, csrfToken) = request.converter.convert(response)
-            return AO3Response.Success(value, csrfToken)
+            val value = request.converter.convert(response)
+            return AO3Response.Success(value)
         } catch (e: IOException) {
             return AO3Response.NetworkError
         } catch (e: AO3Error) {
@@ -67,8 +67,8 @@ class AO3Client(
 
         try {
             val response = runBlocking(Dispatchers.IO) { call.execute() }
-            val (value, csrfToken) = request.converter.convert(response)
-            return AO3Response.Success(value, csrfToken)
+            val value = request.converter.convert(response)
+            return AO3Response.Success(value)
         } catch (e: IOException) {
             return AO3Response.NetworkError
         } catch (e: AO3Error) {
