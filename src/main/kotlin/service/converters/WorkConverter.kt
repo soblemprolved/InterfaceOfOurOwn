@@ -13,11 +13,16 @@ object WorkConverter : Converter<WorkConverter.WorkResult> {
         val id = workUrl.encodedPathSegments.last().toLong()
 
         val body = response.body!!.string()
-        // check if response body is already closed
-        val doc = Jsoup.parse(body)
+        // TODO: check if response body is already closed
 
+        return parseWork(id, body)
+    }
+
+    fun parseWork(id: Long, workHtml: String): WorkResult {
+        val doc = Jsoup.parse(workHtml)
         val metadataTree = doc.select("dl.work.meta.group")
         val statisticsTree = metadataTree.select("dl.stats")
+
         val chapterCountArray = statisticsTree.select("dd.chapters")
             .first()
             .text()
@@ -67,7 +72,6 @@ object WorkConverter : Converter<WorkConverter.WorkResult> {
             .toInt()
         val currentChapterCount = chapterCountArray[0].toInt()
         val maxChapterCount = chapterCountArray[1].toIntOrNull() ?: 0
-        val completionStatus = currentChapterCount == maxChapterCount
         val comments = statisticsTree.select("dd.comments")
             .first()
             ?.text()
@@ -95,7 +99,7 @@ object WorkConverter : Converter<WorkConverter.WorkResult> {
 
         val summary = Html(
             doc.selectFirst("div#workskin > div.preface.group > div.summary.module > blockquote.userstuff")
-            .html()
+                .html()
         )
 
         val authors = doc
@@ -116,9 +120,9 @@ object WorkConverter : Converter<WorkConverter.WorkResult> {
 
         val preWorkNotes = Html(
             doc.select("#workskin > div.preface.group > div.notes.module > blockquote.userstuff")
-            .first()
-            ?.html()
-            ?: ""
+                .first()
+                ?.html()
+                ?: ""
         )
 
         val postWorkNotes = Html(
@@ -136,9 +140,7 @@ object WorkConverter : Converter<WorkConverter.WorkResult> {
 
         // Because Entire Work doesn't actually work on completed oneshots, we need to change chapterTrees
         val work = if (currentChapterCount == 1 && maxChapterCount == 1) {
-
-            // TODO: return a single chapter work
-            // get the list of URLs to zip with the contents later
+            // This is a single-chapter completed work
 
             val chapterText = doc.select("div#chapters > div.userstuff")
                 .first()
@@ -175,21 +177,19 @@ object WorkConverter : Converter<WorkConverter.WorkResult> {
             )
 
         } else {
-            // TODO: Execute this branch if the work is not a *completed* oneshot.
-            // i.e. this is a multi-work series or incomplete single chapter work etc
-            // Get chapter trees
+            // This is a multi-chapter or incomplete (single/multi-chapter) work.
+
+            // Get chapter trees for easier mapping
             val chapterTrees = doc.select("div#chapters > div.chapter")
 
             // assigns the result of the map to chapters
             val chapters = chapterTrees.map {
-                // TODO: parse the url inside here
                 val chapterTitle = it
                     .select("div.chapter.preface.group > h3.title")
                     .first()
                     .ownText()  // gets the text enclosed within the element that is *not* nested in other elements
                     .removePrefix(": ")
 
-                // chapter url obtained here is the same as the one in the navigation list
                 val chapterId = it
                     .selectFirst("div.chapter.preface.group > h3.title > a[href]")
                     .attr("href")
@@ -202,6 +202,7 @@ object WorkConverter : Converter<WorkConverter.WorkResult> {
                     ?.html()
                     ?.let { Html(it) }
                     ?: Html("")
+
                 val preChapterNotes = it
                     .select("div#notes > blockquote.userstuff")
                     .first()
@@ -223,8 +224,8 @@ object WorkConverter : Converter<WorkConverter.WorkResult> {
 
                 return@map Chapter(
                     id = chapterId,
-                    title = title,
-                    summary = summary,
+                    title = chapterTitle,
+                    summary = chapterSummary,
                     preChapterNotes = preChapterNotes,
                     body = chapterText,
                     postChapterNotes = postChapterNotes,

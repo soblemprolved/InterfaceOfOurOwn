@@ -14,7 +14,7 @@ class WorkRequest<T>(
     override val converter: Converter<T>
 ): GetRequest<T> {
     init {
-        require(id >= 0)
+        require(id >= 0) { "ID cannot be negative!" }
     }
 
     override val url = HttpUrl.Builder()

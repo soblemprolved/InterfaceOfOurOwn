@@ -18,6 +18,9 @@ import service.requests.GetRequest
 class AO3Client(
     userOkHttpClient: OkHttpClient
 ) {
+    // TODO: the AO3 client should know about the converters, not the request. Requests can be made independent of converters.
+    // either way, converters have to be specified by the user in the same line or next line.
+
     private val okHttpClient = userOkHttpClient.newBuilder()
         .followRedirects(false)
         .build()
@@ -80,7 +83,12 @@ class AO3Client(
         }
     }
 
-    fun <T> enqueue(): T {  // make this cancellable?
+    fun <T> enqueue(): T {  // make this cancellable? remember to add the callback parameter
         TODO("Not implemented yet")
+        // enqueue requires me to return a cancellable call/promise from the client.
+        // it would be better UX to copy retrofit's call architecture, but I dont need that complexity.
+        // so take in a callback, create a network request and pass it to the call
+        // the call will immediately execute?
+        // honestly this is not a priority at all
     }
 }
