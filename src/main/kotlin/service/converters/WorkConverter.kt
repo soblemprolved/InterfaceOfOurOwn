@@ -5,10 +5,10 @@ import okhttp3.Response
 import org.jsoup.Jsoup
 import java.time.LocalDate
 
-object WorkConverter : Converter<WorkConverter.WorkResult> {
-    data class WorkResult(val work: Work, val csrfToken: String)
+object WorkConverter : Converter<WorkConverter.Result> {
+    data class Result(val work: Work, val csrfToken: String)
 
-    override fun convert(response: Response): WorkResult {
+    override fun convert(response: Response): Result {
         val workUrl = response.request.url
         val id = workUrl.encodedPathSegments.last().toLong()
 
@@ -18,7 +18,7 @@ object WorkConverter : Converter<WorkConverter.WorkResult> {
         return parseWork(id, body)
     }
 
-    fun parseWork(id: Long, workHtml: String): WorkResult {
+    fun parseWork(id: Long, workHtml: String): Result {
         val doc = Jsoup.parse(workHtml)
         val metadataTree = doc.select("dl.work.meta.group")
         val statisticsTree = metadataTree.select("dl.stats")
@@ -264,6 +264,6 @@ object WorkConverter : Converter<WorkConverter.WorkResult> {
 
         val csrfToken = Converter.getCsrfFromJsoupDoc(doc)
 
-        return WorkResult(work, csrfToken)
+        return Result(work, csrfToken)
     }
 }

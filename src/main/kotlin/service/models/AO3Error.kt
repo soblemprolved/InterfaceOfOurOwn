@@ -11,9 +11,7 @@ sealed class AO3Error: Throwable() {
          * a request for the works of a particular tag. This indicates that these two tags are synonyms, and the
          * destination tag is the canonical name for the original requested tag.
          */
-        data class TagSynonymError(override val redirectUrl: String) : RedirectError(redirectUrl) {
-            val synonymTagName: String = TODO("parse the url")
-        }
+        data class TagSynonymError(val synonymTag: String, override val redirectUrl: String) : RedirectError(redirectUrl)
 
         /**
          * Represents a scenario where AO3 does not allow the client to filter on the tag. This is usually because
@@ -25,4 +23,8 @@ sealed class AO3Error: Throwable() {
      * Represents a 404 error.
      */
     object NotFoundError: AO3Error()
+
+    object ServerSideError: AO3Error()
+
+    object NotLoggedInError: AO3Error()
 }

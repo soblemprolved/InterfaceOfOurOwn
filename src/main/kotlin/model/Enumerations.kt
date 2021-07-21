@@ -9,6 +9,14 @@ enum class Rating(val description: String, val code: String) {
 
     companion object {
         private val mapByDescription = values().associateBy { it.description }
+            .toMutableMap()
+            // This is a special case. To reproduce, exclude all ratings from work search, then check the rating text.
+            .apply {
+                this.put("No rating", NONE)
+                this.put("Teen & Up Audiences", TEEN)
+            }
+            .toMap()
+
         private val mapByCode = values().associateBy { it.code }
 
         fun fromName(name: String): Rating {

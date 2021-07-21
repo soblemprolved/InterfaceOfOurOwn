@@ -1,27 +1,40 @@
 package service.converters
 
 import model.*
+import okhttp3.HttpUrl.Companion.toHttpUrl
 import okhttp3.Response
 import org.jsoup.Jsoup
+import service.models.AO3Error
+import java.lang.IllegalStateException
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
-object WorksByTagConverter : Converter<WorksByTagConverter.WorksByTagResult> {
-    data class WorksByTagResult(
+object WorksByTagConverter : Converter<WorksByTagConverter.Result> {
+    data class Result(
         val tag: String,
         val workCount: Int,
         val workBlurbs: List<WorkBlurb>,
     )
 
-    override fun convert(response: Response): WorksByTagResult {
-        if (response.code == 302 || response.code == 304) {
-            // TODO: check for url
+    override fun convert(response: Response): Result {
+        when (response.code) {
+            in 500..599 -> throw AO3Error.ServerSideError
+            in 400..499 -> throw AO3Error.NotFoundError   // not complete
+            302, 304 -> with (response.headers["location"] ?: throw AO3Error.NotFoundError) {
+                val segments = this.toHttpUrl().pathSegments
+                if (segments.last() == "works") {
+                    val mainTag = segments[segments.lastIndex - 1]
+                    throw AO3Error.TagSynonymError(mainTag, this)
+                } else {
+                    throw AO3Error.TagNotFilterableError(this)
+                }
+            }
+            in 200..299 -> return parse(response.body!!.string())
+            else -> throw IllegalStateException("Not handled yet")
         }
-
-        TODO("Not yet implemented")
     }
 
-    fun parse(html: String) {
+    fun parse(html: String): Result {
         val doc = Jsoup.parse(html)
 
         val heading = doc.selectFirst("div#main > h2.heading")
@@ -37,7 +50,7 @@ object WorksByTagConverter : Converter<WorksByTagConverter.WorksByTagResult> {
             }
 
         val workIndexList = doc.select("ol.work.index.group > li.work.blurb.group")
-        val workBlurbList: List<WorkBlurb> = workIndexList.map { workIndex ->
+        val workBlurbs: List<WorkBlurb> = workIndexList.map { workIndex ->
             // declarations of subtrees beforehand to make assignment clearer
             val header = workIndex.select("h4.heading").select("a[href]")
             val fandomElements = workIndex.select("h5.fandoms.heading").select("a.tag")
@@ -114,5 +127,7 @@ object WorksByTagConverter : Converter<WorksByTagConverter.WorksByTagResult> {
                 hitCount = hits,
             )
         }
+
+        return Result(tagName, workCount, workBlurbs)
     }
 }

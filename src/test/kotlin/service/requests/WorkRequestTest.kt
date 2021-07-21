@@ -16,42 +16,42 @@ import java.time.Month
 internal class WorkRequestTest(private val client: AO3Client) {
     @Test
     fun `Successfully request non-adult oneshot work`() {
-        val workRequest = WorkRequest.from(2094438)
+        val workRequest = WorkRequest.withDefaultConverter(2094438)
         val response = runBlocking { client.execute(workRequest) }
         assertTrue(response is AO3Response.Success && response.value.work is SingleChapterWork)
     }
 
     @Test
     fun `Successfully request adult oneshot work`() {
-        val workRequest = WorkRequest.from(2080878)
+        val workRequest = WorkRequest.withDefaultConverter(2080878)
         val response = runBlocking { client.execute(workRequest) }
         assertTrue(response is AO3Response.Success && response.value.work is SingleChapterWork)
     }
 
     @Test
     fun `Successfully request non-adult multi-chapter completed work`() {
-        val workRequest = WorkRequest.from(8337607)
+        val workRequest = WorkRequest.withDefaultConverter(8337607)
         val response = runBlocking { client.execute(workRequest) }
         assertTrue(response is AO3Response.Success && response.value.work is MultiChapterOrIncompleteWork)
     }
 
     @Test
     fun `Successfully request adult multi-chapter incomplete work`() {
-        val workRequest = WorkRequest.from(537876)
+        val workRequest = WorkRequest.withDefaultConverter(537876)
         val response = runBlocking { client.execute(workRequest) }
         assertTrue(response is AO3Response.Success && response.value.work is MultiChapterOrIncompleteWork)
     }
 
     @Test
     fun `Successfully request adult single-chapter incomplete work`() {
-        val workRequest = WorkRequest.from(602)
+        val workRequest = WorkRequest.withDefaultConverter(602)
         val response = runBlocking { client.execute(workRequest) }
         assertTrue(response is AO3Response.Success && response.value.work is MultiChapterOrIncompleteWork)
     }
 
     @Test
     fun `Work metadata should be correct for single-chapter work id #2080878 (I am Groot by sherlocksmyth)`() {
-        val workRequest = WorkRequest.from(2080878)
+        val workRequest = WorkRequest.withDefaultConverter(2080878)
         val response = runBlocking { client.execute(workRequest) }
         when (response) {
             is AO3Response.Success -> {
@@ -80,7 +80,7 @@ internal class WorkRequestTest(private val client: AO3Client) {
 
     @Test
     fun `Work metadata should be correct for multi-chapter work id #257248 (Two Of Us by PandoraCulpa)`() {
-        val workRequest = WorkRequest.from(257248)
+        val workRequest = WorkRequest.withDefaultConverter(257248)
         val response = runBlocking { client.execute(workRequest) }
         when (response) {
             is AO3Response.Success -> {

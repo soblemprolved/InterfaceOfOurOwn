@@ -1,16 +1,13 @@
 package service.requests
 
-import model.Work
-import okhttp3.Headers
 import okhttp3.HttpUrl
 import service.converters.Converter
 import service.converters.WorkConverter
-import service.requests.AO3Request.Companion.BASE_URL
 import service.requests.AO3Request.Companion.AO3_HOSTNAME
 import service.requests.AO3Request.Companion.HTML_HEADERS
 
 class WorkRequest<T>(
-    private val id: Long,
+    val id: Long,
     override val converter: Converter<T>
 ): GetRequest<T> {
     init {
@@ -29,8 +26,8 @@ class WorkRequest<T>(
     override val headers = HTML_HEADERS
 
     companion object {
-        fun from(id: Long): WorkRequest<WorkConverter.WorkResult> {
-            return WorkRequest<WorkConverter.WorkResult>(id, WorkConverter)
+        fun withDefaultConverter(id: Long): WorkRequest<WorkConverter.Result> {
+            return WorkRequest<WorkConverter.Result>(id, converter = WorkConverter)
         }
     }
 }

@@ -19,11 +19,11 @@ data class WorkFilterQueryMap(
 
             // ratings
             val ratingsList = mutableListOf<String>()
-            if (showRatingNotRated) ratingsList.add(Rating.NONE.code)
-            if (showRatingGeneral) ratingsList.add(Rating.GENERAL.code)
-            if (showRatingTeen) ratingsList.add(Rating.TEEN.code)
-            if (showRatingMature) ratingsList.add(Rating.MATURE.code)
-            if (showRatingExplicit) ratingsList.add(Rating.EXPLICIT.code)
+            if (!showRatingNotRated) ratingsList.add(Rating.NONE.code)
+            if (!showRatingGeneral) ratingsList.add(Rating.GENERAL.code)
+            if (!showRatingTeen) ratingsList.add(Rating.TEEN.code)
+            if (!showRatingMature) ratingsList.add(Rating.MATURE.code)
+            if (!showRatingExplicit) ratingsList.add(Rating.EXPLICIT.code)
             backingMap["exclude_work_search[rating_ids][]"] = ratingsList
 
             // warnings - handle both cases
