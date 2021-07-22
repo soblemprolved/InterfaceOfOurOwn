@@ -6,6 +6,7 @@ import okhttp3.HttpUrl
 import service.converters.Converter
 import service.converters.WorksByTagConverter
 import service.query.WorkFilterQueryMap
+import service.requests.AO3Request.Companion.BASE_HTTP_URL_BUILDER_CONFIGURATION
 import service.requests.AO3Request.Companion.HTML_HEADERS
 
 
@@ -33,9 +34,7 @@ class WorksByTagRequest<T>(
         require(tag.isNotBlank()) { "Tag cannot be blank!" }
     }
 
-    override val url: HttpUrl = HttpUrl.Builder()
-        .scheme("https")
-        .host(AO3Request.AO3_HOSTNAME)
+    override val url: HttpUrl = BASE_HTTP_URL_BUILDER_CONFIGURATION
         .addPathSegment("tags")
         .addPathSegment(encodeTag(tag))
         .addPathSegment("works")

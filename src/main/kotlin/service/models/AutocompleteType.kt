@@ -1,12 +1,12 @@
 package service.models
 
 enum class AutocompleteType(
-    val value: String
+    val pathSegment: String
 ) {
     TAG("tag"),
-    CHARACTER("character"),
     FANDOM("fandom"),
-    FREEFORM("freeform"),
     RELATIONSHIP("relationship"),
+    CHARACTER("character"),
+    FREEFORM("freeform"),
     PSEUD("pseud")
 }

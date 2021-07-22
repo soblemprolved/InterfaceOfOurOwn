@@ -15,9 +15,11 @@ sealed interface AO3Request<T> {    // T is the return type
     }
 
     companion object {
-        const val BASE_URL = "https://archiveofourown.org/"
+        val BASE_HTTP_URL_BUILDER_CONFIGURATION: HttpUrl.Builder
+            get() = HttpUrl.Builder()
+                .scheme("https")
+                .host("archiveofourown.org")
 
-        const val AO3_HOSTNAME = "archiveofourown.org"
         val HTML_HEADERS = Headers.Builder()
             .add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8")
             .build()
