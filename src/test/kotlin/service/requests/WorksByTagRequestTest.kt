@@ -44,6 +44,20 @@ internal class WorksByTagRequestTest(private val client: AO3Client) {
     }
 
     @Test
+    fun `(Integration) Successfully request works with multiple arguments`() {
+        val request = WorksByTagRequest.withDefaultConverter(
+            "F/M",
+            WorkFilterParameters(
+                includedTags = listOf("Romance", "Pepper Potts/Tony Stark").toMutableList(),
+                excludedTags = listOf("Smut", "John Wick").toMutableList()
+            ),
+            1
+        )
+        val response = runBlocking { client.execute(request) }
+        assertTrue(response is AO3Response.Success)
+    }
+
+    @Test
     fun `Return a TagSynonymError when requesting works from a synonym`() {
         val request = WorksByTagRequest.withDefaultConverter(
             "Roy Mustang/Riza Hawkeye",

@@ -5,7 +5,7 @@ import java.time.LocalDate
 data class WorkBlurb(
     val workId: Long,
     val title: String,
-    val authors: List<User>,
+    val authors: List<User>,   // no authors means its anonymous
     val giftees: List<User>,
     val lastUpdatedDate: LocalDate,
     val rating: Rating,
@@ -27,7 +27,6 @@ data class WorkBlurb(
 ) {
     init {
         require(workId >= 0) { "ID cannot be negative!" }
-        require(authors.isNotEmpty()) { "There must be at least one author!" }
         require(wordCount >= 0) { "Word count cannot be negative!" }
         require(chapterCount >= 1) { "Chapter count must be at least 1!" }
         require(maxChapterCount >= 0) { "Max chapters cannot be negative!" }

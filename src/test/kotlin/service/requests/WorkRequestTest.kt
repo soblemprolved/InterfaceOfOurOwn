@@ -29,6 +29,19 @@ internal class WorkRequestTest(private val client: AO3Client) {
     }
 
     @Test
+    fun `Successfully request work with anonymous author`() {
+        val workRequest = WorkRequest.withDefaultConverter(32734699)
+        val response = runBlocking { client.execute(workRequest) }
+        assertTrue(response is AO3Response.Success && response.value.work is MultiChapterOrIncompleteWork)
+        require(response is AO3Response.Success)
+        with (response.value.work) {
+            require(this is MultiChapterOrIncompleteWork)
+            require(this.authors.size == 1)
+//            require(this.giftees.size == 1)   // this shit dont work yet!
+        }
+    }
+
+    @Test
     fun `Successfully request non-adult multi-chapter completed work`() {
         val workRequest = WorkRequest.withDefaultConverter(8337607)
         val response = runBlocking { client.execute(workRequest) }

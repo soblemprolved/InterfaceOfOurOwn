@@ -62,6 +62,7 @@ data class MultiChapterOrIncompleteWork(
     val chapters: List<Chapter>,   // if I make the id nullable, I can handle both oneshots and other works in 1 call
     val postWorkNotes: Html,
     val workskin: Css
+    // TODO: add series name(multiple) and position in series? is position necessary?
 ): Work {
     init {
         require(id >= 0) { "ID cannot be negative!" }

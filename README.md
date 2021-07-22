@@ -6,7 +6,19 @@ JVM/Android projects, but not Multiplatform).
 Unfortunately, I cannot support Multiplatform at the moment as there is no html parsing library available
 for Kotlin Native.
 
-This library relies on `OkHttp` for networking.
+This library relies on `OkHttp` for networking, `jsoup` for parsing HTML responses,
+and `kotlinx.serialization` for deserializing JSON responses.
+
+## What can it do?
+So far, it can be used to retrieve the following:
+1. Full works `/works/<work ID>`
+2. Work summaries associated with a tag `/tags/<tag name>/works?<filter arguments>`
+3. Autocomplete results for tags (any type) and users `/autocomplete/<type>?<search term>`
+
+In the future, the following will be implemented, in no particular order:
+1. User login
+2. Retrieving bookmarks, collections, user info, work summaries by user, bookmarks by user
+3. 
 
 ## Example: Fetching a Work
 ### Initialising the client

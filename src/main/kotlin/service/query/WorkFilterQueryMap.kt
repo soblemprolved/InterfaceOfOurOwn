@@ -4,11 +4,10 @@ import model.Category
 import model.Rating
 import model.Warning
 import model.WorkFilterParameters
-import java.net.URLEncoder
 
 data class WorkFilterQueryMap(
     val workFilterParameters: WorkFilterParameters
-): ExplodingRetrofitQueryMap(workFilterParameters.toUnexplodedQueryMap()) {
+): ExplodingQueryMap(workFilterParameters.toUnexplodedQueryMap()) {
     companion object {
         private fun WorkFilterParameters.toUnexplodedQueryMap(): Map<String, List<String>> {
             val backingMap: MutableMap<String, List<String>> = mutableMapOf()
@@ -128,21 +127,15 @@ data class WorkFilterQueryMap(
 
             // tags
             backingMap["work_search[other_tag_names]"] = listOf(
-                includedTags.joinToString(
-                    separator = "%2C",
-                    transform = { encodeString(it) }
-                )
+                includedTags.joinToString(separator = ",")
             )
             backingMap["work_search[excluded_tag_names]"] = listOf(
-                excludedTags.joinToString(
-                    separator = "%2C",
-                    transform = { encodeString(it) }
-                )
+                excludedTags.joinToString(separator = ",")
             )
 
             // search within works
             if (searchTerm.isNotBlank()) {
-                backingMap["work_search[query]"] = listOf(encodeString(searchTerm))
+                backingMap["work_search[query]"] = listOf(searchTerm)
             }
 
             // language
@@ -152,10 +145,6 @@ data class WorkFilterQueryMap(
             backingMap["work_search[sort_column]"] = listOf(sortOrder.code)
 
             return backingMap
-        }
-
-        private fun encodeString(tag: String): String {
-            return URLEncoder.encode(tag, "UTF-8")
         }
     }
 }

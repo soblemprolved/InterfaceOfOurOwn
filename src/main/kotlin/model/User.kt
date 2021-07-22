@@ -24,7 +24,7 @@ data class User(
     val isRegisteredUser: Boolean
 ) {
     init {
-        require(pseudonym != null || isRegisteredUser) {
+        require(isRegisteredUser || pseudonym == null) {
             "Pseudonym cannot be null when the User is not a registered user"
         }
     }
