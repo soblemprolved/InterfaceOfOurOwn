@@ -12,7 +12,7 @@ This library relies on `OkHttp` for networking.
 ### Initialising the client
 Pass in your existing `OkHttpClient` instance to the client during initialisation.
 A new client will be created from it that shares the same resources with the
-original client.
+original client, with all the necessary configurations made.
 
 ```kotlin
 // Let this be the OkHttpClient instance used by your application
@@ -27,10 +27,10 @@ With the client we created above, we can query the Archive for a response like s
 
 ```kotlin
 // Creates a request for the work located at https://archiveofourown.org/works/30267078
-val workRequest = WorkRequest.from(30267078)
+val workRequest = WorkRequest.withDefaultConverter(id = 30267078)
 
 // Alternatively, you can specify a custom converter directly in the constructor
-val workRequest = WorkRequest(id = 30267078, converter = WorkConverter)
+val workRequest = WorkRequest(id = 30267078, converter = MyWorkConverter)
 
 // Pass the request to the client for suspending execution
 val workResponse: AO3Response<Work> = viewModelScope.launch {
@@ -45,17 +45,32 @@ val workResponse: AO3Response<Work> = ao3Client.executeBlocking(workRequest)
 The response of the Archive will be wrapped in `AO3Response` and returned to the caller.
 
 ### Handling errors
-There are many points at which a request can fail: the user might lose their connection,
-the resource might not be found at the existing location, the user might not have authorisation
-to access the resource, and so on and so forth.
+There are many points at which a request can fail. For example, the user might lose their connection,
+the resource might not be found at the existing location, or the user might not have authorisation
+to access the resource.
 
 The `AO3Response` wrapper provides a simple way to handle all (reasonable) scenarios that may occur.
 
 ```kotlin
+// continued from above
 when (workResponse) {
     is Success -> // retrieve the Work here
     is ServerError -> // retrieve the specific error and handle it accordingly
     is NetworkError -> // display an error here
+}
+```
+
+ServerErrors also contain the specific exception thrown, which can tell you if the
+error arose due to things like a lack of authorisation, or if the work does not exist.
+
+```kotlin
+// continued from within the "when" block above
+is ServerError -> {
+    when (response.error) {
+        is NotFoundError -> // recover from a 404 error
+        is NotLoggedInError -> // prompt the user to login
+        else -> // use some generic error recovery strategy
+    }
 }
 ```
 
@@ -73,7 +88,3 @@ and pass in your custom converter to the request.
 
 ### Change the wrapper type
 Create your own implementation of `AO3Client`.
-
-### Use <other networking library> instead of OkHttp
-Unfortunately, requests rely on `OkHttpClient` constructs as they are vastly superior 
-to rolling my own. I can decouple them, but this will take some time.
