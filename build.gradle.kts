@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     kotlin("jvm") version "1.5.20"
     kotlin("plugin.serialization") version "1.5.20"
-    `maven-publish`
+    `maven`
 }
 
 repositories {
@@ -22,17 +22,6 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter:5.7.0")
     testImplementation("com.squareup.okhttp3:logging-interceptor")
     testImplementation("com.squareup.okhttp3:mockwebserver:4.9.1")
-}
-
-publishing {
-    publications {
-        create<MavenPublication>("maven") {
-            groupId = "com.github.soblemprolved"
-            artifactId = "orpheus"
-
-            from(components["kotlin"])
-        }
-    }
 }
 
 tasks.test {
