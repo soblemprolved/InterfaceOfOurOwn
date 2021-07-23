@@ -10,15 +10,14 @@ repositories {
 }
 
 dependencies {
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2")
     implementation(platform("com.squareup.okhttp3:okhttp-bom:4.9.1"))
     implementation("com.squareup.okhttp3:okhttp")
-    implementation("com.squareup.okhttp3:logging-interceptor")
     implementation("org.jsoup:jsoup:1.13.1")
-    implementation("ru.gildor.coroutines:kotlin-coroutines-okhttp:1.0")
-    implementation("org.junit.jupiter:junit-jupiter:5.7.0")
 
-    testImplementation(kotlin("test"))
+    testImplementation("org.junit.jupiter:junit-jupiter:5.7.0")
+    testImplementation("com.squareup.okhttp3:logging-interceptor")
     testImplementation("com.squareup.okhttp3:mockwebserver:4.9.1")
 }
 
