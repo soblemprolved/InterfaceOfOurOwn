@@ -24,6 +24,17 @@ dependencies {
     testImplementation("com.squareup.okhttp3:mockwebserver:4.9.1")
 }
 
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "com.github.soblemprolved"
+            artifactId = "orpheus"
+
+            from(components["kotlin"])
+        }
+    }
+}
+
 tasks.test {
     useJUnitPlatform()
 }
