@@ -1,24 +1,69 @@
 # Orpheus
 
-An unofficial API for interfacing with the Archive of Our Own. Written in Kotlin for the JVM (that is, it can be used on
-JVM/Android projects, but not Multiplatform).
+An unofficial API for interfacing with the Archive of Our Own. Written in Kotlin
+for the JVM (that is, it can be used on JVM and Android projects, but not
+Multiplatform).
 
-Unfortunately, I cannot support Multiplatform at the moment as there is no html parsing library available
-for Kotlin Native.
+This library uses `kotlinx.coroutines` under the hood, and relies on `OkHttp`
+for networking, `jsoup` for parsing HTML responses, and `kotlinx.serialization`
+for deserializing JSON responses.
 
-This library relies on `OkHttp` for networking, `jsoup` for parsing HTML responses,
-and `kotlinx.serialization` for deserializing JSON responses.
+Requires at least Java 8 or Android API 21, due to the requirements of`OkHttp`.
+
+## Download
+Add `jitpack` to your project root `build.gradle.kts`:
+
+``` kotlin
+// build.gradle.kts
+allprojects {
+    repositories {
+        // ...
+        maven { setUrl("https://jitpack.io") }
+    }
+}
+```
+
+or `build.gradle`:
+
+``` groovy
+// build.gradle
+allprojects {
+    repositories {
+        // ...
+        maven { url "https://jitpack.io" }
+    }
+}
+```
+
+Then add the dependency to your module's `build.gradle.kts`:
+
+``` kotlin
+// build.gradle.kts
+implementation("com.github.soblemprolved:orpheus:0.1.1")
+```
+
+or `build.gradle`:
+
+``` groovy
+// build.gradle
+implementation 'com.github.soblemprolved:orpheus:0.1.1'
+```
 
 ## What can it do?
 So far, it can be used to retrieve the following:
-1. Full works `/works/<work ID>`
-2. Work summaries associated with a tag `/tags/<tag name>/works?<filter arguments>`
-3. Autocomplete results for tags (any type) and users `/autocomplete/<type>?<search term>`
+1. Full works
+   `/works/<work ID>`
+2. Work summaries associated with a tag
+   `/tags/<tag name>/works?<filter arguments>`
+3. Autocomplete results for tags (any type) and users
+   `/autocomplete/<type>?<search term>`
 
 In the future, the following will be implemented, in no particular order:
 1. User login
-2. Retrieving bookmarks, collections, user info, work summaries by user, bookmarks by user
-3. 
+2. Bookmarks by tag
+3. Collections
+4. User Profiles (including works and bookmarks)
+5. ...and much more!
 
 ## Example: Fetching a Work
 ### Initialising the client
@@ -26,7 +71,7 @@ Pass in your existing `OkHttpClient` instance to the client during initialisatio
 A new client will be created from it that shares the same resources with the
 original client, with all the necessary configurations made.
 
-```kotlin
+``` kotlin
 // Let this be the OkHttpClient instance used by your application
 val appOkHttpClient = OkHttpClient()
 
@@ -37,8 +82,8 @@ val ao3Client = AO3Client(appOkHttpClient)
 ### Creating and sending the request
 With the client we created above, we can query the Archive for a response like so:
 
-```kotlin
-// Creates a request for the work located at https://archiveofourown.org/works/30267078
+``` kotlin
+// Creates a request for the work at https://archiveofourown.org/works/30267078
 val workRequest = WorkRequest.withDefaultConverter(id = 30267078)
 
 // Alternatively, you can specify a custom converter directly in the constructor
@@ -63,7 +108,7 @@ to access the resource.
 
 The `AO3Response` wrapper provides a simple way to handle all (reasonable) scenarios that may occur.
 
-```kotlin
+``` kotlin
 // continued from above
 when (workResponse) {
     is Success -> // retrieve the Work here
@@ -75,7 +120,7 @@ when (workResponse) {
 ServerErrors also contain the specific exception thrown, which can tell you if the
 error arose due to things like a lack of authorisation, or if the work does not exist.
 
-```kotlin
+``` kotlin
 // continued from within the "when" block above
 is ServerError -> {
     when (response.error) {
