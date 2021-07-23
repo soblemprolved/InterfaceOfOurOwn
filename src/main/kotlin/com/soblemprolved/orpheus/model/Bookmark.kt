@@ -1,0 +1,15 @@
+package com.soblemprolved.orpheus.model
+
+import java.time.LocalDate
+
+data class Bookmark(
+    val user: User,
+    val tags: List<String>,
+    val date: LocalDate,
+    val notes: Html,
+    val bookmarkType: BookmarkType
+) {
+    enum class BookmarkType {
+        RECOMMENDATION, PUBLIC, PRIVATE, HIDDEN
+    }
+}
