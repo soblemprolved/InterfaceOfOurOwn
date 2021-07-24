@@ -53,5 +53,5 @@ data class WorkFilterParameters(
 
     var searchTerm: String = "",
     var language: Language = Language.ALL,
-    var sortOrder: SortOrder = SortOrder.DATE_UPDATED
+    var sortCriterion: WorkSortCriterion = WorkSortCriterion.DATE_UPDATED
 )

@@ -73,7 +73,7 @@ enum class Warning(val description: String, val code: String) {
     }
 }
 
-enum class SortOrder(val code: String) {
+enum class WorkSortCriterion(val code: String) {
     AUTHOR("authors_to_sort_on"),
     TITLE("title_to_sort_on"),
     DATE_POSTED("created_at"),
@@ -83,6 +83,31 @@ enum class SortOrder(val code: String) {
     KUDOS("kudos_count"),
     COMMENTS("comments_count"),
     BOOKMARKS("bookmarks_count")
+}
+
+enum class BookmarkType {
+    RECOMMENDATION, PUBLIC, PRIVATE, HIDDEN
+}
+
+enum class BookmarkSortCriterion(val code: String) {
+    DATE_BOOKMARKED("created_at"),
+    DATE_UPDATED("bookmarkable_date")
+}
+
+enum class CollectionsSortCriterion(val code: String) {
+    TITLE("collections.title"),
+    DATE_CREATED("collections.created_at")
+}
+
+enum class SortDirection(val code: String) {
+    ASCENDING("ASC"),
+    DESCENDING("DESC")
+}
+
+enum class ChallengeType(val code: String) {
+    GIFT_EXCHANGE("gift_exchange"),
+    PROMPT_MEME("prompt_meme"),
+    NO_CHALLENGE("no_challenge")
 }
 
 enum class Language(val description: String, val code: String) {

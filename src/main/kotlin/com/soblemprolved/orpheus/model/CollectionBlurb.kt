@@ -7,7 +7,7 @@ data class CollectionBlurb(
     val isModerated: Boolean,
     val isRevealed: Boolean,
     val isAnonymous: Boolean,
-    val challenge: Collection.ChallengeType,
+    val challenge: ChallengeType,
     val summary: Html,
     val maintainers: List<User>
 )

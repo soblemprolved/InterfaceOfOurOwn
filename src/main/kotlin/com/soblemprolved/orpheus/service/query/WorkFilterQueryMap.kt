@@ -142,7 +142,7 @@ data class WorkFilterQueryMap(
             backingMap["work_search[language_id]"] = listOf(language.code)
 
             // sort order
-            backingMap["work_search[sort_column]"] = listOf(sortOrder.code)
+            backingMap["work_search[sort_column]"] = listOf(sortCriterion.code)
 
             return backingMap
         }

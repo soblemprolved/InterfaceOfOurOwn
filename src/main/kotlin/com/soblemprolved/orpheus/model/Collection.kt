@@ -14,8 +14,4 @@ data class Collection(
     val fandomCount: Int,
     val workCount: Int,
     val bookmarkedItemCount: Int
-) {
-    enum class ChallengeType {
-        GIFT, PROMPT, NONE
-    }
-}
+)
