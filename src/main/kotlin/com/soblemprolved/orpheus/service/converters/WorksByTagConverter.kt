@@ -104,7 +104,7 @@ object WorksByTagConverter : Converter<WorksByTagConverter.Result> {
 
 
             return@map WorkBlurb(
-                workId = id,
+                id = id,
                 title = title,
                 authors = authors,
                 giftees = giftees,

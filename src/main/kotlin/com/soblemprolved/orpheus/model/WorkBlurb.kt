@@ -3,7 +3,7 @@ package com.soblemprolved.orpheus.model
 import java.time.LocalDate
 
 data class WorkBlurb(
-    val workId: Long,
+    val id: Long,
     val title: String,
     val authors: List<User>,   // no authors means its anonymous
     val giftees: List<User>,
@@ -26,7 +26,7 @@ data class WorkBlurb(
     val hitCount: Int
 ) {
     init {
-        require(workId >= 0) { "ID cannot be negative!" }
+        require(id >= 0) { "ID cannot be negative!" }
         require(wordCount >= 0) { "Word count cannot be negative!" }
         require(chapterCount >= 1) { "Chapter count must be at least 1!" }
         require(maxChapterCount >= 0) { "Max chapters cannot be negative!" }
