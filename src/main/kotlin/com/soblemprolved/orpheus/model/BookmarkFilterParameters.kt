@@ -1,7 +1,7 @@
 package com.soblemprolved.orpheus.model
 
 data class BookmarkFilterParameters(
-    var sortCriterion: BookmarkSortCriterion,
+    var sortCriterion: BookmarkSortCriterion = BookmarkSortCriterion.DATE_BOOKMARKED,
 
     // as bookmarks include series which can contain multiple ratings, i will split this into include/exclude
     var includeRatingGeneral: Boolean = true,

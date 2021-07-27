@@ -9,16 +9,13 @@ object WorkConverter : Converter<WorkConverter.Result> {
     data class Result(val work: Work, val csrfToken: String)
 
     override fun convert(response: Response): Result {
-        val workUrl = response.request.url
-        val id = workUrl.encodedPathSegments.last().toLong()
-
         val body = response.body!!.string()
         // TODO: check if response body is already closed
 
-        return parseWork(id, body)
+        return parseWork(body)
     }
 
-    fun parseWork(id: Long, workHtml: String): Result {
+    fun parseWork(workHtml: String): Result {
         val doc = Jsoup.parse(workHtml)
         val metadataTree = doc.select("dl.work.meta.group")
         val statisticsTree = metadataTree.select("dl.stats")
@@ -27,6 +24,12 @@ object WorkConverter : Converter<WorkConverter.Result> {
             .first()
             .text()
             .split("/")
+
+        val id = doc.selectFirst("div#main > ul.work.navigation.actions > li.share > a[href]")
+            .attr("href")
+            .removePrefix("/works/")
+            .removeSuffix("/share")
+            .toLong()
 
         val rating = metadataTree.select("dd.rating.tags")
             .select("a.tag")
