@@ -41,8 +41,8 @@ enum class Category(val description: String, val code: String) {
         private val mapByDescription = values().associateBy { it.description }
         private val mapByCode = values().associateBy { it.code }
 
-        fun fromName(name: String): Category {
-            return mapByDescription[name]!!
+        fun fromName(name: String): Category? {
+            return mapByDescription[name]
         }
 
         fun fromCode(code: String): Category {

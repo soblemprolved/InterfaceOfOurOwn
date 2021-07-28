@@ -41,7 +41,7 @@ object WorkConverter : Converter<WorkConverter.Result> {
             .map { Warning.fromName(it.text()) }
         val categories = metadataTree.select("dd.category.tags")
             .select("a.tag")
-            .map { Category.fromName(it.text()) }
+            .mapNotNull { Category.fromName(it.text()) }
         val fandoms = metadataTree.select("dd.fandom.tags")
             .select("a.tag")
             .map { it.text() }

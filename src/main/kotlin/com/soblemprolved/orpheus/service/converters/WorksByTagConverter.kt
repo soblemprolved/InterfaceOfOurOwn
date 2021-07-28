@@ -83,7 +83,7 @@ object WorksByTagConverter : Converter<WorksByTagConverter.Result> {
             val fandoms = fandomElements.map { it.text() }
             val rating = requiredTags[0].text().let { Rating.fromName(it) }
             val categories = requiredTags[2].text().split(", ")
-                .map { Category.fromName(it) }
+                .mapNotNull { Category.fromName(it) }
             val warnings = userTags.select("li.warnings").map { Warning.fromName(it.text()) }
             val relationships = userTags.select("li.relationships").map { it.text() }
             val characters = userTags.select("li.characters").map { it.text() }

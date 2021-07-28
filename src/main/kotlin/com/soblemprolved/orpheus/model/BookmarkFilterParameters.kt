@@ -4,11 +4,11 @@ data class BookmarkFilterParameters(
     var sortCriterion: BookmarkSortCriterion = BookmarkSortCriterion.DATE_BOOKMARKED,
 
     // as bookmarks include series which can contain multiple ratings, i will split this into include/exclude
-    var includeRatingGeneral: Boolean = true,
-    var includeRatingTeen: Boolean = true,
-    var includeRatingMature: Boolean = true,
-    var includeRatingExplicit: Boolean = true,
-    var includeRatingNotRated: Boolean = true,
+    var includeRatingGeneral: Boolean = false,
+    var includeRatingTeen: Boolean = false,
+    var includeRatingMature: Boolean = false,
+    var includeRatingExplicit: Boolean = false,
+    var includeRatingNotRated: Boolean = false,
     var excludeRatingGeneral: Boolean = false,
     var excludeRatingTeen: Boolean = false,
     var excludeRatingMature: Boolean = false,

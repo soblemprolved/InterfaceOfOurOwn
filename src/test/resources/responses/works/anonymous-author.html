@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+<script>window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","errorBeacon":"bam-cell.nr-data.net","licenseKey":"f2edcff25e","applicationID":"190034","transactionName":"dgwMEkpfWVsHERpFWUcIEUlLWFpA","queueTime":0,"applicationTime":82,"agent":""}</script>
+<script>(window.NREUM||(NREUM={})).loader_config={xpid:"VQcCWV9RGwIJVFFRAw==",licenseKey:"f2edcff25e",applicationID:"190034"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(t){try{s.console&&console.log(t)}catch(e){}}var i,o=t("ee"),a=t(25),s={};try{i=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,i.indexOf("dev")!==-1&&(s.dev=!0),i.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&o.on("internal-error",function(t){r(t.stack)}),s.dev&&o.on("fn-err",function(t,e,n){r(n.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,s){try{p?p-=1:i(s||new UncaughtException(t,e,n),!0)}catch(f){try{o("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function i(t,e){var n=e?null:c.now();o("err",[t,n])}var o=t("handle"),a=t(26),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,l="nr@seenError";if(!c.disabled){var p=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(9),t(8),"addEventListener"in window&&t(5),c.xhrWrappable&&t(10),d=!0)}s.on("fn-start",function(t,e,n){d&&(p+=1)}),s.on("fn-err",function(t,e,n){d&&!n[l]&&(f(n,l,function(){return!0}),this.thrown=!0,i(n))}),s.on("fn-end",function(){d&&!this.thrown&&p>0&&(p-=1)}),s.on("internal-error",function(t){o("ierr",[t,c.now(),!0])})}},{}],3:[function(t,e,n){var r=t("loader");r.disabled||(r.features.ins=!0)},{}],4:[function(t,e,n){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var i=t("ee"),o=t("handle"),a=t(9),s=t(8),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",l="resource",p="-start",h="-end",m="fn"+p,w="fn"+h,v="bstTimer",g="pushState",y=t("loader");if(!y.disabled){y.features.stn=!0,t(7),"addEventListener"in window&&t(5);var x=NREUM.o.EV;i.on(m,function(t,e){var n=t[0];n instanceof x&&(this.bstStart=y.now())}),i.on(w,function(t,e){var n=t[0];n instanceof x&&o("bst",[n,e,this.bstStart,y.now()])}),a.on(m,function(t,e,n){this.bstStart=y.now(),this.bstType=n}),a.on(w,function(t,e){o(v,[e,this.bstStart,y.now(),this.bstType])}),s.on(m,function(){this.bstStart=y.now()}),s.on(w,function(t,e){o(v,[e,this.bstStart,y.now(),"requestAnimationFrame"])}),i.on(g+p,function(t){this.time=y.now(),this.startPath=location.pathname+location.hash}),i.on(g+h,function(t){o("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){o(d,[window.performance.getEntriesByType(l)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){o(d,[window.performance.getEntriesByType(l)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}}},{}],5:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&i(e)}function i(t){s.inPlace(t,[u,d],"-",o)}function o(t,e){return t[1]}var a=t("ee").get("events"),s=t("wrap-function")(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(i(window),i(f.prototype)),a.on(u+"-start",function(t,e){var n=t[1],r=c(n,"nr@wrapped",function(){function t(){if("function"==typeof n.handleEvent)return n.handleEvent.apply(n,arguments)}var e={object:t,"function":n}[typeof n];return e?s(e,"fn-",null,e.name||"anonymous"):n});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],6:[function(t,e,n){function r(t,e,n){var r=t[e];"function"==typeof r&&(t[e]=function(){var t=o(arguments),e={};i.emit(n+"before-start",[t],e);var a;e[m]&&e[m].dt&&(a=e[m].dt);var s=r.apply(this,t);return i.emit(n+"start",[t,a],s),s.then(function(t){return i.emit(n+"end",[null,t],s),t},function(t){throw i.emit(n+"end",[t],s),t})})}var i=t("ee").get("fetch"),o=t(26),a=t(25);e.exports=i;var s=window,c="fetch-",f=c+"body-",u=["arrayBuffer","blob","json","text","formData"],d=s.Request,l=s.Response,p=s.fetch,h="prototype",m="nr@context";d&&l&&p&&(a(u,function(t,e){r(d[h],e,f),r(l[h],e,f)}),r(s,"fetch",c),i.on(c+"end",function(t,e){var n=this;if(e){var r=e.headers.get("content-length");null!==r&&(n.rxSize=r),i.emit(c+"done",[null,e],n)}else i.emit(c+"done",[t],n)}))},{}],7:[function(t,e,n){var r=t("ee").get("history"),i=t("wrap-function")(r);e.exports=r;var o=window.history&&window.history.constructor&&window.history.constructor.prototype,a=window.history;o&&o.pushState&&o.replaceState&&(a=o),i.inPlace(a,["pushState","replaceState"],"-")},{}],8:[function(t,e,n){var r=t("ee").get("raf"),i=t("wrap-function")(r),o="equestAnimationFrame";e.exports=r,i.inPlace(window,["r"+o,"mozR"+o,"webkitR"+o,"msR"+o],"raf-"),r.on("raf-start",function(t){t[0]=i(t[0],"fn-")})},{}],9:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function i(t,e,n){this.method=n,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,n)}var o=t("ee").get("timer"),a=t("wrap-function")(o),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";e.exports=o,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),o.on(c+u,r),o.on(s+u,i)},{}],10:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",s)}function i(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,g,"fn-",s)}function o(t){y.push(t),h&&(b?b.then(a):w?w(a):(E=-E,R.data=E))}function a(){for(var t=0;t<y.length;t++)r([],y[t]);y.length&&(y=[])}function s(t,e){return e}function c(t,e){for(var n in t)e[n]=t[n];return e}t(5);var f=t("ee"),u=f.get("xhr"),d=t("wrap-function")(u),l=NREUM.o,p=l.XHR,h=l.MO,m=l.PR,w=l.SI,v="readystatechange",g=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],y=[];e.exports=u;var x=window.XMLHttpRequest=function(t){var e=new p(t);try{u.emit("new-xhr",[e],e),e.addEventListener(v,i,!1)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(c(p,x),x.prototype=p.prototype,d.inPlace(x.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,e){r(t,e),o(e)}),u.on("open-xhr-start",r),h){var b=m&&m.resolve();if(!w&&!m){var E=1,R=document.createTextNode(E);new h(a).observe(R,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===v||a()})},{}],11:[function(t,e,n){function r(t){if(!s(t))return null;var e=window.NREUM;if(!e.loader_config)return null;var n=(e.loader_config.accountID||"").toString()||null,r=(e.loader_config.agentID||"").toString()||null,f=(e.loader_config.trustKey||"").toString()||null;if(!n||!r)return null;var h=p.generateSpanId(),m=p.generateTraceId(),w=Date.now(),v={spanId:h,traceId:m,timestamp:w};return(t.sameOrigin||c(t)&&l())&&(v.traceContextParentHeader=i(h,m),v.traceContextStateHeader=o(h,w,n,r,f)),(t.sameOrigin&&!u()||!t.sameOrigin&&c(t)&&d())&&(v.newrelicHeader=a(h,m,w,n,r,f)),v}function i(t,e){return"00-"+e+"-"+t+"-01"}function o(t,e,n,r,i){var o=0,a="",s=1,c="",f="";return i+"@nr="+o+"-"+s+"-"+n+"-"+r+"-"+t+"-"+a+"-"+c+"-"+f+"-"+e}function a(t,e,n,r,i,o){var a="btoa"in window&&"function"==typeof window.btoa;if(!a)return null;var s={v:[0,1],d:{ty:"Browser",ac:r,ap:i,id:t,tr:e,ti:n}};return o&&r!==o&&(s.d.tk=o),btoa(JSON.stringify(s))}function s(t){return f()&&c(t)}function c(t){var e=!1,n={};if("init"in NREUM&&"distributed_tracing"in NREUM.init&&(n=NREUM.init.distributed_tracing),t.sameOrigin)e=!0;else if(n.allowed_origins instanceof Array)for(var r=0;r<n.allowed_origins.length;r++){var i=h(n.allowed_origins[r]);if(t.hostname===i.hostname&&t.protocol===i.protocol&&t.port===i.port){e=!0;break}}return e}function f(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.enabled}function u(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.exclude_newrelic_header}function d(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&NREUM.init.distributed_tracing.cors_use_newrelic_header!==!1}function l(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.cors_use_tracecontext_headers}var p=t(22),h=t(13);e.exports={generateTracePayload:r,shouldGenerateTrace:s}},{}],12:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<l;r++)t.removeEventListener(d[r],this.listener,!1);e.aborted||(n.duration=a.now()-this.startTime,this.loadCaptureCalled||4!==t.readyState?null==e.status&&(e.status=0):o(this,t),n.cbTime=this.cbTime,u.emit("xhr-done",[t],t),s("xhr",[e,n,this.startTime]))}}function i(t,e){var n=c(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.parsedOrigin=n,t.sameOrigin=n.sameOrigin}function o(t,e){t.params.status=e.status;var n=w(e,t.lastSize);if(n&&(t.metrics.rxSize=n),t.sameOrigin){var r=e.getResponseHeader("X-NewRelic-App-Data");r&&(t.params.cat=r.split(", ").pop())}t.loadCaptureCalled=!0}var a=t("loader");if(a.xhrWrappable&&!a.disabled){var s=t("handle"),c=t(13),f=t(11).generateTracePayload,u=t("ee"),d=["load","error","abort","timeout"],l=d.length,p=t("id"),h=t(18),m=t(17),w=t(14),v=NREUM.o.REQ,g=window.XMLHttpRequest;a.features.xhr=!0,t(10),t(6),u.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,e.loadCaptureCalled=!1,e.params=this.params||{},e.metrics=this.metrics||{},t.addEventListener("load",function(n){o(e,t)},!1),h&&(h>34||h<10)||window.opera||t.addEventListener("progress",function(t){e.lastSize=t.loaded},!1)}),u.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),u.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid);var n=f(this.parsedOrigin);if(n){var r=!1;n.newrelicHeader&&(e.setRequestHeader("newrelic",n.newrelicHeader),r=!0),n.traceContextParentHeader&&(e.setRequestHeader("traceparent",n.traceContextParentHeader),n.traceContextStateHeader&&e.setRequestHeader("tracestate",n.traceContextStateHeader),r=!0),r&&(this.dt=n)}}),u.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],i=this;if(n&&r){var o=m(r);o&&(n.txSize=o)}this.startTime=a.now(),this.listener=function(t){try{"abort"!==t.type||i.loadCaptureCalled||(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof e.onload))&&i.end(e)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}};for(var s=0;s<l;s++)e.addEventListener(d[s],this.listener,!1)}),u.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),u.on("xhr-load-added",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),u.on("xhr-load-removed",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),u.on("addEventListener-end",function(t,e){e instanceof g&&"load"===t[0]&&u.emit("xhr-load-added",[t[1],t[2]],e)}),u.on("removeEventListener-end",function(t,e){e instanceof g&&"load"===t[0]&&u.emit("xhr-load-removed",[t[1],t[2]],e)}),u.on("fn-start",function(t,e,n){e instanceof g&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),u.on("fn-end",function(t,e){this.xhrCbStart&&u.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,e],e)}),u.on("fetch-before-start",function(t){function e(t,e){var n=!1;return e.newrelicHeader&&(t.set("newrelic",e.newrelicHeader),n=!0),e.traceContextParentHeader&&(t.set("traceparent",e.traceContextParentHeader),e.traceContextStateHeader&&t.set("tracestate",e.traceContextStateHeader),n=!0),n}var n,r=t[1]||{};"string"==typeof t[0]?n=t[0]:t[0]&&t[0].url?n=t[0].url:window.URL&&t[0]&&t[0]instanceof URL&&(n=t[0].href),n&&(this.parsedOrigin=c(n),this.sameOrigin=this.parsedOrigin.sameOrigin);var i=f(this.parsedOrigin);if(i&&(i.newrelicHeader||i.traceContextParentHeader))if("string"==typeof t[0]||window.URL&&t[0]&&t[0]instanceof URL){var o={};for(var a in r)o[a]=r[a];o.headers=new Headers(r.headers||{}),e(o.headers,i)&&(this.dt=i),t.length>1?t[1]=o:t.push(o)}else t[0]&&t[0].headers&&e(t[0].headers,i)&&(this.dt=i)}),u.on("fetch-start",function(t,e){this.params={},this.metrics={},this.startTime=a.now(),t.length>=1&&(this.target=t[0]),t.length>=2&&(this.opts=t[1]);var n,r=this.opts||{},o=this.target;"string"==typeof o?n=o:"object"==typeof o&&o instanceof v?n=o.url:window.URL&&"object"==typeof o&&o instanceof URL&&(n=o.href),i(this,n);var s=(""+(o&&o instanceof v&&o.method||r.method||"GET")).toUpperCase();this.params.method=s,this.txSize=m(r.body)||0}),u.on("fetch-done",function(t,e){this.params||(this.params={}),this.params.status=e?e.status:0;var n;"string"==typeof this.rxSize&&this.rxSize.length>0&&(n=+this.rxSize);var r={txSize:this.txSize,rxSize:n,duration:a.now()-this.startTime};s("xhr",[this.params,r,this.startTime])})}},{}],13:[function(t,e,n){var r={};e.exports=function(t){if(t in r)return r[t];var e=document.createElement("a"),n=window.location,i={};e.href=t,i.port=e.port;var o=e.href.split("://");!i.port&&o[1]&&(i.port=o[1].split("/")[0].split("@").pop().split(":")[1]),i.port&&"0"!==i.port||(i.port="https"===o[0]?"443":"80"),i.hostname=e.hostname||n.hostname,i.pathname=e.pathname,i.protocol=o[0],"/"!==i.pathname.charAt(0)&&(i.pathname="/"+i.pathname);var a=!e.protocol||":"===e.protocol||e.protocol===n.protocol,s=e.hostname===document.domain&&e.port===n.port;return i.sameOrigin=a&&(!e.hostname||s),"/"===i.pathname&&(r[t]=i),i}},{}],14:[function(t,e,n){function r(t,e){var n=t.responseType;return"json"===n&&null!==e?e:"arraybuffer"===n||"blob"===n||"json"===n?i(t.response):"text"===n||""===n||void 0===n?i(t.responseText):void 0}var i=t(17);e.exports=r},{}],15:[function(t,e,n){function r(){}function i(t,e,n){return function(){return o(t,[f.now()].concat(s(arguments)),e?null:this,n),e?void 0:this}}var o=t("handle"),a=t(25),s=t(26),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",p=l+"ixn-";a(d,function(t,e){u[e]=i(l+e,!0,"api")}),u.addPageAction=i(l+"addPageAction",!0),u.setCurrentRouteName=i(l+"routeName",!0),e.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(p+"tracer",[f.now(),t,n],r),function(){if(c.emit((i?"":"no-")+"fn-start",[f.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[f.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){h[e]=i(p+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),o("err",[t,f.now(),!1,e])}},{}],16:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],17:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],18:[function(t,e,n){var r=0,i=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);i&&(r=+i[1]),e.exports=r},{}],19:[function(t,e,n){function r(){return s.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,s=t(27);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],20:[function(t,e,n){function r(t){return!(!t||!t.protocol||"file:"===t.protocol)}e.exports=r},{}],21:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?d("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&d("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||d("cls",[t])})}function a(t){if(t instanceof h&&!w){var e=Math.round(t.timeStamp),n={type:t.type};e<=l.now()?n.fid=l.now()-e:e>l.offset&&e<=Date.now()?(e-=l.offset,n.fid=l.now()-e):e=l.now(),w=!0,d("timing",["fi",e,n])}}function s(t){"hidden"===t&&d("pageHide",[l.now()])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var c,f,u,d=t("handle"),l=t("loader"),p=t(24),h=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){c=new PerformanceObserver(r);try{c.observe({entryTypes:["paint"]})}catch(m){}f=new PerformanceObserver(i);try{f.observe({entryTypes:["largest-contentful-paint"]})}catch(m){}u=new PerformanceObserver(o);try{u.observe({type:"layout-shift",buffered:!0})}catch(m){}}if("addEventListener"in document){var w=!1,v=["click","keydown","mousedown","pointerdown","touchstart"];v.forEach(function(t){document.addEventListener(t,a,!1)})}p(s)}},{}],22:[function(t,e,n){function r(){function t(){return e?15&e[n++]:16*Math.random()|0}var e=null,n=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&(e=r.getRandomValues(new Uint8Array(31)));for(var i,o="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx",a="",s=0;s<o.length;s++)i=o[s],"x"===i?a+=t().toString(16):"y"===i?(i=3&t()|8,a+=i.toString(16)):a+=i;return a}function i(){return a(16)}function o(){return a(32)}function a(t){function e(){return n?15&n[r++]:16*Math.random()|0}var n=null,r=0,i=window.crypto||window.msCrypto;i&&i.getRandomValues&&Uint8Array&&(n=i.getRandomValues(new Uint8Array(31)));for(var o=[],a=0;a<t;a++)o.push(e().toString(16));return o.join("")}e.exports={generateUuid:r,generateSpanId:i,generateTraceId:o}},{}],23:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],24:[function(t,e,n){function r(t){function e(){t(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,e,!1)}e.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],25:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],26:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],27:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?f(t,c,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!p.aborted||o){t&&a&&t(n,r,i);for(var s=e(i),c=m(n),f=c.length,u=0;u<f;u++)c[u].apply(s,r);var l=d[y[n]];return l&&l.push([x,n,r,s]),s}}function o(t,e){g[t]=m(t).concat(e)}function h(t,e){var n=g[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function m(t){return g[t]||[]}function w(t){return l[t]=l[t]||i(n)}function v(t,e){p.aborted||u(t,function(t,n){e=e||"feature",y[n]=e,e in d||(d[e]=[])})}var g={},y={},x={on:o,addEventListener:o,removeEventListener:h,emit:n,get:w,listeners:m,context:e,buffer:v,abort:s,aborted:!1};return x}function o(t){return f(t,c,a)}function a(){return new r}function s(){(d.api||d.feature)&&(p.aborted=!0,d=p.backlog={})}var c="nr@context",f=t("gos"),u=t(25),d={},l={},p=e.exports=i();e.exports.getOrSetContext=o,p.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!O++){var t=S.info=NREUM.info,e=m.getElementsByTagName("script")[0];if(setTimeout(f.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return f.abort();c(E,function(e,n){t[e]||(t[e]=n)});var n=a();s("mark",["onload",n+S.offset],null,"api"),s("timing",["load",n]);var r=m.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=p+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===m.readyState&&o()}function o(){s("mark",["domContent",a()+S.offset],null,"api")}var a=t(19),s=t("handle"),c=t(25),f=t("ee"),u=t(23),d=t(20),l=t(16),p=l.getConfiguration("ssl")===!1?"http":"https",h=window,m=h.document,w="addEventListener",v="attachEvent",g=h.XMLHttpRequest,y=g&&g.prototype,x=!d(h.location);NREUM.o={ST:setTimeout,SI:h.setImmediate,CT:clearTimeout,XHR:g,REQ:h.Request,EV:h.Event,PR:h.Promise,MO:h.MutationObserver};var b=""+location,E={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1210.min.js"},R=g&&y&&y[w]&&!/CriOS/.test(navigator.userAgent),S=e.exports={offset:a.getLastTimestamp(),now:a,origin:b,features:{},xhrWrappable:R,userAgent:u,disabled:x};if(!x){t(15),t(21),m[w]?(m[w]("DOMContentLoaded",o,!1),h[w]("load",r,!1)):(m[v]("onreadystatechange",i),h[v]("onload",r)),s("mark",["firstbyte",a.getLastTimestamp()],null,"api");var O=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,c,f){function nrWrapper(){var o,a,u,l;try{a=this,o=d(arguments),u="function"==typeof r?r(o,a):r||{}}catch(p){i([p,"",[o,a,c],u],t)}s(n+"start",[o,a,c],u,f);try{return l=e.apply(a,o)}catch(h){throw s(n+"err",[o,a,h],u,f),h}finally{s(n+"end",[o,a,l],u,f)}}return a(e)?e:(n||(n=""),nrWrapper[l]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var s,c,f,u="-"===r.charAt(0);for(f=0;f<e.length;f++)c=e[f],s=t[c],a(s)||(t[c]=n(s,u?c+r:r,i,c,o))}function s(n,r,o,a){if(!h||e){var s=h;h=!0;try{t.emit(n,r,o,e,a)}catch(c){i([c,n,r,o],t)}h=s}}return t||(t=u),n.inPlace=r,n.flag=l,n}function i(t,e){e||(e=u);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)p.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[l])}function s(t,e){var n=e(t);return n[l]=t,o(t,n,u),n}function c(t,e,n){var r=t[e];t[e]=s(r,n)}function f(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var u=t("ee"),d=t(26),l="nr@original",p=Object.prototype.hasOwnProperty,h=!1;e.exports=r,e.exports.wrapFunction=s,e.exports.wrapInPlace=c,e.exports.argsToArray=f},{}]},{},["loader",2,12,4,3]);</script>
+    <meta name="keywords" content="fanfiction, transformative works, otw, fair use, archive"/>
+    <meta name="language" content="en-US"/>
+    <meta name="subject" content="fandom"/>
+    <meta name="description" content="An Archive of Our Own, a project of the
+    Organization for Transformative Works"/>
+    <meta name="distribution" content="GLOBAL"/>
+    <meta name="classification" content="transformative works"/>
+    <meta name="author" content="Organization for Transformative Works"/>
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>
+        Tribute to The Thick of It - Anonymous - Lucifer (TV) [Archive of Our Own]
+    </title>
+
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/01-core.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/02-elements.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/03-region-header.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/04-region-dashboard.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/05-region-main.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/06-region-footer.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/07-interactions.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/08-actions.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/09-roles-states.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/10-types-groups.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/11-group-listbox.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/12-group-meta.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/13-group-blurb.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/14-group-preface.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/15-group-comments.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/16-zone-system.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/17-zone-home.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/18-zone-searchbrowse.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/19-zone-tags.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/20-zone-translation.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/21-userstuff.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/22-system-messages.css"/>
+
+
+<link rel="stylesheet" type="text/css" media="only screen and (max-width: 62em), handheld" href="/stylesheets/site/2.0/25-media-midsize.css"/>
+<link rel="stylesheet" type="text/css" media="only screen and (max-width: 42em), handheld" href="/stylesheets/site/2.0/26-media-narrow.css"/>
+<link rel="stylesheet" type="text/css" media="speech" href="/stylesheets/site/2.0/27-media-aural.css"/>
+<link rel="stylesheet" type="text/css" media="print" href="/stylesheets/site/2.0/28-media-print.css"/>
+<!--[if lte IE 8]><link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/29-role-ie8_or_lower.css" /><![endif]-->
+<!--[if IE 5]><link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/30-role-ie5.css" /><![endif]-->
+<!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/31-role-ie6.css" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/32-role-ie7.css" /><![endif]-->
+
+
+
+<!--sandbox for developers	-->
+<link rel="stylesheet" media="screen" href="/stylesheets/sandbox.css"/>
+<script src="/javascripts/livevalidation_standalone.js"></script>
+
+<meta name="csrf-param" content="authenticity_token"/>
+<meta name="csrf-token" content="3n5hEKHXA176SHVhalCTxmMlPtoROaub226-zrVAGfMIhLrnNxLaTqjhUe9rcu7YScBAcU_H2LxwGAUkjTtdGg"/>
+
+    
+  </head>
+
+  <body class="logged-out">
+    <div id="outer" class="wrapper">
+      <ul id="skiplinks"><li><a href="#main">Main Content</a></li></ul>
+      <!-- BEGIN BETA CAVEATS! -->
+<noscript>
+  <p id="javascript-warning">
+    While we&#39;ve done our best to make the core functionality of this site accessible without javascript, it will work better with it enabled. Please consider turning it on!
+  </p>
+</noscript>
+<!-- END BETA CAVEATS! --> 
+
+<!-- BEGIN header -->
+
+<div id="header" class="region">
+
+  <h1 class="heading">
+    <a href="/"><span>Archive of Our Own</span><sup> beta</sup><img alt="Archive of Our Own" class="logo" src="/images/ao3_logos/logo_42.png"/></a> 
+  </h1>
+
+    <div id="login" class="dropdown">
+      <p class="user actions" role="menu">
+        <a id="login-dropdown" href="/users/login">Log In</a>
+      </p>
+      <div id="small_login" class="simple login">
+	<form class="new_user" id="new_user_session_small" action="/users/login" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;"/><input type="hidden" name="authenticity_token" value="Tgu9CO58vNS2tld6PxRldvhc6WTeElOQEeDZqIK00GeY8Wb_eLllxOQfc_Q-Nhho0rmXz4DsILe6lmJCus-Ujg"/>
+	<dl>
+    <dt>
+      <label for="user_session_login_small">User name or email:</label></dt>
+    <dd><input id="user_session_login_small" type="text" name="user[login]"/></dd>
+    <dt><label for="user_session_password_small">Password:</label></dt>
+    <dd><input id="user_session_password_small" type="password" name="user[password]"/></dd>
+  </dl>
+  <p class="submit actions">
+    <label for="user_remember_me_small" class="action"><input type="checkbox" name="user[remember_me]" id="user_remember_me_small" value="1"/>Remember Me</label>
+    <input type="submit" name="commit" value="Log In"/>
+  </p>
+</form>
+<ul class="footnote actions">
+  <li><a href="/users/password/new">Forgot password?</a></li>
+    <li>
+      <a href="/invite_requests">Get an Invitation</a>
+    </li>
+</ul>
+
+</div>
+
+    </div>
+
+  <h3 class="landmark heading">Site Navigation</h3>
+  <ul class="primary navigation actions" role="navigation">
+    <li class="dropdown">
+      <a href="/menu/fandoms">Fandoms</a>
+      <ul class="menu" role="menu">
+  <li><a href="/media">All Fandoms</a></li>
+        <li id="medium_5"><a href="/media/Anime%20*a*%20Manga/fandoms">Anime &amp; Manga</a></li>
+        <li id="medium_3"><a href="/media/Books%20*a*%20Literature/fandoms">Books &amp; Literature</a></li>
+        <li id="medium_4"><a href="/media/Cartoons%20*a*%20Comics%20*a*%20Graphic%20Novels/fandoms">Cartoons &amp; Comics &amp; Graphic Novels</a></li>
+        <li id="medium_7"><a href="/media/Celebrities%20*a*%20Real%20People/fandoms">Celebrities &amp; Real People</a></li>
+        <li id="medium_2"><a href="/media/Movies/fandoms">Movies</a></li>
+        <li id="medium_6"><a href="/media/Music%20*a*%20Bands/fandoms">Music &amp; Bands</a></li>
+        <li id="medium_8"><a href="/media/Other%20Media/fandoms">Other Media</a></li>
+        <li id="medium_30198"><a href="/media/Theater/fandoms">Theater</a></li>
+        <li id="medium_1"><a href="/media/TV%20Shows/fandoms">TV Shows</a></li>
+        <li id="medium_476"><a href="/media/Video%20Games/fandoms">Video Games</a></li>
+        <li id="medium_9971"><a href="/media/Uncategorized%20Fandoms/fandoms">Uncategorized Fandoms</a></li>
+</ul>
+
+    </li>
+    <li class="dropdown">
+      <a href="/menu/browse">Browse</a>
+      <ul class="menu" role="menu">
+  <li><a href="/works">Works</a></li>
+  <li><a href="/bookmarks">Bookmarks</a></li>
+  <li><a href="/tags">Tags</a></li>
+  <li><a href="/collections">Collections</a></li>
+</ul>
+
+    </li>
+    <li class="dropdown">
+      <a href="/menu/search">Search</a>
+      <ul class="menu" role="menu">
+  <li><a href="/works/search">Works</a></li>
+  <li><a href="/bookmarks/search">Bookmarks</a></li>
+  <li><a href="/tags/search">Tags</a></li>
+  <li><a href="/people/search">People</a></li>
+</ul>
+
+    </li>
+    <li class="dropdown">
+      <a href="/menu/about">About</a>
+      <ul class="menu" role="menu">
+  <li><a href="/about">About Us</a></li>
+  <li><a href="/admin_posts">News</a></li>
+  <li><a href="/faq">FAQ</a></li>
+  <li><a href="/wrangling_guidelines">Wrangling Guidelines</a></li>
+  <li><a href="/donate">Donate or Volunteer</a></li>
+</ul>
+
+    </li>
+	  <li class="search"><form class="search" id="search" action="/works/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;"/>
+  <fieldset>
+    <legend>Search Works</legend>
+    <p>
+      <label class="landmark" for="site_search">Work Search:</label>
+      <input class="text" id="site_search" aria-describedby="site_search_tooltip" type="text" name="work_search[query]"/>
+      <span class="tip" role="tooltip" id="site_search_tooltip">tip: austen words:10000-50000 sort:title</span>
+      <span class="submit actions"><input type="submit" value="Search" class="button"/></span>
+    </p>
+  </fieldset>
+</form></li>
+  </ul>
+
+
+
+  <div class="clear"></div>
+
+</div>
+
+
+
+<!-- END header -->
+
+      <div id="inner" class="wrapper">
+        <!-- BEGIN sidebar -->
+        <!-- END sidebar -->
+
+        <!-- BEGIN main -->
+        <div id="main" class="works-show region" role="main">
+          
+          <div class="flash"></div>
+          <!--page description, messages-->
+<ul class="landmark skip">
+  <li><a name="top">&nbsp;</a></li>
+  <li><a href="#work">Skip header</a></li>
+</ul>
+
+<!--/descriptions-->
+
+<!--subnav-->
+<!--/subnav-->
+
+<!-- BEGIN revealed -->
+<!-- BEGIN work -->
+<!--work description, metadata, notes and messages-->
+    <!-- BEGIN navigation -->
+<h3 class="landmark heading">Actions</h3>
+<ul class="work navigation actions" role="menu">
+
+
+
+    <li class="chapter bychapter"><a href="/works/32734699/chapters/81214225">Chapter by Chapter</a></li>
+
+
+
+  <li class="comments" id="show_comments_link_top">
+      <a data-remote="true" href="/comments/show_comments?view_full_work=true&amp;work_id=32734699">Comments </a>
+  </li>
+
+
+
+    <li class="share hidden">
+      <a class=" modal" title="Share Work" aria-controls="#modal" href="/works/32734699/share">Share</a>
+    </li>
+
+
+    <li class="download" aria-haspopup="true">
+      <a href="#">Download</a>
+      <ul class="expandable secondary">
+          <li><a href="/downloads/32734699/Tribute%20to%20The%20Thick%20of.azw3?updated_at=1627010531">AZW3</a></li>
+          <li><a href="/downloads/32734699/Tribute%20to%20The%20Thick%20of.epub?updated_at=1627010531">EPUB</a></li>
+          <li><a href="/downloads/32734699/Tribute%20to%20The%20Thick%20of.mobi?updated_at=1627010531">MOBI</a></li>
+          <li><a href="/downloads/32734699/Tribute%20to%20The%20Thick%20of.pdf?updated_at=1627010531">PDF</a></li>
+          <li><a href="/downloads/32734699/Tribute%20to%20The%20Thick%20of.html?updated_at=1627010531">HTML</a></li>
+      </ul>
+    </li>
+</ul>
+<!-- END navigation -->
+
+
+<h3 class="landmark heading">Work Header</h3>
+
+<div class="wrapper">
+
+  <dl class="work meta group" role="complementary">
+          <dt class="rating tags">
+
+              Rating:
+          </dt>
+
+          <dd class="rating tags">
+            <ul class="commas">
+               <li><a class="tag" href="/tags/Explicit/works">Explicit</a></li>
+            </ul>
+          </dd>
+          <dt class="warning tags">
+
+              <a href="/tos_faq#tags">Archive Warning</a>:
+          </dt>
+
+          <dd class="warning tags">
+            <ul class="commas">
+               <li><a class="tag" href="/tags/Choose%20Not%20To%20Use%20Archive%20Warnings/works">Creator Chose Not To Use Archive Warnings</a></li>
+            </ul>
+          </dd>
+          <dt class="category tags">
+
+              Category:
+          </dt>
+
+          <dd class="category tags">
+            <ul class="commas">
+               <li><a class="tag" href="/tags/F*s*M/works">F/M</a></li>
+            </ul>
+          </dd>
+          <dt class="fandom tags">
+
+              Fandom:
+          </dt>
+
+          <dd class="fandom tags">
+            <ul class="commas">
+               <li><a class="tag" href="/tags/Lucifer%20(TV)/works">Lucifer (TV)</a></li>
+            </ul>
+          </dd>
+          <dt class="relationship tags">
+
+              Relationship:
+          </dt>
+
+          <dd class="relationship tags">
+            <ul class="commas">
+               <li><a class="tag" href="/tags/Chloe%20Decker*s*Lucifer%20Morningstar/works">Chloe Decker/Lucifer Morningstar</a></li>
+            </ul>
+          </dd>
+          <dt class="character tags">
+
+              Characters:
+          </dt>
+
+          <dd class="character tags">
+            <ul class="commas">
+               <li><a class="tag" href="/tags/Chloe%20Decker/works">Chloe Decker</a></li><li><a class="tag" href="/tags/Lucifer%20Morningstar%20(Lucifer%20TV)/works">Lucifer Morningstar (Lucifer TV)</a></li>
+            </ul>
+          </dd>
+          <dt class="freeform tags">
+
+              Additional Tags:
+          </dt>
+
+          <dd class="freeform tags">
+            <ul class="commas">
+               <li><a class="tag" href="/tags/Romance/works">Romance</a></li><li><a class="tag" href="/tags/Weight%20Gain/works">Weight Gain</a></li><li><a class="tag" href="/tags/Weight%20Issues/works">Weight Issues</a></li><li><a class="tag" href="/tags/Fat%20Shaming/works">Fat Shaming</a></li><li><a class="tag" href="/tags/Embarrassment/works">Embarrassment</a></li><li><a class="tag" href="/tags/Humiliation/works">Humiliation</a></li><li><a class="tag" href="/tags/attempted%20weight%20loss%20(unsuccessful)/works">attempted weight loss (unsuccessful)</a></li><li><a class="tag" href="/tags/fat%20kink/works">fat kink</a></li><li><a class="tag" href="/tags/Oral%20Sex/works">Oral Sex</a></li>
+            </ul>
+          </dd>
+
+      <dt class="language">
+        Language:
+      </dt>
+      <dd class="language">
+        English
+      </dd>
+
+
+      <dt class="collections">
+        Collections:
+      </dt>
+      <dd class="collections">
+        <a href="/collections/anonymous">Anonymous</a>
+      </dd>
+
+    <dt class="stats">Stats:</dt>
+    <dd class="stats">
+<!-- end of cache -->
+
+      <dl class="stats"><dt class="published">Published:</dt><dd class="published">2021-07-22</dd><dt class="status">Completed:</dt><dd class="status">2021-07-22</dd><dt class="words">Words:</dt><dd class="words">10077</dd><dt class="chapters">Chapters:</dt><dd class="chapters">3/3</dd><dt class="comments">Comments:</dt><dd class="comments">11</dd><dt class="kudos">Kudos:</dt><dd class="kudos">43</dd><dt class="bookmarks">Bookmarks:</dt><dd class="bookmarks"><a href="/works/32734699/bookmarks">9</a></dd><dt class="hits">Hits:</dt><dd class="hits">819</dd></dl>
+      </dd>
+  </dl>
+</div>
+
+
+
+<!-- BEGIN section where work skin applies -->
+<div id="workskin">
+  <div class="preface group">
+    <h2 class="title heading">
+      Tribute to The Thick of It
+    </h2>
+    <h3 class="byline heading">
+      Anonymous
+    </h3>
+
+
+        <div class="summary module" role="complementary">
+          <h3 class="heading">Summary:</h3>
+            <blockquote class="userstuff">
+              <p>Inspired by the **outstanding** novel The Thick of It by MinaValentina. With her permission, I wrote a fanfic for her fanfic. This story takes place after Chapter 16 of The Thick of It, and branches off from there.</p><p>Lucifer endures a lot of gratuitous humiliation, but Chloe takes care of him--sexually and otherwise.</p><p>Mind the tags. Don’t like, don’t read.</p>
+            </blockquote>
+        </div>
+
+        <div class="notes module" role="complementary">
+  <h3 class="heading">Notes:</h3>
+
+    <ul class="associations">
+      <li>For <a href="/users/MinaValentina/gifts">MinaValentina</a>.</li>
+
+
+        <li>
+            Inspired by
+
+            <a href="/works/30441843">The Thick Of It</a> by <a rel="author" href="/users/MinaValentina/pseuds/MinaValentina">MinaValentina</a>.
+        </li>
+
+    </ul>
+
+    <blockquote class="userstuff">
+      <p>Full disclosure: I have never seen Lucifer, so all of my knowledge comes from MinaValentina's fic + Googling + creative liberties. Obviously, there may be inaccuracies.</p>
+    </blockquote>
+
+</div>
+
+
+  </div>
+
+
+<!--/descriptions-->
+
+<!--chapter content-->
+    <div id="chapters" role="article">
+          <!-- This partial requires local variable 'chapter' -->
+<div class="chapter" id="chapter-1">
+  <!-- chapter management -->
+
+
+  <div class="chapter preface group" role="complementary">
+    <h3 class="title">
+      <a href="/works/32734699/chapters/81214225">Chapter 1</a>: Out of Reach
+    </h3>
+
+    <!-- only display byline if different from the main byline -->
+
+
+  </div>
+
+  <!--main content-->
+  <div class="userstuff module" role="article">
+    <h3 class="landmark heading" id="work">Chapter Text</h3>
+    <p>“Mommy, look how fat that man is.”</p><p>Lucifer’s chubby cheeks burn. This is why he didn’t want to take a walk outside in the first place, why he prefers to starve himself all day and then exercise in private.</p><p>Two and a half weeks since the end of the ordeal, he’s still enormous--as wide as two men, with folds in his limbs and generous man boobs resting atop his monstrous dome of a belly. His gut juts out, cresting two feet in front of him, and extends south of his waist, drooping over his crotch. His gait is a halting waddle, and he’s visibly out of breath from a pitiful number of steps.</p><p>In the beginning of the blackmail episode, he was inconspicuous in crowds—another overweight American in ill-fitting clothes, hardly an anomaly—but by the time cuffs closed around Larry’s wrists, Lucifer had ballooned to outlandish dimensions that never failed to go unnoticed in public. So he’d prefer to save the afternoon strolls for when he’s shrunk enough to escape the stares and comments.</p><p>But two seconds later, as the boy’s mortified mother tells him to shush, Chloe slides her small hand into Lucifer’s puffy one and squeezes.</p><p>That’s why he agreed to the walk. It’s the same reason he grew so large in the first place, stuffing himself sick in Larry’s sadistic game. Chloe.</p><p>After they move past the boy, Chloe looks up at him, her gaze full of concern. Despite his reassurance, she blames herself for his condition—and from the guilt in her eyes, Lucifer can see that she blames herself for this latest embarrassment too. After all, the walk was her idea.</p><p>Lucifer quirks his mouth into a lopsided grin. His firm nod says, <em> It’s fine. No big deal</em>. A sentiment he doesn’t fully feel.</p><p>But then Chloe moves closer to him, her slim hip brushing his plump thigh. She squeezes his hand again, harder this time, as they step into the crosswalk together.</p><p>He’s glad he came.</p><p align="center">* * *</p><p>Chloe didn’t believe him, of course, when he tried to explain why he returned from medical leave after only two weeks, zero pounds lost.</p><p>She listened with round, worried eyes as he explained that his earthly body didn’t work as he’d smugly assumed it would.</p><p>“The best I can figure is that my body interprets fat loss as injury,” Lucifer said at the end of his rambling explanation. “And I can’t be harmed unless I’m near you.” He knows how it sounds, but he couldn’t think of anything better than the truth. If he can’t lose weight without her, he’s going to need to spend a lot of time at her side.</p><p>“What I’m hearing,” Chloe said slowly, “is that you need my support.” She leaned in closer and took his fat hands in hers. “You have it.”</p><p>“Thank you.” He exhaled in relief. As long as she didn’t send him away, he could lose weight whether she believed him or not.</p><p>Chloe didn’t let go. “But Lucifer, you need to see a doctor. You need medical help. I will be by your side, but you need to do this safely.”</p><p>He should have known it wouldn’t be that easy. But with little choice in the matter, he submitted to a degrading and wholly unnecessary assessment from a bariatric specialist. </p><p>Dr. Francis was baffled by Lucifer’s pristine lab results when paired with his corpulent form. But he accepted Lucifer’s plan to “get healthy” without medical intervention, prescribing light exercise and a diet laden with vegetables—in addition to frequent follow-up appointments Lucifer had no intention of keeping.</p><p>Chloe was satisfied. And so Lucifer returned to work, and Chloe assumed the role of his exercise partner and support coach.</p><p>Now she invites Lucifer on mid-day walks and brings him fresh snacks of raw vegetables. She accompanies him to the gym when she can. They’re together most of each day.</p><p>It’s not the worst thing.</p><p align="center">* * *</p><p>On Lucifer’s second week back at work, Trixie’s father takes her to visit his aunt for 12 months. [Sorry, Trixie.] This frees up Chloe to spend her evenings supporting his fitness goals.</p><p>Lucifer still hasn’t lost any weight, to his considerable alarm. The days of barely eating, the walks, and the workouts aren’t cutting it—not even with Chloe at his side, presumably making him vulnerable to wasting away. He needs to up his game.</p><p>So when Chloe arrives on Monday, he waves her over to his desk and asks her to join him at the precinct gym after work. “I don’t want to go alone. You know how people stare at the fat guy.” <em> And it’s pointless to go without you</em>. Two weeks of grueling, futile exercise proved it.</p><p>“I don’t know.” Chloe sits on the edge of the desk, looking worried. “I’m afraid you’re going to overdo it and injure yourself.”</p><p>“Impossible.” Lucifer scoffs. “Er...I promise I won’t.”</p><p>Chloe brightens. “What about swimming? That’s a low-impact exercise. And it burns a lot of calories. Doesn’t your building have a pool?”</p><p>“Well, yes. But…” Swimming means exposing his body to anyone else who happens to be at the pool. And to Chloe. She hasn’t seen him half-naked since the ‘audition,’ and that was many pounds ago. “I don’t have a swimsuit that fits.”</p><p>“I’ll buy you one. I have to run errands at lunch anyway. I’ll stop by the big and tall store.” With a determined nod, she walks away from the desk, not giving him a chance to object.</p><p><em> Bloody fantastic</em>. Lucifer hopes they don’t make speedos in size XXXXXL.</p><p align="center">* * *</p><p>True to her word, Chloe returns from lunch triumphantly toting a shopping bag. “I wasn’t sure of your size, so I got the two biggest—I mean, I got you two different ones to try.”</p><p>He opens the bag to find two pairs of comically wide swim trunks, each in a different garish, geometric print. Two average-sized people could easily fit in a pair, one person per leg. “I… suppose these will do.” What else can he say to her hopeful expression?</p><p>“Good.” Chloe looks pleased with herself. “I also stopped at home for my bathing suit, so we can go directly from work if you like. That way we’ll have lots of time.”</p><p>“Sure.” He softens at the reminder that she’s giving up her personal time to help him. “Thank you for the trunks.”</p><p>That evening, they go up to his penthouse to change. Chloe excuses herself to the bathroom while Lucifer strips in his bedroom.</p><p>The bigger of the two pairs of trunks fits well enough, and his full-length mirror gives him a perfect view of how preposterous he looks. His heavy belly hangs over the waistband, obscuring half of the ugly fabric. But his ass is a wide, lumpy expanse of hideous print. Has he really agreed to appear in a communal space like this?</p><p>Then he steps out of the bedroom and sees Chloe’s “bathing suit.” It’s a black bikini with a halter top that lifts her round breasts and shows off her cleavage. Her toned belly is bare, and the bottoms cover about three quarters of her ass.</p><p>“Detective.” He openly leers. “That suit is a scandal.”</p><p>Chloe blushes as she takes in his exposed belly, no doubt feeling guilty that she can parade a fit figure when he sacrificed his for her safety. “I’m glad the trunks, um, fit.”</p><p>He sighs. “Let me grab some towels--and a shirt so I don’t traumatize anyone in the elevator.”</p><p>She opens her mouth, probably to argue that he <em> looks fine at any size</em>, but then closes it and nods. Even she must know a shirt is mandatory for someone of his girth, if only to ward off abuse from snide neighbors.</p><p align="center">* * *</p><p>Lucifer grudgingly admits the pool was a good idea. When they arrive, they have it all to themselves, so they each take a lane. His body is buoyant in the water, and he can propel himself forward without straining his joints.</p><p>Of course, he quickly runs out of breath, but that’s the goal. He wants to wear himself out, to burn as many calories as possible.</p><p>When they climb out an hour later, two of Lucifer’s neighbors walk in. They’re both athletic, twenty-something men with bulging biceps and visible abs.</p><p>The men gawk as Lucifer plods over to his pool chair. His wet belly slaps against the hideous trunks, and water drips from his rolls to form a wide ring of puddles on the floor.</p><p>One guy has a vacant, awed expression as though he has never seen naked flab in his life, while the other sneers.</p><p>Chloe moves to Lucifer’s side and stares the men down, daring them to say something. It works—they avert their gazes and pass without a word.</p><p>Lucifer winks at Chloe, and she nods, jaw tense and eyes hard. She takes her protective detail seriously.</p><p>He dries himself with an inefficient blotting method, unwilling to make his flesh jiggle in front of the men—and not thrilled about Chloe seeing it either. Then he puts on the T-shirt, and they make their way upstairs to the penthouse.</p><p>“We can shower at the same time,” Lucifer says. “Each bathroom has a separate hot water heater.”</p><p>“Okay.” Chloe shrugs, now accustomed to his opulent home.</p><p>Lucifer showers fast, which is typical these days--he doesn’t like to deal with his naked body any longer than necessary--then dresses in a T-shirt and boxers. He sits on the bed and reaches back to massage his shoulders. The motion brings his drooping arm flab directly in front of his face, and he closes his eyes to avoid the sight.</p><p>Suddenly, the bed shifts, and two hands touch his back. His eyes pop open.</p><p>“Let me,” Chloe says.</p><p>He turns his head and sees her fresh from her shower, dressed in lounge clothes with her hair damp and tousled. She looks beautiful, and her touch is like a drug. He has been denied so much for so long, particularly in the area of human contact, and he can’t say no. “Thank you.”</p><p>Chloe’s thumbs and fingers sink into his supple back rolls, and she begins to administer a tender massage.</p><p>Warmth pools within Lucifer as she touches him. It feels good, too good, and deep in the folds of his fat, his cock grows hard. Chloe won’t see it, of course; his belly consumes his lap and conceals any hint of his erection. But it soon becomes too distracting and uncomfortable to ignore.</p><p>“Please, ah. Please stop.”</p><p>Chloe drops her hands from his back and scoots around to the front so she can look at him. “Did I do something wrong? Did I hurt you?” </p><p>Lucifer is breathing hard, desperately trying to control his raging arousal. <em> Just give me space</em>, he silently pleads with her.</p><p>Instead, Chloe leans in and studies him until realization dawns in her eyes. “Ohhh.”</p><p><em> Bloody hell</em>.</p><p>“I can leave you alone to take, um, care of yourself.” Her face flames.</p><p>She means <em> to masturbate</em>. Chloe is offering to leave him alone…to masturbate. Which he can’t even do, having grown too large to pleasure himself some weeks ago.</p><p>“Uh. I’m afraid…” Lucifer’s own face must be red as a fire engine. He has no intention of revealing this indignity to her, but he’s too horny and overwhelmed to finesse his way out of the conversation. “That’s not…um…I can’t...” He waves his chubby hand.</p><p>Instead of relenting, Chloe gasps. Her eyes widen and her eyebrows shoot up. “Can you…”</p><p>Lucifer closes his eyes, unable to face the sight of her dismay for another second.</p><p>“Can you not reach yourself?” she whispers.</p><p>Shame heats his chest and neck. His round cheeks can’t get any hotter. He feels trapped in his enormous body, desperate for an escape that isn’t coming.</p><p>He opens his eyes to plead with her. “Detective,” he rasps, “I beg you to drop this subject. And… to give me some space.” Chloe’s nearness has become unbearable on every level. His body is in agony, screaming for release, and he has never felt so humiliated in his very long life.</p><p>“Oh Lucifer.” Her eyes glisten with compassion. She moves closer until her small body presses against his giant belly.</p><p>He hisses and sucks in a breath. “What are you doing?”</p><p>She wraps her arm around his back to reach the blubber between his neck and shoulders, but instead of massaging she caresses him there. Then she brings her other hand to the side of his belly and strokes it.</p><p>As he stares at Chloe in shock, her hand moves south toward the underbelly that hides his bulging cock.</p><p>“Stop it!” He pushes her off of him.</p><p>Chloe falls back, flinging her hands behind her to catch herself on the mattress. Her eyes shine with horror and hurt.</p><p>“Is that what you think I want from you? A pity fuck?” A fresh wave of heat burns his cheeks, but this time anger blends with shame. “You’ll give me a sad little hand job because you feel so terrible that the poor fatty can’t jerk himself off?”</p><p>“No…that’s not…” Tears fill Chloe’s eyes. “I just wanted…”</p><p>“Forget it. I won’t allow you to degrade yourself out of guilt. And I can’t believe you’d ever think otherwise.” Lucifer moves to leave. It should be a dramatic exit, but as usual his girth encumbers him. He grunts as he hauls his mass to the edge of the bed, then rocks and heaves himself up.</p><p>When he glances back, Chloe is slumped and hanging her head, a tear sliding down her cheek.</p><p>Lucifer turns and lumbers away, the waddle in his gait adding one more indignity to the heap. And another: His erection throbs beneath his overhang, unabated despite the shift in his mood. He stands at the window in the living room, catching his breath from the short walk.</p><p>How could she? Chloe may not grasp the depths of his feelings for her, but she knows that he cares for her. Just look at what he sacrificed for her in a heartbeat.</p><p>Lucifer is in love with her, and for her to come on to him like this—because she feels guilty about his sorry condition—bastardizes everything he feels for her. It’s more than he can bear.</p><p>Footsteps sound behind him, as he knew they would. The Detective is incapable of leaving anything alone, ever.</p><p>The steps cease a few feet behind him. “Please look at me.” Chloe’s voice shakes.</p><p>He does. Her eyes are rimmed with red, and she looks utterly broken.</p><p>Lucifer sighs. He never wants her to feel bad, but how could she not understand—</p><p>“It wasn’t pity.” Chloe lifts her chin and looks him in the eyes, summoning bravery despite her tears. “You already know that I’m sorry for everything you’ve gone through. And I truly am. But it’s not just that. I have feelings for you. I’ve wanted to touch you that way for a long, long time.”</p><p>The words pierce his heart. How could they not, when he’s wanted them for so long? But standing before her, north of 400 pounds and knowing she feels responsible, he can’t trust it.</p><p>“Even if I could separate your declaration from the guilt you still obviously feel, you expect me to believe that you <em> want </em> to engage in anything remotely sexual with…this?” Lucifer gestures at his body.</p><p>“Fuck you.” Fire lights her eyes. “Yes, I want you. I say your weight doesn’t matter to me because it’s the truth. I’m attracted to you. I’m into your body because <em> it’s yours </em> . You can put yourself down all day long, but don’t you dare mock my feelings for you because they’re fucking real. And they <em> torture </em> me. I used to lie awake wanting you, knowing you were out there picking up supermodels because you’d rather have them than me.”</p><p>Lucifer doesn’t move. He’s the size of a blimp, short of breath just from standing, and the best woman he’s ever met is professing her attraction. How can it be true?</p><p>At his silence, Chloe winces as though she’s in physical pain. “I didn’t come on to you because I feel guilty. I love you—asshole—and for once I thought you might not say no. Apparently, I was wrong.” Her face crumples, and she sobs.</p><p>That does him in. Lucifer reaches her in three laborious strides and takes her into his arms.</p><p>Chloe sinks into his blubber. She buries her head in his moobs, and her arms reach around him—as far as they can given the huge belly between them.</p><p>“You love me.” He says it with wonder as he strokes her back. She feels small and vulnerable, nestled in his overflowing fat. </p><p>“God help me,” she mutters into his chest.</p><p>God will not. But Lucifer can put Chloe out of her misery, and he can’t deny her any longer. “I love you, Chloe Decker. I always have.”</p><p>Chloe looks up at him with wet eyes. “Really?”</p><p>“Of course.” He locks his gaze on her, allowing her to see the truth behind his words. “Of course I do.”</p><p>Then he bends down, creasing his double chin, and captures her mouth with his.</p><p>Chloe tastes like no woman he’s ever kissed, yet her warm mouth is familiar—like it could only be hers. She tastes like home.</p><p>She runs her hands over his plush love handles as they explore each other’s mouths. Soon, Lucifer’s problem is more apparent than ever—although he’s certain she can’t feel his hard member with so much fat in the way.</p><p>Lucifer breaks the kiss, panting hard. “I… ah… if we don’t stop now…”</p><p>Chloe looks up at him with lust-blown pupils darkening her gaze. “I want you. All of you.” She grips his fleshy side for emphasis. “If you want to stop, that’s up to you.”</p><p>“No.” It comes out in a gasp. “I don’t want to stop.”</p><p>The smile she gives him is sinful. “Then come to bed.”</p><p>Chloe holds his hand as they walk back to the bedroom. She slows her steps to match his eager waddle, sneaking happy glances at him as they make their way.</p><p>When they reach the bed, Lucifer flops back on the mattress, cringing at the screech it emits as it sags under his weight.</p><p>But Chloe is unfazed as she climbs onto the bed with a sex kitten smile, somehow appearing delighted at the chance to ravish his bloated body.</p><p>Still, Lucifer has spent too many months feeling grotesque to trust what he sees. So when she tugs at his shirt, he stops her with his swollen hand. “You don’t have to…you know. I don’t mind leaving it on.</p><p>Chloe crawls up on the bed so that her elegant face is inches away from Lucifer’s chubby one. “If you need me to keep saying it, I will—but this will be better for both of us if you accept it now. I want your body. I’m not saying it to be polite. When I think about touching and tasting every inch of you, I get wet.” She leans in and husks, “<em> very </em> wet.”</p><p>Lucifer moans as his hips buck, driving his erection further into his belly.</p><p>Chloe traces a finger down the side of his face. “So you can keep doubting me, and we can keep talking about it… or you can let me.”</p><p>“Option B.” His chest heaves. “Please.”</p><p>“Good.” Chloe helps him out of the shirt. Then she moves to the side of the bed and rolls his boxers down his massive legs, leaving him nude.</p><p>Lucifer’s body quivers, and his heart pounds.</p><p>Back on the bed, she straddles him with some effort. Her ass sinks into the top of his belly, causing Lucifer to emit a huff of breath.</p><p>“Is this okay?” She uses her foot to prop herself up, taking most of her weight off of him. “Am I hurting you?”</p><p>“Not at all,” Lucifer assures her. “Let’s not try the reverse though, eh?”</p><p>Chloe grins. Then she leans down and takes his lower lip in her teeth, causing him to groan. Then she works her way downward, kissing and sucking the flab on his neck.</p><p>His pulse races, and if he weren’t immortal he’d fear stroking out from how worked up and desperate he feels. “Please. I need…”</p><p>Apparently determined to prolong his torment, Chloe takes his moob in her hand and massages it as she plants kisses on the substantial swell of flesh. Finally, she tongues the peak of his nipple as Lucifer writhes beneath her, unable to lie still. The bed bounces and squawks.</p><p>When Chloe moves downward and rubs his big belly, he loses his mind. The flesh is so sensitive and abundant, it’s like nothing he’s ever experienced in bed.</p><p>At last, she reaches his underbelly, so unbearably close to his throbbing cock. </p><p>Lucifer aches for release, but his doubts re-emerge. What will it be like for Chloe to access his cock underneath his heavy belly, half swallowed by his fat pad?</p><p>She claims she wants his body even like this, but what if she’s disgusted—or frustrated by the chore of even finding the bloody thing?</p><p>Interrupting his thoughts, Chloe hefts up his belly and disappears from view, obscured by the huge dome between them.</p><p><em> Oh. Fuck</em>. </p><p>She found it.</p><p>The sensation of Chloe’s hot, wet tongue on his bulging member sends Lucifer to another realm. He’s delirious with ecstasy, knows he’ll come any second and doesn’t care.</p><p>Soon after she sucks on the tip, he grunts and explodes in a shuddering orgasm that shakes the bed like an earthquake.</p><p>When his vision clears, Chloe has popped up again. She daintily wipes her mouth with the sheet. “Wait here.”</p><p>As if there’s an alternative. He is utterly beached, spent and shaky from the force of his release.</p><p>Chloe emerges from the bathroom. Then she lifts his belly with one hand and cleans him tenderly with a warm, wet towel. When she finishes, she doesn’t drop his belly like he expects. She sets down the towel and holds him up with both hands. “Just letting you dry.”</p><p>Lucifer is beyond mortified. He’s gone from a reputable sex god to a man who can’t reach his own dick, whose lover is literally holding up his belly to air-dry his fat folds. It’s devastating—and yet he also feels loved and cared for more than he ever imagined was possible.</p><p>After a couple of minutes, she gently lowers his belly and crawls up next to him on the bed. “Feel better?”</p><p>His head lolls to the side to meet her gaze. “Fat sex...is underrated.”</p><p>She laughs. “I’m glad. I liked it too. There’s so much of you to touch.”</p><p>“Be honest, Detective. Am I the fattest man you’ve been with?”</p><p>“Yes,” she says right away. “But I’ve been with big guys before.” She shrugs. “What can I say? I like all shapes and sizes.”</p><p>“Well.” He turns to face her fully with a lecherous gaze. “I bet none of those other fat guys could do what I can with my tongue.”</p>
+  </div>
+  <!--/main-->
+
+
+</div>
+
+<!-- end of cache -->
+
+          <!-- This partial requires local variable 'chapter' -->
+<div class="chapter" id="chapter-2">
+  <!-- chapter management -->
+
+
+  <div class="chapter preface group" role="complementary">
+    <h3 class="title">
+      <a href="/works/32734699/chapters/81215743">Chapter 2</a>: Here to Stay
+    </h3>
+
+    <!-- only display byline if different from the main byline -->
+
+
+  </div>
+
+  <!--main content-->
+  <div class="userstuff module" role="article">
+    <h3 class="landmark heading" id="work">Chapter Text</h3>
+    <p>The scale hasn’t budged. Lucifer doesn’t understand it.</p><p>Otherwise, the past week has been a blessing, full of long walks and swimming and sex. He and Chloe are a couple, and she demonstrates her affection at every opportunity. It should be the start of a great new chapter, where he gets his body back with the woman of his dreams at his side.</p><p>But nothing is happening.</p><p>“Something is wrong,” he tells Linda, parked on the couch in front of her with his hands resting pensively on his belly. “I should be dropping pounds left and right, but I’m exactly as fat as I was when they handcuffed Larry and led him away.”</p><p>Linda looks lost. “Well, how much are you eating? Sometimes when a person eats too little, their body fights harder to hold onto the weight.”</p><p>“This isn’t a slow metabolism. It’s nonexistent. All I consume are raw vegetables, plus the occasional protein bar to appease Chloe when she starts fretting that I’m anorexic. With the exercise I’m doing, there’s no way I should maintain this weight.”</p><p>“That’s true for most people, but your body operates by different rules.” Linda taps her pen on her chin. “You said you could only gain weight near Chloe. Maybe you can only lose weight near some other person.”</p><p>“Who?” he asks, exasperated.</p><p>“I don’t know—I’m just trying to help.” Linda shakes her head. “They didn’t cover this in therapy school.”</p><p>Lucifer slumps. “All right. Here’s another question. What if this is permanent? What if I’m unable to lose the weight…ever?” Speaking it aloud sends shivers of fear down his spine. An eternity spent huffing and waddling along, enduring scornful stares from strangers, never being able to trust chairs.</p><p>Linda nods glumly. “Well that, I’m afraid, is up my alley. I have many clients who struggle with their weight for years and years, working hard to slim down only to gain it all back.”</p><p>“Gluttons,” Lucifer says dismissively. “That’s completely different.”</p><p>“Maybe not. Some of these people—the discipline they have is incredible, but their bodies work against them. Stress, slow metabolisms, and gnawing hunger that never, ever goes away.”</p><p>“I suppose it’s harder for some than others,” Lucifer grumbles. “But in my situation, it may be <em> impossible</em>. What then?”</p><p>“Well, it’s the same thing my other clients confront when they’ve exhausted all the options. They may never be thin. And they must learn to accept themselves as they are. There’s a movement…I think they call it health at every size.”</p><p>Lucifer’s weight feels heavier than ever as his whole body sags with his mood. “I don’t know if I can go on like this forever.”</p><p>Linda’s smile is kind. “Acceptance takes time.”</p><p align="center">* * *</p><p>That night, Lucifer talks to Chloe over a sparse dinner consisting of green vegetables and a tablespoon of brown rice. “Linda says I might have to accept that I won’t lose the weight.”</p><p>Lucifer watches closely for her reaction. For all her insistence that she loves him at any size—and her obvious enjoyment of sex—he doesn’t know how she’d feel about spending her life with a massively fat man who has no hope of ever slimming down.</p><p>Her eyes fill with worry. “It doesn’t make any sense. I <em> know </em> you’re not cheating at your diet. I see the exercise for myself. But there’s one thing you haven’t tried.”</p><p>“Don’t say it, I beg you.” He knows she will anyway.</p><p>“Go back to the doctor.” Chloe crosses her arms. “You need to get your metabolism tested again, and every other possible medical cause. Work <em> with </em> Dr. Francis instead of assuming you know it all.”</p><p>Chloe’s expression softens. “Look. If you don’t lose weight, we’ll deal with it. I promise I won’t love you any less. I’m saying this for <em> you </em>. I know how much you hate being this size, how much you miss your old body. You can’t give up until you’ve tried everything.”</p><p>So, he goes back to the doctor. Not because he thinks Dr. Francis has any advice worth taking, but because he’s desperate to know more about what is—and is not—happening inside of him.</p><p>Dr. Francis runs tests and scans galore. He locks Lucifer in a lab for five days and provides a controlled diet. He’s stumped, then frustrated, and after a month appears to be going mad.</p><p>What Lucifer learns from the ordeal is this: He is physically incapable of losing fat, but he can build muscle. In fact, he <em> gains </em> eight pounds over the course of his treatment, and the high-tech scans confirm the composition of the new weight: His workouts are adding muscle while his fat content remains constant—down to the decimal.</p><p>The muscle helps. It’s easier to carry his bulk around, and he starts to build stamina. Walking short distances becomes easier.</p><p>But he’s still fat.</p><p>After five weeks, Lucifer is done with Dr. Francis. So after work, he sits down with Chloe on the couch in his penthouse to talk.</p><p>“I’ve learned all I can from the test results,” Lucifer says, “and I’m afraid my anomalous outcomes are driving the good doctor to an imminent mental breakdown.”</p><p>“Okay.” Chloe looks down at her clasped hands. “If that’s what you want. I mean, it’s clearly not working.” She has come with him to appointments, has reviewed the test results and done her own internet research. She knows his lack of success isn’t for lack of trying. His results defy physics. Nothing works at all.</p><p>“I think, for the time being, I might have to accept...this.” He looks down at the stubborn belly that fills his lap and props up his pendulous moobs. It’s exactly as prominent as it was two months ago.</p><p>“I don’t know what to say.” Chloe looks heartbroken. “You know I love you just as you are. But I feel so sorry for you—and I feel so bad about how it happened.”</p><p>Chloe’s sorrow moves Lucifer to be strong. As much as he is inclined to sink into an endless depression over this turn of events, he knows he would pull her down with him. She would never forgive herself if the weight he gained for her ended up destroying him. So he’ll make do, for her sake if nothing else.</p><p>“I’m okay.” Lucifer strokes her arm. “I’m otherwise healthy. I can get around. Life is just more cumbersome.” He thinks back to what Linda told him. “I’m not the only one who can’t manage to lose weight, even if I may have a unique impediment.”</p><p>Chloe turns and throws her arms around him, reaching as far as she can, and buries her face in his pillowy chest.</p><p>Lucifer strokes her hair. Long ago, he never would have imagined tolerating morbid obesity as a permanent condition. But he’ll do anything for Chloe. And as long as he has her, it’s bearable.</p><p align="center">* * *</p><p>A few days later, Lucifer arrives at work to find a new chair at his desk. It’s an extra-wide, structurally reinforced chair for a ‘person of size.’</p><p>Chloe walks up to him. “I’m not giving up. It’s just…” She bites her lip, and Lucifer vividly recalls the day he found the armrests ripped off his old chair, the day after she realized he’d gained every pound to keep her safe.</p><p>Her gaze was full of guilt then, as it is now.</p><p>Lucifer shuffles up to her and squeezes her shoulder. “Hey. Love the chair.”</p><p>“Oh, good.” She attempts a smile.</p><p>“Let’s give it a spin.” He grips the table and lowers himself into the chair. His giant ass fills the width and depth of the seat, but—in contrast to his previous chair—he doesn’t spill over the sides. With no armrests in the way of his belly, he can shift and turn freely.</p><p>It’s a depressing moment for both of them, but Lucifer is determined to lift Chloe’s spirits. He wheels back and forth and emits a satisfied sigh. “Feels great.”</p><p>“I’m glad.” She gives him a tight nod. “We can always get rid of it if…”</p><p>“Sure.” If he loses the weight. A possibility that seems more remote each day.</p><p>The chair opens the floodgates. With the scale totally stuck, and no options left that he can fathom, Lucifer begins to invest in permanent accommodations for his larger form.</p><p>He trades his cramped little sports car for a roomy SUV. The seatbelt extender in the drivers’ seat is removable, but it may as well be permanent.</p><p>He packs up his old outfits and fills his wardrobe with clothes that fit. The visit to the tailor is excruciating—he’s gotten used to stares from strangers, but submitting his bloated body for measurements is a special form of torture. However, it’s worth it when the suits arrive. Clothing at this size will always look ludicrous to him, like blankets with holes, but at least the copious fabric isn’t cheap.</p><p>And he starts eating again. Not much—he has no desire to revisit the grease and carbs he endured to plump up to his current proportions. But since starving himself makes no difference, he figures he may as well eat normal food.</p><p>He eases in gradually—a salad with dressing, then a sandwich—and as usual, the scale shows no movement in either direction. He suspects he could, theoretically, gain even more weight if he binged on carbs once again. But small meals turn out to be fine.</p><p>Plus, it comforts Chloe to see him eat. She never approved of his starvation tactics in the first place. She has been consistent in her insistence that his health, not his size, is what matters to her—and so his apparently healthy lifestyle comes as a relief.</p><p>After these modifications, he settles into a routine. The outside world constantly reminds him that he’s unacceptably fat, but at least in his office and vehicle, and at home in Chloe’s arms, he fits well enough.</p><p>Then a case requires travel to Portland.</p><p>Chloe ushers him into a vacant office to break the news in private. “How do you feel about airplanes?” Her eyebrows knit as she awaits his reaction.</p><p>Airplanes? He grimaces as he imagines the cramped little seats in coach. There’s no way. “I don’t suppose the department would spring for first class? Or accept my generous donation?”</p><p>Chloe looks at him sadly. “You would need two seats. But the department will pay for it. I made sure of that, since this”—she gestures at his big belly—“happened because of…work.”</p><p><em> Because of me </em>. That’s what she really means.</p><p>“Come on now, none of that.” Lucifer gives her a reassuring smile. “So, two seats, huh? It’s come to that.”</p><p>Chloe takes his hand. “I’d be with you. Right next to you in the third seat.”</p><p>“Sure.” He speaks with confidence he doesn’t entirely feel. “Let’s fly on an airplane.”</p><p align="center">* * *</p><p>Lucifer is the fattest person in the airport. He’s gotten used to being the biggest guy in the room, but usually there aren’t so many people in the room. Yet even in the bustling terminal, he’s substantially larger than everyone around him. Air travel is designed for thin people, and he has a sinking feeling there will be many reminders of that fact on the journey.</p><p>Sure enough, the lines at security are roped off in pathways too narrow for his abundant girth. His hips stretch the elastic as he trudges behind Chloe toward the X-ray machines.</p><p>When they reach the conveyor belt, Chloe bends down without a word to remove his shoes.</p><p>She stands up, and Lucifer gives her a lopsided, thankful smile. He wore slip-ons, of course, but his feet are swollen from all the standing.</p><p>He manages to squeeze into the body scanner, where he grudgingly lifts his arms and pictures the huge, lumpy image they’re probably snickering over in the control room.</p><p>Sure enough, the TSA agent smirks as he listens in his headset. “All clear.”</p><p>Lucifer narrows his eyes and attempts a confident stride as he lumbers out of the machine.</p><p>Chloe has already gathered their luggage and slipped on her stylish flats. She holds up his boat-like orthopedic shoes and says softly, “Do you want to sit down?”</p><p>Lucifer glances doubtfully at the row of chairs assembled for this purpose, each with a narrow seat and plastic, unmovable armrests. “Better not.”</p><p>Instead, he grips the back of a newspaper box to steady himself. Chloe kneels in front of him, and he lifts one foot at a time. When the second shoe is on, she gives his foot an affectionate pat before standing up.</p><p>“What would I do without you?” He means it as a sweet, appreciative comment.</p><p>But Chloe’s face falls. They both know his life would be more difficult, and a lot more unpleasant, without her at his side for support and occasional assistance. And she still blames herself for it happening in the first place.</p><p>“Come on,” he says gently. “We should get to the gate.” They’ve allowed plenty of time for him to amble through the airport at his slow pace, but he wants to distract her before her guilt spirals.</p><p>The gate has a chair he can fit into—barely. He sinks into it, grateful for the break from hefting his weight around. There’s no room to spread his legs, so his plump belly sits on top, the crest rising to the level of his neck. Chloe sets the luggage on the floor and sits beside him.</p><p>People are staring. He can guess what they’re thinking, but soon a whispered conversation behind them confirms it.</p><p>“I hope I’m not stuck next to him.”</p><p>“Oh God, could you imagine? His fat would be<em> on you </em> the whole flight.”</p><p>“Gross. I hope he bought two seats.”</p><p>Chloe straightens in her chair and sucks in a breath. Her eyes flash.</p><p><em> Don’t </em>, he mouths. His face is burning, and part of him wants to confront them. But the last thing he wants is a scene drawing even more attention. Upsetting Chloe even more.</p><p>She respects his wishes, but she grabs his hand and clutches it like a vice. She doesn’t let go until it’s time to board.</p><p>Before they reach the checkpoint to scan their tickets, a gate agent fixes her eyes on Lucifer. When she ushers him to the side, he already knows what’s coming.</p><p>“This is a delicate conversation…” the agent begins.</p><p>“I’ve got two seats,” Lucifer snaps. Heads turn to watch.</p><p>Chloe wraps a protective arm around his thick arm, hugging it to the side of her body. “And I’m in the third seat. <em> We’re fine </em>.”</p><p>The agent steps back, rightly fearful of Chloe’s wrath. “My apologies. Some people don’t know the policy…”</p><p>Chloe leads him back to the line without another word, keeping his arm firmly linked in hers. When she looks up at him, her gaze is mournful.</p><p>“Hey.” Lucifer squeezes her arm. “I’m okay.”</p><p>She closes her eyes and nods, getting ahold of herself, then meets his gaze again. “I love you.”</p><p>“Me too.” It’s true. He loves Chloe with a force he once thought impossible.</p><p>The aisle of the plane presents yet another humiliation. It’s ridiculously narrow, and as he makes his way to their row, his blubber rubs against the passengers already seated. Most of them studiously pretend it isn’t happening, but he earns a few scowls and disgusted expressions as his fat rolls make contact with one shoulder after another.</p><p>It’s brutal. He’s hot from embarrassment, sweating, and short of breath. The line stops and starts as passengers block the aisle to fuss with the overhead bins, and at one point he’s trapped for a full minute with his flesh spilling onto an irate lady who keeps jostling him as if it will make him move. As if he has <em> anywhere </em> to go.</p><p>He’s thankful Chloe is ahead of him, so she can’t see. As miserable as this is for him, it’s harder on her to witness his humiliation when she feels powerless to prevent it. </p><p>At last, they reach the eleventh row in coach, where three seats await the two of them. Lucifer raises the armrests and then plops down in the window and middle seat. He easily takes up both of them, one ass cheek per seat.</p><p>Chloe stows their luggage, but instead of settling in the aisle seat she says “I’ll be right back.” Before Lucifer can ask what she’s doing, she starts making her way to the front of the plane.</p><p>A few minutes later, she returns and hands him a seatbelt extender. “So you don’t have to ask for one.”</p><p>Once again, he’s touched by her constant thoughtfulness. “Thanks.” He attaches it and stretches the seatbelt over his considerable width.</p><p>When the passengers are settled, one of the flight attendants, a middle-aged woman with bright red hair and a no-nonsense expression, slowly patrols the aisle in search of violations. She stops when her gaze falls on Lucifer. “Sir, you need a seatbelt extender.”</p><p>“He has one,” Chloe says firmly. “I got it from your colleague.” But the attendant doesn’t look convinced.</p><p>Sighing, Lucifer lifts his belly to reveal the belt hidden underneath.</p><p>“Ah, okay.” Satisfied, the flight attendant moves on.</p><p>Lucifer lets go, and his belly flops back into place, covering his lap. “Well, nothing embarrassing about that,” he says dryly.</p><p>Chloe reaches for his hand and strokes the plump flesh with her thumb. “I’m sorry this is such an ordeal for you.”</p><p>Lucifer leans down and plants a kiss on the top of her head. “We made it. That’s what matters.”</p><p>The truth is, he’d fly coach on United Bloody Airlines every day if that’s what it took to stay at her side.</p>
+  </div>
+  <!--/main-->
+
+
+</div>
+
+<!-- end of cache -->
+
+          <!-- This partial requires local variable 'chapter' -->
+<div class="chapter" id="chapter-3">
+  <!-- chapter management -->
+
+
+  <div class="chapter preface group" role="complementary">
+    <h3 class="title">
+      <a href="/works/32734699/chapters/81216235">Chapter 3</a>: Lux Redux
+    </h3>
+
+    <!-- only display byline if different from the main byline -->
+
+
+  </div>
+
+  <!--main content-->
+  <div class="userstuff module" role="article">
+    <h3 class="landmark heading" id="work">Chapter Text</h3>
+    <p>A few weeks later, Lucifer and Chloe are forced to collaborate with the feds on a case that spans multiple jurisdictions. They’re summoned to an office five hours outside of LA, where the lead investigator is a muscular gym bro named Special Agent Brad Packard.</p><p>Brad slides a smug gaze over Lucifer’s body, dwelling on his round belly.</p><p>Lucifer knows this won’t be pleasant. Some of the worst reactions he’s had as a fat man have come from law enforcement officers. His colleagues at the LAPD are supportive, of course--they know why he ballooned to this size, if not why he can’t seem to lose the weight. But other precincts and agencies are full of buff cops who think he’s a lard-addicted loser.</p><p>After sizing up Lucifer, Brad turns to Chloe with a solicitous smile. “It’s a pleasure to have you, Detective.” He takes Chloe’s hand and holds on about five seconds too long, as he checks her out with open appreciation.</p><p>Brad’s hands snap back to his sides as he turns to Lucifer. “And your partner.” </p><p>“It’s not catching,” Lucifer snaps.</p><p>“What?” Brad is taken aback.</p><p>“You won’t get fat if you shake my hand.”</p><p>As Brad reluctantly offers a limp handshake, Chloe glances anxiously between the two men. Lucifer imagines her usual instinct to defend him is at war with her intention to play nice with the feds--at least long enough to catch the chainsaw murderer terrorizing the region.</p><p>It only gets worse from there. The chairs in the conference room are far too small, and they don’t look stable. Unwilling to ask Brad for accommodation, Lucifer forces himself into one of them, grunting as the armrests dig into his sides.</p><p>As soon as he’s squeezed into the damn thing, he realizes his predicament. He’s stuffed into the chair like a sardine, fat bulging out underneath the rigid armrests, and there’s no way he’s getting out of that chair without a fight.</p><p>Chloe doesn’t seem to realize the extent of the problem, but she knows he’s uncomfortable. She gives him a sympathetic smile before turning her attention to the meeting.</p><p>Detectives from several localities are assembled to bask in Brad’s condescending presentation of the facts they already know. It quickly becomes apparent that he doesn’t want genuine help from local officials. Instead, Brad plans to give them busywork assignments while the feds pursue the real leads.</p><p>When the meeting wraps up, everyone else rises to their feet--including Chloe, who looks down at him with a questioning gaze.</p><p>Lucifer’s neck and face grow hot as he silently pleads with her to see the situation.</p><p>Chloe’s eyes widen, and she plops back down and wheels her chair close to his. She leans in and whispers, “You’re stuck?”</p><p>He’s not <em> stuck.</em> At least, he doesn’t know for sure that he’s stuck. But he doesn’t want to find out in front of all of these athletic cops, and certainly not in front of Brad. “I’m not sure,” he admits quietly.</p><p>Chloe’s eyes move back and forth as she tries to work out a solution that might preserve some fraction of his remaining dignity. “We’ll stay here until everyone leaves, okay?”</p><p>He nods, and they wait quietly as the other officers file out.</p><p>Brad saunters over, smirking down at Lucifer. “Need some help?”</p><p>Chloe glares up at him. “We have something to discuss in private.”</p><p>Brad regards her skeptically. “If it’s related to the case—”</p><p>“It’s not. It’s an LA matter. We need the room for a few minutes.” Her tone is ice cold.</p><p>Pouting, Brad leaves the room and closes the door behind him.</p><p>Chloe turns to Lucifer. “Okay. Let’s get you up.”</p><p>Shame scalds Lucifer’s cheeks as he grips the table and attempts to heave himself to his feet. The chair moves with him, effectively glued to his ass.</p><p>“Damn it.” His face grows even hotter as he imagines Brad calling in the fire department, the jaws of life, watching the scene with smarmy delight.</p><p>“Hey, it’s okay. We’ll get you out.” Chloe gets up and squeezes his shoulder, then moves behind him. “Try again, and I’ll pull.”</p><p>Lucifer rocks forward, grunting, while Chloe grips the chair from the bottom. They’re suspended in this absurd configuration for several seconds, then at last, the chair gives way.</p><p>Chloe falls backward and lands on her bottom, while Lucifer staggers to his feet and leans on the table, sweaty and out of breath.</p><p>“Are you okay?” They ask each other at exactly the same time.</p><p>Chloe rises to her feet and shoves the contemptible chair away from them. She brushes off her pants and then rests a hand on his broad back. “Buy me a Coke.”</p><p>“Pardon?” Whatever he expected to come out of her mouth, it wasn’t that.</p><p>“We both said the same thing. So you…” She shakes her head. “Never mind.”</p><p>After a quick glance at the door, she gives him a peck on his flushed, puffy cheek. “We can go out there whenever you’re ready, okay?”</p><p>Chloe strokes Lucifer’s arm while he gathers himself, waiting for his face to return to its usual color. </p><p>After a minute, he nods. “Ready.”</p><p>Brad is waiting outside with a smug expression that says he knew exactly why they needed time alone in the room. “Everything okay, big guy?”</p><p>“Splendid.” Lucifer scowls. The nerve of this asshole.</p><p>“Great. I’ll show you the office where you’ll be working.” Brad motions for them to follow. He leads them to a tiny room that could easily be a closet. There’s a desk with two large boxes of paper, along with two tiny chairs even smaller than the ones in the conference room.</p><p>“You’ve got to be kidding,” Lucifer mutters.</p><p>Brad motions to the boxes. “So like I said in the meeting, your job is to go through these transcripts and look for anything that may be related to the case.”</p><p>Chloe crosses her arms. “I appreciate your generous provision of office space, but we’d be more comfortable working elsewhere. We can take the boxes with us.”</p><p>“What? No.” Brad frowns. “You can’t remove these from the building.”</p><p>Chloe isn’t having it. “These are 911 call transcripts. They’re public records. And the boxes will be in our custody all day.”</p><p>Brad looks ready to object, but then his phone buzzes loudly on his belt holster. He pulls it out and frowns at the message. “Fine. Whatever. Just don’t lose them. I want a report at the end of the day.” With one last sneer at Lucifer, he marches off.</p><p>When they’re alone, Chloe gestures at the cramped space and tiny chairs. “No one would be comfortable here,” she says gently.</p><p>Perhaps not, but the change in venue is obviously for Lucifer’s benefit. “Thanks for getting us out of it. Shall we see if we can check in early at the motel?”</p><p>“Perfect.” Chloe lifts one of the boxes. “Could you stack the other one on top?” She knows he’s capable of carrying one of the boxes, but she also knows he’d be huffing and sweating if he had to carry it on top of his own bulk.</p><p>In other circumstances, Lucifer might insist on carrying a box anyway—but the day has been humiliating enough. Allowing his female partner to carry the load isn’t as bad as being seen red-faced and struggling. “Thanks.”</p><p>At the motel, the clerk informs them apologetically that only one of the rooms is ready this early in the day.</p><p>“We’ll make do,” Chloe assures her. They booked two rooms for appearances, but they only plan to use one.</p><p>The room is modest: One king-sized bed with a drab comforter and a small table off to the side.</p><p>Chloe points to the chairs. “Will this be okay?” The chairs aren’t huge, but at least they don’t have any bloody armrests.</p><p>“It’s fine. But…” His back aches from the drive and from the ordeal in the conference room. He doesn’t want to sit at all.</p><p><em> Just tell her. </em>She gets mad when he withholds what he needs. “Truthfully, I’d be more comfortable on the bed.”</p><p>“Of course.” Chloe moves one of the boxes to the bed. “Set up however you like.”</p><p>Lucifer arranges the pillows to support his back and reclines against them. He spreads his legs, and the bottom of his belly sags between them. “Ahhh. That’s better.”</p><p>Chloe grimaces. “I’m sorry this has been awful.”</p><p>He jiggles the side of his gut, causing it to wobble. “This thing is nothing but trouble.”</p><p>“Hmmm.” Chloe kicks off her shoes and climbs onto the bed to recline next to him. She rests her head on his shoulder and reaches over to trace gentle circles on the dome of his belly. “I don’t know. I’ve gotten attached to it.”</p><p>“Well, good, because it doesn’t seem to be going anywhere,” Lucifer mutters.</p><p>“And neither am I.” Chloe looks up at him, love and loyalty shining in her eyes.</p><p>Lucifer wraps his arm around her and pulls her closer. He may never be rid of the weight, or the trials that come with it, but he has Chloe. He’ll be okay.</p><p align="center">* * *</p><p>The field office calls at 5pm with the news: The suspect has been intercepted at the Mexican border, and he confessed to everything. The case is over.</p><p>So, after a wasted day, Lucifer and Chloe pack up the transcripts and drive back to the FBI office.</p><p>Brad stops them on the way out. He barely glances at Lucifer as he walks up to Chloe with an eager smile. “Detective Decker! Some of us are going out for drinks tonight. Fresno and Pasadena for sure. You in?” He flicks a dismissive glance at Lucifer. “I mean, you two?”</p><p>“No thanks,” Chloe says. “We’re heading back to the motel.”</p><p>Brad looks sour about it, but he doesn’t argue. “Well. If you’re ever in town again, you know where to find me.”</p><p>As Brad walks away, Lucifer wonders if Chloe only declined for his sake. She hates Brad, but perhaps she would have enjoyed networking with the other detectives. “You sure you don’t want to go without me? I wouldn’t mind.”</p><p>Chloe blinks at him. “You can’t be serious.”</p><p><em> Okay then</em>.</p><p>Instead, they pick up dinner and spend the evening together in their room. </p><p>They're lounging on the bed, watching television, when someone knocks on the door. Looking puzzled, Chloe gets up and puts on a silk robe over her skimpy pajamas.</p><p>Lucifer stays put--in part to avoid the hassle of hauling himself off the bed, and also because he's only half dressed. It took time to stop feeling self-conscious around Chloe, but now he relaxes without a shirt in her presence, so he's sprawled on the bed with his nude stomach mounding out in front of him.</p><p>Chloe checks the peep hole, frowns, and opens the door.</p><p>“Detective Decker.” The voice belongs to Brad. “I hope you don’t mind, but I came to ask again if you might grace us with your company tonight. I got the feeling you might have said no because of your partner—and I get that. I’m sure it’s tough to be saddled with a guy who obviously has some mobility issues...”</p><p>Lucifer can’t resist. <em> Chloe is going to kill me, but fuck it </em>.</p><p>As Brad continues to ramble, Lucifer waddles to the door with his big, naked belly bouncing freely against his boxers. “What’s going on?” He asks, coming up behind Chloe. Then he squints at Brad. “Oh, it’s you.”</p><p>Brad’s jaw drops as he looks back and forth between them, connecting the dots.</p><p>Surprisingly, Chloe does not kill Lucifer. Instead, she wraps a possessive arm around his well-padded back. “Like I said, Agent Packard, we’re not available. Have a good night.” She closes the door in his face.</p><p>They look at each other, then burst out laughing. Chloe tugs on his hand. “Come on, let’s get back into bed.”</p><p>Now, the trip has been worth it.</p><p align="center">* * *</p><p>“Do you ever think of going to Lux?” Chloe asks one day. They’re in his penthouse on a Friday night, having just finished a light yet satisfying dinner. It’s deja-vu. She once asked him something similar during the blackmail, before she knew why he had gained so much weight.</p><p>Lucifer leans back in his extra-wide kitchen chair. “I haven’t been there since the night Larry made me go.” The nights he spent there before his transformation seem like a century ago.</p><p>Chloe winces, no doubt remembering the photos and the cruel comments that followed. “Well, I don’t want to push you. But I thought maybe we could go. Just for a drink.”</p><p>“Tonight?” He raises his eyebrows. <em> What is she up to? </em></p><p>“Why not? Or some other time.” She adds quickly, “If you’re up for it.”</p><p>“When I last went there, I weighed less than I do now, and the reception was… Well, let’s just say I didn’t fit in.” Lucifer ruefully pats the crest of his belly. “I’m afraid it won’t be any better now that I’m even bigger.”</p><p>“What if you had a hot babe on your arm?” Chloe smiles anxiously.</p><p>Lucifer studies her. “Why do you want us to go to Lux?”</p><p>“I don’t, necessarily…” She frowns, choosing her words. “But you used to love it there, and you might enjoy going again. I know you wanted to wait until your body...changed. But if this is the new normal, I don’t think you should remove yourself from things you enjoy just because of what others might think.”</p><p>He considers the suggestion as he drums his fingers on his belly. It’s true that his world has become much smaller since he got fat. But unlike in the past, there would be little for him to do at a nightclub. He’d stick with Chloe and sip his cocktail, and he can do that just as easily at home—without the judgmental audience.</p><p>Then he looks at Chloe, and she’s making those big, hopeful doe-eyes he can’t resist.</p><p><em> Damn it </em>. “Fine. We can go to Lux.”</p><p>They go that night. Chloe wears a snug minidress with her hair curled in springy ringlets, apparently making an effort to compensate for his lack of hotness. It’s sweet of her, really.</p><p>Meanwhile, Lucifer dons plain pants and a XXXXXL black T-shirt that fits as well as anything can at his size. He styles his hair, for old time’s sake, but when he looks in the mirror the effect is underwhelming. The blackest black shirt couldn’t slim his protuberant gut, and his ample arm and neck flab are on full display. He feels ridiculous.</p><p>“I’m not sure this is a good idea,” Lucifer says as they ride the elevator down to the club.</p><p>“If you’re not comfortable, we can leave,” Chloe assures him. “There’s no pressure.”</p><p><em> Except the pressure exerted to get me here in the first place </em>. “Just promise me you won’t overreact if someone says something unkind.” He appreciates her protective instincts, but he doesn’t want to be the center of an incident.</p><p>“Fine. But I bet it won’t be that bad. People were probably surprised last time, but now it’s normal.”</p><p>Right. The new normal. It’s just Lucifer, the big fat guy who owns the place.</p><p>Heads turn when they walk into the club. They’ve gone early enough that it’s not packed yet, but there are plenty of people to gawk and point him out to their friends.</p><p>Patrick’s gaze trails up and down Lucifer’s body, then lands on Chloe. “Who’s this?”</p><p>Chloe moves even closer and grips Lucifer’s arm. “I’m his girlfriend.”</p><p>It comes out like a threat, and Patrick is smart enough to hear it as one. He takes their drink order without another comment.</p><p>There is literally nowhere for Lucifer to sit. The only stools available are made for small butts, and no one has thought to outfit the club with extra-wide reinforced chairs while he’s been away. “Let’s, uh, find somewhere to lean.”</p><p>Understanding, Chloe nods and follows him to a wall where they can sip their drinks and observe. It’s the usual scene. Slim, fit patrons drink and dance and check each other out.</p><p>Lucifer has no place among them anymore. He’s certainly in no position to dance, unless he wants his bouncing fat rolls to become the next viral sensation on social media. And while they wouldn’t want him anyway, he no longer has use for the men and women who come here prowling for fuck buddies.</p><p>A skinny twink happens by, already sky high from the looks of his eyes. He scans both of them and says to Chloe, “This dude must be rich.”</p><p>“Fuck off!” Chloe responds without hesitation. The twink smirks and drifts away.</p><p>“Remember what I said?” Lucifer arches an eyebrow. “No incidents? No scenes?”</p><p>“I was defending myself, not you,” Chloe protests. “He was calling me a gold digger, or a...prostitute maybe.”</p><p>She’s not with him for money. Lucifer knows this for sure. But while this is hardly the time or place, he feels compelled to ask something else over the din of electronic music.</p><p>“Would you be with me if all this hadn’t happened?” He waves at his body.</p><p>Chloe looks puzzled. “You mean, would I be with you if you were thin?”</p><p>That’s not the question, not exactly. “No. Would you be with me if you didn’t feel guilty and...sorry for me?” It comes out sounding pitiful, needy. But he needs to know.</p><p>Chloe looks him in the eyes. “I would <em> never </em> do that to you.”</p><p>Lucifer frowns. “What do you mean?”</p><p>She isn’t angry, but she’s serious. Intense. “I wouldn’t pretend to love you if it wasn’t true. If I did something like that, it would be the opposite of kindness. Please don’t accuse me of that again.”</p><p>His lips curve into a half-smile. “I’m sorry. You’re right.” Warmth flows throw him. Chloe loves him.</p><p>But then doubt clouds Chloe’s eyes. “Would <em> you </em> be with <em> me </em> if you weren’t...if this hadn’t happened to you? I mean, you know how I feel about your body, so please don’t take this the wrong way. But before you gained weight, you obviously had more...options.” She glances at the crowd and then back. “Options for partners and how you spend your time.”</p><p>He flashes back to her words on the day they first came together, when he accused her of offering a pity fuck and she tearfully confessed he feelings while accusing him of only wanting supermodels.<em> For once I thought you might not say no</em>.</p><p>Does she think he’s only with him because he can’t pull anyone else at his size? Or that he has been domesticated only because the night life won’t have him, and not because he enjoys quiet evenings with her?</p><p>“Detective.” Lucifer sets his drink down on a ledge and moves closer.</p><p>His belly reaches her first and molds against her body. He places his fat hands on her slim shoulders and looks deep into her eyes. “I’d think with your exceptional powers of deduction, it should be clear. This is the happiest I’ve been in all eternity.”</p><p>He leans in, squishing against her, and ravages her mouth with a searing kiss.</p><p>A wolf-whistle sounds somewhere behind them.</p><p>Lucifer breaks away and rolls his eyes. “Let’s get the fuck out of here, yeah?”</p><p>Chloe beams back at him. “Lead the way.”</p><p align="center"># The End #</p><p> </p>
+  </div>
+  <!--/main-->
+
+
+</div>
+
+<!-- end of cache -->
+
+    </div>
+<!--/chapter-->
+
+
+  </div>
+  <!-- END work skin -->
+<!-- END work -->
+
+<!-- BEGIN comment section -->
+<!-- Gets embedded anywhere we need to list comments on a top-level commentable. We need the local variable "commentable" here. -->
+<div id="feedback" class="feedback" role="complementary">
+
+  <h3 class="landmark heading">Actions</h3>
+
+  <ul class="actions" role="navigation">
+      <li><a href="#main">&#8593; Top</a></li>
+
+
+
+
+
+
+      <li>
+        <form id="new_kudo" action="/kudos" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;"/><input type="hidden" name="authenticity_token" value="MbksnBENbqK43EmodjKub9Xt7NbpJXfrt8BlHZpcDVDnQ_drh8i3sup1bSZ3ENNx_wiSfbfbBMwctt73oidJuQ"/>
+          <input value="32734699" type="hidden" name="kudo[commentable_id]" id="kudo_commentable_id"/>
+          <input value="Work" type="hidden" name="kudo[commentable_type]" id="kudo_commentable_type"/>
+          <input type="submit" name="commit" value="Kudos ♥" id="kudo_submit"/>
+</form>      </li>
+
+
+
+
+        <li id="show_comments_link"><a data-remote="true" href="/comments/show_comments?view_full_work=true&amp;work_id=32734699">Comments (11)</a></li>
+  </ul>
+
+
+  <div id="kudos_message"></div>
+  
+
+    <div id="kudos">
+      <p class="kudos">
+          <a href="/users/Lifeofmk">Lifeofmk</a>, <a href="/users/Fiona_Fawkes">Fiona_Fawkes</a>, <a href="/users/CaptainJubilee">CaptainJubilee</a>, <a href="/users/LadyPavo">LadyPavo</a>, <a href="/users/pepper_407">pepper_407</a>, <a href="/users/snxwbell">snxwbell</a>, <a href="/users/Unicorn7">Unicorn7</a>, <a href="/users/LionfishInvasion">LionfishInvasion</a>, <a href="/users/Kay_kat">Kay_kat</a>, <a href="/users/Navaros">Navaros</a>, <a href="/users/RintrahRoARS">RintrahRoARS</a>, <a href="/users/Goddess_Green19">Goddess_Green19</a>, <a href="/users/Minnezinger">Minnezinger</a>, <a href="/users/MinaValentina">MinaValentina</a>, <a href="/users/Ghostmilky">Ghostmilky</a>, <a href="/users/infiniteeight">infiniteeight</a>, <a href="/users/siobhan9">siobhan9</a>, <a href="/users/SueBob99">SueBob99</a>, <a href="/users/LisaQ81">LisaQ81</a>, <a href="/users/Razendar">Razendar</a>, <a href="/users/RiverSong456">RiverSong456</a>, <a href="/users/false_hate">false_hate</a>, <a href="/users/corastacy">corastacy</a>, <a href="/users/Snackajax">Snackajax</a>, <a href="/users/thisisakinkaccount">thisisakinkaccount</a>, <a href="/users/classicalraven">classicalraven</a>, <a href="/users/sublime42">sublime42</a>, <a href="/users/virgo55">virgo55</a>, <a href="/users/Vrael">Vrael</a>, and <a href="/users/NotOneLine">NotOneLine</a>
+             as well as 
+          13 guests
+         left kudos on this work!
+      </p>
+</div>
+
+
+
+  <h3 class="landmark heading"><a id="comments">Comments</a></h3>
+  
+
+    <div id="add_comment_placeholder" title="top level comment">
+      <div id="add_comment">
+        <!-- expects the local variables comment, commentable, and button_name -->
+<div class="post comment" id="comment_form_for_32734699">
+  <form class="new_comment" id="comment_for_32734699" action="/works/32734699/comments" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;"/><input type="hidden" name="authenticity_token" value="7mbwT01FZxPhD9yLQGqZ3ELMgLAqkVm3zoqHT9YLPnk4nCu424C-A7Om-AVBSOTCaCn-G3RvKpBl_Dyl7nB6kA"/>
+    <fieldset>
+      <legend>Post Comment</legend>
+
+
+        <input type="hidden" name="view_full_work" id="view_full_work" value="true" class="text"/>
+
+
+
+
+        <dl>
+          <dt class="landmark">Note:</dt>
+          <dd class="instructions comment_form">All fields are required. Your email address will not be published.</dd>
+          <dt><label for="comment_name_for_32734699">Guest name: </label></dt>
+          <dd>
+            <input id="comment_name_for_32734699" type="text" name="comment[name]"/>
+            <script>var validation_for_comment_name_for_32734699=new LiveValidation('comment_name_for_32734699',{wait:500,onlyOnBlur:false});validation_for_comment_name_for_32734699.add(Validate.Presence,{"failureMessage":"Please enter your name.","validMessage":""});</script>
+          </dd>
+          <dt><label for="comment_email_for_32734699">Guest email: </label></dt>
+          <dd>
+            <input id="comment_email_for_32734699" type="text" name="comment[email]"/>
+            <script>var validation_for_comment_email_for_32734699=new LiveValidation('comment_email_for_32734699',{wait:500,onlyOnBlur:false});validation_for_comment_email_for_32734699.add(Validate.Presence,{"failureMessage":"Please enter your email address.","validMessage":""});</script>
+          </dd>
+        </dl>
+        <p class="footnote">(Plain text with limited HTML <a class="help symbol question modal" title="Html help" aria-controls="#modal" href="/help/html-help.html"><span class="symbol question"><span>?</span></span></a>)</p>
+
+      <p>
+        <label for="comment_content_for_32734699" class="landmark">Comment</label>
+        <textarea id="comment_content_for_32734699" class="comment_form observe_textlength" title="Enter Comment" name="comment[comment_content]">
+</textarea>
+        <input type="hidden" id="controller_name_for_32734699" name="controller_name" value="works"/>
+      </p>
+      <p class="character_counter"><span id="comment_content_for_32734699_counter" class="value" data-maxlength="10000" aria-live="polite" aria-valuemax="10000" aria-valuenow="comment_content_for_32734699">10000</span> characters left</p>
+      <script>var validation_for_comment_content_for_32734699=new LiveValidation('comment_content_for_32734699',{wait:500,onlyOnBlur:false});validation_for_comment_content_for_32734699.add(Validate.Presence,{"failureMessage":"Brevity is the soul of wit, but we need your comment to have text in it.","validMessage":""});validation_for_comment_content_for_32734699.add(Validate.Length,{"maximum":"10000","tooLongMessage":"must be less than 10000 characters long."});</script>
+      <p class="submit actions">
+        <input type="submit" name="commit" value="Comment" id="comment_submit_for_32734699" data-disable-with="Please wait..."/>
+      </p>
+    </fieldset>
+</form></div>
+<div class="clear"></div>
+
+      </div>
+    </div>
+
+  <!-- If we have javascript, here is where the comments will be spiffily inserted -->
+  <!-- If not, and show_comments is true, here is where the comments will be rendered -->
+  <div id="comments_placeholder" style="display:none;">
+  </div>
+
+
+</div>
+<!-- END comments -->
+
+<!-- END comment section -->
+<!-- END revealed -->
+
+
+
+          <div class="clear"><!--presentational--></div>
+        </div>
+        <!-- END main -->
+      </div>
+      <!-- BEGIN footer -->
+<div id="footer" role="contentinfo" class="region">
+	<h3 class="landmark heading">Footer</h3>
+  <ul class="navigation actions" role="navigation">
+    <li class="module group">
+      <h4 class="heading">About the Archive</h4>
+      <ul class="menu">
+        <li><a href="/site_map">Site Map</a></li>
+        <li><a href="/diversity">Diversity Statement</a></li>
+        <li><a href="/tos">Terms of Service</a></li>
+        <li><a href="/dmca">DMCA Policy</a> </li>
+      </ul>
+    </li>
+    <li class="module group">
+      <h4 class="heading">Contact Us</h4>
+      <ul class="menu">
+        <li><a href="/abuse_reports/new">Report Abuse</a></li>
+        <li><a href="/support">Technical Support and Feedback</a></li>
+      </ul>
+    </li>
+    <li class="module group">
+      <h4 class="heading">Development</h4>
+      <ul class="menu">
+          <li><a href="https://github.com/otwcode/otwarchive/commits/v0.9.306.15">otwarchive v0.9.306.15</a></li>
+        <li><a href="/known_issues">Known Issues</a></li>
+        <li><a href="http://www.gnu.org/licenses/gpl-2.0.html" title="View License">GPL</a> by the <a href="http://transformativeworks.org/" title="The Organization for Transformative Works">OTW</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+<!-- END footer -->
+
+    </div>
+    <!-- check to see if this controller/action allow tinymce before we load the gigantor js; see application_helper -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js" type="text/javascript"></script>
+<!-- if user has googleapis blocked for some reason we need a fallback -->
+<script type="text/javascript">if(typeof jQuery=='undefined'){document.write(unescape("%3Cscript src='/javascripts/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));document.write(unescape("%3Cscript src='/javascripts/jquery-ui.min.js' type='text/javascript'%3E%3C/script%3E"));}</script>
+
+
+<script type="text/javascript">$j=jQuery.noConflict();</script>
+<script src="/javascripts/jquery.scrollTo.min.js"></script>
+<script src="/javascripts/jquery.livequery.min.js"></script>
+<script src="/javascripts/rails.js"></script>
+<script src="/javascripts/application.js"></script>
+<script src="/javascripts/bootstrap/bootstrap-dropdown.min.js"></script>
+<script src="/javascripts/jquery-shuffle.js"></script>
+<script src="/javascripts/jquery.tokeninput.min.js"></script>
+<script src="/javascripts/jquery.trap.min.js"></script>
+<script src="/javascripts/ao3modal.min.js"></script>
+<script src="/javascripts/js.cookie.min.js"></script>
+
+<script src="/javascripts/filters.min.js"></script>
+
+
+  <script>function isSupported(){var item="localStoragePolyfill";try{localStorage.setItem(item,item);localStorage.removeItem(item);return true;}catch(e){return false;}}function acceptTOS(){if(isSupported()){localStorage.setItem("accepted_tos","20180523");}else{Cookies.set("accepted_tos","20180523",{expires:365});}}$j(document).ready(function(){if(localStorage.getItem("accepted_tos")!=="20180523"&&Cookies.get("accepted_tos")!=="20180523"){$j("body").prepend("<div id=\"tos_prompt\" class=\"hidden\">\n  <h2 class=\"heading\">\n    <span>Archive of Our Own<\/span>\n  <\/h2>\n  <div class=\"agreement\">\n    <p class=\"summary\">\n      On Archive of Our Own (AO3), users can make profiles, create works and\n            other Content, post comments, give Kudos, create Collections and \n            Bookmarks, participate in Challenges, import works, and more. Any \n            information you publish in a comment, profile, work, or Content that you \n            post or import onto AO3 including in summaries, notes and tags, \n            will be accessible by the public (unless you limit access to a work only \n            to those with AO3 Accounts), and it will be available to \n            AO3 personnel. Be mindful when sharing personal information, \n            including  your religious or political views, health, racial background, \n            country of origin, sexual identity and/or personal relationships. To \n            learn more, check out our <a href=\"/tos\">Terms of Service<\/a> and <a href=\"/tos#privacy\">Privacy Policy<\/a>.\n    <\/p>\n\n    <p class=\"confirmation\">\n      <input type=\"checkbox\" id=\"tos_agree\" />\n      <label for=\"tos_agree\">I have read &amp; understood the new Terms of Service and Privacy Policy<\/label>\n    <\/p>\n\n      <p class=\"submit\">\n        <button name=\"button\" type=\"button\" disabled=\"disabled\" id=\"accept_tos\">I agree/consent to its terms<\/button>\n      <\/p>\n\n  <\/div>\n<\/div>\n\n<script>\n//<![CDATA[\n\n  \$j(document).ready(function() {\n    var container = \$j(\"#tos_prompt\");\n    var outer = \$j(\"#outer\");\n    var button = \$j(\"#accept_tos\");\n\n    setTimeout(showTOSPrompt, 1500);\n\n    function showTOSPrompt() {\n      \$j.when(container.fadeIn(500)).done(function() {\n        outer.addClass(\"hidden\").attr(\"aria-hidden\", \"true\");\n      });\n\n      \$j(\"#tos_agree\").on(\"click\", function() {\n        button.attr(\"disabled\", !this.checked);\n        if (this.checked) {\n          button.on(\"click\", function() {\n            acceptTOS();\n            outer.removeClass(\"hidden\").removeAttr(\"aria-hidden\");\n            \$j.when(container.fadeOut(500)).done(function() {\n              container.remove();\n            });\n          });\n        };\n      }).change();\n    };\n  });\n\n//]]]]><![CDATA[>\n<\/script>");}});</script>
+  <script>$j(document).ready(function(){var permitted_hosts=["archiveofourown.org","download.archiveofourown.org","insecure.archiveofourown.org","www.archiveofourown.org","insecure-test.archiveofourown.org","test.archiveofourown.org","testdownload.archiveofourown.org"];var current_host=window.location.hostname;if(!permitted_hosts.includes(current_host)&&Cookies.get("proxy_notice")!=="0"&&window.location.protocol!=="file:"){$j("#skiplinks").after("<div id=\"proxy-notice\">\n  <div class=\"userstuff\">\n    <p class=\"important\">Important message:<\/p>\n    <ol>\n      <li>You are using a proxy site that is not part of the Archive of Our Own.<\/li>\n      <li>The entity that set up the proxy site can see what you submit, including your IP address. If you log in through the proxy site, it can see your password.<\/li>\n    <\/ol>\n    <p class=\"important\">重要提示：<\/p>\n    <ol>\n      <li>您使用的是第三方开发的反向代理网站，此网站并非Archive of Our Own - AO3（AO3作品库）原站。<\/li>\n      <li>代理网站的开发者能够获取您上传至该站点的全部内容，包括您的ip地址。如您通过代理登录AO3，对方将获得您的密码。<\/li>\n    <\/ol>\n    <p class=\"submit\"><button class=\"action\" type=\"button\" id=\"proxy-notice-dismiss\">Dismiss Notice<\/button><\/p>\n  <\/div>\n<\/div>\n\n<script>\n//<![CDATA[\n\n  \$j(document).ready(function() {\n    \$j(\"#proxy-notice-dismiss\").on(\"click\", function() {\n      Cookies.set(\"proxy_notice\", \"0\");\n      \$j(\"#proxy-notice\").slideUp();\n    });\n  });\n\n//]]]]><![CDATA[>\n<\/script>");}});</script>
+    <script>$j(document).on("loadedCSRF",function(){$j.post("/works/32734699/hit_count.json")})</script>
+
+
+  </body>
+</html>

@@ -50,7 +50,7 @@ object BookmarksByTagConverter : Converter<BookmarksByTagConverter.Result> {
                 val user = index.select("div.header > h5.byline > a[href]")
                     .text()
                     .let { displayName -> User.from(displayName, true) }
-                val bookmarkDate = index.select("div.header > p.datetime")
+                val bookmarkDate = index.selectFirst("div.header > p.datetime")
                     .text()
                     .let { LocalDate.parse(it, DateTimeFormatter.ofPattern("dd MMM yyyy")) }
                 val type = index.selectFirst("div.header > p.status > a > span")
@@ -100,7 +100,7 @@ object BookmarksByTagConverter : Converter<BookmarksByTagConverter.Result> {
                     it.map { element -> User.from(element.text(), hasUrl = true) }
                 }
             }
-            val datetime = workIndex.select("p.datetime")
+            val datetime = workIndex.selectFirst("li.bookmark.blurb > div.header > p.datetime")
                 .text()
                 .let {
                     LocalDate.parse(
@@ -111,7 +111,7 @@ object BookmarksByTagConverter : Converter<BookmarksByTagConverter.Result> {
             val fandoms = fandomElements.map { it.text() }
 
             val categories = requiredTags[2].text().split(", ")
-                .map { Category.fromName(it) }
+                .mapNotNull { Category.fromName(it) }
 
             // execute code based on type of item
             val titleLink = header.first().attr("href")
@@ -181,7 +181,7 @@ object BookmarksByTagConverter : Converter<BookmarksByTagConverter.Result> {
                             ?.let { Html(it) }
                             ?: Html("")
 
-                        val statsNumbers = stats.select("dt").map {
+                        val statsNumbers = stats.select("dd").map {
                             it.text()
                                 .replace(",","")
                                 .toInt()
