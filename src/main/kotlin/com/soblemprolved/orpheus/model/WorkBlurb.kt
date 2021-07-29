@@ -5,8 +5,8 @@ import java.time.LocalDate
 data class WorkBlurb(
     val id: Long,
     val title: String,
-    val authors: List<User>,   // no authors means its anonymous
-    val giftees: List<User>,
+    val authors: List<UserName>,   // no authors means its anonymous
+    val giftees: List<UserName>,
     val lastUpdatedDate: LocalDate,
     val rating: Rating,
     val warnings: List<Warning>,

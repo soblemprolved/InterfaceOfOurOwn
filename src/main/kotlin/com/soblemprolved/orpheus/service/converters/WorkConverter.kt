@@ -110,16 +110,16 @@ object WorkConverter : Converter<WorkConverter.Result> {
             .let {
                 if (it.isEmpty()) {
                     doc.select("div#workskin > div.preface.group > h3.byline.heading")
-                        .map{ element -> User.from(element.text(), hasUrl = false) }
+                        .map{ element -> UserName.from(element.text(), hasUrl = false) }
                 } else {
-                    it.map { element -> User.from(element.text(), hasUrl = true) }
+                    it.map { element -> UserName.from(element.text(), hasUrl = true) }
                 }
             }
 
 
         val giftees = doc
             .select("#workskin > div.preface.group > div.notes.module > ul.associations > li > a")
-            .map { User.from(it.text(), hasUrl = true) }  // pseuds can be parsed based on names alone
+            .map { UserName.from(it.text(), hasUrl = true) }  // pseuds can be parsed based on names alone
 
         val preWorkNotes = Html(
             doc.select("#workskin > div.preface.group > div.notes.module > blockquote.userstuff")

@@ -5,7 +5,7 @@ import java.time.LocalDate
 data class ExternalWorkBlurb(
     val id: Long,
     val title: String,
-    val authors: List<User>,
+    val authors: List<UserName>,
     val lastUpdatedDate: LocalDate,
     val rating: Rating,
     val categories: List<Category>,

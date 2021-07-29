@@ -51,14 +51,14 @@ interface Converter<T> {
                         .removeSuffix("for")
                         .trim()
                         .split(", ")
-                        .map { name -> User.from(name, hasUrl = false) }
+                        .map { name -> UserName.from(name, hasUrl = false) }
                 } else {
-                    it.map { element -> User.from(element.text(), hasUrl = true) }
+                    it.map { element -> UserName.from(element.text(), hasUrl = true) }
                 }
             }
 
             val giftees = heading.select("h4.heading > a[href$=/gifts]")   // ending with /gifts
-                .map { User.from(it.text(), hasUrl = true) }   // pseuds can be parsed based on names alone
+                .map { UserName.from(it.text(), hasUrl = true) }   // pseuds can be parsed based on names alone
 
             val datetime = workBlurbElement.selectFirst("li.blurb.group > div.header > p.datetime")
                 .text()
@@ -133,9 +133,9 @@ interface Converter<T> {
                         .removeSuffix("for")
                         .trim()
                         .split(", ")
-                        .map { name -> User.from(name, hasUrl = false) }
+                        .map { name -> UserName.from(name, hasUrl = false) }
                 } else {
-                    it.map { element -> User.from(element.text(), hasUrl = true) }
+                    it.map { element -> UserName.from(element.text(), hasUrl = true) }
                 }
             }
 
@@ -205,9 +205,9 @@ interface Converter<T> {
                         .removeSuffix("for")
                         .trim()
                         .split(", ")
-                        .map { name -> User.from(name, hasUrl = false) }
+                        .map { name -> UserName.from(name, hasUrl = false) }
                 } else {
-                    it.map { element -> User.from(element.text(), hasUrl = true) }
+                    it.map { element -> UserName.from(element.text(), hasUrl = true) }
                 }
             }
 
@@ -275,10 +275,14 @@ interface Converter<T> {
             TODO()
         }
 
+        fun parseCommentElement(commentElement: Element): Comment {
+            TODO()
+        }
+
         fun parseBookmarkElement(bookmarkElement: Element): Bookmark {
             val user = bookmarkElement.select("div.header > h5.byline > a[href]")
                 .text()
-                .let { displayName -> User.from(displayName, true) }
+                .let { displayName -> UserName.from(displayName, true) }
             val bookmarkDate = bookmarkElement.selectFirst("div.header > p.datetime")
                 .text()
                 .let { LocalDate.parse(it, DateTimeFormatter.ofPattern("dd MMM yyyy")) }
@@ -308,7 +312,7 @@ interface Converter<T> {
                 .map { it.text() }
 
             return Bookmark(
-                user = user,
+                userName = user,
                 tags = tags,
                 collections = collections,
                 date = bookmarkDate,

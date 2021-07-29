@@ -5,7 +5,7 @@ import java.time.LocalDate
 data class SeriesBlurb(
     val id: Long,
     val title: String,
-    val authors: List<User>,
+    val authors: List<UserName>,
     val lastUpdatedDate: LocalDate,
     val ratings: List<Rating>,
     val warnings: List<Warning>,

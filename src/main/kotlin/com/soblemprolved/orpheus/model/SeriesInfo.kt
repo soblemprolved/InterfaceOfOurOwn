@@ -8,7 +8,7 @@ import java.time.LocalDate
  */
 data class SeriesInfo(
     val id: Long, // can this be a long?
-    val creators: List<User>,
+    val creators: List<UserName>,
     val beginDate: LocalDate,
     val lastUpdatedDate: LocalDate,
     val description: Html,

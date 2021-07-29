@@ -5,8 +5,8 @@ import java.time.LocalDate
 sealed interface Work {
     val id: Long
     val title: String
-    val authors: List<User>
-    val giftees: List<User>
+    val authors: List<UserName>
+    val giftees: List<UserName>
     val publishedDate: LocalDate
     val lastUpdatedDate: LocalDate   // only found in work
     val rating: Rating
@@ -34,8 +34,8 @@ sealed interface Work {
 data class SingleChapterWork(
     override val id: Long,
     override val title: String,
-    override val authors: List<User>,
-    override val giftees: List<User>,
+    override val authors: List<UserName>,
+    override val giftees: List<UserName>,
     override val publishedDate: LocalDate,
     override val lastUpdatedDate: LocalDate, // only found in work
     override val rating: Rating,
@@ -66,8 +66,8 @@ data class SingleChapterWork(
 data class MultiChapterOrIncompleteWork(
     override val id: Long,
     override val title: String,
-    override val authors: List<User>,
-    override val giftees: List<User>,
+    override val authors: List<UserName>,
+    override val giftees: List<UserName>,
     override val publishedDate: LocalDate,
     override val lastUpdatedDate: LocalDate, // only found in work
     override val rating: Rating,

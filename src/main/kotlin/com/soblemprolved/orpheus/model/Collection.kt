@@ -9,7 +9,7 @@ data class Collection(
     val isAnonymous: Boolean,
     val challenge: ChallengeType,
     val summary: Html,
-    val maintainers: List<User>,
+    val maintainers: List<UserName>,
     val subcollectionCount: Int,
     val fandomCount: Int,
     val workCount: Int,
