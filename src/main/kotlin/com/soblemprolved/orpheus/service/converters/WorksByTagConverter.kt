@@ -6,8 +6,6 @@ import okhttp3.Response
 import org.jsoup.Jsoup
 import com.soblemprolved.orpheus.service.models.AO3Error
 import java.lang.IllegalStateException
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 
 object WorksByTagConverter : Converter<WorksByTagConverter.Result> {
     data class Result(
@@ -52,7 +50,7 @@ object WorksByTagConverter : Converter<WorksByTagConverter.Result> {
         val workIndexList = doc.select("ol.work.index.group > li.work.blurb.group")
         val workBlurbs: List<WorkBlurb> = workIndexList.map { workIndex ->
             // declarations of subtrees beforehand to make assignment clearer
-            Converter.parseWorkBlurbSnippet(workIndex)
+            Converter.parseWorkBlurbElement(workIndex)
         }
 
         return Result(tagName, workCount, workBlurbs)

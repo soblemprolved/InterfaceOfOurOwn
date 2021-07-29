@@ -3,8 +3,6 @@ package com.soblemprolved.orpheus.service.converters
 import com.soblemprolved.orpheus.model.*
 import okhttp3.Response
 import org.jsoup.Jsoup
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 
 object BookmarksByTagConverter : Converter<BookmarksByTagConverter.Result> {
     data class Result(
@@ -37,50 +35,12 @@ object BookmarksByTagConverter : Converter<BookmarksByTagConverter.Result> {
         val bookmarkTrees = doc.select("div#main > ol.bookmark > li.bookmark.blurb")
         val bookmarkBlurbs = bookmarkTrees.map { workIndex ->
             // declarations of subtrees beforehand to make assignment clearer
-            val bookmarkIndices = workIndex
+            val bookmarkElements = workIndex
                 .selectFirst("div.recent.module.group")
                 .selectFirst("ul.bookmark.index.group")
                 .select("li.user.short.blurb.group")
-            val bookmarkSummaries = bookmarkIndices.map { index ->
-                val user = index.select("div.header > h5.byline > a[href]")
-                    .text()
-                    .let { displayName -> User.from(displayName, true) }
-                val bookmarkDate = index.selectFirst("div.header > p.datetime")
-                    .text()
-                    .let { LocalDate.parse(it, DateTimeFormatter.ofPattern("dd MMM yyyy")) }
-                val type = index.selectFirst("div.header > p.status > a > span")
-                    .className()
-                    .let { className ->
-                        when (className) {
-                            "public" -> BookmarkType.PUBLIC
-                            "rec" -> BookmarkType.RECOMMENDATION
-                            else -> throw IllegalArgumentException()   // fail fast
-                        }
-                    }
-                val bookmarkNotes = index.selectFirst("blockquote.userstuff.summary")
-                    ?.html()
-                    ?.let { Html(it) }
-                    ?: Html("")
-
-                val collections = index.select("ul.meta.commas:not(.tags) > li > a[href]")   // exclude tags
-                    .map{
-                        val url = it.attr("href")
-                        val id = url.removePrefix("/collections/")
-                        val name = it.text()
-                        CollectionName(id = id, name = name)
-                    }
-
-                val tags = index.select("ul.meta.tags.commas > li > a")
-                    .map { it.text() }
-
-                Bookmark(
-                    user = user,
-                    tags = tags,
-                    collections = collections,
-                    date = bookmarkDate,
-                    notes = bookmarkNotes,
-                    bookmarkType = type
-                )
+            val bookmarkSummaries = bookmarkElements.map { element ->
+                Converter.parseBookmarkElement(element)
             }
 
             // execute code based on type of item
@@ -89,15 +49,15 @@ object BookmarksByTagConverter : Converter<BookmarksByTagConverter.Result> {
             with(titleLink) {
                 when {
                     startsWith("/works/") -> {
-                        val blurb = Converter.parseWorkBlurbSnippet(workIndex)
+                        val blurb = Converter.parseWorkBlurbElement(workIndex)
                         return@map WorkBookmarksBlurb(blurb, bookmarkSummaries)
                     }
                     startsWith("/series/") -> {
-                        val blurb = Converter.parseSeriesBlurbSnippet(workIndex)
+                        val blurb = Converter.parseSeriesBlurbElement(workIndex)
                         return@map SeriesBookmarksBlurb(blurb, bookmarkSummaries)
                     }
                     startsWith("/external_works/") -> {
-                        val blurb = Converter.parseExternalWorkBlurbSnippet(workIndex)
+                        val blurb = Converter.parseExternalWorkBlurbElement(workIndex)
                         return@map ExternalWorkBookmarksBlurb(blurb, bookmarkSummaries)
                     }
                     else -> throw IllegalArgumentException()
