@@ -15,4 +15,6 @@ data class ExternalWorkBlurb(
     val freeforms: List<String>,
     val summary: Html,
     val bookmarkCount: Int
-)
+) {
+    val warning = Warning.CREATOR_CHOSE_NOT_TO_USE_WARNINGS
+}

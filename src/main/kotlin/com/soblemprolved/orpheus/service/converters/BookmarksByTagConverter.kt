@@ -37,11 +37,6 @@ object BookmarksByTagConverter : Converter<BookmarksByTagConverter.Result> {
         val bookmarkTrees = doc.select("div#main > ol.bookmark > li.bookmark.blurb")
         val bookmarkBlurbs = bookmarkTrees.map { workIndex ->
             // declarations of subtrees beforehand to make assignment clearer
-            val header = workIndex.select("h4.heading").select("a[href]")
-            val fandomElements = workIndex.select("h5.fandoms.heading").select("a.tag")
-            val requiredTags = workIndex.select("ul.required-tags").select("span.text")
-            val userTags = workIndex.select("ul.tags.commas")
-            val stats = workIndex.select("dl.stats")
             val bookmarkIndices = workIndex
                 .selectFirst("div.recent.module.group")
                 .selectFirst("ul.bookmark.index.group")
@@ -88,160 +83,21 @@ object BookmarksByTagConverter : Converter<BookmarksByTagConverter.Result> {
                 )
             }
 
-            val chapterInfo = stats.select("dd.chapters").text().split("/")
-
-            // Common data to all types of blurbs
-            val title = header.first().text()
-            val authors = header.select("a[rel=author]").let {
-                if (it.isEmpty()) {
-                    doc.select("div#workskin > div.preface.group > h3.byline.heading")
-                        .map{ element -> User.from(element.text(), hasUrl = false) }
-                } else {
-                    it.map { element -> User.from(element.text(), hasUrl = true) }
-                }
-            }
-            val datetime = workIndex.selectFirst("li.bookmark.blurb > div.header > p.datetime")
-                .text()
-                .let {
-                    LocalDate.parse(
-                        it,
-                        DateTimeFormatter.ofPattern("dd MMM yyyy")
-                    )
-                }
-            val fandoms = fandomElements.map { it.text() }
-
-            val categories = requiredTags[2].text().split(", ")
-                .mapNotNull { Category.fromName(it) }
-
             // execute code based on type of item
-            val titleLink = header.first().attr("href")
+            val titleLink = workIndex.selectFirst("h4.heading > a[href]")
+                .attr("href")
             with(titleLink) {
                 when {
                     startsWith("/works/") -> {
-                        val id = titleLink.removePrefix("/works/").toLong()
-                        val rating = requiredTags[0].text().let { Rating.fromName(it) }
-                        val warnings = userTags.select("li.warnings").map { Warning.fromName(it.text()) }
-                        val relationships = userTags.select("li.relationships").map { it.text() }
-                        val characters = userTags.select("li.characters").map { it.text() }
-                        val freeforms = userTags.select("li.freeforms").map { it.text() }
-                        val giftees = header.next().select(":not(a[rel=author])")
-                            .map { User.from(it.text(), hasUrl = true) }  // pseuds can be parsed based on names alone
-                        val summary = workIndex.selectFirst("blockquote.userstuff.summary")
-                            .text()
-                            .let { Html(it) }
-                        val language = stats.select("dd.language").text().let { Language.fromName(it) }
-                        val currentChapterCount = chapterInfo[0].replace(",","").toInt()
-                        val maxChapterCount = chapterInfo[1].toIntOrNull() ?: 0
-                        val words = stats.select("dd.words")
-                            .text()
-                            .replace(",","")
-                            .let { if (it.isBlank()) 0 else it.toInt() }
-                        val bookmarks = stats.select("dd.bookmarks").text().toIntOrNull() ?: 0
-                        val comments = stats.select("dd.comments").text().toIntOrNull() ?: 0
-                        val kudos = stats.select("dd.kudos").text().toIntOrNull() ?: 0
-                        val hits = stats.select("dd.hits").text().toIntOrNull() ?: 0
-
-                        val blurb = WorkBlurb(
-                            id = id,
-                            title = title,
-                            authors = authors,
-                            giftees = giftees,
-                            lastUpdatedDate = datetime,
-                            fandoms = fandoms,
-                            rating = rating,
-                            warnings = warnings,
-                            categories = categories,
-                            characters = characters,
-                            relationships = relationships,
-                            freeforms = freeforms,
-                            summary = summary,
-                            language = language,
-                            wordCount = words,
-                            chapterCount = currentChapterCount,
-                            maxChapterCount = maxChapterCount,
-                            commentCount = comments,
-                            kudosCount = kudos,
-                            bookmarkCount = bookmarks,
-                            hitCount = hits,
-                        )
-
+                        val blurb = Converter.parseWorkBlurbSnippet(workIndex)
                         return@map WorkBookmarksBlurb(blurb, bookmarkSummaries)
                     }
                     startsWith("/series/") -> {
-                        val id = titleLink.removePrefix("/series/").toLong()
-                        val ratings = requiredTags[0].text()
-                            .split(", ")
-                            .map { Rating.fromName(it) }
-                        val warnings = userTags.select("li.warnings").map { Warning.fromName(it.text()) }
-                        val relationships = userTags.select("li.relationships").map { it.text() }
-                        val characters = userTags.select("li.characters").map { it.text() }
-                        val freeforms = userTags.select("li.freeforms").map { it.text() }
-                        val summary = workIndex.selectFirst("blockquote.userstuff.summary")
-                            ?.text()
-                            ?.let { Html(it) }
-                            ?: Html("")
-
-                        val statsNumbers = stats.select("dd").map {
-                            it.text()
-                                .replace(",","")
-                                .toInt()
-                        }
-                        // order is always words - workcount - bookmarks (optional)
-                        val words = statsNumbers[0]
-                        val workCount = statsNumbers[1]
-                        val bookmarks = statsNumbers.getOrElse(2) { 0 }
-
-                        val blurb = SeriesBlurb(
-                            id = id,
-                            title = title,
-                            authors = authors,
-                            lastUpdatedDate = datetime,
-                            fandoms = fandoms,
-                            ratings = ratings,
-                            warnings = warnings,
-                            categories = categories,
-                            characters = characters,
-                            relationships = relationships,
-                            freeforms = freeforms,
-                            summary = summary,
-                            wordCount = words,
-                            workCount = workCount,
-                            bookmarkCount = bookmarks
-                        )
-
+                        val blurb = Converter.parseSeriesBlurbSnippet(workIndex)
                         return@map SeriesBookmarksBlurb(blurb, bookmarkSummaries)
                     }
                     startsWith("/external_works/") -> {
-                        val id = titleLink.removePrefix("/external_works/").toLong()
-                        val rating = requiredTags[0].text().let { Rating.fromName(it) }
-                        val relationships = userTags.select("li.relationships").map { it.text() }
-                        val characters = userTags.select("li.characters").map { it.text() }
-                        val freeforms = userTags.select("li.freeforms").map { it.text() }
-                        val summary = workIndex.selectFirst("blockquote.userstuff.summary")
-                            .text()
-                            .let { Html(it) }
-                        val bookmarks = stats
-                            .select("dd > a[href]")
-                            .first { it.attr("href").endsWith("/bookmarks") }
-                            .text()
-                            .replace(",", "")
-                            .toInt()
-
-                        val blurb = ExternalWorkBlurb(
-                            id = id,
-                            title = title,
-                            authors = authors,
-                            lastUpdatedDate = datetime,
-                            fandoms = fandoms,
-                            rating = rating,
-                            categories = categories,
-                            characters = characters,
-                            relationships = relationships,
-                            freeforms = freeforms,
-                            summary = summary,
-                            bookmarkCount = bookmarks
-                        )
-
+                        val blurb = Converter.parseExternalWorkBlurbSnippet(workIndex)
                         return@map ExternalWorkBookmarksBlurb(blurb, bookmarkSummaries)
                     }
                     else -> throw IllegalArgumentException()
