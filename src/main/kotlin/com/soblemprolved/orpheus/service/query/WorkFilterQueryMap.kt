@@ -14,7 +14,7 @@ data class WorkFilterQueryMap(
 
             // default parameters
             backingMap["utf8"] = listOf("✓")
-            backingMap["commit"] = listOf("Sort+and+Filter")
+            backingMap["commit"] = listOf("Sort and Filter")
 
             // ratings
             val ratingsList = mutableListOf<String>()

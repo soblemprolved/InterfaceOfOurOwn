@@ -14,7 +14,7 @@ class BookmarkFilterQueryMap(
 
             // default parameters
             backingMap["utf8"] = listOf("✓")
-            backingMap["commit"] = listOf("Sort+and+Filter")
+            backingMap["commit"] = listOf("Sort and Filter")
 
             // ratings
             val includedRatingsList = mutableListOf<String>()
