@@ -1,6 +1,7 @@
 package com.soblemprolved.orpheus.service.requests
 
 import com.soblemprolved.orpheus.model.CollectionFilterParameters
+import com.soblemprolved.orpheus.service.converters.CollectionsSearchConverter
 import com.soblemprolved.orpheus.service.converters.Converter
 import com.soblemprolved.orpheus.service.query.CollectionFilterQueryMap
 import com.soblemprolved.orpheus.service.requests.AO3Request.Companion.BASE_HTTP_URL_BUILDER_CONFIGURATION
@@ -23,4 +24,11 @@ class CollectionsSearchRequest<T>(
         .build()
 
     override val headers = HTML_HEADERS
+
+    companion object {
+        fun withDefaultConverter(filterParameters: CollectionFilterParameters, page: Int)
+        : CollectionsSearchRequest<CollectionsSearchConverter.Result> {
+            return CollectionsSearchRequest(filterParameters, page, converter = CollectionsSearchConverter)
+        }
+    }
 }
