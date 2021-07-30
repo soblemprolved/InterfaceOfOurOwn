@@ -1,11 +1,15 @@
 package com.soblemprolved.orpheus.model
 
+import java.time.LocalDate
+
+// TODO: start at profile section of collection - add in more fields, esp related to challenges
 data class Collection(
     val id: String,
     val name: String,
+    val dateCreated: LocalDate,
     val isOpen: Boolean,
     val isModerated: Boolean,
-    val isRevealed: Boolean,
+    val isUnrevealed: Boolean,
     val isAnonymous: Boolean,
     val challenge: ChallengeType,
     val summary: Html,

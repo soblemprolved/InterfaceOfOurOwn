@@ -1,6 +1,7 @@
 package com.soblemprolved.orpheus.service.converters
 
 import com.soblemprolved.orpheus.model.*
+import com.soblemprolved.orpheus.model.Collection
 import okhttp3.Response
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
@@ -271,8 +272,59 @@ interface Converter<T> {
             )
         }
 
+        /**
+         * The top-level tags of the html snippet must match one of the following patterns:
+         * 1. `<li class="collection picture blurb group" role="article">`
+         */
         fun parseCollectionBlurbElement(collectionBlurbElement: Element): CollectionBlurb {
-            TODO()
+            val heading = collectionBlurbElement.selectFirst("li.collection.blurb > div.header > h4.heading")
+            val title = heading.selectFirst("h4.heading > a[href]")
+                .text()
+            val id = heading.selectFirst("h4.heading > span.name")
+                .text()
+                .removePrefix("(")
+                .removeSuffix(")")
+            val users = heading.select("h4.heading > a[href^=/users/]")
+                .map { UserName.from(it.text(), true) }
+            val date = collectionBlurbElement.selectFirst("li.collection.blurb > div.header > p.datetime")
+                .text()
+                .let {
+                    LocalDate.parse(
+                        it,
+                        DateTimeFormatter.ofPattern("dd MMM yyyy")
+                    )
+                }
+            val summary = collectionBlurbElement.selectFirst("li.collection.blurb > blockquote.userstuff.summary")
+                .html()
+                .let { Html(it) }
+            val types = collectionBlurbElement.selectFirst("li.collection.blurb > p.type")
+                .text()
+                .removePrefix("(")
+                .removeSuffix(")")
+                .split(", ")
+
+            val isOpen = types[0] == "Open"
+            val isModerated = types[1] == "Moderated"
+            val isUnrevealed = types.contains("Unrevealed")
+            val isAnonymous = types.contains("Anonymous")
+            val challengeType = when {
+                types.contains("Gift Exchange Challenge") -> ChallengeType.GIFT_EXCHANGE
+                types.contains("Prompt Meme Challenge") -> ChallengeType.PROMPT_MEME
+                else -> ChallengeType.NO_CHALLENGE
+            }
+
+            return CollectionBlurb(
+                id = id,
+                name = title,
+                dateCreated = date,
+                isOpen = isOpen,
+                isModerated = isModerated,
+                isUnrevealed = isUnrevealed,
+                isAnonymous = isAnonymous,
+                challenge = challengeType,
+                summary = summary,
+                maintainers = users
+            )
         }
 
         fun parseCommentElement(commentElement: Element): Comment {
