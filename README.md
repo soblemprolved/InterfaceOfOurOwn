@@ -39,14 +39,14 @@ Then add the dependency to your module's `build.gradle.kts`:
 
 ``` kotlin
 // build.gradle.kts
-implementation("com.github.soblemprolved:orpheus:0.1.1")
+implementation("com.github.soblemprolved:orpheus:0.2.0-beta")
 ```
 
 or `build.gradle`:
 
 ``` groovy
 // build.gradle
-implementation 'com.github.soblemprolved:orpheus:0.1.1'
+implementation 'com.github.soblemprolved:orpheus:0.2.0-beta'
 ```
 
 ## What can it do?

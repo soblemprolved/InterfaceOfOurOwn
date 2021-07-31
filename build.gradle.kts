@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     kotlin("jvm") version "1.5.10"
     kotlin("plugin.serialization") version "1.5.10"
-    maven
+    `maven-publish`
 }
 
 group = "com.github.soblemprolved"
@@ -37,4 +37,15 @@ java {
     targetCompatibility = JavaVersion.VERSION_1_8
     withSourcesJar()
     withJavadocJar()
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "com.github.soblemprolved"
+            artifactId = "orpheus"
+
+            from(components["java"])
+        }
+    }
 }
