@@ -1,6 +1,6 @@
 package com.soblemprolved.orpheus
 
-import com.soblemprolved.orpheus.extensions.AO3ClientParameterResolver
+import com.soblemprolved.orpheus.utilities.AO3ClientParameterResolver
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Test
 

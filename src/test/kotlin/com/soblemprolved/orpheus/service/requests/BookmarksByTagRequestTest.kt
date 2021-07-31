@@ -1,7 +1,7 @@
 package com.soblemprolved.orpheus.service.requests
 
 import com.soblemprolved.orpheus.AO3Client
-import com.soblemprolved.orpheus.extensions.AO3ClientParameterResolver
+import com.soblemprolved.orpheus.utilities.AO3ClientParameterResolver
 import com.soblemprolved.orpheus.model.BookmarkFilterParameters
 import com.soblemprolved.orpheus.service.models.AO3Response
 import kotlinx.coroutines.runBlocking

@@ -1,4 +1,4 @@
-package com.soblemprolved.orpheus.extensions
+package com.soblemprolved.orpheus.utilities
 
 import com.soblemprolved.orpheus.AO3Client
 import okhttp3.OkHttpClient

@@ -1,7 +1,7 @@
 package com.soblemprolved.orpheus.service.requests
 
 import com.soblemprolved.orpheus.AO3Client
-import com.soblemprolved.orpheus.extensions.AO3ClientParameterResolver
+import com.soblemprolved.orpheus.utilities.AO3ClientParameterResolver
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
