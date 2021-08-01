@@ -31,7 +31,7 @@ internal fun main(args: Array<String>) {
 
     val response = client.newCall(req).execute()
 
-    val file = File("C:\\Users\\Yingfeng\\Documents\\Orpheus\\src\\test\\resources\\responses\\works-by-tag\\nonstandard-works-with-no-rating.html")
+    val file = File("src/test/resources/responses/bookmarks-by-tag/bookmarks-with-ext-works.txt")
     if (!file.exists()) file.createNewFile()
 
     file.bufferedWriter()
