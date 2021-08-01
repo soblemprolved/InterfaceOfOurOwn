@@ -13,17 +13,7 @@ internal fun main(args: Array<String>) {
     val client = OkHttpClient()
 
     // get response
-    val request = WorksByTagRequest.withDefaultConverter(
-        "Marvel",
-        WorkFilterParameters(
-            showRatingGeneral = false,
-            showRatingTeen = false,
-            showRatingMature = false,
-            showRatingExplicit = false,
-            showRatingNotRated = false
-        ),
-        1
-    )
+    val request = WorkRequest.withDefaultConverter(29169678)
 
     val req = Request.Builder()
         .url(request.url)
@@ -31,7 +21,7 @@ internal fun main(args: Array<String>) {
 
     val response = client.newCall(req).execute()
 
-    val file = File("src/test/resources/responses/bookmarks-by-tag/bookmarks-with-ext-works.txt")
+    val file = File("src/test/resources/responses/works/single-giftee_family-ties.in")
     if (!file.exists()) file.createNewFile()
 
     file.bufferedWriter()

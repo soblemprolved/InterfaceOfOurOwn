@@ -116,10 +116,12 @@ object WorkConverter : Converter<WorkConverter.Result> {
                 }
             }
 
-
         val giftees = doc
-            .select("#workskin > div.preface.group > div.notes.module > ul.associations > li > a")
-            .map { UserName.from(it.text(), hasUrl = true) }  // pseuds can be parsed based on names alone
+            // select the first li, its either gifts or inspirations
+            .selectFirst("#workskin > div.preface.group > div.notes.module > ul.associations > li")
+            ?.select("li > a[href$=/gifts]")
+            ?.map { UserName.from(it.text(), hasUrl = true) }  // pseuds can be parsed based on names alone
+            ?: listOf()
 
         val preWorkNotes = Html(
             doc.select("#workskin > div.preface.group > div.notes.module > blockquote.userstuff")

@@ -1,0 +1,2250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+<script>window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","errorBeacon":"bam-cell.nr-data.net","licenseKey":"f2edcff25e","applicationID":"190034","transactionName":"dgwMEkpfWVsHERpFWUcIEUlLWFpA","queueTime":0,"applicationTime":80,"agent":""}</script>
+<script>(window.NREUM||(NREUM={})).loader_config={xpid:"VQcCWV9RGwIJVFFRAw==",licenseKey:"f2edcff25e",applicationID:"190034"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(t){try{s.console&&console.log(t)}catch(e){}}var i,o=t("ee"),a=t(25),s={};try{i=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,i.indexOf("dev")!==-1&&(s.dev=!0),i.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&o.on("internal-error",function(t){r(t.stack)}),s.dev&&o.on("fn-err",function(t,e,n){r(n.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,s){try{p?p-=1:i(s||new UncaughtException(t,e,n),!0)}catch(f){try{o("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function i(t,e){var n=e?null:c.now();o("err",[t,n])}var o=t("handle"),a=t(26),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,l="nr@seenError";if(!c.disabled){var p=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(9),t(8),"addEventListener"in window&&t(5),c.xhrWrappable&&t(10),d=!0)}s.on("fn-start",function(t,e,n){d&&(p+=1)}),s.on("fn-err",function(t,e,n){d&&!n[l]&&(f(n,l,function(){return!0}),this.thrown=!0,i(n))}),s.on("fn-end",function(){d&&!this.thrown&&p>0&&(p-=1)}),s.on("internal-error",function(t){o("ierr",[t,c.now(),!0])})}},{}],3:[function(t,e,n){var r=t("loader");r.disabled||(r.features.ins=!0)},{}],4:[function(t,e,n){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var i=t("ee"),o=t("handle"),a=t(9),s=t(8),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",l="resource",p="-start",h="-end",m="fn"+p,w="fn"+h,v="bstTimer",g="pushState",y=t("loader");if(!y.disabled){y.features.stn=!0,t(7),"addEventListener"in window&&t(5);var x=NREUM.o.EV;i.on(m,function(t,e){var n=t[0];n instanceof x&&(this.bstStart=y.now())}),i.on(w,function(t,e){var n=t[0];n instanceof x&&o("bst",[n,e,this.bstStart,y.now()])}),a.on(m,function(t,e,n){this.bstStart=y.now(),this.bstType=n}),a.on(w,function(t,e){o(v,[e,this.bstStart,y.now(),this.bstType])}),s.on(m,function(){this.bstStart=y.now()}),s.on(w,function(t,e){o(v,[e,this.bstStart,y.now(),"requestAnimationFrame"])}),i.on(g+p,function(t){this.time=y.now(),this.startPath=location.pathname+location.hash}),i.on(g+h,function(t){o("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){o(d,[window.performance.getEntriesByType(l)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){o(d,[window.performance.getEntriesByType(l)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}}},{}],5:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&i(e)}function i(t){s.inPlace(t,[u,d],"-",o)}function o(t,e){return t[1]}var a=t("ee").get("events"),s=t("wrap-function")(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(i(window),i(f.prototype)),a.on(u+"-start",function(t,e){var n=t[1],r=c(n,"nr@wrapped",function(){function t(){if("function"==typeof n.handleEvent)return n.handleEvent.apply(n,arguments)}var e={object:t,"function":n}[typeof n];return e?s(e,"fn-",null,e.name||"anonymous"):n});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],6:[function(t,e,n){function r(t,e,n){var r=t[e];"function"==typeof r&&(t[e]=function(){var t=o(arguments),e={};i.emit(n+"before-start",[t],e);var a;e[m]&&e[m].dt&&(a=e[m].dt);var s=r.apply(this,t);return i.emit(n+"start",[t,a],s),s.then(function(t){return i.emit(n+"end",[null,t],s),t},function(t){throw i.emit(n+"end",[t],s),t})})}var i=t("ee").get("fetch"),o=t(26),a=t(25);e.exports=i;var s=window,c="fetch-",f=c+"body-",u=["arrayBuffer","blob","json","text","formData"],d=s.Request,l=s.Response,p=s.fetch,h="prototype",m="nr@context";d&&l&&p&&(a(u,function(t,e){r(d[h],e,f),r(l[h],e,f)}),r(s,"fetch",c),i.on(c+"end",function(t,e){var n=this;if(e){var r=e.headers.get("content-length");null!==r&&(n.rxSize=r),i.emit(c+"done",[null,e],n)}else i.emit(c+"done",[t],n)}))},{}],7:[function(t,e,n){var r=t("ee").get("history"),i=t("wrap-function")(r);e.exports=r;var o=window.history&&window.history.constructor&&window.history.constructor.prototype,a=window.history;o&&o.pushState&&o.replaceState&&(a=o),i.inPlace(a,["pushState","replaceState"],"-")},{}],8:[function(t,e,n){var r=t("ee").get("raf"),i=t("wrap-function")(r),o="equestAnimationFrame";e.exports=r,i.inPlace(window,["r"+o,"mozR"+o,"webkitR"+o,"msR"+o],"raf-"),r.on("raf-start",function(t){t[0]=i(t[0],"fn-")})},{}],9:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function i(t,e,n){this.method=n,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,n)}var o=t("ee").get("timer"),a=t("wrap-function")(o),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";e.exports=o,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),o.on(c+u,r),o.on(s+u,i)},{}],10:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",s)}function i(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,g,"fn-",s)}function o(t){y.push(t),h&&(b?b.then(a):w?w(a):(E=-E,R.data=E))}function a(){for(var t=0;t<y.length;t++)r([],y[t]);y.length&&(y=[])}function s(t,e){return e}function c(t,e){for(var n in t)e[n]=t[n];return e}t(5);var f=t("ee"),u=f.get("xhr"),d=t("wrap-function")(u),l=NREUM.o,p=l.XHR,h=l.MO,m=l.PR,w=l.SI,v="readystatechange",g=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],y=[];e.exports=u;var x=window.XMLHttpRequest=function(t){var e=new p(t);try{u.emit("new-xhr",[e],e),e.addEventListener(v,i,!1)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(c(p,x),x.prototype=p.prototype,d.inPlace(x.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,e){r(t,e),o(e)}),u.on("open-xhr-start",r),h){var b=m&&m.resolve();if(!w&&!m){var E=1,R=document.createTextNode(E);new h(a).observe(R,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===v||a()})},{}],11:[function(t,e,n){function r(t){if(!s(t))return null;var e=window.NREUM;if(!e.loader_config)return null;var n=(e.loader_config.accountID||"").toString()||null,r=(e.loader_config.agentID||"").toString()||null,f=(e.loader_config.trustKey||"").toString()||null;if(!n||!r)return null;var h=p.generateSpanId(),m=p.generateTraceId(),w=Date.now(),v={spanId:h,traceId:m,timestamp:w};return(t.sameOrigin||c(t)&&l())&&(v.traceContextParentHeader=i(h,m),v.traceContextStateHeader=o(h,w,n,r,f)),(t.sameOrigin&&!u()||!t.sameOrigin&&c(t)&&d())&&(v.newrelicHeader=a(h,m,w,n,r,f)),v}function i(t,e){return"00-"+e+"-"+t+"-01"}function o(t,e,n,r,i){var o=0,a="",s=1,c="",f="";return i+"@nr="+o+"-"+s+"-"+n+"-"+r+"-"+t+"-"+a+"-"+c+"-"+f+"-"+e}function a(t,e,n,r,i,o){var a="btoa"in window&&"function"==typeof window.btoa;if(!a)return null;var s={v:[0,1],d:{ty:"Browser",ac:r,ap:i,id:t,tr:e,ti:n}};return o&&r!==o&&(s.d.tk=o),btoa(JSON.stringify(s))}function s(t){return f()&&c(t)}function c(t){var e=!1,n={};if("init"in NREUM&&"distributed_tracing"in NREUM.init&&(n=NREUM.init.distributed_tracing),t.sameOrigin)e=!0;else if(n.allowed_origins instanceof Array)for(var r=0;r<n.allowed_origins.length;r++){var i=h(n.allowed_origins[r]);if(t.hostname===i.hostname&&t.protocol===i.protocol&&t.port===i.port){e=!0;break}}return e}function f(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.enabled}function u(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.exclude_newrelic_header}function d(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&NREUM.init.distributed_tracing.cors_use_newrelic_header!==!1}function l(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.cors_use_tracecontext_headers}var p=t(22),h=t(13);e.exports={generateTracePayload:r,shouldGenerateTrace:s}},{}],12:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<l;r++)t.removeEventListener(d[r],this.listener,!1);e.aborted||(n.duration=a.now()-this.startTime,this.loadCaptureCalled||4!==t.readyState?null==e.status&&(e.status=0):o(this,t),n.cbTime=this.cbTime,u.emit("xhr-done",[t],t),s("xhr",[e,n,this.startTime]))}}function i(t,e){var n=c(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.parsedOrigin=n,t.sameOrigin=n.sameOrigin}function o(t,e){t.params.status=e.status;var n=w(e,t.lastSize);if(n&&(t.metrics.rxSize=n),t.sameOrigin){var r=e.getResponseHeader("X-NewRelic-App-Data");r&&(t.params.cat=r.split(", ").pop())}t.loadCaptureCalled=!0}var a=t("loader");if(a.xhrWrappable&&!a.disabled){var s=t("handle"),c=t(13),f=t(11).generateTracePayload,u=t("ee"),d=["load","error","abort","timeout"],l=d.length,p=t("id"),h=t(18),m=t(17),w=t(14),v=NREUM.o.REQ,g=window.XMLHttpRequest;a.features.xhr=!0,t(10),t(6),u.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,e.loadCaptureCalled=!1,e.params=this.params||{},e.metrics=this.metrics||{},t.addEventListener("load",function(n){o(e,t)},!1),h&&(h>34||h<10)||window.opera||t.addEventListener("progress",function(t){e.lastSize=t.loaded},!1)}),u.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),u.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid);var n=f(this.parsedOrigin);if(n){var r=!1;n.newrelicHeader&&(e.setRequestHeader("newrelic",n.newrelicHeader),r=!0),n.traceContextParentHeader&&(e.setRequestHeader("traceparent",n.traceContextParentHeader),n.traceContextStateHeader&&e.setRequestHeader("tracestate",n.traceContextStateHeader),r=!0),r&&(this.dt=n)}}),u.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],i=this;if(n&&r){var o=m(r);o&&(n.txSize=o)}this.startTime=a.now(),this.listener=function(t){try{"abort"!==t.type||i.loadCaptureCalled||(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof e.onload))&&i.end(e)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}};for(var s=0;s<l;s++)e.addEventListener(d[s],this.listener,!1)}),u.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),u.on("xhr-load-added",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),u.on("xhr-load-removed",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),u.on("addEventListener-end",function(t,e){e instanceof g&&"load"===t[0]&&u.emit("xhr-load-added",[t[1],t[2]],e)}),u.on("removeEventListener-end",function(t,e){e instanceof g&&"load"===t[0]&&u.emit("xhr-load-removed",[t[1],t[2]],e)}),u.on("fn-start",function(t,e,n){e instanceof g&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),u.on("fn-end",function(t,e){this.xhrCbStart&&u.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,e],e)}),u.on("fetch-before-start",function(t){function e(t,e){var n=!1;return e.newrelicHeader&&(t.set("newrelic",e.newrelicHeader),n=!0),e.traceContextParentHeader&&(t.set("traceparent",e.traceContextParentHeader),e.traceContextStateHeader&&t.set("tracestate",e.traceContextStateHeader),n=!0),n}var n,r=t[1]||{};"string"==typeof t[0]?n=t[0]:t[0]&&t[0].url?n=t[0].url:window.URL&&t[0]&&t[0]instanceof URL&&(n=t[0].href),n&&(this.parsedOrigin=c(n),this.sameOrigin=this.parsedOrigin.sameOrigin);var i=f(this.parsedOrigin);if(i&&(i.newrelicHeader||i.traceContextParentHeader))if("string"==typeof t[0]||window.URL&&t[0]&&t[0]instanceof URL){var o={};for(var a in r)o[a]=r[a];o.headers=new Headers(r.headers||{}),e(o.headers,i)&&(this.dt=i),t.length>1?t[1]=o:t.push(o)}else t[0]&&t[0].headers&&e(t[0].headers,i)&&(this.dt=i)}),u.on("fetch-start",function(t,e){this.params={},this.metrics={},this.startTime=a.now(),t.length>=1&&(this.target=t[0]),t.length>=2&&(this.opts=t[1]);var n,r=this.opts||{},o=this.target;"string"==typeof o?n=o:"object"==typeof o&&o instanceof v?n=o.url:window.URL&&"object"==typeof o&&o instanceof URL&&(n=o.href),i(this,n);var s=(""+(o&&o instanceof v&&o.method||r.method||"GET")).toUpperCase();this.params.method=s,this.txSize=m(r.body)||0}),u.on("fetch-done",function(t,e){this.params||(this.params={}),this.params.status=e?e.status:0;var n;"string"==typeof this.rxSize&&this.rxSize.length>0&&(n=+this.rxSize);var r={txSize:this.txSize,rxSize:n,duration:a.now()-this.startTime};s("xhr",[this.params,r,this.startTime])})}},{}],13:[function(t,e,n){var r={};e.exports=function(t){if(t in r)return r[t];var e=document.createElement("a"),n=window.location,i={};e.href=t,i.port=e.port;var o=e.href.split("://");!i.port&&o[1]&&(i.port=o[1].split("/")[0].split("@").pop().split(":")[1]),i.port&&"0"!==i.port||(i.port="https"===o[0]?"443":"80"),i.hostname=e.hostname||n.hostname,i.pathname=e.pathname,i.protocol=o[0],"/"!==i.pathname.charAt(0)&&(i.pathname="/"+i.pathname);var a=!e.protocol||":"===e.protocol||e.protocol===n.protocol,s=e.hostname===document.domain&&e.port===n.port;return i.sameOrigin=a&&(!e.hostname||s),"/"===i.pathname&&(r[t]=i),i}},{}],14:[function(t,e,n){function r(t,e){var n=t.responseType;return"json"===n&&null!==e?e:"arraybuffer"===n||"blob"===n||"json"===n?i(t.response):"text"===n||""===n||void 0===n?i(t.responseText):void 0}var i=t(17);e.exports=r},{}],15:[function(t,e,n){function r(){}function i(t,e,n){return function(){return o(t,[f.now()].concat(s(arguments)),e?null:this,n),e?void 0:this}}var o=t("handle"),a=t(25),s=t(26),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",p=l+"ixn-";a(d,function(t,e){u[e]=i(l+e,!0,"api")}),u.addPageAction=i(l+"addPageAction",!0),u.setCurrentRouteName=i(l+"routeName",!0),e.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(p+"tracer",[f.now(),t,n],r),function(){if(c.emit((i?"":"no-")+"fn-start",[f.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[f.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){h[e]=i(p+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),o("err",[t,f.now(),!1,e])}},{}],16:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],17:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],18:[function(t,e,n){var r=0,i=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);i&&(r=+i[1]),e.exports=r},{}],19:[function(t,e,n){function r(){return s.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,s=t(27);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],20:[function(t,e,n){function r(t){return!(!t||!t.protocol||"file:"===t.protocol)}e.exports=r},{}],21:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?d("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&d("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||d("cls",[t])})}function a(t){if(t instanceof h&&!w){var e=Math.round(t.timeStamp),n={type:t.type};e<=l.now()?n.fid=l.now()-e:e>l.offset&&e<=Date.now()?(e-=l.offset,n.fid=l.now()-e):e=l.now(),w=!0,d("timing",["fi",e,n])}}function s(t){"hidden"===t&&d("pageHide",[l.now()])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var c,f,u,d=t("handle"),l=t("loader"),p=t(24),h=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){c=new PerformanceObserver(r);try{c.observe({entryTypes:["paint"]})}catch(m){}f=new PerformanceObserver(i);try{f.observe({entryTypes:["largest-contentful-paint"]})}catch(m){}u=new PerformanceObserver(o);try{u.observe({type:"layout-shift",buffered:!0})}catch(m){}}if("addEventListener"in document){var w=!1,v=["click","keydown","mousedown","pointerdown","touchstart"];v.forEach(function(t){document.addEventListener(t,a,!1)})}p(s)}},{}],22:[function(t,e,n){function r(){function t(){return e?15&e[n++]:16*Math.random()|0}var e=null,n=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&(e=r.getRandomValues(new Uint8Array(31)));for(var i,o="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx",a="",s=0;s<o.length;s++)i=o[s],"x"===i?a+=t().toString(16):"y"===i?(i=3&t()|8,a+=i.toString(16)):a+=i;return a}function i(){return a(16)}function o(){return a(32)}function a(t){function e(){return n?15&n[r++]:16*Math.random()|0}var n=null,r=0,i=window.crypto||window.msCrypto;i&&i.getRandomValues&&Uint8Array&&(n=i.getRandomValues(new Uint8Array(31)));for(var o=[],a=0;a<t;a++)o.push(e().toString(16));return o.join("")}e.exports={generateUuid:r,generateSpanId:i,generateTraceId:o}},{}],23:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],24:[function(t,e,n){function r(t){function e(){t(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,e,!1)}e.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],25:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],26:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],27:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?f(t,c,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!p.aborted||o){t&&a&&t(n,r,i);for(var s=e(i),c=m(n),f=c.length,u=0;u<f;u++)c[u].apply(s,r);var l=d[y[n]];return l&&l.push([x,n,r,s]),s}}function o(t,e){g[t]=m(t).concat(e)}function h(t,e){var n=g[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function m(t){return g[t]||[]}function w(t){return l[t]=l[t]||i(n)}function v(t,e){p.aborted||u(t,function(t,n){e=e||"feature",y[n]=e,e in d||(d[e]=[])})}var g={},y={},x={on:o,addEventListener:o,removeEventListener:h,emit:n,get:w,listeners:m,context:e,buffer:v,abort:s,aborted:!1};return x}function o(t){return f(t,c,a)}function a(){return new r}function s(){(d.api||d.feature)&&(p.aborted=!0,d=p.backlog={})}var c="nr@context",f=t("gos"),u=t(25),d={},l={},p=e.exports=i();e.exports.getOrSetContext=o,p.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!O++){var t=S.info=NREUM.info,e=m.getElementsByTagName("script")[0];if(setTimeout(f.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return f.abort();c(E,function(e,n){t[e]||(t[e]=n)});var n=a();s("mark",["onload",n+S.offset],null,"api"),s("timing",["load",n]);var r=m.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=p+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===m.readyState&&o()}function o(){s("mark",["domContent",a()+S.offset],null,"api")}var a=t(19),s=t("handle"),c=t(25),f=t("ee"),u=t(23),d=t(20),l=t(16),p=l.getConfiguration("ssl")===!1?"http":"https",h=window,m=h.document,w="addEventListener",v="attachEvent",g=h.XMLHttpRequest,y=g&&g.prototype,x=!d(h.location);NREUM.o={ST:setTimeout,SI:h.setImmediate,CT:clearTimeout,XHR:g,REQ:h.Request,EV:h.Event,PR:h.Promise,MO:h.MutationObserver};var b=""+location,E={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1210.min.js"},R=g&&y&&y[w]&&!/CriOS/.test(navigator.userAgent),S=e.exports={offset:a.getLastTimestamp(),now:a,origin:b,features:{},xhrWrappable:R,userAgent:u,disabled:x};if(!x){t(15),t(21),m[w]?(m[w]("DOMContentLoaded",o,!1),h[w]("load",r,!1)):(m[v]("onreadystatechange",i),h[v]("onload",r)),s("mark",["firstbyte",a.getLastTimestamp()],null,"api");var O=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,c,f){function nrWrapper(){var o,a,u,l;try{a=this,o=d(arguments),u="function"==typeof r?r(o,a):r||{}}catch(p){i([p,"",[o,a,c],u],t)}s(n+"start",[o,a,c],u,f);try{return l=e.apply(a,o)}catch(h){throw s(n+"err",[o,a,h],u,f),h}finally{s(n+"end",[o,a,l],u,f)}}return a(e)?e:(n||(n=""),nrWrapper[l]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var s,c,f,u="-"===r.charAt(0);for(f=0;f<e.length;f++)c=e[f],s=t[c],a(s)||(t[c]=n(s,u?c+r:r,i,c,o))}function s(n,r,o,a){if(!h||e){var s=h;h=!0;try{t.emit(n,r,o,e,a)}catch(c){i([c,n,r,o],t)}h=s}}return t||(t=u),n.inPlace=r,n.flag=l,n}function i(t,e){e||(e=u);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)p.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[l])}function s(t,e){var n=e(t);return n[l]=t,o(t,n,u),n}function c(t,e,n){var r=t[e];t[e]=s(r,n)}function f(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var u=t("ee"),d=t(26),l="nr@original",p=Object.prototype.hasOwnProperty,h=!1;e.exports=r,e.exports.wrapFunction=s,e.exports.wrapInPlace=c,e.exports.argsToArray=f},{}]},{},["loader",2,12,4,3]);</script>
+    <meta name="keywords" content="fanfiction, transformative works, otw, fair use, archive"/>
+    <meta name="language" content="en-US"/>
+    <meta name="subject" content="fandom"/>
+    <meta name="description" content="An Archive of Our Own, a project of the
+    Organization for Transformative Works"/>
+    <meta name="distribution" content="GLOBAL"/>
+    <meta name="classification" content="transformative works"/>
+    <meta name="author" content="Organization for Transformative Works"/>
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>
+        Come as you are - PatriTheThug - Harry Potter - J. K. Rowling [Archive of Our Own]
+    </title>
+
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/01-core.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/02-elements.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/03-region-header.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/04-region-dashboard.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/05-region-main.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/06-region-footer.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/07-interactions.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/08-actions.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/09-roles-states.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/10-types-groups.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/11-group-listbox.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/12-group-meta.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/13-group-blurb.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/14-group-preface.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/15-group-comments.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/16-zone-system.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/17-zone-home.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/18-zone-searchbrowse.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/19-zone-tags.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/20-zone-translation.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/21-userstuff.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/22-system-messages.css"/>
+
+
+<link rel="stylesheet" type="text/css" media="only screen and (max-width: 62em), handheld" href="/stylesheets/site/2.0/25-media-midsize.css"/>
+<link rel="stylesheet" type="text/css" media="only screen and (max-width: 42em), handheld" href="/stylesheets/site/2.0/26-media-narrow.css"/>
+<link rel="stylesheet" type="text/css" media="speech" href="/stylesheets/site/2.0/27-media-aural.css"/>
+<link rel="stylesheet" type="text/css" media="print" href="/stylesheets/site/2.0/28-media-print.css"/>
+<!--[if lte IE 8]><link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/29-role-ie8_or_lower.css" /><![endif]-->
+<!--[if IE 5]><link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/30-role-ie5.css" /><![endif]-->
+<!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/31-role-ie6.css" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/site/2.0/32-role-ie7.css" /><![endif]-->
+
+
+
+<!--sandbox for developers	-->
+<link rel="stylesheet" media="screen" href="/stylesheets/sandbox.css"/>
+<script src="/javascripts/livevalidation_standalone.js"></script>
+
+<meta name="csrf-param" content="authenticity_token"/>
+<meta name="csrf-token" content="Gmm4HuT57Kwe8lPXQ0S3VrUxDhn4xNSJL6Smq47Ob2EM0s4v3YPzw8WxtYGqlASQjHftO2-6rOi6ZGAoDwcFTA"/>
+
+    
+  </head>
+
+  <body class="logged-out">
+    <div id="outer" class="wrapper">
+      <ul id="skiplinks"><li><a href="#main">Main Content</a></li></ul>
+      <!-- BEGIN BETA CAVEATS! -->
+<noscript>
+  <p id="javascript-warning">
+    While we&#39;ve done our best to make the core functionality of this site accessible without javascript, it will work better with it enabled. Please consider turning it on!
+  </p>
+</noscript>
+<!-- END BETA CAVEATS! --> 
+
+<!-- BEGIN header -->
+
+<div id="header" class="region">
+
+  <h1 class="heading">
+    <a href="/"><span>Archive of Our Own</span><sup> beta</sup><img alt="Archive of Our Own" class="logo" src="/images/ao3_logos/logo_42.png"/></a> 
+  </h1>
+
+    <div id="login" class="dropdown">
+      <p class="user actions" role="menu">
+        <a id="login-dropdown" href="/users/login">Log In</a>
+      </p>
+      <div id="small_login" class="simple login">
+	<form class="new_user" id="new_user_session_small" action="/users/login" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;"/><input type="hidden" name="authenticity_token" value="GNxTko2VZ9QLmM13Ur1q7TCoygff3axD4lGXx9z6GBoOZyWjtO94u9DbKyG7bdkrCe4pJUij1CJ3kVFEXTNyNw"/>
+	<dl>
+    <dt>
+      <label for="user_session_login_small">User name or email:</label></dt>
+    <dd><input id="user_session_login_small" type="text" name="user[login]"/></dd>
+    <dt><label for="user_session_password_small">Password:</label></dt>
+    <dd><input id="user_session_password_small" type="password" name="user[password]"/></dd>
+  </dl>
+  <p class="submit actions">
+    <label for="user_remember_me_small" class="action"><input type="checkbox" name="user[remember_me]" id="user_remember_me_small" value="1"/>Remember Me</label>
+    <input type="submit" name="commit" value="Log In"/>
+  </p>
+</form>
+<ul class="footnote actions">
+  <li><a href="/users/password/new">Forgot password?</a></li>
+    <li>
+      <a href="/invite_requests">Get an Invitation</a>
+    </li>
+</ul>
+
+</div>
+
+    </div>
+
+  <h3 class="landmark heading">Site Navigation</h3>
+  <ul class="primary navigation actions" role="navigation">
+    <li class="dropdown">
+      <a href="/menu/fandoms">Fandoms</a>
+      <ul class="menu" role="menu">
+  <li><a href="/media">All Fandoms</a></li>
+        <li id="medium_5"><a href="/media/Anime%20*a*%20Manga/fandoms">Anime &amp; Manga</a></li>
+        <li id="medium_3"><a href="/media/Books%20*a*%20Literature/fandoms">Books &amp; Literature</a></li>
+        <li id="medium_4"><a href="/media/Cartoons%20*a*%20Comics%20*a*%20Graphic%20Novels/fandoms">Cartoons &amp; Comics &amp; Graphic Novels</a></li>
+        <li id="medium_7"><a href="/media/Celebrities%20*a*%20Real%20People/fandoms">Celebrities &amp; Real People</a></li>
+        <li id="medium_2"><a href="/media/Movies/fandoms">Movies</a></li>
+        <li id="medium_6"><a href="/media/Music%20*a*%20Bands/fandoms">Music &amp; Bands</a></li>
+        <li id="medium_8"><a href="/media/Other%20Media/fandoms">Other Media</a></li>
+        <li id="medium_30198"><a href="/media/Theater/fandoms">Theater</a></li>
+        <li id="medium_1"><a href="/media/TV%20Shows/fandoms">TV Shows</a></li>
+        <li id="medium_476"><a href="/media/Video%20Games/fandoms">Video Games</a></li>
+        <li id="medium_9971"><a href="/media/Uncategorized%20Fandoms/fandoms">Uncategorized Fandoms</a></li>
+</ul>
+
+    </li>
+    <li class="dropdown">
+      <a href="/menu/browse">Browse</a>
+      <ul class="menu" role="menu">
+  <li><a href="/works">Works</a></li>
+  <li><a href="/bookmarks">Bookmarks</a></li>
+  <li><a href="/tags">Tags</a></li>
+  <li><a href="/collections">Collections</a></li>
+</ul>
+
+    </li>
+    <li class="dropdown">
+      <a href="/menu/search">Search</a>
+      <ul class="menu" role="menu">
+  <li><a href="/works/search">Works</a></li>
+  <li><a href="/bookmarks/search">Bookmarks</a></li>
+  <li><a href="/tags/search">Tags</a></li>
+  <li><a href="/people/search">People</a></li>
+</ul>
+
+    </li>
+    <li class="dropdown">
+      <a href="/menu/about">About</a>
+      <ul class="menu" role="menu">
+  <li><a href="/about">About Us</a></li>
+  <li><a href="/admin_posts">News</a></li>
+  <li><a href="/faq">FAQ</a></li>
+  <li><a href="/wrangling_guidelines">Wrangling Guidelines</a></li>
+  <li><a href="/donate">Donate or Volunteer</a></li>
+</ul>
+
+    </li>
+	  <li class="search"><form class="search" id="search" action="/works/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;"/>
+  <fieldset>
+    <legend>Search Works</legend>
+    <p>
+      <label class="landmark" for="site_search">Work Search:</label>
+      <input class="text" id="site_search" aria-describedby="site_search_tooltip" type="text" name="work_search[query]"/>
+      <span class="tip" role="tooltip" id="site_search_tooltip">tip: &quot;sherlock (tv)&quot; m/m NOT &quot;sherlock holmes/john watson&quot;</span>
+      <span class="submit actions"><input type="submit" value="Search" class="button"/></span>
+    </p>
+  </fieldset>
+</form></li>
+  </ul>
+
+
+
+  <div class="clear"></div>
+
+</div>
+
+
+
+<!-- END header -->
+
+      <div id="inner" class="wrapper">
+        <!-- BEGIN sidebar -->
+        <!-- END sidebar -->
+
+        <!-- BEGIN main -->
+        <div id="main" class="works-show region" role="main">
+          
+          <div class="flash"></div>
+          <!--page description, messages-->
+<ul class="landmark skip">
+  <li><a name="top">&nbsp;</a></li>
+  <li><a href="#work">Skip header</a></li>
+</ul>
+
+<!--/descriptions-->
+
+<!--subnav-->
+<!--/subnav-->
+
+<!-- BEGIN revealed -->
+<!-- BEGIN work -->
+<!--work description, metadata, notes and messages-->
+    <!-- BEGIN navigation -->
+<h3 class="landmark heading">Actions</h3>
+<ul class="work navigation actions" role="menu">
+
+
+
+    <li class="chapter bychapter"><a href="/works/28840245/chapters/70741722">Chapter by Chapter</a></li>
+
+
+
+  <li class="comments" id="show_comments_link_top">
+      <a data-remote="true" href="/comments/show_comments?view_full_work=true&amp;work_id=28840245">Comments </a>
+  </li>
+
+
+    <li class="style">
+        <a href="/works/28840245?style=disable&amp;view_full_work=true">Hide Creator&#39;s Style</a>
+    </li>
+
+    <li class="share hidden">
+      <a class=" modal" title="Share Work" aria-controls="#modal" href="/works/28840245/share">Share</a>
+    </li>
+
+
+    <li class="download" aria-haspopup="true">
+      <a href="#">Download</a>
+      <ul class="expandable secondary">
+          <li><a href="/downloads/28840245/Come%20as%20you%20are.azw3?updated_at=1613495393">AZW3</a></li>
+          <li><a href="/downloads/28840245/Come%20as%20you%20are.epub?updated_at=1613495393">EPUB</a></li>
+          <li><a href="/downloads/28840245/Come%20as%20you%20are.mobi?updated_at=1613495393">MOBI</a></li>
+          <li><a href="/downloads/28840245/Come%20as%20you%20are.pdf?updated_at=1613495393">PDF</a></li>
+          <li><a href="/downloads/28840245/Come%20as%20you%20are.html?updated_at=1613495393">HTML</a></li>
+      </ul>
+    </li>
+</ul>
+<!-- END navigation -->
+
+
+<h3 class="landmark heading">Work Header</h3>
+
+<div class="wrapper">
+
+  <dl class="work meta group" role="complementary">
+          <dt class="rating tags">
+
+              Rating:
+          </dt>
+
+          <dd class="rating tags">
+            <ul class="commas">
+               <li><a class="tag" href="/tags/Teen%20And%20Up%20Audiences/works">Teen And Up Audiences</a></li>
+            </ul>
+          </dd>
+          <dt class="warning tags">
+
+              <a href="/tos_faq#tags">Archive Warnings</a>:
+          </dt>
+
+          <dd class="warning tags">
+            <ul class="commas">
+               <li><a class="tag" href="/tags/Graphic%20Depictions%20Of%20Violence/works">Graphic Depictions Of Violence</a></li><li><a class="tag" href="/tags/Major%20Character%20Death/works">Major Character Death</a></li>
+            </ul>
+          </dd>
+          <dt class="category tags">
+
+              Categories:
+          </dt>
+
+          <dd class="category tags">
+            <ul class="commas">
+               <li><a class="tag" href="/tags/F*s*F/works">F/F</a></li><li><a class="tag" href="/tags/F*s*M/works">F/M</a></li>
+            </ul>
+          </dd>
+          <dt class="fandom tags">
+
+              Fandom:
+          </dt>
+
+          <dd class="fandom tags">
+            <ul class="commas">
+               <li><a class="tag" href="/tags/Harry%20Potter%20-%20J*d*%20K*d*%20Rowling/works">Harry Potter - J. K. Rowling</a></li>
+            </ul>
+          </dd>
+          <dt class="relationship tags">
+
+              Relationships:
+          </dt>
+
+          <dd class="relationship tags">
+            <ul class="commas">
+               <li><a class="tag" href="/tags/Luna%20Lovegood*s*Ginny%20Weasley/works">Luna Lovegood/Ginny Weasley</a></li><li><a class="tag" href="/tags/Harry%20Potter*s*Ginny%20Weasley/works">Harry Potter/Ginny Weasley</a></li>
+            </ul>
+          </dd>
+          <dt class="character tags">
+
+              Characters:
+          </dt>
+
+          <dd class="character tags">
+            <ul class="commas">
+               <li><a class="tag" href="/tags/Ginny%20Weasley/works">Ginny Weasley</a></li><li><a class="tag" href="/tags/Luna%20Lovegood/works">Luna Lovegood</a></li><li><a class="tag" href="/tags/Harry%20Potter/works">Harry Potter</a></li><li><a class="tag" href="/tags/Ron%20Weasley/works">Ron Weasley</a></li><li><a class="tag" href="/tags/Hermione%20Granger/works">Hermione Granger</a></li><li><a class="tag" href="/tags/Colin%20Creevey/works">Colin Creevey</a></li><li><a class="tag" href="/tags/Severus%20Snape/works">Severus Snape</a></li><li><a class="tag" href="/tags/Albus%20Dumbledore/works">Albus Dumbledore</a></li><li><a class="tag" href="/tags/George%20Weasley/works">George Weasley</a></li><li><a class="tag" href="/tags/Fred%20Weasley/works">Fred Weasley</a></li><li><a class="tag" href="/tags/Molly%20Weasley/works">Molly Weasley</a></li><li><a class="tag" href="/tags/Charlie%20Weasley/works">Charlie Weasley</a></li><li><a class="tag" href="/tags/Arthur%20Weasley/works">Arthur Weasley</a></li><li><a class="tag" href="/tags/Bill%20Weasley/works">Bill Weasley</a></li><li><a class="tag" href="/tags/Sirius%20Black/works">Sirius Black</a></li><li><a class="tag" href="/tags/Remus%20Lupin/works">Remus Lupin</a></li><li><a class="tag" href="/tags/Percy%20Weasley/works">Percy Weasley</a></li><li><a class="tag" href="/tags/Cho%20Chang/works">Cho Chang</a></li><li><a class="tag" href="/tags/Hogwarts%20Students/works">Hogwarts Students</a></li><li><a class="tag" href="/tags/Minerva%20McGonagall/works">Minerva McGonagall</a></li><li><a class="tag" href="/tags/Hogwarts%20School%20of%20Witchcraft%20and%20Wizardry/works">Hogwarts School of Witchcraft and Wizardry</a></li>
+            </ul>
+          </dd>
+          <dt class="freeform tags">
+
+              Additional Tags:
+          </dt>
+
+          <dd class="freeform tags">
+            <ul class="commas">
+               <li><a class="tag" href="/tags/Slow%20Burn/works">Slow Burn</a></li>
+            </ul>
+          </dd>
+
+      <dt class="language">
+        Language:
+      </dt>
+      <dd class="language">
+        English
+      </dd>
+
+
+
+    <dt class="stats">Stats:</dt>
+    <dd class="stats">
+<!-- end of cache -->
+
+      <dl class="stats"><dt class="published">Published:</dt><dd class="published">2021-01-18</dd><dt class="status">Updated:</dt><dd class="status">2021-02-16</dd><dt class="words">Words:</dt><dd class="words">14570</dd><dt class="chapters">Chapters:</dt><dd class="chapters">7/?</dd><dt class="comments">Comments:</dt><dd class="comments">14</dd><dt class="kudos">Kudos:</dt><dd class="kudos">7</dd><dt class="bookmarks">Bookmarks:</dt><dd class="bookmarks"><a href="/works/28840245/bookmarks">2</a></dd><dt class="hits">Hits:</dt><dd class="hits">314</dd></dl>
+      </dd>
+  </dl>
+</div>
+
+
+    <style type="text/css">#workskin .indent{padding:0 5em 0 5em}#workskin .book{margin:0 auto;text-indent:3em}#workskin .dropcap{font-family:Georgia,serif;font-size:3em}#workskin .flashback{font-style:italic}#workskin .caps{font-variant:small-caps}#workskin .spoiler{background:#333;color:#333}#workskin .border{border:1px solid}#workskin .font-serif{font-family:Cambria,Constantia,Palatino,Georgia,serif}#workskin .font-sansserif{font-family:'Lucida Grande',Verdana,Helvetica,Arial,sans-serif}#workskin .font-monospace{font-family:consolas,courier,monospace}#workskin .font-big{font-size:120%}#workskin .font-small{font-size:80%}#workskin .align-right{text-align:right}#workskin .align-center{text-align:center}#workskin .align-justify{text-align:justify}#workskin hr.third{width:33%;margin:auto}#workskin hr.full{width:auto;margin:auto}#workskin .font-red{color:red}#workskin .font-orange{color:#ffa500}#workskin .font-yellow{color:#ff0}#workskin .font-green{color:green}#workskin .font-blue{color:#00f}#workskin .font-purple{color:purple}#workskin .font-white{color:#fff}#workskin .font-black{color:#000}#workskin .font-pink{color:#ffc0cb}#workskin .font-teal{color:#008282}#workskin .font-redbrown{color:#a15000}#workskin .font-cherryred{color:#e00707}#workskin .font-brickred{color:#a10000}#workskin .font-dimorange{color:#f2a400}#workskin .font-murkyyellow{color:#a1a100}#workskin .font-jade{color:#4ac925}#workskin .font-dimgreen{color:#008141}#workskin .font-leafgreen{color:#1f9400}#workskin .font-darkolive{color:#416600}#workskin .font-dimblue{color:#005682}#workskin .font-midblue{color:#0715cd}#workskin .font-mediumskyblue{color:#00d5f2}#workskin .font-darknavy{color:#000056}#workskin .font-lightpurple{color:#f141ef}#workskin .font-midviolet{color:#b536da}#workskin .font-verydarkpurple{color:#2b0057}#workskin .font-darkplum{color:#6a006a}#workskin .font-darkmaroon{color:#77003c}#workskin .font-reallydarkgray{color:#626262}</style>  
+
+  <!-- end cache for work skin -->
+
+<!-- BEGIN section where work skin applies -->
+<div id="workskin">
+  <div class="preface group">
+    <h2 class="title heading">
+      Come as you are
+    </h2>
+    <h3 class="byline heading">
+      <a rel="author" href="/users/PatriTheThug/pseuds/PatriTheThug">PatriTheThug</a>
+    </h3>
+
+
+        <div class="summary module" role="complementary">
+          <h3 class="heading">Summary:</h3>
+            <blockquote class="userstuff">
+              <p>A fanfiction from Ginny's POV and I feel the need to say that it follows the events and timeline of the canon books. Do what you will with that information.<br/>If this fanfiction has any plotholes please don't be mad, but inform me instead since I have never written anything like this before.</p>
+            </blockquote>
+        </div>
+
+        <div class="notes module" role="complementary">
+  <h3 class="heading">Notes:</h3>
+
+    <ul class="associations">
+      <li>For <a href="/users/MsKingBean89/gifts">MsKingBean89</a>, <a href="/users/iLikeFrogs17/gifts">iLikeFrogs17</a>.</li>
+
+
+
+    </ul>
+
+    <blockquote class="userstuff">
+      <p>I do not support JK Rowling in any way, shape, or form and I despise her bigoted terf actions. I also feel the need to mention that if you are racist, homophobic, transphobic, ableist or discriminate against minority groups in any way you are not welcome to read my works. I am a queer, genderfluid, disabled person so I would appreciate you to kindly fuck off my account if you fit any of the categories I previously mentioned.<br/>This fanfiction does include swearing, if I write about any subjects that might be triggering I will put a TW at the beginning of the respective chapter.<br/>Keep in mind that I am a minor and enjoy reading!</p>
+    </blockquote>
+
+    <p class="jump">(See the end of the work for <a href="#work_endnotes">more notes</a>.)</p>
+</div>
+
+
+  </div>
+
+
+<!--/descriptions-->
+
+<!--chapter content-->
+    <div id="chapters" role="article">
+          <!-- This partial requires local variable 'chapter' -->
+<div class="chapter" id="chapter-1">
+  <!-- chapter management -->
+
+
+  <div class="chapter preface group" role="complementary">
+    <h3 class="title">
+      <a href="/works/28840245/chapters/70741722">Chapter 1</a>: Harry Potter
+    </h3>
+
+    <!-- only display byline if different from the main byline -->
+
+
+  </div>
+
+  <!--main content-->
+  <div class="userstuff module" role="article">
+    <h3 class="landmark heading" id="work">Chapter Text</h3>
+    <p>August 4th, 1992</p><p>Ginny </p><p>I knew something was wrong when I heard my brothers sneaking off in the middle of the night. I was a bit insulted they didn’t take me, but I decided it was better for my sake when I heard mum go into Fred and George’s room later. I did expect this from them, but Ron? That was a surprise and I just couldn’t decide if it was a good one. Of course, when mum came to check on me after I pretended I was sleeping, I wasn’t exactly in the mood for interrogation, not that they told me anything anyways. </p><p> I couldn’t sleep after that. What were they even doing out there? Why did they take the car? And, most importantly, why were they so damn noisy? I was surprised mum didn’t catch them before they even got to the front door. I mean, Fred and George were basically known for their pranks at the school, so now I was wondering how they hadn’t been caught more often and if the caretaker of the grounds even cared about what they were doing or if he was just too dumb to catch them. But you do have to be caught to be known for something. </p><p> In the morning I saw them landing from my window. Fools. I’d been sneaking into the shed and stealing their brooms for practice since I was 6 and they couldn’t even pull off one night. And there they were, Ron, George and Fred...And someone else. So that was the reason they left. He wasn’t as tall as Ron, with black hair and a bit scrawny. Well, not that I’m one to talk. He was wearing some muggle clothes but they didn’t seem exactly new. Again, I can’t judge since I've been living off hand-me-downs my whole life. Then he turned and I froze: I had seen those glasses before. But...well I knew he was friends with my brother, but at first I thought he was lying. Harry Potter, a friend of my brother: that I could comprehend. Harry Potter in front of my house however, was a whole different story.  </p><p>Next thing I knew mum was marching towards them. I could hear the screaming from my room and I would’ve laughed hadn’t I been so...surprised. Later, after they finished what I figured out to be part of their punishment, I finally heard them coming up. He would sleep in Ron’s bedroom, I assumed. I wanted to say hi, I did. I opened my door and was about to come out when I began questioning myself. What was I even supposed to do? Shake his hand? What if he was some kind of pretentious prick after spending that whole year surrounded by people who were basically taught his name since they were kids? Would he expect a bow or something? While all this was going through my head, my door stood half opened, my palm on the handle. I didn’t even realize they came up, but when I did all I could see were his eyes staring back at me. I closed the door perhaps a little too hard. Shit. </p><p>“Well,” I thought, “this is gonna be interesting.” </p><p>August 12th, 1992 </p><p>The following week was a bit...awkward. Ok, you try growing up with this amazing story of a boy born just a year before you, a boy so strong he ended a war when he was just one. The boy that defeated the one wizard you were taught to fear, the one who must not be named that killed your uncles and so many more. The boy who lived, and he is suddenly in your house, at the dinner table, in your garden getting rid of the gnomes and everyone acts like he wasn’t just a bed time story a year ago. Of course I was a bit startled.  </p><p>He seemed so amazed by our house, he seemed like he was enjoying everything those other pureblood wizards hated about our family. Dad wouldn’t stop asking questions about muggles and I just wouldn’t stop dropping things when he was around. Everyone copes in different ways, I guess.  </p><p>On August 11th I finally turned 11. I didn’t want to make a big deal about it, it was just the usual: cake and some presents, a singing of happy birthday and a day free of being made fun of by my brothers. The thing is, it was a big deal. I had been waiting to go to Hogwarts ever since I was little, and now it was finally happening. I just had to not give my concerns of not getting into Gryffindor a voice and everything would be fine. Of course, I received my letter that day and wanted to seem unphased by all of it, but on the inside I was just relieved. </p><p>A day later all the other letters came too, including Harry’s. Dumbledore really did know everything. That thought seemed to please the others and it only made my parents admire him more. It did, however, make me feel kind of uneasy, but I did not say that. I just sat there eating my porridge. I know my brothers always say I never shut up, but I do know when to do it. Just then, Ron and Harry walked into the room and I knocked over my bowl at the sight of them. Great. I also knew Harry noticed I acted a bit weird around him, but he never voiced his concerns. If anything, it seemed like he didn’t even have any. </p><p>I went under the table to pick up my bowl and when I came up I knew I was blushing by the look Harry had on his face. He was trying to pretend he hadn’t noticed, but it was not very convincing. Mum gave them their letters as Fred and George walked into the kitchen. After that, I didn’t really pay attention to the conversation. I was just trying to look normal while eating. How do you even do that? After a few minutes I heard my name and looked up. </p><p>‘I expect we’ll be able to pick up a lot of Ginny’s things secondhand.’ said mum. Of course. </p><p>‘Oh, are you starting at Hogwarts this year?’. I realized Harry had asked me that. Thank God I was paying attention. I nodded, blushing again. I hated that. I wanted to put my head in my hand, but instead I ended up with my elbow in the butter dish. Shit. Luckily, Percy walked in at that same moment and no one saw it. Except Harry. Still shit. </p><p>They got a letter from their other friend, Hermione, saying she was going to buy her supplies next Wednesday and mum said that would work out. Great, now we’re travelling with Harry Potter. Not that I didn’t like him or something, but I was sure I’d manage to embarrass myself by saying the destination wrong or something and I just couldn’t stand any more awkwardness. I was already sure of the opinion he had on me. He probably thought I was just some silly child and that thought bothered me more than I would like to admit.  </p><p>I still remember seeing him at the train station a year ago, not thinking much of him. Just a boy who didn’t know how to get onto the platform, only for my brothers to later tell me who he was. I wanted to see him again so bad, but my mom said he wasn’t a zoo animal. She was right. Little did I know I’d be living with him not even a whole year later. </p><p>First, Harry Potter in my mum’s stories. Then Harry Potter in my brother’s letters. Harry Potter in my house, Harry Potter at my table, Harry Potter in my life and Harry Potter never leaves my head. I didn’t understand anything about the whole situation. Not my feelings, not why he was still acting so nice towards me or why he was even here. No one had told me. I had a lot of questions, many that I couldn’t even ask. I did realize that I couldn’t have my whole world revolving around him like that. All I had to do for now was focus on next Wednesday, focus on September 1st and focus on whatever comes after. I wouldn’t be spending my whole life with Harry Potter, but I would be spending it with myself. Maybe focusing on that would be enough for now.</p>
+  </div>
+  <!--/main-->
+
+
+</div>
+
+<!-- end of cache -->
+
+          <!-- This partial requires local variable 'chapter' -->
+<div class="chapter" id="chapter-2">
+  <!-- chapter management -->
+
+
+  <div class="chapter preface group" role="complementary">
+    <h3 class="title">
+      <a href="/works/28840245/chapters/70741863">Chapter 2</a>: Blonde people
+    </h3>
+
+    <!-- only display byline if different from the main byline -->
+
+
+  </div>
+
+  <!--main content-->
+  <div class="userstuff module" role="article">
+    <h3 class="landmark heading" id="work">Chapter Text</h3>
+    <p>TW: violence, cursing</p><p>August 19th, 1992 </p><p>Little did I know I wouldn’t be the one to mess up Floo travelling. When mum found out Harry had never used it before I could tell from her tone that she was quite set on going another way. Good thing Fred convinced her otherwise, or rather he just went into the green fire before she could protest. I was fairly sure Harry would be able to travel perfectly like he always did everything. Seriously, I was told he got into the Quidditch team as a first year, which only made me look at him a new kind of respect. He threw the powder into the fire, opened his mouth to say the words...And started coughing. </p><p>‘D-Dia-gon Alley’ and then he vanished.  </p><p>‘Did he just say diagonally?’ asked dad in a confused tone. </p><p>I was so relieved I hadn’t done anything embarrassing that I didn’t even consider the possibilities of his location. I let out a sigh and turned my head only to see my mother looking as horrified as she had been the first time she got a letter from Hogwarts about the twins. Recalling the memory, I started shaking, trying to hold back my laugh. Obviously, I couldn’t and started giggling only to stop when I saw the foul look Ron gave me.  </p><p>Of course, mom had the rest of us going to the alley as fast as possible to look for the raven-haired boy. It would have been almost funny how frantic we all were running around, searching the alley for none other than the boy who lived if mum hadn’t been so desperate to find him. I quickly realized she had already come to care for him deeply and I didn’t complain or laugh after that. </p><p>Luckily, Harry had ended up on Knockturn Alley and a tall man mum called Hagrid found him. Of course, I knew he was the keykeeper at the school from my brothers’ stories but I did not recognize him at first. When mum revealed his identity to me I recalled the description George had presented to me and was surprised to find out he had not exaggerated about his height. </p><p>‘Guess who I saw in Borgin and Burkes?’ Harry asked Ron and Hermione as they climbed the Gringotts steps. ‘Malfoy and his father.’ I had also heard of the Malfoys before and decided to listen in because I knew something interesting had been said. Malfoy, an allegedly former fan and member of the dark wizards club, had been spotted in a dark magic items shop. </p><p>I wasn’t the only one interested in this conversation. Dad chimed in and asked if he had bought anything. When Harry told him he was selling something, he looked strangely satisfied. </p><p>‘So he’s worried. Oh, I'd love to get Lucius Malfoy for something...’ </p><p>'You be careful, Arthur. The family's trouble, don't go biting off more than you can chew.' warned mum.<br/>
+That kind of upset dad, but he forgot about it when he saw Hermione’s muggle parents and was fascinated by their money. I found all his inquires about muggles a bit irritating, and endearing at the same time. It was sweet to know he was interested in all that seemingly boring stuff. I’d lie if I was saying I wasn’t a bit curious too.</p><p>When we went into the bank and got to our vault I was a little embarrassed since Harry was there, but quickly shook that feeling off. My parents worked hard and I had no intention of discrediting their efforts and if Harry chose to do that then it was strictly his problem. Strangely enough, he seemed ashamed himself when the door of his vault opened and let out a golden light. He got in and out quickly, taking a full leather bag with him. So he wasn’t so high and mighty after all, only incredibly rich. Still, I could only look at him with a strange amount of admiration, like he wasn’t just a boy, but someone more important than the rest of us. </p><p>When we got out of Gringotts we all went our separate ways, me and mum setting off to the second-hand robe shop while she was yelling a final warning to the twins. </p><p>When we got there I was surprised to see we weren’t the only ones in the store. Another girl that looked about my age was there with a man I assumed to be her father. She had long dirty blonde hair and was wearing a yellow dress that I found strangely comforting. She turned her head and I met the most distracting eyes I had ever seen, dreamy and silvery. She had the most unusual earrings that I made out to be sunflowers, matched with a hairpin in the same shape. The man had the same shade of blonde hair and was browsing with her for robes. I wanted to approach them, but didn’t know how. </p><p>‘Oh, Xenophilius! I didn’t expect to see you here! Is the little one starting at Hogwarts as well?’ asked mum before I could say anything. </p><p>I hoped the answer was yes. </p><p>‘Molly, what a surprise!’ he exclaimed in a kind of distracted tone. ‘Yes, we were just looking for some clothes for her.’ The daughter was now looking around and ended up resting her eyes on me. A feeling I couldn’t explain grew in my chest. </p><p>‘Hi!’ I said carefully. </p><p>‘Oh, hello!’ she responded in a soft voice that matched the way she looked. </p><p>‘This is Ginerva, my youngest. It’s her first year as well.’ </p><p>‘Well, I'm glad my Luna will now be able to find a familiar face at the castle.’ The girl whom I now knew as Luna gave a faint but sincere smile. What a nice name. </p><p>They left soon after with 2 robes she found quickly. I was surprised to see her father let her pick her own clothes. </p><p>‘Mum, who was that?’ I asked as soon as the door closed after them. </p><p>‘That was Mr. Lovegood and his daughter, dear. Be nice to her at school, will you?’ she said in a worried tone. I could tell she was hiding something, but didn’t ask her anything else. </p><p>‘I will.’  </p><p>We left with a few robes not long after that. We also visited an old library for part of my school books and stopped at the cauldron shop to buy one before finally going into Flourish and Blotts to meet up with the others. They were all there, except for Ron, Harry and Hermione. Looking around, I found the real reason mum and I left the previous stores so quickly. That Lockhart man she was obsessed with that had his name written 7 times on my Hogwarts letter would be there in just a few minutes. Just before he came into view, the 3 others walked in. </p><p> When I saw Harry, that strange feeling from the robe store came back. What was it and why did I realize its presence just now? Those are questions for later, I told myself, for when I’m alone. For now, I just have to focus on Lockhart. I was looking at him as he took his place. He was wearing a blue robes that brought out his eyes and a matching hat over his blonde, wavy hair. Not the same blonde as Luna. No, more like a strawberry blonde. Suddenly, a voice interrupted my trance. </p><p>‘Out of the way, there,’ a man with a camera snarled at Ron. ‘This is for the Daily Prophet —’ </p><p>‘Big deal,’ said my brother, rubbing his foot where the photographer had stepped on it. </p><p>Suddenly, Gilderoy looked up. I was expecting him throw Ron a dirty look, but the next thing I knew Harry was pulled to the front and they were photographed together. I couldn’t focus on what the man was saying, I just noticed how visibly bothered Harry was. All of a sudden I realized he hadn’t asked for any of this. He hadn’t wanted to be my bedtime story and I realized I was foolish for still thinking of him as such even after he lived with me, even after he proved himself to be just a person like the rest of us. He was startled when our mirror spoke, for God’s sake! He was special, the fact that he was standing beside Lockhart proving just that, but I regretted treating him as such, seeing how uncomfortable the whole situation was making him. Had I been making him go through the same thing this whole time?! </p><p>Suddenly, I began feeling ill. I was so foolish! When I wasn’t looking did he regard me with the same look he had now on his face? How could I treat him like that?! I was stupid for doing that and most of all stupid for still believing he liked me after all those things I did. God, he probably hated me! </p><p>I didn’t hear anything but my thoughts and after what felt like hours I was snapped out of it by none other than his voice. He was now holding a pile of shiny new books, all with the same author (guess who). His whole appearance at the book store, the signing, the publicity stunts, they all gave me weary of the man. It was like he was doing it all for money and fame. </p><p>‘You have these.’ Harry mumbled to me in a tired voice while putting the pile in my cauldron. ‘I’ll buy my own-’ </p><p>‘Bet you loved that, didn’t you, Potter?’ interrupted a boy behind him before I could thank him. </p><p>Suddenly, Harry straightened up, indicating that he recognized the voice. He turned so that him and the blond boy were face to face now. Why was I seeing so many blonde people today?! </p><p>‘Famous Harry Potter’ he chuckled coldly. ‘Can’t even go into a bookshop without making the front page.’  </p><p>That was it. If I really had been treating him just like that I had to make up for it. Also, the boy was an arse. </p><p>‘Leave him alone, he didn’t want all that!’ I exclaimed, trying to sound confident. I met the boy’s eyes. Grey eyes, but nothing like Luna’s. Not the comforting gaze I got from the girl, but instead a cold and kind of amused look. That infuriated me even more. </p><p>‘Potter, you’ve got yourself a girlfriend!’ he affirmed, clearly thinking he had just made some comedy worthy statement. I was so angry I could’ve cursed him had my parents not been there. </p><p>Ron and Hermione finally made their way up to us. </p><p>‘Oh, it’s you.’ said my brother, giving him a dirty stare. ‘Bet you’re surprised to see Harry here, eh?’ </p><p>‘Not as surprised as I am to see you in a shop, Weasley. I suppose your parents will go hungry for a month to pay for that.’ </p><p>Ron went red, but I didn’t know if it was shame or anger. When he dropped his books into my cauldron and started walking ominously towards the boy I decided on fury. Had he not done that, I would have. I may not have had my wand on me but years of experience from fights with my brothers were just as good. </p><p>Harry and Hermione had to hold him back and I heard dad just then. </p><p>‘Ron!’ he called, struggling over with Fred and George. ‘What are you doing? It’s too crowded in here, let’s go outside.’ </p><p>‘Well, well, well — Arthur Weasley.’ said a man who had just come into view while putting his hand on the blonde's shoulder. He had hair in the same colour. Seriously, what was up with this today?! I assumed he was the father. </p><p>‘Lucius,’ said dad, nodding coldly. </p><p>‘Busy time at the Ministry, I hear. All those raids . . . I hope they’re paying you overtime?’  </p><p>“The apple doesn’t fall far from the tree” I thought to myself. </p><p>Suddenly, he reached into my cauldron and extracted a book I had gotten second-hand with mum just half an hour ago. I wanted to snatch it out of his slimy pale hands. </p><p>‘Obviously not,’ he said. ‘Dear me, what’s the use of being a disgrace to the name of wizard if they don’t even pay you well for it?’ </p><p>Who did this guy and his piss-dyed hair son think they were? Dad’s face went dark red. I had never seen him like this. </p><p>‘We have a very different idea of what disgraces the name of wizard, Malfoy.’ </p><p>Malfoy. Of course! The You-Know-Who fanatic, it all made sense now! </p><p>‘Clearly,’ said Mr. Malfoy, his pale eyes straying to Mr. and Mrs. Granger, who were watching apprehensively. “The company you keep, Weasley . . . and I thought your family could sink no lower —’ </p><p>Now I really wanted to punch him, but my dad beat me to it. He threw himself at the man and my cauldron flew with all the books in it. Malfoy was backed into a bookshelf and dozens of spellbooks fell over them. </p><p>‘Get him, dad!’ said Fred. </p><p>‘No, Arthur, no!’ exclaimed mum in a very different tone. </p><p>The assistant tried persuading them into stopping, with no avail. They were finally broken up by Hagrid, whom I now recognized. He was the only one strong enough to pull them apart from each other. Then and there I realized I was very much proud to be a Weasley. Malfoy was still holding my old transfiguration book. He gave me a malicious look and violently offered it back to me. </p><p>‘Here, girl — take your book — it’s the best your father can give you —’.  </p><p>Even when he was out of breath and with a black eye forming, he still managed to be a prat, I observed. I took it with disgust. If only I could wash a book... </p><p>On the walk back I had only my thoughts with me. I zoned out, coming up with some pretty good adjectives for that Malfoy kid on the way. I thought about how I’d try to treat Harry better. I had to get rid of this whole image I had created in my head, although I knew it wouldn’t be that easy. I knew that day, when I stood up for him, wouldn’t be enough and it would not suddenly fix the way I saw him. I had to constantly correct myself, but how could I do that if there was no one I could talk to about my feelings?  </p><p>Don’t get me wrong, I love my brothers but if I told them how I felt I would never live it down. I was afraid mum would judge me if I told her. She had seen Harry as an ordinary boy from the beginning and her opinion had not changed when she’d found out who he was. The only other girl I knew was Hermione and we weren’t exactly on that kind of level of friendship. </p><p>I was thinking about the feeling in my chest that I had acknowledged earlier and I remembered the only blonde that left me with a good impression that day and how pretty her voice was.</p>
+  </div>
+  <!--/main-->
+
+
+</div>
+
+<!-- end of cache -->
+
+          <!-- This partial requires local variable 'chapter' -->
+<div class="chapter" id="chapter-3">
+  <!-- chapter management -->
+
+
+  <div class="chapter preface group" role="complementary">
+    <h3 class="title">
+      <a href="/works/28840245/chapters/70796742">Chapter 3</a>: August 21st
+    </h3>
+
+    <!-- only display byline if different from the main byline -->
+
+
+  </div>
+
+  <!--main content-->
+  <div class="userstuff module" role="article">
+    <h3 class="landmark heading" id="work">Chapter Text</h3>
+    <p>
+  <span>August 21</span>
+  <span>st</span>
+  <span> , 1992 </span>
+  <span> </span>
+</p>
+<p>
+  <span>Night</span>
+  <span> </span>
+</p>
+<p>
+  <span>It was around then that I started getting desperate. </span>
+  <span> </span>
+</p>
+<p>
+  <span>Every time I was around </span>
+  <span>him</span>
+  <span> I began blushing of shame and that damned feeling would appear again. I began noticing its existence every time Harry was near me and it was even more confusing cause it seemed to be a good emotion, which only made me feel even more guilty. How could I dare feel good around the boy when I was making him feel like shit? (I had decided that he did indeed hate me and chose to not say anything because the rest of my family had been so kind to him).</span>
+  <span> </span>
+</p>
+<p>
+  <span>I was beginning to consider telling Fred about it. Fred! I knew he would never stop teasing me and would tell George, but it was worth it if it meant I would learn how to control myself around the bloke. </span>
+  <span> </span>
+</p>
+<p>
+  <span>It took me hours to fall asleep each night, countless thoughts about the whole situation invading my brain. I began having doubts about more than just Harry. “What would the other kids at school think when they saw I only had second-hand things?” I'd ask myself.</span>
+  <span> </span>
+</p>
+<p>
+  <span> “Was that Malfoy knob right after all? </span>
+  <span>No, that</span>
+  <span> was impossible, but would the others think just like him?”. </span>
+  <span> </span>
+</p>
+<p>
+  <span>“Will my brothers continue teasing me even while at school? How will I be able to make any friends with them always around?”.</span>
+  <span> </span>
+</p>
+<p>
+  <span> It was the beginning of a problem I could not yet completely comprehend, but that did turn out to be useful in a way. On the 21</span>
+  <span>st</span>
+  <span> night of August I had a revelation while trying (and miserably failing) to sleep. I abruptly got up and silently snuck into the living room. The clock showed 4:32 in the morning. I made my way to the bookshelf, taking a stool with me. I stepped onto it and carefully took the book I needed.</span>
+  <span> </span>
+</p>
+<p>
+  <span>I put one of my own school books in its place so that mum wouldn’t notice its absence and went back up to my room, pleased with myself. That’s how you do it.</span>
+  <span> </span>
+</p>
+<p>
+  <span>Closing the door behind me, I lit up a candle and carefully opened the book. I didn’t dare turn on the lights. I had first seen it when I was little and mum was reading it. I came up behind her while she was leafing through it and I guess she didn’t hear me. She stopped at page and when I asked her what she was reading she slammed the book shut. That only made me more curious, so when she was finished with it, I stole it.</span>
+  <span> </span>
+</p>
+<p>
+  <span>I soon came to realize it was a romance book. I couldn’t read much, only some passages because of my snoopiness. I was only 8 back then and found it much too sappy for my taste, but there was one sentence that stayed in the back of my mind for a long time afterwards.</span>
+  <span> </span>
+</p>
+<p>
+  <span>I began searching for it, flipping through the book trying not to fold the pages. When I finally found it, I let out as I sigh as my eyes saw the familiar lines.</span>
+  <span> </span>
+</p>
+<p>
+  <span>“</span>
+  <em>
+    <span>I had never felt that way, not for anyone.” </span>
+  </em>
+  <span>it said. </span>
+  <em>
+    <span>“I simply could not imagine a world without him, but if I did try to nothing would come to mind. And that was my answer, the answer to the question I had been asking myself ever since I first saw him and felt the comforting yet crushing warmth of the feelings that blossomed for him. My chest had not felt cold even once since I met him and my world could not exist without his. I, Ethel Darlington, loved him.” </span>
+  </em>
+  <span> </span>
+</p>
+<p>
+  <span>Of course! I liked Harry! Good thing I hadn’t told Fred. I knew I did not love the bloke, that word was much too powerful for me to even think about. When I realized, it was like a huge weight had dropped from my shoulders. Relieved that I had finally identified this mystery-sentiment I began smiling to myself, only for my lips to quickly drop into a straight line.</span>
+  <span> </span>
+</p>
+<p>
+  <span>I liked him...And he hated me. Great. I reread the passage in the book, but this time I did not smile nor did </span>
+  <span>I hold</span>
+  <span> my breath. </span>
+  <span>I ,too</span>
+  <span>, had never felt that way for anyone or at least didn’t remember anything like that. The only feeling that came close was the one I had when I met that strange girl on Diagon Alley, but she was...Well, a girl.</span>
+  <span> </span>
+</p>
+<p>
+  <span>I also could not imagine a world without him simply because I did not know if anyone else could’ve ended that painful war and who knows what it would be like if You-Know-Who was still around.</span>
+  <span> </span>
+</p>
+<p>
+  <span>The difference was that the warmth I felt was not pleasant anymore, but was instead transforming into a burning fire. Not comforting, not crushing, but obliterating. </span>
+  <span> </span>
+</p>
+<p>
+  <em>
+    <span>He hated me.</span>
+  </em>
+  <span> </span>
+</p>
+<p>
+  <span>I closed the book with a snap and hid it between my school ones. I did not have the energy to go down to put it back and it was almost dawn. I snuffed out the candle at once, hoping my chest would stop burning with the wick. The temperature only seemed to raise with the sun.</span>
+  <span> </span>
+</p>
+<p>
+  <span>I threw myself into bed and tried to imagine a world where I wasn’t such a wanker. I couldn’t do that either.</span>
+  <span> </span>
+</p>
+<p>
+  <span>Noon</span>
+  <span> </span>
+</p>
+<p>
+  <span>I didn’t wake up for breakfast.</span>
+  <span> </span>
+</p>
+<p>
+  <span>When I finally decided to leave my room, mum was in the living room.</span>
+  <span> </span>
+</p>
+<p>
+  <span>‘Morning, dear!’ she greeted cheerfully. ‘Actually, afternoon,’ she added in a more worried tone.</span>
+  <span> </span>
+</p>
+<p>
+  <span>‘Hi, mum,’ I said, trying to act as lively as I could.</span>
+  <span> </span>
+</p>
+<p>
+  <span>‘You’ve been waking up late this past week, is there anything the matter?’</span>
+  <span> </span>
+</p>
+<p>
+  <span>‘Oh, don’t worry, I just wanted to catch up with sleep before school started since I'll have to be up early every day,’ I lied.</span>
+  <span> </span>
+</p>
+<p>
+  <span>‘Ok, then,’ she accepted and I could tell she didn’t really believe me. ‘But remember that you can always tell me if something is bothering you,’ she reassured me.</span>
+  <span> </span>
+</p>
+<p>
+  <span>‘I know,’ I said and forced a smile. I loved mum, so I could not worry her with my own niche dilemmas. She already had too many problems on her mind.</span>
+  <span> </span>
+</p>
+<p>
+  <span>Lunch was almost unbearable. He sat across me and I tried not to look at him. Even while knowing he hated me, I was still more concerned about my feelings rather than focusing on making it up to him.</span>
+  <span> </span>
+</p>
+<p>
+  <span>I excused myself before anyone else had left and rushed back up to my room. I needed a distraction and began looking around for one. My eyes landed on the books in the corner.</span>
+  <span> </span>
+</p>
+<p>
+  <span>With hesitance, I walked towards them. </span>
+  <span> </span>
+</p>
+<p>
+  <span>“Better than sulking.” I thought.</span>
+  <span> </span>
+</p>
+<p>
+  <span>I began looking through them and took my Hogwarts letter from my drawer to check and see if I had them all. Leafing through them, I began realizing they were not as boring as I thought I'd find them.</span>
+  <span> </span>
+</p>
+<p>
+  <span>Reading the introduction to my charms book I learned that most spells come from Latin words. How did I not know that?! It was fascinating, and reading further I also found out Luna meant moon, which only made the name seem more fitting for the girl. I expected to be interested in DADA most, but it surprised me to see that Charms was even more intriguing.</span>
+  <span> </span>
+</p>
+<p>
+  <span>When I finished organizing, there was only one book missing: A beginner’s guide to transfiguration. The clock in my room showed it was almost 3, so I figured everyone had already finished eating. Mum also went to lie down at about this hour, so it was my chance. </span>
+  <span> </span>
+</p>
+<p>
+  <span>I took the romance novel and quickly went downstairs. As expected, no one was there, so I stepped onto the stool and switched the books. Everything seemed to go smoothly, until I began stepped down and looked at the book just soon enough to see something falling out of it. It landed on the floor with a loud thud. Shit.</span>
+  <span> </span>
+</p>
+<p>
+  <span>I picked it up without looking and silently ran back up to my room, closing the door behind me. I looked down at what I was holding to analyze what exactly had caused me all that </span>
+  <span>trouble</span>
+  <span>.</span>
+  <span> </span>
+</p>
+<p>
+  <span>It was a simple, black notebook that had the year 1942 written on its cover. I had never seen it before and at first couldn’t figure out where it had come from, but then I remembered the bookshop. When my dad had attacked </span>
+  <span>Malfoy</span>
+  <span> he had knocked over both my cauldron with the books in it and the shelf behind it. That was it! The book had probably fallen from that rack and gotten mixed up with mine.</span>
+  <span> </span>
+</p>
+<p>
+  <span>I opened it and saw the name T. M. Riddle written on the first page, but nothing else. Bummer. I thought I would find something more </span>
+  <span>interesting. It</span>
+  <span> was nothing but an empty diary.</span>
+  <span> </span>
+</p>
+<p>
+  <span>I put the transfiguration book with the others and the leather one on my desk, since I didn’t really want to take it with me. I looked out my window and saw the boys flying on their brooms, and then I saw Harry and remembered everything again.</span>
+  <span> </span>
+</p>
+<p>
+  <span>I jumped onto the bed and closed my eyes. “Well, there goes my distraction.”</span>
+  <span> </span>
+</p>
+<p>
+  <span>Evening</span>
+  <span> </span>
+</p>
+<p>
+  <span>Dinner was a disaster.</span>
+  <span> </span>
+</p>
+<p>
+  <span>He sat across me, as usual. And, as usual, I tried not to look him in the eye.</span>
+  <span> </span>
+</p>
+<p>
+  <em>
+    <span>He hates me.</span>
+  </em>
+  <span> </span>
+</p>
+<p>
+  <span>I ate some peas.</span>
+  <span> </span>
+</p>
+<p>
+  <em>
+    <span>I don’t know why I even bother trying to make him like me.</span>
+  </em>
+  <span> </span>
+</p>
+<p>
+  <span>I swallowed a potato.</span>
+  <span> </span>
+</p>
+<p>
+  <em>
+    <span>He will never forgive me.</span>
+  </em>
+  <span> </span>
+</p>
+<p>
+  <span>‘Ginny?’</span>
+  <span> </span>
+</p>
+<p>
+  <span>I looked up.</span>
+  <span> </span>
+</p>
+<p>
+  <span>‘Can you pass me the peas, please?’ Harry asked me.</span>
+  <span> </span>
+</p>
+<p>
+  <span>I nodded and picked up the bowl that was sitting beside me. My hands were shaking and I prayed no one noticed. I handed it to him relieved that nothing had happened and let go of the dish...And he dropped it. </span>
+  <span> </span>
+</p>
+<p>
+  <span>‘I’m so sorry!’ I blurted out. Why me?!</span>
+  <span> </span>
+</p>
+<p>
+  <span>Mum made the scattered vegetables vanish with a flick of the wand.</span>
+  <span> </span>
+</p>
+<p>
+  <span>‘It’s ok!’ he exclaimed.</span>
+  <span> </span>
+</p>
+<p>
+  <span>The fire in my chest suddenly moved to my cheeks.</span>
+  <span> </span>
+</p>
+<p>
+  <span>‘I just really wanted some peas,’ he joked and everyone laughed. I forced out a giggle, trying not to show how I was really feeling.</span>
+  <span> </span>
+</p>
+<p>
+  <span>I thanked for the food and left a few minutes later. Why was I always such a </span>
+  <span>tosser</span>
+  <span>?! How did he manage to save every situation?! I wanted to scream. Suddenly, my eyes darted to the diary on my desk.</span>
+  <span> </span>
+</p>
+<p>
+  <span>I took my quill and ink from my school chest and opened the leather book. Well, if this Riddle person hadn’t used it, then I would.</span>
+  <span> </span>
+</p>
+<p>
+  <span>I wrote the date in the corner and began trying to vent. “Dear diary,” I wrote, and looked up. What was I even supposed so say? I looked back down and saw...Nothing.</span>
+  <span> </span>
+</p>
+<p>
+  <span>“Weird.” I thought. I tried again, and it vanished right before my eyes a few seconds later. “Am I going crazy?”</span>
+  <span> </span>
+</p>
+<p>
+  <span>Suddenly, a sentence appeared in front of my eyes, a question I </span>
+  <span>had</span>
+  <span> not written.</span>
+  <span> </span>
+</p>
+<p>
+  <span>“Who are you?” it read.</span>
+  <span> </span>
+</p>
+<p>
+  <span>Hesitantly, I scribbled something.</span>
+  <span> </span>
+</p>
+<p>
+  <span>“I’m Ginny. Who are you?” I inquired back.</span>
+  <span> </span>
+</p>
+<p>
+  <span>“Hello, Ginny. My name is Tom Riddle. How did you </span>
+  <span>come</span>
+  <span> by my diary?”</span>
+  <span> </span>
+</p>
+<p>
+  <span>“I found it in a book of mine.” I penned, amazed. </span>
+  <span>So</span>
+  <span> the guy hadn’t </span>
+  <span>wrote</span>
+  <span> anything not because he didn’t have anything to say, but because he didn’t need to. He was already there.</span>
+  <span> </span>
+</p>
+<p>
+  <span>“Well, Ginny, what did you want to write about?”</span>
+  <span> </span>
+</p>
+  </div>
+  <!--/main-->
+
+
+</div>
+
+<!-- end of cache -->
+
+          <!-- This partial requires local variable 'chapter' -->
+<div class="chapter" id="chapter-4">
+  <!-- chapter management -->
+
+
+  <div class="chapter preface group" role="complementary">
+    <h3 class="title">
+      <a href="/works/28840245/chapters/71077059">Chapter 4</a>: Moon
+    </h3>
+
+    <!-- only display byline if different from the main byline -->
+
+
+      <div id="notes" class="notes module">
+        <h3 class="heading">Notes:</h3>
+          <blockquote class="userstuff"><p>TW: manipulation, swearing</p></blockquote>
+      </div>
+  </div>
+
+  <!--main content-->
+  <div class="userstuff module" role="article">
+    <h3 class="landmark heading" id="work">Chapter Text</h3>
+    <p>
+  <span>August 22</span>
+  <span>nd</span>
+  <span>,</span>
+  <span> 1992</span>
+  <span> </span>
+</p><p>
+  <span>I was standing in the door frame of the shed, trying to decide which broom to choose this time. </span>
+  <span>Harry’s</span>
+  <span> was the best option, and yet it was the only one I could not take.</span>
+  <span> </span>
+</p><p>
+  <span>I finally settled on Fred’s. I usually took his and I needed something familiar since everything else had changed since I had last taken a broom for a fly. Minutes later I was flying through the night air, cutting through the darkness. It stung my cheeks in a way I had missed and the wind brushed through my hair like it had longed for my presence as well. </span>
+  <span> </span>
+</p><p>
+  <span>“I know how you feel.” he had told me.</span>
+  <span> </span>
+</p><p>
+  <span>“It’s not your fault.’</span>
+  <span> </span>
+</p><p>
+  <span>“You shouldn’t have to go through this.”</span>
+  <span> </span>
+</p><p>
+  <span>I told him everything: about my feelings, my family, my doubts about school and I finally felt seen. He helped me, he reassured me, he listened and apologized for things that were not even his fault. I had finally made a friend.</span>
+  <span> </span>
+</p><p>
+  <span>The stars were beautiful that night and they seemed as bright as ever. The moon seemed to be watching over me. I had forgotten how it felt to be in the air, the familiar feel of the broom under me was more welcome than ever.</span>
+  <span> </span>
+</p><p>
+  <span>The darkness engulfed me while I started going even faster and my chest cooled down. Things were beginning to finally go my way and in that moment I knew that I would forever remember the day I found the strange leather book and the day I had made my first friend.</span>
+  <span> </span>
+</p><p>
+  <span>***</span>
+  <span> </span>
+</p><p>
+  <span>I woke up late again and walked in the kitchen just as everyone was finishing breakfast. Thank God, I could not take another minute of eating in front of everyone after the </span>
+  <span>peas</span>
+  <span> fiasco. I greeted everyone and sat down right when Harry and Ron were leaving. Some lucky wanker I was.</span>
+  <span> </span>
+</p><p>
+  <span>I ate a bit a quickly and went back to my room before mum would start asking me questions. Food was hardly interesting at that moment, since I had something I needed to get to in my room.</span>
+  <span> </span>
+</p><p>
+  <span>The diary was making me happier than anything had in a while. No, not the diary, but Tom. He was someone I could tell anything to, someone that helped me and was always there for me (whether he wanted or not, but I got the feeling he did).</span>
+  <span> </span>
+</p><p>
+  <span>“Morning!” I wrote eagerly and waited for the response.</span>
+  <span> </span>
+</p><p>
+  <span>“Hello, Ginny. How are you?” he responded.</span>
+  <span> </span>
+</p><p>
+  <span>“I just ate. Harry was there, but luckily he left before I could embarrass myself.”</span>
+  <span> </span>
+</p><p>
+  <span>“Oh, you can’t be that awkward. I’m fairly sure you’re just exaggerating.”</span>
+  <span> </span>
+</p><p>
+  <span>“Maybe you’re right.” I did seem to be the only one looking uncomfortable.</span>
+  <span> </span>
+</p><p>
+  <span>“It does look like I'm the only one feeling that way.” I added.</span>
+  <span> </span>
+</p><p>
+  <span>“You’ve got to get better at hiding your emotions. It’s one of the best skills one can have.”</span>
+  <span> </span>
+</p><p>
+  <span>I wasn’t certain that was true. Surely, there had to be better things you could be able to do. I didn’t say anything for a couple of minutes and perhaps he felt my hesitance.</span>
+  <span> </span>
+</p><p>
+  <span>“Trust me, Ginny.”</span>
+  <span> </span>
+</p><p>
+  <span> I smiled. He did know me. In all the books I had read, everyone kept saying that a true friend is one that knows what you’re thinking even if you don’t say anything, and he did.</span>
+  <span> </span>
+</p><p>
+  <span>“I do.” And I wasn’t lying.</span>
+  <span> </span>
+</p><p>
+  <span>August 31</span>
+  <span>st</span>
+  <span>,</span>
+  <span> 1992</span>
+  <span> </span>
+</p><p>
+  <span>Things went on like that. I told him everything, he taught me things. I learned he was 16, so I took his advice.  He was older and he always knew what to say, always knew what to do to make me feel better, so it was evident to me that he knew more than I did.</span>
+  <span> </span>
+</p><p>
+  <span>He told me to practice hiding my feelings, so I did. I told my mum I wasn’t tired and she seemed to believe me, I told my brothers everything was fine and they ate it up. The only thing I couldn’t do was hide from Harry, which was what I was trying to do in the first place.</span>
+  <span> </span>
+</p><p>
+  <span>‘Practice makes perfect,’ Tom would tell me.</span>
+  <span> </span>
+</p><p>
+  <span>On the last day of vacation, I was beyond excited. My first year at Hogwarts, first year away from home. I replaced my negative thoughts about my second-hand things with some good ones. I did not want to worry about silly things like clothes. My wand was new, at least, which made me think about how fun Charms class would be as I was packing my trunk. I was once again admiring all the books when I noticed a moon on the Defense Against the Dark Arts cover. Would Luna be in the same house as me?</span>
+  <span> </span>
+</p><p>
+  <span>It would be nice to have a guaranteed friend, but then again, I already did. I was still looking forward to meeting the gal and kept thinking about her sunflower earrings. Ironic how her name meant moon, and yet she looked like the sun.</span>
+  <span> </span>
+</p><p>
+  <span>I finished packing and left my trunk open. I would put the diary in it in the morning. I wasn’t sure if I would need it until then, but given the fact that mum was preparing a special dinner, I had a couple hunches.</span>
+  <span> </span>
+</p><p>
+  <span>***</span>
+  <span> </span>
+</p><p>
+  <span>The evening was amazing, much to </span>
+  <span>my</span>
+  <span> awe.</span>
+  <span> </span>
+</p><p>
+  <span>Mum was an amazing cook, and she did something similar every year on this day. “</span>
+  <span>So</span>
+  <span> you can leave happy,” she would say, and </span>
+  <span>every time</span>
+  <span> we’d smile.</span>
+  <span> </span>
+</p><p>
+  <span>Of course, in the following morning something always seemed to go wrong, but I knew better than to say something like that.</span>
+  <span> </span>
+</p><p>
+  <span>The meal was long and delicious and this time I could not say no to the food, so I ate everything I fancied. It was partly not to upset mum, but mostly because the food was so damn good.</span>
+  <span> </span>
+</p><p>
+  <span>The little feast ended with treacle pudding, which Harry seemed to adore. I tried not to focus on him much since I knew that that would be the last family meal for a while.</span>
+  <span> </span>
+</p><p>
+  <span> Soon after, the twins lit up some of their Filibuster fireworks that threw shades of blue and red on everyone’s faces. This didn’t stop for almost half an hour and I could not take my eyes off them while everyone laughed and talked in the background.</span>
+  <span> </span>
+</p><p>
+  <span>The chatter was a sort of reassuring sound and it calmed me. When you grow up with that many siblings, you soon learn that something is always wrong when everyone is quiet. Finally, I had one last cup of hot chocolate and went to my room after hugging mum and dad.</span>
+  <span> </span>
+</p><p>
+  <span>I couldn’t wait to tell Tom all about it.</span>
+  <span> </span>
+</p><p>
+  <span>September 1</span>
+  <span>st</span>
+  <span>, 1992</span>
+  <span> </span>
+</p><p>
+  <span>Everything was chaos in the morning, just as I had expected. </span>
+  <span> </span>
+</p><p>
+  <span>However, I did not expect everyone to be so frantic. We were all running around the house trying to find things we had not remembered to pack yet. Dad hurried me to close my trunk so he could bring it down to the car and I did, quickly following him downstairs.</span>
+  <span> </span>
+</p><p>
+  <span>When we got to the garden, he tripped over a damn chicken and almost broke his neck. I rushed to help him get up at the same time as mum, but she got there first.</span>
+  <span> </span>
+</p><p>
+  <span>“Can this get any worse?” I thought.</span>
+  <span> </span>
+</p><p>
+  <span>The answer was yes.  As we got to the Ford, I saw dad whisper something to Harry. </span>
+  <span>We all got into the car, which was a lot bigger on the inside than it seemed to be</span>
+  <span> and I assumed that this was not the hand of muggles.</span>
+  <span> </span>
+</p><p>
+  <span>I didn’t care, since we all fitted comfortably. Mum, who hadn’t seen Harry’s surprised look, was amazed that the muggles had managed to build the car. I had to stop myself from laughing.</span>
+  <span> </span>
+</p><p>
+  <span>We took off, and had to come back twice for George’s remaining fireworks and Fred’s broom. We left a third time and as dad </span>
+  <span>drove</span>
+  <span> I was thinking about how funny Tom would find the whole situation. Wait...</span>
+  <span> </span>
+</p><p>
+  <span>‘I forgot my diary!’ I shouted. Dad stopped and turned back. Everyone was giving me annoyed looks, but I could not care less about it. I needed that book.</span>
+  <span> </span>
+</p><p>
+  <span>When we got back, I scrambled out of the car and ran to my room. I got there fast and abruptly opened the door, grabbing the black diary and bolting back to the car. By the time I had gotten back in, we were running late.</span>
+  <span> </span>
+</p><p>
+  <span>I didn’t hear anything after that until we got to the station. I was so relieved I had remembered and the leather feel calmed me down as I was trying to catch my breath.</span>
+  <span> </span>
+</p><p>
+  <span>When we arrived, it was already a quarter to 11. Shit. We ran to the platform as fast as we could and mum and I went through with only a minute to spare. I wanted to wait for the other 2, but she rushed me into the train, saying I’d greet them when they got in.</span>
+  <span> </span>
+</p><p>
+  <span>Then they didn’t. I went to look for Fred and George and as I spotted them in one of the compartments, a voice called behind me.</span>
+  <span> </span>
+</p><p>
+  <span>‘Ginny?’</span>
+  <span> </span>
+</p><p>
+  <span>Could it be Luna? I turned with a faint excited smile on my face, but all I saw was a girl with frizzy brown hair.</span>
+  <span> </span>
+</p><p>
+  <span>‘Hi, Hermione!’ I said, my smile faltering.</span>
+  <span> </span>
+</p><p>
+  <span>‘Have you seen Harry and Ron?’ she asked.</span>
+  <span> </span>
+</p><p>
+  <span>Hearing that, my lips straightened.</span>
+  <span> </span>
+</p><p>
+  <span>‘They didn’t make it to the train.’ I said in a worried tone.</span>
+  <span> </span>
+</p><p>
+  <span>‘What?!’ she responded in the same manner and I told her the story. When I finished, she had the look my mum waved me off with. It was all my fault. </span>
+  <span> </span>
+</p><p>
+  <span>‘You mustn’t blame yourself, Ginny.’ she stated, as if knowing what I was thinking. I felt the book in my hand and scolded myself. </span>
+  <span> </span>
+</p><p>
+  <span>“Practice makes perfect,” I remembered. My voice softened.</span>
+  <span> </span>
+</p><p>
+  <span>‘I know. Plus, we had to turn back for the twins too,’ I commented, trying to sound confident. ‘Speaking of, do you want to come in with me?’ I said and pointed to them.</span>
+  <span> </span>
+</p><p>
+  <span>She nodded and we went in.</span>
+  <span> </span>
+</p><p>
+  <span>***</span>
+  <span> </span>
+</p><p>
+  <span>When I woke up, the train was stopping. I had fallen asleep for a good 2 hours and it was now dark outside. Good thing I had hidden the diary under my robes. Fred and George were not above stealing it.</span>
+  <span> </span>
+</p><p>
+  <span>Everyone was getting up around me and I followed them out of the train. </span>
+  <span> </span>
+</p><p>
+  <span>‘Firs' years! Firs' years over here!’ a voice shouted. I waved at my brothers and Hermione and went towards it, realizing it was Hagrid’s. You couldn’t mistake the man for another.</span>
+  <span> </span>
+</p><p>
+  <span>When I got there, I finally saw her. Her long blonde hair was flowing down to her waist. She was now wearing the same black robes as everyone and she had the same kind of dangling earrings, only now the sunflowers were replaced by blueberries. She was looking at the moon, her back at me.</span>
+  <span> </span>
+</p><p>
+  <span>I carefully went towards her and tapped her on the shoulder. She turned slowly and I met the same grey sparkling eyes I had seen that day.</span>
+  <span> </span>
+</p><p>
+  <span>‘Hi, Luna!’ I greeted. Would she think it’s weird that I remembered her name? Much to my relief, she smiled.</span>
+  <span> </span>
+</p><p>
+  <span>‘Hello, Ginny!’ she said in a faint voice. She seemed distracted. I was looking at her earrings, which rattled with every move of her head.</span>
+  <span> </span>
+</p><p>
+  <span>‘Isn’t it pretty?’</span>
+  <span> </span>
+</p><p>
+  <span>Snapped out of my trance by her question, I jolted my head up to her eyes only to realize she was looking at the moon again.</span>
+  <span> </span>
+</p><p>
+  <span>‘Isn’t it always?’ I inquired back, now smiling and looking up as well. It was a crescent moon.</span>
+  <span> </span>
+</p><p>
+  <span>‘I like it better like this. Most people prefer the full one, but I always feel sorry for the werewolves.’</span>
+  <span> </span>
+</p><p>
+  <span>I looked at Luna, expecting her to be laughing at her own joke. She was not, her eyes now looking sad instead of amused. Granted, I was relived she was serious, since it would not have been a very good joke, but I was surprised since most people didn’t voice their beliefs like that. I did not have that courage, but she did. I liked that about her.</span>
+  <span> </span>
+</p><p>
+  <span>I did not get to respond, since everyone had finally gathered and we were now walking on a narrow and dark path, with Hagrid guiding us. The girl was walking in front of me, her hair moving slightly with every step she took. </span>
+  <span> </span>
+</p><p>
+  <span>As I walked, I could feel the sharp edges of the diary jabbing at my stomach, but did not pay any attention to that.</span>
+  <span> </span>
+</p><p>
+  <span>I now felt a new emotion that replaced the fiery one in my chest, and it reminded me of the moon.</span>
+  <span> </span>
+</p>
+  </div>
+  <!--/main-->
+
+
+</div>
+
+<!-- end of cache -->
+
+          <!-- This partial requires local variable 'chapter' -->
+<div class="chapter" id="chapter-5">
+  <!-- chapter management -->
+
+
+  <div class="chapter preface group" role="complementary">
+    <h3 class="title">
+      <a href="/works/28840245/chapters/71135202">Chapter 5</a>: Hogwarts
+    </h3>
+
+    <!-- only display byline if different from the main byline -->
+
+
+      <div id="notes" class="notes module">
+        <h3 class="heading">Notes:</h3>
+          <p>
+          (See the end of the chapter for  <a href="/works/28840245/chapters/71135202#chapter_5_endnotes">notes</a>.)
+          </p>
+      </div>
+  </div>
+
+  <!--main content-->
+  <div class="userstuff module" role="article">
+    <h3 class="landmark heading" id="work">Chapter Text</h3>
+    <p>
+  <span>As we turned a corner, there was a collective gasp.</span>
+  <span> </span>
+</p>
+<p>
+  <span>In front of us lay a great dark lake, in which sparkled the reflection of the castle. With its many lit windows and towers, Hogwarts seemed to be calling out to us, like we had been waiting all our lives just for this moment. And maybe I had.</span>
+  <span> </span>
+</p>
+<p>
+  <span>‘No </span>
+  <span>more’n</span>
+  <span> four in a boat!’ called out Hagrid, gesturing to the little boats that were floating in the water.</span>
+  <span> </span>
+</p>
+<p>
+  <span>Luna hurried to one of them and seated herself, looking at me expectedly. I sat down beside her, and soon after so did a boy with mousy brown hair. He had a camera hanging around his neck, but it wasn’t one of the wizard ones.</span>
+  <span> </span>
+</p>
+<p>
+  <span>‘I’m Colin!’ he said and extended his hand. I shook it.</span>
+  <span> </span>
+</p>
+<p>
+  <span>‘Ginny,’ </span>
+  <span> </span>
+</p>
+<p>
+  <span>The girl turned to face him.</span>
+  <span> </span>
+</p>
+<p>
+  <span>‘I’m Luna,’ she said without taking his hand, but with a little smile still on her face. Just then, the boats took off.</span>
+  <span> </span>
+</p>
+<p>
+  <span>It was beautiful. The lake was smooth like a mirror and the castle towered over us. I saw a camera flash in the corner of my eye a couple times, but couldn’t blame Colin for taking pictures. Hell, I would’ve done the same had </span>
+  <span>I</span>
+  <span> </span>
+  <span>a</span>
+  <span> camera.</span>
+  <span> </span>
+</p>
+<p>
+  <span>Suddenly, I heard a crashing noise from afar and everyone turned to look, with some letting out a few gasps. It seemed to come from behind the castle, so I didn’t think anything of it.</span>
+  <span> </span>
+</p>
+<p>
+  <span>We entered a dark tunnel and everything went black. I couldn’t hear a thing, and it made me uneasy. Why did everyone describe silence as cleansing? Was I the only one that felt like jumping in the water?</span>
+  <span> </span>
+</p>
+<p>
+  <span>‘Quite gloom in here,’ said the girl beside me. That calmed me.</span>
+  <span> </span>
+</p>
+<p>
+  <span>‘Yeah,’ I agreed and let out a nervous laugh.</span>
+  <span> </span>
+</p>
+<p>
+  <span> Luckily, we exited soon after and got out of the boats, stepping on some kind of rocky surface covered in pebbles. We started walking on a huge flight of stairs and when we got to what I assumed to be the front door the man made sure all of us were there before knocking.</span>
+  <span> </span>
+</p>
+<p>
+  <span>A tall witch with black hair answered immediately and told us to follow her from there. She had a very stern look, so I started walking behind her without asking questions. I didn’t think it would be wise to.</span>
+  <span> </span>
+</p>
+<p>
+  <span>The walls were lit with torches and the rooms were tall and large. I could hear the distant chatter of hundreds of voices. Now, that was better. As we walked, they were getting louder and louder, indicating that that would be our destination. The thought reassured me.</span>
+  <span> </span>
+</p>
+<p>
+  <span>Suddenly, we all stopped in a small chamber in front of us. </span>
+  <span> </span>
+</p>
+<p>
+  <span>‘Welcome to Hogwarts,’ said the woman ‘I am professor McGonagall. The start of-term banquet will begin shortly, but before you take your seats in the Great Hall, you will be sorted into your houses. The Sorting is a very important ceremony because, while you are here, your house will be something like your family within Hogwarts. You will have classes with the rest of your house, sleep in your house dormitory, and spend free time in your house common room.</span>
+  <span> </span>
+</p>
+<p>
+  <span>The four houses are called Gryffindor, Hufflepuff, Ravenclaw, and Slytherin. Each house has its own noble history and each has produced outstanding witches and wizards.’ </span>
+  <span> </span>
+</p>
+<p>
+  <span>Everyone spoke ill of the Slytherins though, and judging by the only interaction I had with one, I thought I would rather not belong there. Every Weasley went into Gryffindor anyways.</span>
+  <span> </span>
+</p>
+<p>
+  <span>‘While you are at Hogwarts, your triumphs will earn your house points, while any rule breaking will lose house points. At the end of the year, the house with the most points is awarded the house cup, a great honor. I hope each of you will be a credit to whichever house becomes yours.’</span>
+  <span> </span>
+</p>
+<p>
+  <span>“In that case, I don’t want to be in the same house as my brothers.” I jokingly thought.</span>
+  <span> </span>
+</p>
+<p>
+  <span>"The Sorting Ceremony will take place in a few minutes in front of the rest of the school. I suggest you all smarten yourselves up as much as you can while you are waiting."</span>
+  <span> </span>
+</p>
+<p>
+  <span>She said that while eyeing Luna’s wand, which irritated me a bit. I, for one, thought it was smart. She couldn’t possibly lose it now. The girl just looked back at the professor </span>
+  <span>serenely</span>
+  <span>.</span>
+  <span> </span>
+</p>
+<p>
+  <span>As for the ceremony, when I asked Fred about </span>
+  <span>it</span>
+  <span> he said it was some kind of test and that it would hurt a lot. Knowing him, I took everything he said with a grain of salt. Also, Ron had started giggling when he had told me, so I highly doubted it was true.</span>
+  <span> </span>
+</p>
+<p>
+  <span>‘I shall return when we are ready for you.’ and with that, she left.</span>
+  <span> </span>
+</p>
+<p>
+  <span>Great.</span>
+  <span> </span>
+</p>
+<p>
+  <span>A few people were now glancing at Luna. Who did they think they were, anyways? A few were already giggling and I threw them a pretty nasty stare, at which they tried to stop, but ended up laughing harder. Had professor McGonagall not entered the room, I would have pulled out my own wand.</span>
+  <span> </span>
+</p>
+<p>
+  <span>‘Now, form a line, and follow me.’</span>
+  <span> </span>
+</p>
+<p>
+  <span>We did and I ended up behind Luna once again. We got out of the chamber and walked towards the chatter and through a double door. When the doors opened, the noise lowered as well.</span>
+  <span> </span>
+</p>
+<p>
+  <span>I looked up and was met by the moon. Stars were also sparkling on the ceiling, but the room itself was lit by the thousands of candles floating mid-air. I assumed they had also been bewitched to not drip any wax. </span>
+  <span> </span>
+</p>
+<p>
+  <span>5 long tables stood before us, 4 of which I </span>
+  <span>were</span>
+  <span> </span>
+  <span>colour</span>
+  <span>-coded. No, house coded. I could see my brothers at the red one. The fifth was sitting at the end of the room, in front of everyone. Hagrid was sitting there too, so I soon realized it belonged to the teachers.</span>
+  <span> </span>
+</p>
+<p>
+  <span>McGonagall placed a stool in front of us, on which sat a pointed brown and battered hat. I was confused, only to be even more perplexed when the brim opened and it started singing.</span>
+  <span> </span>
+</p>
+<p>
+  <span>After it finished, I was relieved because of what it had said and started clapping with the others. So, Fred was lying and all I had to do was put on the hat and pray not to get shipped off to the people in green.</span>
+  <span> </span>
+</p>
+<p>
+  <span>The witch that had brought us in pulled out a list and started calling out names. They were in alphabetical order, so I had plenty of time to worry before she got to W. I only caught fragments of the sorting, since I couldn’t concentrate on anything but that stupid stool and stupid hat. </span>
+  <span> </span>
+</p>
+<p>
+  <span>What if it called out Slytherin in front of everyone? Or rather, what would mum say if it shouted anything but Gryffindor while I wore it? Would she even try to not act disappointed?</span>
+  <span> </span>
+</p>
+<p>
+  <span>Creevey, Collin got into Gryffindor. That calmed me a bit, since the kid didn’t seem exactly brave. Shit, was that the kind of thinking that got you into Slytherin?!</span>
+  <span> </span>
+</p>
+<p>
+  <span>‘Lovegood, Luna.’ professor McGonagall said. She glanced at me, smiled, and went to the stool as if she were weightless.</span>
+  <span> </span>
+</p>
+<p>
+  <span>‘Yeah, more like Loony!’ said someone from the student’s tables.</span>
+  <span> </span>
+</p>
+<p>
+  <span>People began laughing. She didn’t hear, or at least pretended not to. She still had that smile on her face. That Luna Lovegood smile.</span>
+  <span> </span>
+</p>
+<p>
+  <span>As soon as the hat was placed on her head, it yelled out:</span>
+  <span> </span>
+</p>
+<p>
+  <span>‘Ravenclaw!’</span>
+  <span> </span>
+</p>
+<p>
+  <span>Like there was no doubt, and I suppose I wasn’t exactly surprised. The blue table started clapping and she made her way over, her smile now broader. She looked happy.</span>
+  <span> </span>
+</p>
+<p>
+  <span>I didn’t pay attention after that, until I heard the familiar:</span>
+  <span> </span>
+</p>
+<p>
+  <span>‘Weasley, Ginny,’ at which my brothers cheered. Ron still wasn’t there. I walked to the front, praying not to trip. I sat down and I could feel my heart beating in my chest.</span>
+  <span> </span>
+</p>
+<p>
+  <span>The hat was placed on my head and fell over my eyes. Suddenly, I heard a voice in my ear.</span>
+  <span> </span>
+</p>
+<p>
+  <span>‘Another Weasley?!’ I heard people laughing. ‘Gryffindor, of course!’</span>
+  <span> </span>
+</p>
+<p>
+  <span>I let out a relieved sigh and smiled as the red and gold table started clapping. I walked over to it and sat down beside George so that I was now face to face with Hermione.</span>
+  <span> </span>
+</p>
+<p>
+  <span>‘Congrats, Gin!’ Fred greeted.</span>
+  <span> </span>
+</p>
+<p>
+  <span>Everything was better after that, although I kept glancing at the Ravenclaw table. I was a bit disappointed we weren’t in the same house, but I shook that feeling off. I’d tell Tom all about it later, I reassured myself. For now, the food looked delicious.</span>
+  <span> </span>
+</p>
+<p>
+  <span>We ate and talked; I even made a couple jokes. I could see a few familiar first years at my table, but thought I’d introduce myself later, in the dorms. I even forgot about Harry and Ron for a bit, but I could tell Hermione had not.</span>
+  <span> </span>
+</p>
+<p>
+  <span>‘Don’t you think it’s weird Dumbledore isn’t here?’ she asked at one point. Some nodded, I just raised my shoulders. I did want to meet the man everyone called the greatest wizard of our time, but he did not seem more important than the food.</span>
+  <span> </span>
+</p>
+<p>
+  <span>Hermione barely ate and smiled vaguely sometimes, her eyebrows creased. Damn, they were good friends. I was glad for my brother, but at the same time...</span>
+  <span> </span>
+</p>
+<p>
+  <span>No, this wasn’t a time to be jealous of Hermione. But did Harry like her? Oh, she had always been so kind to me. I realized I’d been staring at my plate and raised my head, smiling.</span>
+  <span> </span>
+</p>
+<p>
+  <span>‘Practice makes perfect.’</span>
+  <span> </span>
+</p>
+<p>
+  <span>***</span>
+  <span> </span>
+</p>
+<p>
+  <span>Just when the feast was about to end, professor McGonagall and Dumbledore entered the room. Hermione got up as soon she saw and started marching towards them.</span>
+  <span> </span>
+</p>
+<p>
+  <span>They then began to have a very intense conversation, and by ‘they’ I mean the witches. Dumbledore seemed kind of amused, his lips curled in a weird smile. Not like Luna’s.</span>
+  <span> </span>
+</p>
+<p>
+  <span>He was tall, thin, and had a silvery long beard. He did not look as impressive or as imposing as I had imagined him.</span>
+  <span> </span>
+</p>
+<p>
+  <span>‘A flying car?!’ Hermione suddenly spouted, perhaps a bit louder than </span>
+  <span>intended</span>
+  <span>. </span>
+  <span> </span>
+</p>
+<p>
+  <span>The twins and I shared a look. Percy stopped smiling, but </span>
+  <em>
+    <span>we</span>
+  </em>
+  <span> were trying not to laugh. </span>
+  <span> </span>
+</p>
+<p>
+  <span>“Bloody brilliant!” I thought. “They miss the train and the next l </span>
+  <em>
+    <span>completely </span>
+  </em>
+  <span>logical</span>
+  <span> thing they do is fly over here!”</span>
+  <span> </span>
+</p>
+<p>
+  <span>I let out a giggle, but the prefect threw me a look and I had to abstain from laughing even harder. He looked like a poor imitation of mum.</span>
+  <span> </span>
+</p>
+<p>
+  <span>Hermione returned to the table, looking shocked. Fred asked her what had happened and she began explaining to them.</span>
+  <span> </span>
+</p>
+<p>
+  <span>Apparently, they hadn’t even made it to the platform. Ron and Harry tried getting in, only to hit a wall. They panicked, saw the car and ‘apparently taught they had learned how to drive from that one time they flew with you!' she accused and looked angrily at my brothers.</span>
+  <span> </span>
+</p>
+<p>
+  <span>Clearly, they had not. They were spotted by a muggle and crashed into the Whomping Willow (which I was told was a sentient tree on the grounds of the castle). I put 2 and 2 together and realized that was the noise we had heard while on the lake.</span>
+  <span> </span>
+</p>
+<p>
+  <span>The story began spreading like wildfire and soon enough, it seemed like every student knew a version of it. Some were looking proud and amused (mostly the Gryffindors). On the other hand, some were smirking devilishly, and by some I mean, of course, Draco Malfoy and his little goons. </span>
+  <span> </span>
+</p>
+<p>
+  <span>The teachers looked disappointed, except for one. A man with slimy black hair had a </span>
+  <span>bizarre</span>
+  <span> pleased-looking expression on his </span>
+  <span>face</span>
+  <span>. Needless to say, it gave me the creeps.</span>
+  <span> </span>
+</p>
+<p>
+  <span>After a bit of singing, we all got up to leave the great hall, no longer tired. All but Hermione, who stayed behind with McGonagall.</span>
+  <span> </span>
+</p>
+<p>
+  <span>Percy was in front, leading the Gryffindors. He was the one that knew the password, being the perfect prefect and all. After what seemed like an eternity of staircases and passages, he stopped in front of a portrait of a woman in a gorgeous silk dress.</span>
+  <span> </span>
+</p>
+<p>
+  <span>‘Password?’ she inquired.</span>
+  <span> </span>
+</p>
+<p>
+  <span>‘Wattlebird,’ answered my brother, and the portrait swung open.</span>
+  <span> </span>
+</p>
+<p>
+  <span>The room I saw reminded me of home. It was cozy and warm, full of cushiony armchairs. A mighty fireplace stood before a sofa, throwing warm shades over the place. I could actually hear the wood crackling before everyone started chatting.</span>
+  <span> </span>
+</p>
+<p>
+  <span>Obviously, no one was going up to the bedrooms. We were all waiting for 2 certain people, but I would rather have gone to bed. I could always ask later and I was sure I’d hear about it anyways from the howler mum would send. Cause she would definitely send one.</span>
+  <span> </span>
+</p>
+<p>
+  <span>I sat down on one of the chairs and waited for their arrival. As it turns out, it wasn’t for long, since a couple minutes later the portrait swung open once again and I was met with 3 familiar faces.</span>
+  <span> </span>
+</p>
+<p>
+  <span>People starting pulling the boys in, leaving Hermione to scramble behind. They praised them asked questions and patted them on the back like proud dads. Of course, as soon as they saw Percy, Harry and Ron went to their bedroom., claiming to be tired.</span>
+  <span> </span>
+</p>
+<p>
+  <span>“Couldn’t even bother asking about your sister, huh?” I thought.</span>
+  <span> </span>
+</p>
+<p>
+  <span>After they closed the door behind them, the chatter started up again. Brilliant, now I could go to sleep. I quietly got up and climbed the stairs to the girls’ rooms, praying no one was paying attention to me. Maybe I would even be the first one in the bedroom and pretend to be asleep by the time the others had come in.</span>
+  <span> </span>
+</p>
+<p>
+  <span>I had no such luck.</span>
+  <span> </span>
+</p>
+  </div>
+  <!--/main-->
+
+    <div class="chapter preface group">
+      <div class="end notes module" id="chapter_5_endnotes" role="complementary">
+        <h3 class="heading">Notes:</h3>
+        <blockquote class="userstuff">
+          <p>I have to say that I did take a bunch of quotes from the books (dialogues and such, since I couldn't reinvent them)</p>
+        </blockquote>
+      </div>
+    </div>
+
+</div>
+
+<!-- end of cache -->
+
+          <!-- This partial requires local variable 'chapter' -->
+<div class="chapter" id="chapter-6">
+  <!-- chapter management -->
+
+
+  <div class="chapter preface group" role="complementary">
+    <h3 class="title">
+      <a href="/works/28840245/chapters/71693586">Chapter 6</a>: Sorry
+    </h3>
+
+    <!-- only display byline if different from the main byline -->
+
+
+      <div id="notes" class="notes module">
+        <h3 class="heading">Notes:</h3>
+          <blockquote class="userstuff"><p>TW: manipulation</p></blockquote>
+      </div>
+  </div>
+
+  <!--main content-->
+  <div class="userstuff module" role="article">
+    <h3 class="landmark heading" id="work">Chapter Text</h3>
+    <p>
+  <span>A girl was already unpacking her things in the corner of the room. She had chosen the bed farthest to the door. </span>
+  <span> </span>
+</p><p>
+  <span>‘Hi!’ I said, trying to seem enthusiastic. She seemed nice.</span>
+  <span> </span>
+</p><p>
+  <span>She jerked her head up in surprise as she </span>
+  <span>hadn't</span>
+  <span> heard me enter.</span>
+  <span> </span>
+</p><p>
+  <span>‘Oh, hi!’ The girl got up and walked towards me. She was a bit taller than me and had long, black braids in her hair. She extended her hand, smiling.</span>
+  <span> </span>
+</p><p>
+  <span>‘I’m Kayin!’</span>
+  <span> </span>
+</p><p>
+  <span>‘Ginny,’ I said and shook her hand. I remembered her from the sorting ceremony. The hat had considered putting her in Hufflepuff, but then decided on Gryffindor.</span>
+  <span> </span>
+</p><p>
+  <span>‘Nice to meet you! I was just unpacking. Are you nervous for tomorrow?’</span>
+  <span> </span>
+</p><p>
+  <span>‘A bit. My brothers only said to watch out for the Potions teacher though, and that’s not until Friday.’ I joked.</span>
+  <span> </span>
+</p><p>
+  <span>‘Your brothers are wizards too? That’s amazing! I didn’t know about any of this until half a year ago. My parents had the biggest shock.’ she giggled.</span>
+  <span> </span>
+</p><p>
+  <span>I laughed too.</span>
+  <span> </span>
+</p><p>
+  <span>‘I’ve been waiting for this moment ever since my oldest sibling got in. And I was one then.’</span>
+  <span> </span>
+</p><p>
+  <span>‘You must have a pretty good image of what classes will be like, then. Mind telling me about it?’</span>
+  <span> </span>
+</p><p>
+  <span>‘Oh, I don’t trust my brothers. One of them told me the sorting would be a “painful test” so I don’t really think you’d like to hear about all their other stories.’</span>
+  <span> </span>
+</p><p>
+  <span>‘I’ll take your word for it. Thanks anyways.’ She did look a bit disappointed. I could not imagine going my whole life without knowing about wizards.</span>
+  <span> </span>
+</p><p>
+  <span>Just then, two other girls entered, laughing. One was shorter than me, with fluffy pink hair cut to her shoulders and green eyes. </span>
+  <span> </span>
+</p><p>
+  <span>‘Oh, hello!’ she said, still giggling. ‘I’m Bianca.’</span>
+  <span> </span>
+</p><p>
+  <span>‘And I’m Faye,’ said the other one. She was taller than all of us and wore her black silky hair in a bob.</span>
+  <span> </span>
+</p><p>
+  <span>We also introduced ourselves. The girls said they lived in the same neighborhood but had never gotten to know each other since the pink haired girl was a half-blood and the other was a muggle. After a while I told them I was tired and went to bed, closing the red curtains of my bed so that none of them could see me.</span>
+  <span> </span>
+</p><p>
+  <span>I hadn’t exactly been lying, I wanted to go to sleep and my eyes were half-closed, but I had to talk to Tom. I had to fill him in with the details, even if it meant missing on an hour of sleep.</span>
+  <span> </span>
+</p><p>
+  <span>I’d put a quill on bed while unpacking and the diary was still in my clothes. They seemed like nice people, but I couldn’t trust them enough to show them the diary. It had become my most prized </span>
+  <span>possession</span>
+  <span>.</span>
+  <span> </span>
+</p><p>
+  <span>I put the blanket over my head and whispered ‘Lumos’, at which my wand lit up. Turns out reading the Charms textbook was paying off.</span>
+  <span> </span>
+</p><p>
+  <span>“Hi, Tom!” I eagerly wrote.</span>
+  <span> </span>
+</p><p>
+  <span>“Hello! How was it, Ginny?”</span>
+  <span> </span>
+</p><p>
+  <span>“My brother and Harry missed the train and flew here with a car. I never knew Ron had it in him, although I guess I should have, after last year.”</span>
+  <span> </span>
+</p><p>
+  <span>“What happened last year, if you don’t mind me asking?”</span>
+  <span> </span>
+</p><p>
+  <span>“Well, a new Defense Against the Dark Arts teacher got hired and turns out he was possessed by You-Know-Who. Harry, my brother and their other friend found out and prevented him from stealing some kind of important item, the Philosopher’s stone, I believe. They had to go through a bunch of challenges before catching up to him. That’s what I was told, at least. Mum was mighty proud of him.”</span>
+  <span> </span>
+</p><p>
+  <span>“They must be very talented if they did that in their first year!”</span>
+  <span> </span>
+</p><p>
+  <span>“I knew Harry was, and Ron said Hermione was a “know-it-all" so I assumed she’s very smart, especially considering she’s muggle-born, so I thought they did all the work. When I heard Ron drove the </span>
+  <span>car,</span>
+  <span> I was quite impressed, even if they wrecked it when they landed.”</span>
+  <span> </span>
+</p><p>
+  <span>“I’m impressed as well. They should be more careful, though. What they did could have killed them. And that professor...If you ever want to do something like this, Ginny, come ask for my advice first.”</span>
+  <span> </span>
+</p><p>
+  <span>“</span>
+  <span>Oh,</span>
+  <span> don’t worry, I don’t think I’ll get possessed any time soon!”</span>
+  <span> </span>
+</p><p>
+  <span>He didn’t respond. He never laughed when I made jokes like that, which only made me realize he cared about me.</span>
+  <span> </span>
+</p><p>
+  <span>“I’m sorry, I shouldn’t joke about that.”</span>
+  <span> </span>
+</p><p>
+  <span>“You’re right. You shouldn’t.”</span>
+  <span> </span>
+</p><p>
+  <span>He didn’t say anything after, so I closed the diary feeling guilty. I did not want to upset me, but it was clear that I had. I fell asleep long after all the others, I couldn’t stop worrying. He was my first and only real friend and I could not bear even the thought of losing him.</span>
+  <span> </span>
+</p><p>
+  <span>A feeling of regret washed over me and had entirely engulfed me by the time I finally dozed off.</span>
+  <span> </span>
+</p><p>
+  <span> </span>
+</p><p>
+  <b>
+    <em>
+      <span>***</span>
+    </em>
+  </b>
+  <span> </span>
+</p><p>
+  <span>September 2</span>
+  <span>nd</span>
+  <span>,</span>
+  <span> 1992</span>
+  <span> </span>
+</p><p>
+  <span>Kayin woke me up just in time for breakfast. She also waited for me so that we could together, even if the others had already left by the time I’d woken up.</span>
+  <span> </span>
+</p><p>
+  <span>‘Didn’t think I could get to the great hall by myself,’ she confessed to me when we left. ‘Last night was a blur, to be quite honest. I half expected it to be a dream.’</span>
+  <span> </span>
+</p><p>
+  <span>I laughed. </span>
+  <span> </span>
+</p><p>
+  <span>‘Thanks for waiting for me, but you really shouldn’t have.’ She tried to say something, but I cut her off. ‘No, really. I don’t know the way either.’</span>
+  <span> </span>
+</p><p>
+  <span>We eventually did make it to breakfast, though, even if we only had 10 minutes before our first lesson: Defense Against the Dark Arts with the one and only Gilderoy Lockhart.</span>
+  <span> </span>
+</p><p>
+  <span>I didn’t get why everyone was so obsessed with him. Mum was keen on reading his books and meeting him, but I didn’t count that as weird since all the middle-aged witches I saw at Flourish and </span>
+  <span>Blotts</span>
+  <span> that day had acted the same way. I was surprised to realize the girls in my class had more in common with mum than I thought.</span>
+  <span> </span>
+</p><p>
+  <span>‘I can’t wait to meet him,’ I caught Bianca saying when we entered the classroom.</span>
+  <span> </span>
+</p><p>
+  <span>I didn’t tell them I already had. I remembered Hermione was excited to see him too, and I was too tired to have to tell them about our teacher. Plus, if they wanted to know, they could read his books, or look at all the portraits of him hung in the classroom. Or wait for him to walk in.</span>
+  <span> </span>
+</p><p>
+  <span>‘Me, </span>
+  <span>Gilderoy</span>
+  <span> Lockhart, Order of Merlin, Third Class, Honorary Member of the Dark Force Defense League, and five-time winner of </span>
+  <span>Witch</span>
+  <span> Weekly’s Most-Charming-Smile Award, and your Defense Against the Dark Arts this year.’ he said pointing at the cover of one of his many books.</span>
+  <span> </span>
+</p><p>
+  <span>Bianca now had her eyes glued to him, and so did most of the other girls in the class. Only Kayin, who sat beside me, looked a bit unimpressed. I mean, sure, he was good-looking, I couldn’t deny it, but nothing else seemed particularly interesting about him.</span>
+  <span> </span>
+</p><p>
+  <span>You’d think all those adventures he went on would have left a mark on him, but he stood before us perfectly fine. No scars, no limp, no missing limbs and no one seemed to question it. He was, if you ask me, a bit too perfect.</span>
+  <span> </span>
+</p><p>
+  <span>‘I see you’ve all bought a complete set of my books.’</span>
+  <span> </span>
+</p><p>
+  <span>Like we’d had a choice. All those books about were more about him than his spells and talents or even about what we were supposed to learn. It was like you had to pick and choose the helpful parts.</span>
+  <span> </span>
+</p><p>
+  <span>‘We’ll start with an introductory quiz, then. It’s your first year here at Hogwarts, so let’s see how curious you were about our material. Nothing to worry about, just to check how well you’ve read the books.’</span>
+  <span> </span>
+</p><p>
+  <span>He began handing out papers.</span>
+  <span> </span>
+</p><p>
+  <span>‘You have 30 minutes, starting now,’ he said when he got back to the front.</span>
+  <span> </span>
+</p><p>
+  <span>I looked down at the test and had to stop myself from laughing. All the questions were about him. Not just about his adventures, but things like his favorite color and his ideal birthday gift.</span>
+  <span> </span>
+</p><p>
+  <span>I looked at him, trying to see if it was some kind of joke, but he had the same obnoxious white smile on his face. I glanced at the girl on my right and she looked just as amused as I felt. That moment, I made up my mind about him. He was clearly an arrogant git and all these people obsessing over him were not helping with his ego. I decided he needed a humbling.</span>
+  <span> </span>
+</p><p>
+  <span>Since he was still our teacher, I didn’t do anything too extreme, but when he started reading our </span>
+  <span>answers,</span>
+  <span> I saw his smile falter a bit when he got to mine.</span>
+  <span> </span>
+</p><p>
+  <span>I tried to get every single answer as wrong as it could get. I wrote his favorite color was “his own eye color”, even if that was the only </span>
+  <span>question</span>
+  <span> I knew the answer to. For his ideal birthday </span>
+  <span>gift</span>
+  <span> I wrote “Holiday with Hags by </span>
+  <span>Gilderoy</span>
+  <span> Lockhart”.</span>
+  <span> </span>
+</p><p>
+  <span>I knew it was childish, but he was too. It was our first DADA class, let alone our first class at Hogwarts ever and he had found a way to make it all about himself somehow. I thought Tom would find the whole situation ridiculous.</span>
+  <span> </span>
+</p><p>
+  <em>
+    <span>Tom.</span>
+  </em>
+  <span> </span>
+</p><p>
+  <span>My stomach sunk as I remembered the </span>
+  <span>reason</span>
+  <span> I had slept so little and Lockhart became the least of my problems. Was he still mad at me? How could I make it up to him? </span>
+  <em>
+    <span>What if I couldn’t?</span>
+  </em>
+  <span> </span>
+</p><p>
+  <span>He cared about me. He cared about me and I had managed to screw it up. “If he forgives me,” I thought, “I shall never make a joke like that again.” I’d made him worry, and it was eating me up inside. “Oh, but imagine how upset he must be!”</span>
+  <span> </span>
+</p><p>
+  <span>Before I knew it, DADA was over and I was walking to my Charms class.</span>
+  <span> </span>
+</p><p>
+  <span>‘I expected the teachers to be focused more on...well, us.’ said Kayin.</span>
+  <span> </span>
+</p><p>
+  <span>‘You’d think so, wouldn’t you?’ I responded.</span>
+  <span> </span>
+</p><p>
+  <span>‘I, for one, think he’s very nice. I did read most of his books over the summer so maybe he’s trying a different approach. And it’s working.’ affirmed Bianca.</span>
+  <span> </span>
+</p><p>
+  <span>‘He’s certainly cute.’</span>
+  <span> </span>
+</p><p>
+  <span>We all turned our heads to look at Faye.</span>
+  <span> </span>
+</p><p>
+  <span>‘What?! We’re all thinking it,’ and we laughed.</span>
+  <span> </span>
+</p><p>
+  <span>As we entered the classroom, I saw the Ravenclaws were already there and I scanned the room for a certain familiar face.</span>
+  <span> </span>
+</p><p>
+  <span>‘Hi, Luna!’</span>
+  <span> </span>
+</p><p>
+  <span>‘Hello, Ginny! Congrats on getting into Gryffindor. I did hope we’d be in the same house, though.’</span>
+  <span> </span>
+</p><p>
+  <span>I stared at her for a few seconds and then smiled back. I admired people who said exactly what they were thinking. I never quite had the guts to say everything I thought, like what I thought about Dumbledore, or Harry. Even what Yumiko and Luna said that day had crossed my mind, but I didn’t dare to speak it.</span>
+  <span> </span>
+</p><p>
+  <span>‘Me too, but Ravenclaw does suit you. Do you like it?’</span>
+  <span> </span>
+</p><p>
+  <span>‘I do. Both dad and mum were in the same house, so I did expect it.’</span>
+  <span> </span>
+</p><p>
+  <span>Before I could ask anything else, our Charms professor entered the class. He presented himself as professor Flitwick and had to stand on a pile of books for him to see over his desk.</span>
+  <span> </span>
+</p><p>
+  <span>He began doing a roll call, and when he got to Luna he smiled pleasantly, saying he was happy to have yet another Lovegood in his house.</span>
+  <span> </span>
+</p><p>
+  <span>‘I guess madness does come with genius,’ said Bianca, but she stopped smiling when she saw I was glaring at her. I could swear I heard Kayin laughing at that. </span>
+  <span> </span>
+</p><p>
+  <span>The first lesson was pretty much an introduction, but I did earn 5 points for answering a question about the etymology of a spell used to levitate objects that we’d be learning by the end of October.</span>
+  <span> </span>
+</p><p>
+  <span>After lunch we had Tranfiguration, where I realized I had judged professor McGonagall just right. She held a speech warning us about the dangers of that area of magic and then warned us that if we were to fool around in her class, we would not be coming back.</span>
+  <span> </span>
+</p><p>
+  <span>I think the fact that she changed her desk into a pig after that could’ve really made it hard to take her seriously if she hadn’t kept the same stern look on her face. </span>
+  <span> </span>
+</p><p>
+  <span>She made us try to change matches into needles and I could only make mine look slightly like metal. Kayin, on the other hand, had a shiny and pointy object by the end of the class and received 5 points from McGonagall.</span>
+  <span> </span>
+</p><p>
+  <span>Lastly, we had Herbology, but I could barely concentrate. The whole day I’d tried to ignore the diary in my bag, but now that the end of classes neared, it seemed to be the only book I could see. </span>
+  <span> </span>
+</p><p>
+  <span>When the bell rang, I basically ran to the closest restroom and started writing as fast as I could.</span>
+  <span> </span>
+</p><p>
+  <span>“Hi, Tom.”</span>
+  <span> </span>
+</p><p>
+  <span>“Hello, Ginny!” quickly appeared on the page.</span>
+  <span> </span>
+</p><p>
+  <span>“I’m sorry I upset you last night. I promise I won’t say things like that anymore.” Better get done with it fast. I usually go through with decisions if I act as soon as I get the idea. </span>
+  <span> </span>
+</p><p>
+  <span>“What do you mean? I wasn’t upset.”</span>
+  <span> </span>
+</p><p>
+  <span>What, now?</span>
+  <span> </span>
+</p><p>
+  <span>“I thought you were. You didn’t respond to me afterwards.”</span>
+  <span> </span>
+</p><p>
+  <span>“After what? Stop being silly. I was never mad at </span>
+  <span>you,</span>
+  <span> you were probably just imagining things.”</span>
+  <span> </span>
+</p><p>
+  <span>And then I began thinking about it. I mean, logically, not obsessing over the fight like Bianca over Lockhart, and I realized that he was right. I wasn’t able to sleep properly, couldn’t concentrate in my first day of classes and all because I didn’t take a moment to actually ponder about what I'd said. Now that I did, I couldn’t even remember what joke had started everything.</span>
+  <span> </span>
+</p><p>
+  <span>“I’m sorry, Tom.”</span>
+  <span> </span>
+</p><p>
+  <span>I picked up my things and got up feeling even more tired than I had the night before, more confused than I’d felt when the diary first wrote back.</span>
+  <span> </span>
+</p><p>
+  <span>I needed to go lie down.</span>
+  <span> </span>
+</p>
+  </div>
+  <!--/main-->
+
+
+</div>
+
+<!-- end of cache -->
+
+          <!-- This partial requires local variable 'chapter' -->
+<div class="chapter" id="chapter-7">
+  <!-- chapter management -->
+
+
+  <div class="chapter preface group" role="complementary">
+    <h3 class="title">
+      <a href="/works/28840245/chapters/72448491">Chapter 7</a>: Fights
+    </h3>
+
+    <!-- only display byline if different from the main byline -->
+
+
+  </div>
+
+  <!--main content-->
+  <div class="userstuff module" role="article">
+    <h3 class="landmark heading" id="work">Chapter Text</h3>
+    <p>
+  <span>September 1992</span>
+  <span> </span>
+</p><p>
+  <span>The days went by without many incidents, I could barely remember what I’d done when I thought about it at the end of the day.</span>
+  <span> </span>
+</p><p>
+  <span>Snape was an asshole, as expected. We had Potions with the Slytherins, which made it even worse. He treated them like some kind of saints, while we had to know everything. I could see he was irritated when Kayin knew the answers to every question he asked her.</span>
+  <span> </span>
+</p><p>
+  <span>‘It’s one of my favorite subjects,’ she told me when we got out of Snape’s class for the second time, on Monday. ‘Would be my favorite if the teacher wasn’t such a knob to us.’</span>
+  <span> </span>
+</p><p>
+  <span>She blamed it on us being Gryffindors, but he gave me points when I answered sometimes. She never got any, even if she deserved them more than any of us. I didn’t have the heart to tell her some people thought less of muggle borns.</span>
+  <span> </span>
+</p><p>
+  <span>Also, I thought it was stupid, really. Hermione was a muggle born and she was clearly smarter than my brother. My friend was a muggle born, but she was kinder and overall better than any of the pretentious pureblood Slytherins. Blood status shouldn’t matter, but sadly it does. I resented the day my friends found out about that. I hadn’t known them for a lot of time, but I swore to myself that if anyone did anything to them simply because of their parents, they’d regret it. Hell, if they did that to people I didn’t even know.</span>
+  <span> </span>
+</p><p>
+  <span>On the other hand, Faye was quite keen on learning hexes herself because she thought they were “interesting”. She always said that while trying not to smile, but I could not contradict her. Kayin seemed to be best in DADA, so I doubted they’d need my help. </span>
+  <span> </span>
+</p><p>
+  <span>Bianca, on the other hand, was quite a nightmare for me. </span>
+  <span>Gilderoy</span>
+  <span> this, Lockhart that, I think she mentioned his name at least 30 times a day. At first it was kind of funny, but by the third day I had to say I preferred studying in the library instead of the common room because I did not like the odds of me putting a silencing spell on her. I had to go study with madam Pince constantly breathing over my neck and older kids telling me to “move it” every half hour. I’d decided that even studying in Moaning Myrtle’s bathroom would be more productive: at least she wailed about more practical things. Like death.</span>
+  <span> </span>
+</p><p>
+  <span>I’d had enough of boys for the time being. My crush Harry was quite honestly beginning to be a pain in the ass, with me losing myself every time he was around. The Defense against the Dark Arts teacher was insufferable, leaving me with a wish for people to call </span>
+  <em>
+    <span>him</span>
+  </em>
+  <span> You-Know-Who instead: I was already tired of hearing his name everywhere. My brothers continued teasing me even at school, especially Fred and George. Only Fred and George. That Malfoy prick even stopped me in the library once and gave me some shit about my “hand me down robes and ginger hair”. The only guy I could stand was Tom, with whom I talked more than ever.</span>
+  <span> </span>
+</p><p>
+  <span>He knew everything that was bothering me, from my roommate to the stupid House War and the impending real one. Once, I </span>
+  <span>realized</span>
+  <span> he’d never told me about himself.</span>
+  <span> </span>
+</p><p>
+  <span>“Tom, what about you?” I asked him that Monday evening.</span>
+  <span> </span>
+</p><p>
+  <span>“What about me?”</span>
+  <span> </span>
+</p><p><span>“Don’t you have anything you want to talk about? I never asked you about yourself.”</span> <br/>
+<span>“There is nothing to say, Ginny. As long as this is your journal, my life is your life and I am but an open book.”</span><span> </span></p><p>
+  <span>And that was it. </span>
+  <span> </span>
+</p><p>
+  <span>Tuesday, September 8</span>
+  <span>th</span>
+  <span> 1992</span>
+  <span> </span>
+</p><p>
+  <span>And then it happened.</span>
+  <span> </span>
+</p><p>
+  <span>On Tuesday, we had History first thing in the morning. Mr. Binn’s voice made it almost impossible to stay awake, especially with my sleep schedule. I was now keen on beating everyone in Charms and I had to do better in Transfiguration. I found those 2 most interesting, and even if I liked Kayin I had to beat her in something. Potions was obviously off the table and I didn’t even consider DADA. I refused to listen to Lockhart.</span>
+  <span> </span>
+</p><p>
+  <span>I don’t like to admit it, but I am very competitive. Growing up with 6 </span>
+  <span>brothers</span>
+  <span> kind of does that to you. Expectations were already high enough, with 3 prefects, a head boy, a Quidditch Captain in the family. Most recently, there was one that helped defeat You-Know-Who when he was 11. Was I expected to do that?</span>
+  <span> </span>
+</p><p>
+  <span>So</span>
+  <span> I was now not only studying for Charms, but also reading ahead. Transfiguration proved to be harder than I thought, but I quite liked a challenge. With that and keeping Tom up with everything, talking to my friends and avoiding my brothers, I ended up falling asleep on that beautiful Tuesday morning. </span>
+  <span> </span>
+</p><p>
+  <span>‘Ginny, lesson’s over,’ I heard Bianca and woke up instantly.</span>
+  <span> </span>
+</p><p>
+  <span>‘How long was I...?’</span>
+  <span> </span>
+</p><p>
+  <span>‘Doesn’t matter, now come on or we’ll be late,’ she said and hurried forward.</span>
+  <span> </span>
+</p><p>
+  <span>‘Doesn’t want to miss one moment of Lockhart, that one,’ chuckled Faye.</span>
+  <span> </span>
+</p><p>
+  <span>‘I can give you my notes later,’ offered Kayin. I smiled thankfully.</span>
+  <span> </span>
+</p><p>
+  <span>After that and yet another DADA class, we had double Charms, where I earned 15 points for my house. Lastly, there were the flying lessons with madam Hooch, where I had to pretend I wasn’t that good at flying but not so bad I couldn’t control it. Not so much of a “prodigy” like Harry, but more of a natural.</span>
+  <span> </span>
+</p><p>
+  <span>It was kind of hard to find a balance between those two, but I got it soon enough. The teacher even told me I could become a Quidditch player with a bit more training, at which point I had to pretend I was laughing of joy rather than laughing at the possibility of me giving my all the next lesson.</span>
+  <span> </span>
+</p><p>
+  <span>The day then went by normally, ending with me falling asleep in my bed, diary still in my hand, at about 10 pm out of exhaustion. I could not have said I hadn’t expected that, but what surprised me was Ron waking me up in the common room.</span>
+  <span> </span>
+</p><p>
+  <span>‘It’s half past midnight, what are you doing here?!’ he inquired.</span>
+  <span> </span>
+</p><p>
+  <span>I was just as confused as he and just mumbled something under my breath before quickly getting off the sofa and climbing the stairs to the girl’s rooms. When I looked down at the door knob, I saw the black leather-bound book still in my right hand, but gave it no further thought.</span>
+  <span> </span>
+</p><p>
+  <span>The only question that popped into my head was why my feet were hurting even more than my head.</span>
+  <span> </span>
+</p><p>
+  <span>September 1992</span>
+  <span> </span>
+</p><p>
+  <span>At least I didn’t look sick. By what I could see, I looked the same as always, except for my eye bags being slightly more noticeable. </span>
+  <span> </span>
+</p><p>
+  <span>One of the only things that helped me relax was Kayin’s radio. It was nothing fancy, and we were far from the muggle world. So far, she explained, that we could only listen to her cassettes. That didn’t matter, since they were damn good.</span>
+  <span> </span>
+</p><p>
+  <span>I hadn’t listened to any music other than wizard one and muggle music was a breath of fresh air. The radio also calmed me as an object. You could see how it worked and everything, and for a second I thought dad might not be so weird for liking things like that.</span>
+  <span> </span>
+</p><p>
+  <span>She had stuff like Nirvana, the album that came out a year ago. Apparently, they were starting to gain popularity and she’d found out about them when </span>
+  <span>Nevermind</span>
+  <span> came out (I didn’t really understand why that was so exciting, but I just went with it). She also had older stuff like Queen, which was my favorite. </span>
+  <span> </span>
+</p><p>
+  <span>The days went by fast and by the end of September me and Bianca had at least 5 fights. The other 2 didn’t really get involved, but at the beginning of October Kayin told me to stop starting fights with her, which infuriated me more than it probably should have, but I tried to stop. For her.</span>
+  <span> </span>
+</p><p>
+  <span>Luna and I barely even talked anymore, which made me sad for a bit, until I remember school always came first. That’s what Tom said. We only saw each other in class and God knows where she was the rest of the time, because I never saw her.</span>
+  <span> </span>
+</p><p>
+  <span>October 1992</span>
+  <span> </span>
+</p><p>
+  <span>Apparently, I did look sick. Lucky for me, everyone was sick because of the cold weather, so I had a pretext. Unfortunately, Percy believed me and bullied me into taking madam Pomfrey’s famous </span>
+  <span>Pepperup</span>
+  <span> Potion. My head looked like it was smoking for hours.</span>
+  <span> </span>
+</p><p>
+  <span>‘What happened to you?’ asked Bianca when I entered the room.</span>
+  <span> </span>
+</p><p>
+  <span>‘Doesn’t matter,’ I responded without even looking.</span>
+  <span> </span>
+</p><p>
+  <span>‘It’s that cold medicine everyone's been taking it, isn’t it? I’ve seen Hufflepuffs like this all week. Are you sick?’</span>
+  <span> </span>
+</p><p>
+  <span>‘Not anymore.’</span>
+  <span> </span>
+</p><p>
+  <span>‘Don’t be so mean. I was only trying to chat,’ she scoffed.</span>
+  <span> </span>
+</p><p>
+  <span>‘Go talk to dear </span>
+  <span>Gilderoy</span>
+  <span> if you need to, I’m sure he’s always down to speak about himself. I know </span>
+  <em>
+    <span>you </span>
+  </em>
+  <span>are.’</span>
+  <span> </span>
+</p><p>
+  <span>I knew I was being moody, but if our teacher was the only thing she ever wanted to talk about, then she just had one more thing in common with him, meaning one thing that made me want pull out my wand. At one point she’d said something about Luna’s clothes and I was barely able to control myself. </span>
+  <span> </span>
+</p><p>
+  <span>‘Ok, that was uncalled for, even for you,’ blurted out Faye. </span>
+  <span> </span>
+</p><p>
+  <span>‘Oi, what’s that supposed to mean?!’</span>
+  <span> </span>
+</p><p>
+  <span>‘It means you already have enough smoke coming out of your ears, Ginny,’ concluded Kayin.</span>
+  <span> </span>
+</p><p>
+  <span>Alright, that was it. I opened my mouth to say something, but then thought of what Tom would say and closed it back and just scoffed.</span>
+  <span> </span>
+</p><p>
+  <span>‘Ok, then.’ and I walked back out, bag of books still in my hand.</span>
+  <span> </span>
+</p><p>
+  <span>“</span>
+  <em>
+    <span>Fine, if that’s how it is. I don’t need them.” </span>
+  </em>
+  <span> </span>
+</p><p>
+  <span>I began drowning myself in my studies, which made my performance go up, except for Defense Against the Dark Arts, which was unbearable. My grades went up and high into the stars I learned about in astronomy while my spirits went down with the herbs that sunk into my cauldron in Potions.  I started exploring the castle, finding places no one seemed to know or care about.</span>
+  <span> </span>
+</p><p>
+  <span>Tom said that was the most important thing, always. He helped me lots of times and I was happy enough to be with him. If Kayin and Yumiko wanted to be on Bianca’s side, then fine. I always had Tom. I spent more and more time alone, or rather with him.</span>
+  <span> </span>
+</p><p>
+  <span>Tom, my closest friend. My only friend.</span>
+  <span> </span>
+</p><p>
+  <span>“I won’t ever admit it to them, but I miss their company,” I confessed to him one week before Halloween.</span>
+  <span> </span>
+</p><p>
+  <span>“You don’t need them. You’re better off without them in school anyway.”</span>
+  <span> </span>
+</p><p>
+  <span>“Well, yeah, but at some point I’ll have to make more than just one friend.”</span>
+  <span> </span>
+</p><p>
+  <span>“They were bringing you down. You need people that lift you up and that Bianca one was always making you angry. They were bad for you, trust me. They don’t know you like I do.”</span>
+  <span> </span>
+</p><p>
+  <span>“I trust you,” I wrote down believing every single word.</span>
+  <span> </span>
+</p>
+  </div>
+  <!--/main-->
+
+
+</div>
+
+<!-- end of cache -->
+
+    </div>
+<!--/chapter-->
+
+    <!--afterword-->
+    <div class="afterword preface group" role="complementary">
+        <!--work endnotes-->
+<div id="work_endnotes" class="end notes module">
+  <h3 class="heading">Notes:</h3>
+  <blockquote class="userstuff"><p>This was inspired by All the Young Dudes by MsKingBean89 which you can also read here on ao3(not on Wattpad since the author has said they would not like it to be published there). I highly recommend it.<br/>Do not copy my works to any site. I will probably put it on Wattpad after I finish writing but I do not give anyone permission to put it anywhere else, that will be my decision to make.<br/>English is not my first language so please excuse any grammar and spelling mistakes:)<br/></p></blockquote>
+</div>
+<!--/work endnotes-->
+    </div>
+    <!--/afterword-->
+
+  </div>
+  <!-- END work skin -->
+<!-- END work -->
+
+<!-- BEGIN comment section -->
+<!-- Gets embedded anywhere we need to list comments on a top-level commentable. We need the local variable "commentable" here. -->
+<div id="feedback" class="feedback" role="complementary">
+
+  <h3 class="landmark heading">Actions</h3>
+
+  <ul class="actions" role="navigation">
+      <li><a href="#main">&#8593; Top</a></li>
+
+
+
+
+
+
+      <li>
+        <form id="new_kudo" action="/kudos" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;"/><input type="hidden" name="authenticity_token" value="WHqfxRvESwPlLHVTHASCFo7qOurcFehqWubSKAlz1fFOwen0Ir5UbD5vkwX11DHQt6zZyEtrkAvPJhSriLq_3A"/>
+          <input value="28840245" type="hidden" name="kudo[commentable_id]" id="kudo_commentable_id"/>
+          <input value="Work" type="hidden" name="kudo[commentable_type]" id="kudo_commentable_type"/>
+          <input type="submit" name="commit" value="Kudos ♥" id="kudo_submit"/>
+</form>      </li>
+
+
+
+
+        <li id="show_comments_link"><a data-remote="true" href="/comments/show_comments?view_full_work=true&amp;work_id=28840245">Comments (14)</a></li>
+  </ul>
+
+
+  <div id="kudos_message"></div>
+  
+
+    <div id="kudos">
+      <p class="kudos">
+          <a href="/users/SpeedReader99">SpeedReader99</a> and <a href="/users/iLikeFrogs17">iLikeFrogs17</a>
+             as well as 
+          5 guests
+         left kudos on this work!
+      </p>
+</div>
+
+
+
+  <h3 class="landmark heading"><a id="comments">Comments</a></h3>
+  
+
+    <div id="add_comment_placeholder" title="top level comment">
+      <div id="add_comment">
+        <!-- expects the local variables comment, commentable, and button_name -->
+<div class="post comment" id="comment_form_for_28840245">
+  <form class="new_comment" id="comment_for_28840245" action="/works/28840245/comments" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;"/><input type="hidden" name="authenticity_token" value="AO8rY-19J1VILKWsA5aJR-f2KyfTJ90GW6klixs38S8WVF1S1Ac4OpNvQ_rqRjqB3rDIBURZpWfOaeMImv6bAg"/>
+    <fieldset>
+      <legend>Post Comment</legend>
+
+
+        <input type="hidden" name="view_full_work" id="view_full_work" value="true" class="text"/>
+
+
+
+
+        <dl>
+          <dt class="landmark">Note:</dt>
+          <dd class="instructions comment_form">All fields are required. Your email address will not be published.</dd>
+          <dt><label for="comment_name_for_28840245">Guest name: </label></dt>
+          <dd>
+            <input id="comment_name_for_28840245" type="text" name="comment[name]"/>
+            <script>var validation_for_comment_name_for_28840245=new LiveValidation('comment_name_for_28840245',{wait:500,onlyOnBlur:false});validation_for_comment_name_for_28840245.add(Validate.Presence,{"failureMessage":"Please enter your name.","validMessage":""});</script>
+          </dd>
+          <dt><label for="comment_email_for_28840245">Guest email: </label></dt>
+          <dd>
+            <input id="comment_email_for_28840245" type="text" name="comment[email]"/>
+            <script>var validation_for_comment_email_for_28840245=new LiveValidation('comment_email_for_28840245',{wait:500,onlyOnBlur:false});validation_for_comment_email_for_28840245.add(Validate.Presence,{"failureMessage":"Please enter your email address.","validMessage":""});</script>
+          </dd>
+        </dl>
+        <p class="footnote">(Plain text with limited HTML <a class="help symbol question modal" title="Html help" aria-controls="#modal" href="/help/html-help.html"><span class="symbol question"><span>?</span></span></a>)</p>
+
+      <p>
+        <label for="comment_content_for_28840245" class="landmark">Comment</label>
+        <textarea id="comment_content_for_28840245" class="comment_form observe_textlength" title="Enter Comment" name="comment[comment_content]">
+</textarea>
+        <input type="hidden" id="controller_name_for_28840245" name="controller_name" value="works"/>
+      </p>
+      <p class="character_counter"><span id="comment_content_for_28840245_counter" class="value" data-maxlength="10000" aria-live="polite" aria-valuemax="10000" aria-valuenow="comment_content_for_28840245">10000</span> characters left</p>
+      <script>var validation_for_comment_content_for_28840245=new LiveValidation('comment_content_for_28840245',{wait:500,onlyOnBlur:false});validation_for_comment_content_for_28840245.add(Validate.Presence,{"failureMessage":"Brevity is the soul of wit, but we need your comment to have text in it.","validMessage":""});validation_for_comment_content_for_28840245.add(Validate.Length,{"maximum":"10000","tooLongMessage":"must be less than 10000 characters long."});</script>
+      <p class="submit actions">
+        <input type="submit" name="commit" value="Comment" id="comment_submit_for_28840245" data-disable-with="Please wait..."/>
+      </p>
+    </fieldset>
+</form></div>
+<div class="clear"></div>
+
+      </div>
+    </div>
+
+  <!-- If we have javascript, here is where the comments will be spiffily inserted -->
+  <!-- If not, and show_comments is true, here is where the comments will be rendered -->
+  <div id="comments_placeholder" style="display:none;">
+  </div>
+
+
+</div>
+<!-- END comments -->
+
+<!-- END comment section -->
+<!-- END revealed -->
+
+
+
+          <div class="clear"><!--presentational--></div>
+        </div>
+        <!-- END main -->
+      </div>
+      <!-- BEGIN footer -->
+<div id="footer" role="contentinfo" class="region">
+	<h3 class="landmark heading">Footer</h3>
+  <ul class="navigation actions" role="navigation">
+    <li class="module group">
+      <h4 class="heading">About the Archive</h4>
+      <ul class="menu">
+        <li><a href="/site_map">Site Map</a></li>
+        <li><a href="/diversity">Diversity Statement</a></li>
+        <li><a href="/tos">Terms of Service</a></li>
+        <li><a href="/dmca">DMCA Policy</a> </li>
+      </ul>
+    </li>
+    <li class="module group">
+      <h4 class="heading">Contact Us</h4>
+      <ul class="menu">
+        <li><a href="/abuse_reports/new">Report Abuse</a></li>
+        <li><a href="/support">Technical Support and Feedback</a></li>
+      </ul>
+    </li>
+    <li class="module group">
+      <h4 class="heading">Development</h4>
+      <ul class="menu">
+          <li><a href="https://github.com/otwcode/otwarchive/commits/v0.9.306.15">otwarchive v0.9.306.15</a></li>
+        <li><a href="/known_issues">Known Issues</a></li>
+        <li><a href="http://www.gnu.org/licenses/gpl-2.0.html" title="View License">GPL</a> by the <a href="http://transformativeworks.org/" title="The Organization for Transformative Works">OTW</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+<!-- END footer -->
+
+    </div>
+    <!-- check to see if this controller/action allow tinymce before we load the gigantor js; see application_helper -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js" type="text/javascript"></script>
+<!-- if user has googleapis blocked for some reason we need a fallback -->
+<script type="text/javascript">if(typeof jQuery=='undefined'){document.write(unescape("%3Cscript src='/javascripts/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));document.write(unescape("%3Cscript src='/javascripts/jquery-ui.min.js' type='text/javascript'%3E%3C/script%3E"));}</script>
+
+
+<script type="text/javascript">$j=jQuery.noConflict();</script>
+<script src="/javascripts/jquery.scrollTo.min.js"></script>
+<script src="/javascripts/jquery.livequery.min.js"></script>
+<script src="/javascripts/rails.js"></script>
+<script src="/javascripts/application.js"></script>
+<script src="/javascripts/bootstrap/bootstrap-dropdown.min.js"></script>
+<script src="/javascripts/jquery-shuffle.js"></script>
+<script src="/javascripts/jquery.tokeninput.min.js"></script>
+<script src="/javascripts/jquery.trap.min.js"></script>
+<script src="/javascripts/ao3modal.min.js"></script>
+<script src="/javascripts/js.cookie.min.js"></script>
+
+<script src="/javascripts/filters.min.js"></script>
+
+
+  <script>function isSupported(){var item="localStoragePolyfill";try{localStorage.setItem(item,item);localStorage.removeItem(item);return true;}catch(e){return false;}}function acceptTOS(){if(isSupported()){localStorage.setItem("accepted_tos","20180523");}else{Cookies.set("accepted_tos","20180523",{expires:365});}}$j(document).ready(function(){if(localStorage.getItem("accepted_tos")!=="20180523"&&Cookies.get("accepted_tos")!=="20180523"){$j("body").prepend("<div id=\"tos_prompt\" class=\"hidden\">\n  <h2 class=\"heading\">\n    <span>Archive of Our Own<\/span>\n  <\/h2>\n  <div class=\"agreement\">\n    <p class=\"summary\">\n      On Archive of Our Own (AO3), users can make profiles, create works and\n            other Content, post comments, give Kudos, create Collections and \n            Bookmarks, participate in Challenges, import works, and more. Any \n            information you publish in a comment, profile, work, or Content that you \n            post or import onto AO3 including in summaries, notes and tags, \n            will be accessible by the public (unless you limit access to a work only \n            to those with AO3 Accounts), and it will be available to \n            AO3 personnel. Be mindful when sharing personal information, \n            including  your religious or political views, health, racial background, \n            country of origin, sexual identity and/or personal relationships. To \n            learn more, check out our <a href=\"/tos\">Terms of Service<\/a> and <a href=\"/tos#privacy\">Privacy Policy<\/a>.\n    <\/p>\n\n    <p class=\"confirmation\">\n      <input type=\"checkbox\" id=\"tos_agree\" />\n      <label for=\"tos_agree\">I have read &amp; understood the new Terms of Service and Privacy Policy<\/label>\n    <\/p>\n\n      <p class=\"submit\">\n        <button name=\"button\" type=\"button\" disabled=\"disabled\" id=\"accept_tos\">I agree/consent to its terms<\/button>\n      <\/p>\n\n  <\/div>\n<\/div>\n\n<script>\n//<![CDATA[\n\n  \$j(document).ready(function() {\n    var container = \$j(\"#tos_prompt\");\n    var outer = \$j(\"#outer\");\n    var button = \$j(\"#accept_tos\");\n\n    setTimeout(showTOSPrompt, 1500);\n\n    function showTOSPrompt() {\n      \$j.when(container.fadeIn(500)).done(function() {\n        outer.addClass(\"hidden\").attr(\"aria-hidden\", \"true\");\n      });\n\n      \$j(\"#tos_agree\").on(\"click\", function() {\n        button.attr(\"disabled\", !this.checked);\n        if (this.checked) {\n          button.on(\"click\", function() {\n            acceptTOS();\n            outer.removeClass(\"hidden\").removeAttr(\"aria-hidden\");\n            \$j.when(container.fadeOut(500)).done(function() {\n              container.remove();\n            });\n          });\n        };\n      }).change();\n    };\n  });\n\n//]]]]><![CDATA[>\n<\/script>");}});</script>
+  <script>$j(document).ready(function(){var permitted_hosts=["archiveofourown.org","download.archiveofourown.org","insecure.archiveofourown.org","www.archiveofourown.org","insecure-test.archiveofourown.org","test.archiveofourown.org","testdownload.archiveofourown.org"];var current_host=window.location.hostname;if(!permitted_hosts.includes(current_host)&&Cookies.get("proxy_notice")!=="0"&&window.location.protocol!=="file:"){$j("#skiplinks").after("<div id=\"proxy-notice\">\n  <div class=\"userstuff\">\n    <p class=\"important\">Important message:<\/p>\n    <ol>\n      <li>You are using a proxy site that is not part of the Archive of Our Own.<\/li>\n      <li>The entity that set up the proxy site can see what you submit, including your IP address. If you log in through the proxy site, it can see your password.<\/li>\n    <\/ol>\n    <p class=\"important\">重要提示：<\/p>\n    <ol>\n      <li>您使用的是第三方开发的反向代理网站，此网站并非Archive of Our Own - AO3（AO3作品库）原站。<\/li>\n      <li>代理网站的开发者能够获取您上传至该站点的全部内容，包括您的ip地址。如您通过代理登录AO3，对方将获得您的密码。<\/li>\n    <\/ol>\n    <p class=\"submit\"><button class=\"action\" type=\"button\" id=\"proxy-notice-dismiss\">Dismiss Notice<\/button><\/p>\n  <\/div>\n<\/div>\n\n<script>\n//<![CDATA[\n\n  \$j(document).ready(function() {\n    \$j(\"#proxy-notice-dismiss\").on(\"click\", function() {\n      Cookies.set(\"proxy_notice\", \"0\");\n      \$j(\"#proxy-notice\").slideUp();\n    });\n  });\n\n//]]]]><![CDATA[>\n<\/script>");}});</script>
+    <script>$j(document).on("loadedCSRF",function(){$j.post("/works/28840245/hit_count.json")})</script>
+
+
+  </body>
+</html>
