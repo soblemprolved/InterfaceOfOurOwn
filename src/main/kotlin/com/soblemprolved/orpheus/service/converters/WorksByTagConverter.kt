@@ -28,7 +28,7 @@ object WorksByTagConverter : Converter<WorksByTagConverter.Result> {
                 }
             }
             in 200..299 -> return parse(response.body!!.string())
-            else -> throw IllegalStateException("Not handled yet")
+            else -> TODO()
         }
     }
 

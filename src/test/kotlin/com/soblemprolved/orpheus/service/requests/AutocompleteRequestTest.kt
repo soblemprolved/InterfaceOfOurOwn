@@ -21,18 +21,4 @@ internal class AutocompleteRequestTest(private val client: AO3Client) {
             assertTrue(response is AO3Response.Success)
         }
     }
-
-    @Test
-    fun `Should return non-empty results`() {
-        val request = AutocompleteRequest.withDefaultConverter(AutocompleteType.TAG, "full")
-        val response = runBlocking{ client.execute(request) }
-        assertTrue(response is AO3Response.Success && response.value.isNotEmpty())
-    }
-
-    @Test
-    fun `Should return empty results`() {
-        val request = AutocompleteRequest.withDefaultConverter(AutocompleteType.TAG, "fyjtfhfv")
-        val response = runBlocking{ client.execute(request) }
-        assertTrue(response is AO3Response.Success && response.value.isEmpty())
-    }
 }
