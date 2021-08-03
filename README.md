@@ -1,5 +1,7 @@
 # Orpheus
 
+[![Release](https://jitpack.io/v/soblemprolved/orpheus.svg)](https://jitpack.io/#soblemprolved/orpheus)
+
 An unofficial API for interfacing with the Archive of Our Own. Written in Kotlin
 for the JVM (that is, it can be used on JVM and Android projects, but not
 Multiplatform).
@@ -39,14 +41,14 @@ Then add the dependency to your module's `build.gradle.kts`:
 
 ``` kotlin
 // build.gradle.kts
-implementation("com.github.soblemprolved:orpheus:0.2.0-beta")
+implementation("com.github.soblemprolved:orpheus:0.2.0")
 ```
 
 or `build.gradle`:
 
 ``` groovy
 // build.gradle
-implementation 'com.github.soblemprolved:orpheus:0.2.0-beta'
+implementation 'com.github.soblemprolved:orpheus:0.2.0'
 ```
 
 ## What can it do?
@@ -57,13 +59,15 @@ So far, it can be used to retrieve the following:
    `/tags/<tag name>/works?<filter arguments>`
 3. Autocomplete results for tags (any type) and users
    `/autocomplete/<type>?<search term>`
+4. Bookmarks associated with a tag
+   `/tags/<tag name>/bookmarks?<filter arguments>`
+5. Collections
+   `/collections?<filter arguments>`
 
 In the future, the following will be implemented, in no particular order:
 1. User login
-2. Bookmarks by tag
-3. Collections
-4. User Profiles (including works and bookmarks)
-5. ...and much more!
+2. User Profiles (including works and bookmarks)
+3. ...and much more!
 
 ## Example: Fetching a Work
 ### Initialising the client
