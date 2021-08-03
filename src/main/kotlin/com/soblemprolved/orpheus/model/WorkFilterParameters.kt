@@ -41,8 +41,10 @@ data class WorkFilterParameters(
     var excludeCategoryOther: Boolean = false,
 
     var showSingleChapterWorksOnly: Boolean = false,
+    // TODO: convert the two properties below to a single "isCrossover" nullable boolean
     var showCrossovers: Boolean = true,
     var showNonCrossovers: Boolean = true,
+    // TODO: convert the two properties below to a single "isComplete" nullable boolean
     var showCompletedWorks: Boolean = true,
     var showIncompleteWorks: Boolean = true,
 
