@@ -22,12 +22,11 @@ import com.soblemprolved.orpheus.service.requests.AO3Request.Companion.HTML_HEAD
 //self.where('tags.name = ?', string).first
 //end
 
-class WorksByTagRequest<T>(
+class WorksByTagRequest(
     val tag: String,
     val filterParameters: WorkFilterParameters,
     val page: Int,
-    override val converter: Converter<T>
-) : GetRequest<T> {
+) : GetRequest<WorksByTagConverter.Result> {
     init {
         require(page > 0) { "Page number cannot be zero or negative!" }
         require(tag.isNotBlank()) { "Tag cannot be blank!" }
@@ -48,14 +47,9 @@ class WorksByTagRequest<T>(
 
     override val headers = HTML_HEADERS
 
-    companion object {
-        fun withDefaultConverter(tag: String,
-                                 filterParameters: WorkFilterParameters,
-                                 page: Int)
-        : WorksByTagRequest<WorksByTagConverter.Result> {
-            return WorksByTagRequest(tag, filterParameters, page, converter = WorksByTagConverter)
-        }
+    override val converter = WorksByTagConverter
 
+    companion object {
         private fun encodeTag(tag: String): String {
             return tag.replace("/", "*s*")
                 .replace("&", "*a*")

@@ -88,10 +88,10 @@ With the client we created above, we can query the Archive for a response like s
 
 ``` kotlin
 // Creates a request for the work at https://archiveofourown.org/works/30267078
-val workRequest = WorkRequest.withDefaultConverter(id = 30267078)
+val workRequest = WorkRequest(id = 30267078)
 
-// Alternatively, you can specify a custom converter directly in the constructor
-val workRequest = WorkRequest(id = 30267078, converter = MyWorkConverter)
+// You can also specify a custom converter if you wish to use your own data classes
+val customWorkRequest = WorkRequest(id = 30267078).withConverter(MyWorkConverter)
 
 // Pass the request to the client for suspending execution
 val workResponse: AO3Response<Work> = viewModelScope.launch {
@@ -100,7 +100,7 @@ val workResponse: AO3Response<Work> = viewModelScope.launch {
 
 // Alternatively, use the blocking version to run outside of a CoroutineScope
 // The network call will also be executed on Dispatchers.IO
-val workResponse: AO3Response<Work> = ao3Client.executeBlocking(workRequest)
+val workResponse: AO3Response<WorkConverter.Result> = ao3Client.executeBlocking(workRequest)
 
 ```
 The response of the Archive will be wrapped in `AO3Response` and returned to the caller.

@@ -16,21 +16,21 @@ import java.time.Month
 internal class WorkRequestTest(private val client: AO3Client) {
     @Test
     fun `Successfully request non-adult oneshot work`() {
-        val workRequest = WorkRequest.withDefaultConverter(2094438)
+        val workRequest = WorkRequest(2094438)
         val response = runBlocking { client.execute(workRequest) }
         assertTrue(response is AO3Response.Success && response.value.work is SingleChapterWork)
     }
 
     @Test
     fun `Successfully request adult oneshot work`() {
-        val workRequest = WorkRequest.withDefaultConverter(2080878)
+        val workRequest = WorkRequest(2080878)
         val response = runBlocking { client.execute(workRequest) }
         assertTrue(response is AO3Response.Success && response.value.work is SingleChapterWork)
     }
 
     @Test
     fun `Successfully request work with anonymous author`() {
-        val workRequest = WorkRequest.withDefaultConverter(32734699)
+        val workRequest = WorkRequest(32734699)
         val response = runBlocking { client.execute(workRequest) }
         assertTrue(response is AO3Response.Success && response.value.work is MultiChapterOrIncompleteWork)
         require(response is AO3Response.Success)
@@ -43,21 +43,21 @@ internal class WorkRequestTest(private val client: AO3Client) {
 
     @Test
     fun `Successfully request non-adult multi-chapter completed work`() {
-        val workRequest = WorkRequest.withDefaultConverter(8337607)
+        val workRequest = WorkRequest(8337607)
         val response = runBlocking { client.execute(workRequest) }
         assertTrue(response is AO3Response.Success && response.value.work is MultiChapterOrIncompleteWork)
     }
 
     @Test
     fun `Successfully request adult multi-chapter incomplete work`() {
-        val workRequest = WorkRequest.withDefaultConverter(537876)
+        val workRequest = WorkRequest(537876)
         val response = runBlocking { client.execute(workRequest) }
         assertTrue(response is AO3Response.Success && response.value.work is MultiChapterOrIncompleteWork)
     }
 
     @Test
     fun `Successfully request adult single-chapter incomplete work`() {
-        val workRequest = WorkRequest.withDefaultConverter(602)
+        val workRequest = WorkRequest(602)
         val response = runBlocking { client.execute(workRequest) }
         assertTrue(response is AO3Response.Success && response.value.work is MultiChapterOrIncompleteWork)
     }

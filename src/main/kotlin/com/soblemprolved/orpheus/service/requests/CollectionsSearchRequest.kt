@@ -7,11 +7,10 @@ import com.soblemprolved.orpheus.service.query.CollectionFilterQueryMap
 import com.soblemprolved.orpheus.service.requests.AO3Request.Companion.BASE_HTTP_URL_BUILDER_CONFIGURATION
 import com.soblemprolved.orpheus.service.requests.AO3Request.Companion.HTML_HEADERS
 
-class CollectionsSearchRequest<T>(
+class CollectionsSearchRequest(
     val filterParameters: CollectionFilterParameters,
     val page: Int,
-    override val converter: Converter<T>
-) : GetRequest<T> {
+) : GetRequest<CollectionsSearchConverter.Result> {
     override val url = BASE_HTTP_URL_BUILDER_CONFIGURATION
         .addPathSegment("collections")
         .let {
@@ -25,10 +24,5 @@ class CollectionsSearchRequest<T>(
 
     override val headers = HTML_HEADERS
 
-    companion object {
-        fun withDefaultConverter(filterParameters: CollectionFilterParameters, page: Int)
-        : CollectionsSearchRequest<CollectionsSearchConverter.Result> {
-            return CollectionsSearchRequest(filterParameters, page, converter = CollectionsSearchConverter)
-        }
-    }
+    override val converter = CollectionsSearchConverter
 }

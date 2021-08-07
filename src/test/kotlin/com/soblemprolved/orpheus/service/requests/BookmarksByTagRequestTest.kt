@@ -15,7 +15,7 @@ import org.junit.jupiter.api.extension.ExtendWith
 internal class BookmarksByTagRequestTest(private val client: AO3Client) {
     @Test
     fun `should not throw error external works`() {
-        val request = BookmarksByTagRequest.withDefaultConverter(
+        val request = BookmarksByTagRequest(
             "Riza Hawkeye/Roy Mustang",
             BookmarkFilterParameters(),
             3
@@ -26,7 +26,7 @@ internal class BookmarksByTagRequestTest(private val client: AO3Client) {
 
     @Test
     fun `should not throw error series`() {
-        val request = BookmarksByTagRequest.withDefaultConverter(
+        val request = BookmarksByTagRequest(
             "Marvel",
             BookmarkFilterParameters(),
             1

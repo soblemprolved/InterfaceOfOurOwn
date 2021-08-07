@@ -15,7 +15,7 @@ import org.junit.jupiter.api.extension.ExtendWith
 internal class CollectionsSearchRequestTest(private val client: AO3Client) {
     @Test
     fun `should work`() {
-        val request = CollectionsSearchRequest.withDefaultConverter(
+        val request = CollectionsSearchRequest(
             CollectionFilterParameters(),
             1
         )

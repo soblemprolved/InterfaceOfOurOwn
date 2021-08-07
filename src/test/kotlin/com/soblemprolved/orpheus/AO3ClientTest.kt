@@ -15,14 +15,14 @@ import com.soblemprolved.orpheus.service.requests.WorkRequest
 internal class AO3ClientTest(private val client: AO3Client) {
     @Test
     fun `Returns a response with the suspending execute method`() {
-        val workRequest = WorkRequest.withDefaultConverter(2094438)
+        val workRequest = WorkRequest(2094438)
         val response = runBlocking { client.execute(workRequest) }
         assertFalse(response is AO3Response.NetworkError)
     }
 
     @Test
     fun `Returns a response with the blocking execute method`() {
-        val workRequest = WorkRequest.withDefaultConverter(2094438)
+        val workRequest = WorkRequest(2094438)
         val response = client.executeBlocking(workRequest)
         assertFalse(response is AO3Response.NetworkError)
     }

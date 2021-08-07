@@ -14,7 +14,7 @@ internal fun main(args: Array<String>) {
     val client = OkHttpClient()
 
     // get response
-    val request = CollectionsSearchRequest.withDefaultConverter(
+    val request = CollectionsSearchRequest(
         CollectionFilterParameters(
             collectionChallengeType = ChallengeType.GIFT_EXCHANGE
         ),

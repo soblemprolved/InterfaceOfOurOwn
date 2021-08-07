@@ -5,10 +5,9 @@ import com.soblemprolved.orpheus.service.converters.WorkConverter
 import com.soblemprolved.orpheus.service.requests.AO3Request.Companion.BASE_HTTP_URL_BUILDER_CONFIGURATION
 import com.soblemprolved.orpheus.service.requests.AO3Request.Companion.HTML_HEADERS
 
-class WorkRequest<T>(
+class WorkRequest(
     val id: Long,
-    override val converter: Converter<T>
-): GetRequest<T> {
+): GetRequest<WorkConverter.Result> {
     init {
         require(id >= 0) { "ID cannot be negative!" }
     }
@@ -22,9 +21,5 @@ class WorkRequest<T>(
 
     override val headers = HTML_HEADERS
 
-    companion object {
-        fun withDefaultConverter(id: Long): WorkRequest<WorkConverter.Result> {
-            return WorkRequest<WorkConverter.Result>(id, converter = WorkConverter)
-        }
-    }
+    override val converter = WorkConverter
 }

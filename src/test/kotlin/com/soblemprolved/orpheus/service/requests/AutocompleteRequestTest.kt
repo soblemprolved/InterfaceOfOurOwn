@@ -16,7 +16,7 @@ internal class AutocompleteRequestTest(private val client: AO3Client) {
     @Test
     fun `All types should return a response`() {
         for (type in AutocompleteType.values()) {
-            val request = AutocompleteRequest.withDefaultConverter(type, "full")
+            val request = AutocompleteRequest(type, "full")
             val response = runBlocking{ client.execute(request) }
             assertTrue(response is AO3Response.Success)
         }

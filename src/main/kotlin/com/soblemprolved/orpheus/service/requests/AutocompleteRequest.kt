@@ -7,11 +7,10 @@ import com.soblemprolved.orpheus.service.models.AutocompleteType
 import com.soblemprolved.orpheus.service.requests.AO3Request.Companion.BASE_HTTP_URL_BUILDER_CONFIGURATION
 import com.soblemprolved.orpheus.service.requests.AO3Request.Companion.JSON_HEADERS
 
-class AutocompleteRequest<T>(
+class AutocompleteRequest(
     val type: AutocompleteType,
     val query: String,
-    override val converter: Converter<T>
-) : GetRequest<T> {
+) : GetRequest<List<String>> {
     override val url: HttpUrl = BASE_HTTP_URL_BUILDER_CONFIGURATION
         .addPathSegment("autocomplete")
         .addPathSegment(type.pathSegment)
@@ -20,9 +19,5 @@ class AutocompleteRequest<T>(
 
     override val headers = JSON_HEADERS
 
-    companion object {
-        fun withDefaultConverter(type: AutocompleteType, query: String): AutocompleteRequest<List<String>> {
-            return AutocompleteRequest<List<String>>(type, query, converter = AutocompleteConverter)
-        }
-    }
+    override val converter = AutocompleteConverter
 }

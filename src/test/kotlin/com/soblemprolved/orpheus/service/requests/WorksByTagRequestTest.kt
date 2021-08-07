@@ -16,7 +16,7 @@ import com.soblemprolved.orpheus.service.models.AO3Response
 internal class WorksByTagRequestTest(private val client: AO3Client) {
     @Test
     fun `(Integration) Successfully request works from tag`() {
-        val request = WorksByTagRequest.withDefaultConverter(
+        val request = WorksByTagRequest(
             "F/M",
             WorkFilterParameters(),
             1
@@ -28,7 +28,7 @@ internal class WorksByTagRequestTest(private val client: AO3Client) {
 
     @Test
     fun `(Integration) Successfully request works with non-standard rating names`() {
-        val request = WorksByTagRequest.withDefaultConverter(
+        val request = WorksByTagRequest(
             "F/M",
             WorkFilterParameters(
                 showRatingGeneral = false,
@@ -45,7 +45,7 @@ internal class WorksByTagRequestTest(private val client: AO3Client) {
 
     @Test
     fun `(Integration) Successfully request works with multiple arguments`() {
-        val request = WorksByTagRequest.withDefaultConverter(
+        val request = WorksByTagRequest(
             "F/M",
             WorkFilterParameters(
                 includedTags = listOf("Romance", "Pepper Potts/Tony Stark").toMutableList(),
@@ -59,7 +59,7 @@ internal class WorksByTagRequestTest(private val client: AO3Client) {
 
     @Test
     fun `Return a TagSynonymError when requesting works from a synonym`() {
-        val request = WorksByTagRequest.withDefaultConverter(
+        val request = WorksByTagRequest(
             "Roy Mustang/Riza Hawkeye",
             WorkFilterParameters(),
             1
@@ -70,7 +70,7 @@ internal class WorksByTagRequestTest(private val client: AO3Client) {
 
     @Test
     fun `Return a TagNotFilterableError when requesting works from a tag that is not marked common`() {
-        val request = WorksByTagRequest.withDefaultConverter(
+        val request = WorksByTagRequest(
             "the sea and the land as concepts of fear and desire in the face of infinity",
             WorkFilterParameters(),
             1
@@ -81,7 +81,7 @@ internal class WorksByTagRequestTest(private val client: AO3Client) {
 
     @Test
     fun `Return an empty list when the page requested exceeds the total number of pages`() {
-        val request = WorksByTagRequest.withDefaultConverter(
+        val request = WorksByTagRequest(
             "009-1 (Manga)",
             WorkFilterParameters(),
             2

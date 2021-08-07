@@ -35,7 +35,15 @@ sealed interface AO3Request<T> {    // T is the return type
     }
 }
 
-interface GetRequest<T> : AO3Request<T>
+interface GetRequest<T> : AO3Request<T> {
+    fun <R> withConverter(converter: Converter<R>): GetRequest<R> {
+        return object : GetRequest<R> {
+            override val url = this@GetRequest.url
+            override val headers = this@GetRequest.headers
+            override val converter = converter
+        }
+    }
+}
 
 //interface PostRequest<T> : AO3Request<T> {
 //    val requestBody: String

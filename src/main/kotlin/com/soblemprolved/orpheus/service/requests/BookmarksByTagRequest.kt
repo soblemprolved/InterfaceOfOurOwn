@@ -7,12 +7,11 @@ import com.soblemprolved.orpheus.service.query.BookmarkFilterQueryMap
 import com.soblemprolved.orpheus.service.requests.AO3Request.Companion.BASE_HTTP_URL_BUILDER_CONFIGURATION
 import com.soblemprolved.orpheus.service.requests.AO3Request.Companion.HTML_HEADERS
 
-class BookmarksByTagRequest<T>(
+class BookmarksByTagRequest(
     val tag: String,
     val filterParameters: BookmarkFilterParameters,
     val page: Int,
-    override val converter: Converter<T>
-) : GetRequest<T> {
+) : GetRequest<BookmarksByTagConverter.Result> {
     override val url = BASE_HTTP_URL_BUILDER_CONFIGURATION
         .addPathSegment("tags")
         .addPathSegment(encodeTag(tag))
@@ -28,14 +27,9 @@ class BookmarksByTagRequest<T>(
 
     override val headers = HTML_HEADERS
 
-    companion object {
-        fun withDefaultConverter(tag: String,
-                                 filterParameters: BookmarkFilterParameters,
-                                 page: Int)
-        : BookmarksByTagRequest<BookmarksByTagConverter.Result> {
-            return BookmarksByTagRequest(tag, filterParameters, page, converter = BookmarksByTagConverter)
-        }
+    override val converter = BookmarksByTagConverter
 
+    companion object {
         private fun encodeTag(tag: String): String {
             return tag.replace("/", "*s*")
                 .replace("&", "*a*")
