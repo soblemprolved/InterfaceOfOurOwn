@@ -24,7 +24,15 @@ sealed class AO3Error: Throwable() {
      */
     object NotFoundError: AO3Error()
 
+    /**
+     * Represents a 429 error.
+     */
+    object TooManyRequestsError: AO3Error()
+
     object ServerSideError: AO3Error()
 
+    /**
+     * Represents a situation where the content can only be accessed if the user is logged in.
+     */
     object NotLoggedInError: AO3Error()
 }

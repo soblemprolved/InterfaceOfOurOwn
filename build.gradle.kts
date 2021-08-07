@@ -17,6 +17,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2")
     implementation(platform("com.squareup.okhttp3:okhttp-bom:4.9.1"))
     implementation("com.squareup.okhttp3:okhttp")
+    implementation("com.squareup.okhttp3:okhttp-urlconnection")
     implementation("org.jsoup:jsoup:1.13.1")
 
     testImplementation("org.junit.jupiter:junit-jupiter:5.7.0")

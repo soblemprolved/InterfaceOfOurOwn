@@ -1,6 +1,7 @@
 package com.soblemprolved.orpheus.service.converters
 
 import com.soblemprolved.orpheus.model.*
+import com.soblemprolved.orpheus.service.models.AO3Error
 import okhttp3.Response
 import org.jsoup.Jsoup
 import java.time.LocalDate
@@ -9,10 +10,17 @@ object WorkConverter : Converter<WorkConverter.Result> {
     data class Result(val work: Work, val csrfToken: String)
 
     override fun convert(response: Response): Result {
-        val body = response.body!!.string()
-        // TODO: check if response body is already closed
-
-        return parseWork(body)
+        when (response.code) {
+            302 -> {
+                if (response.headers["location"] == "https://archiveofourown.org/users/login?restricted=true") {
+                    throw AO3Error.NotLoggedInError
+                } else {
+                    TODO()  // I am not sure what this means yet, and I am not sure if this is even possible
+                }
+            }
+            200 -> return parseWork(response.body!!.string())
+            else -> TODO()
+        }
     }
 
     fun parseWork(workHtml: String): Result {

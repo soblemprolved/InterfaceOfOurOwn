@@ -10,6 +10,9 @@ import com.soblemprolved.orpheus.service.models.AO3Error
 import com.soblemprolved.orpheus.service.models.AO3Response
 import com.soblemprolved.orpheus.service.requests.AO3Request
 import com.soblemprolved.orpheus.service.requests.GetRequest
+import okhttp3.CookieJar
+import okhttp3.JavaNetCookieJar
+import java.net.CookieManager
 
 /**
  * The main access point to AO3. Try to initialise only one (1) instance of this class.
@@ -17,14 +20,25 @@ import com.soblemprolved.orpheus.service.requests.GetRequest
  * with the specifications it needs.
  */
 class AO3Client(
-    userOkHttpClient: OkHttpClient
+    userOkHttpClient: OkHttpClient? = null,
+    cookieJar: CookieJar = JavaNetCookieJar(CookieManager())
 ) {
     // TODO: the AO3 client should know about the converters, not the request. Requests can be made independent of converters.
     // either way, converters have to be specified by the user in the same line or next line.
 
-    private val okHttpClient = userOkHttpClient.newBuilder()
+    private val okHttpClient = (userOkHttpClient?.newBuilder() ?: OkHttpClient.Builder())
+        .cookieJar(cookieJar)  // FIXME: cookiejar is not clearable
         .followRedirects(false)
         .build()
+    // a proper logout should reset the cookies in the cookiejar
+
+    suspend fun login(username: String, password: String) {
+        // TODO: get CSRF token, then post the body as form
+    }
+
+    suspend fun logout() {
+        // TODO: get CSRF token, then post the body as form
+    }
 
     /**
      * Suspends the current thread and executes the network request in [Dispatchers.IO].

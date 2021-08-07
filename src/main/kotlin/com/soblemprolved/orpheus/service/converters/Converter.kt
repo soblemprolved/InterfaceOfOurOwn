@@ -2,6 +2,7 @@ package com.soblemprolved.orpheus.service.converters
 
 import com.soblemprolved.orpheus.model.*
 import com.soblemprolved.orpheus.model.Collection
+import com.soblemprolved.orpheus.service.models.AO3Error
 import okhttp3.Response
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
@@ -371,6 +372,14 @@ interface Converter<T> {
                 notes = bookmarkNotes,
                 bookmarkType = type
             )
+        }
+
+        fun handleResponseCode(responseCode: Int) {
+            when (responseCode) {
+                404 -> throw AO3Error.NotFoundError
+                429 -> throw AO3Error.TooManyRequestsError
+                else -> TODO()
+            }
         }
     }
 }
