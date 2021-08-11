@@ -3,6 +3,7 @@ package com.soblemprolved.orpheus.service.requests
 import okhttp3.Headers
 import okhttp3.HttpUrl
 import com.soblemprolved.orpheus.service.converters.Converter
+import okhttp3.RequestBody
 import java.net.URLEncoder
 
 sealed interface AO3Request<T> {    // T is the return type
@@ -45,6 +46,6 @@ interface GetRequest<T> : AO3Request<T> {
     }
 }
 
-//interface PostRequest<T> : AO3Request<T> {
-//    val requestBody: String
-//}
+interface PostRequest<T> : AO3Request<T> {
+    val requestBody: RequestBody
+}

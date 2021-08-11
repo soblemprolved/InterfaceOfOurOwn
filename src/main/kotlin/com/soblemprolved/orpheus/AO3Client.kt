@@ -8,8 +8,9 @@ import okhttp3.Request
 import okio.IOException
 import com.soblemprolved.orpheus.service.models.AO3Error
 import com.soblemprolved.orpheus.service.models.AO3Response
-import com.soblemprolved.orpheus.service.requests.AO3Request
-import com.soblemprolved.orpheus.service.requests.GetRequest
+import com.soblemprolved.orpheus.service.requests.*
+import com.soblemprolved.orpheus.service.requests.LoginRequest
+import kotlinx.coroutines.coroutineScope
 import okhttp3.CookieJar
 import okhttp3.JavaNetCookieJar
 import java.net.CookieManager
@@ -32,12 +33,37 @@ class AO3Client(
         .build()
     // a proper logout should reset the cookies in the cookiejar
 
-    suspend fun login(username: String, password: String) {
-        // TODO: get CSRF token, then post the body as form
+    /**
+     * On success, return true when the user is successfully logged in, and false if an authentication issue is raised.
+     * Failure can occur if the user tries to login as some user A while the client is already logged in as some user B.
+     */
+    suspend fun login(username: String, password: String) : AO3Response<Boolean> {
+        val csrfResponse = execute(CsrfRequest("https://archiveofourown.org"))
+
+        if (csrfResponse !is AO3Response.Success) {
+            return csrfResponse as AO3Response<Nothing>  // this cast should work properly
+        }
+
+        val loginResponse = execute(LoginRequest(username, password, csrfResponse.value))
+
+        return loginResponse
     }
 
-    suspend fun logout() {
+    suspend fun logout(): AO3Response<Boolean> {
         // TODO: get CSRF token, then post the body as form
+        val csrfResponse = execute(CsrfRequest("https://archiveofourown.org"))
+
+        if (csrfResponse !is AO3Response.Success) {
+            return csrfResponse as AO3Response<Nothing>  // this cast should work properly
+        }
+
+        val logoutResponse = execute(LogoutRequest(csrfResponse.value))
+
+        if (logoutResponse !is AO3Response.Success) {
+            return logoutResponse
+        }
+
+        return AO3Response.Success<Boolean>(true)
     }
 
     /**
@@ -50,7 +76,7 @@ class AO3Client(
             .let {
                 when (request) {
                     is GetRequest -> it
-//                    is PostRequest -> it.post()
+                    is PostRequest -> it.post(request.requestBody)
                 }
             }
             .build()
@@ -80,7 +106,7 @@ class AO3Client(
             .let {
                 when (request) {
                     is GetRequest -> it
-//                    is PostRequest -> it.post()
+                    is PostRequest -> it.post(request.requestBody)
                 }
             }
             .build()
