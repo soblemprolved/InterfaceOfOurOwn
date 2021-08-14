@@ -65,11 +65,13 @@ data class WorkFilterQueryMap(
 
             // other bools
             if (showSingleChapterWorksOnly) backingMap["work_search[single_chapter]"] = listOf("1")
-            if (showCrossovers xor showNonCrossovers) {
-                backingMap["work_search[crossover]"] = if (showCrossovers) listOf("T") else listOf("F")
+
+            showCrossovers?.also {
+                backingMap["work_search[crossover]"] = if (it) listOf("T") else listOf("F")
             }
-            if (showCompletedWorks xor showIncompleteWorks) {
-                backingMap["work_search[complete]"] = if (showCompletedWorks) listOf("T") else listOf("F")
+
+            showCompletedWorks?.also {
+                backingMap["work_search[complete]"] = if (it) listOf("T") else listOf("F")
             }
 
             // numerical metadata
