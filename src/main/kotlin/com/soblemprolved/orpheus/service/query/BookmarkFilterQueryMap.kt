@@ -95,7 +95,7 @@ class BookmarkFilterQueryMap(
             }
 
             // apparently when any of these two bools are true, AO3 includes both 0 and 1 for some reason
-            // i suspect there is no need for that
+            // I suspect there is no need for that
             if (showRecommendationsOnly) {
                 backingMap["bookmark_search[rec]"] = listOf("1")
             }
