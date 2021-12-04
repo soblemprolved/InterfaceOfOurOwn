@@ -14,8 +14,7 @@ class CollectionsSearchRequest(
     override val url = BASE_HTTP_URL_BUILDER_CONFIGURATION
         .addPathSegment("collections")
         .let {
-            val queryMap = CollectionFilterQueryMap(filterParameters)
-            queryMap.entries.fold(it) { acc, entry ->
+            filterParameters.entries.fold(it) { acc, entry ->
                 acc.addQueryParameter(entry.key, entry.value)
             }
         }

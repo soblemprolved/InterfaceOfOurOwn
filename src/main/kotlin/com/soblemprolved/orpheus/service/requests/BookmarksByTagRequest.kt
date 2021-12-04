@@ -17,8 +17,7 @@ class BookmarksByTagRequest(
         .addPathSegment(encodeTag(tag))
         .addPathSegment("bookmarks")
         .let {
-            val queryMap = BookmarkFilterQueryMap(filterParameters)
-            queryMap.entries.fold(it) { acc, entry ->
+            filterParameters.entries.fold(it) { acc, entry ->
                 acc.addQueryParameter(entry.key, entry.value)
             }
         }

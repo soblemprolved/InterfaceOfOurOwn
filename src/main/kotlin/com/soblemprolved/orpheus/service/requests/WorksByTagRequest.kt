@@ -37,8 +37,7 @@ class WorksByTagRequest(
         .addPathSegment(encodeTag(tag))
         .addPathSegment("works")
         .let {
-            val queryMap = WorkFilterQueryMap(filterParameters)
-            queryMap.entries.fold(it) { acc, entry ->
+            filterParameters.entries.fold(it) { acc, entry ->
                 acc.addQueryParameter(entry.key, entry.value)
             }
         }
