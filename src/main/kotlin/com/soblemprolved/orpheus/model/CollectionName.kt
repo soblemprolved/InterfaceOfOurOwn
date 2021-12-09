@@ -1,6 +1,6 @@
 package com.soblemprolved.orpheus.model
 
-data class CollectionName(
+data class CollectionName( // rename to collectionReference?
     val id: String,
     val name: String
 )
