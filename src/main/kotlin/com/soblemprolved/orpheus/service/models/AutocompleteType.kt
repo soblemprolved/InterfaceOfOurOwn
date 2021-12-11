@@ -8,5 +8,8 @@ enum class AutocompleteType(
     RELATIONSHIP("relationship"),
     CHARACTER("character"),
     FREEFORM("freeform"),
-    PSEUD("pseud")
+    PSEUD("pseud");
+
+    internal val value: String
+        get() = pathSegment
 }
