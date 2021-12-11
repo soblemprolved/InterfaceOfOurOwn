@@ -2,7 +2,7 @@ package com.soblemprolved.orpheus.service.requests
 
 import okhttp3.Headers
 import okhttp3.HttpUrl
-import com.soblemprolved.orpheus.service.converters.Converter
+import com.soblemprolved.orpheus.service.old.converters.Converter
 import okhttp3.RequestBody
 import java.net.URLEncoder
 

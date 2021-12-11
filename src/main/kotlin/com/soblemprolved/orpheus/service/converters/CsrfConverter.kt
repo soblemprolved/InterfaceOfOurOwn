@@ -1,20 +1,13 @@
 package com.soblemprolved.orpheus.service.converters
 
-import okhttp3.Response
+import okhttp3.ResponseBody
 import org.jsoup.Jsoup
+import retrofit2.Converter
 
-object CsrfConverter : Converter<String> {
-    override fun convert(response: Response): String {
-        when (response.code) {
-            200 -> return parse(response.body!!.string())
-            else -> Converter.handleResponseCode(response.code)
-        }
-
-        TODO("Cannot parse this code yet")
-    }
-
-    fun parse(html: String): String {
+object CsrfConverter : Converter<ResponseBody, String> {
+    override fun convert(value: ResponseBody): String {
+        val html = value.string()
         val doc = Jsoup.parse(html)
-        return Converter.getCsrfFromJsoupDoc(doc)
+        return JsoupHelper.getCsrfFromJsoupDoc(doc)
     }
 }

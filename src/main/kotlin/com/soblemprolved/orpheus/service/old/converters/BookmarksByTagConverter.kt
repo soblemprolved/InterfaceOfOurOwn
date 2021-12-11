@@ -1,22 +1,24 @@
-package com.soblemprolved.orpheus.service.converters
+package com.soblemprolved.orpheus.service.old.converters
 
-import com.soblemprolved.orpheus.model.BookmarksBlurb
-import com.soblemprolved.orpheus.model.ExternalWorkBookmarksBlurb
-import com.soblemprolved.orpheus.model.SeriesBookmarksBlurb
-import com.soblemprolved.orpheus.model.WorkBookmarksBlurb
-import okhttp3.ResponseBody
+import com.soblemprolved.orpheus.model.*
+import okhttp3.Response
 import org.jsoup.Jsoup
-import retrofit2.Converter
 
-object BookmarksByTagConverter : Converter<ResponseBody, BookmarksByTagConverter.Result> {
+object BookmarksByTagConverter : Converter<BookmarksByTagConverter.Result> {
     data class Result(
         val tag: String,
         val bookmarkedItemCount: Int,
         val bookmarkedItems: List<BookmarksBlurb>
     )
 
-    override fun convert(value: ResponseBody): Result {
-        val html = value.string()
+    override fun convert(response: Response): Result {
+        when (response.code) {
+            in 200..299 -> return parse(response.body!!.string())
+        }
+        TODO("Not yet implemented")
+    }
+
+    fun parse(html: String): Result {
         val doc = Jsoup.parse(html)
         val heading = doc.selectFirst("div#main > h2.heading")
         val tagName = heading.selectFirst("h2.heading > a")
@@ -38,7 +40,7 @@ object BookmarksByTagConverter : Converter<ResponseBody, BookmarksByTagConverter
                 .selectFirst("ul.bookmark.index.group")
                 .select("li.user.short.blurb.group")
             val bookmarkSummaries = bookmarkElements.map { element ->
-                JsoupHelper.parseBookmarkElement(element)
+                Converter.parseBookmarkElement(element)
             }
 
             // execute code based on type of item
@@ -47,15 +49,15 @@ object BookmarksByTagConverter : Converter<ResponseBody, BookmarksByTagConverter
             with(titleLink) {
                 when {
                     startsWith("/works/") -> {
-                        val blurb = JsoupHelper.parseWorkBlurbElement(workIndex)
+                        val blurb = Converter.parseWorkBlurbElement(workIndex)
                         return@map WorkBookmarksBlurb(blurb, bookmarkSummaries)
                     }
                     startsWith("/series/") -> {
-                        val blurb = JsoupHelper.parseSeriesBlurbElement(workIndex)
+                        val blurb = Converter.parseSeriesBlurbElement(workIndex)
                         return@map SeriesBookmarksBlurb(blurb, bookmarkSummaries)
                     }
                     startsWith("/external_works/") -> {
-                        val blurb = JsoupHelper.parseExternalWorkBlurbElement(workIndex)
+                        val blurb = Converter.parseExternalWorkBlurbElement(workIndex)
                         return@map ExternalWorkBookmarksBlurb(blurb, bookmarkSummaries)
                     }
                     else -> throw IllegalArgumentException()

@@ -2,8 +2,8 @@ package com.soblemprolved.orpheus.service.requests
 
 import com.soblemprolved.orpheus.model.WorkFilterParameters
 import okhttp3.HttpUrl
-import com.soblemprolved.orpheus.service.converters.Converter
-import com.soblemprolved.orpheus.service.converters.WorksByTagConverter
+import com.soblemprolved.orpheus.service.old.converters.Converter
+import com.soblemprolved.orpheus.service.old.converters.WorksByTagConverter
 import com.soblemprolved.orpheus.service.query.WorkFilterQueryMap
 import com.soblemprolved.orpheus.service.requests.AO3Request.Companion.BASE_HTTP_URL_BUILDER_CONFIGURATION
 import com.soblemprolved.orpheus.service.requests.AO3Request.Companion.HTML_HEADERS

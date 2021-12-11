@@ -1,20 +1,30 @@
-package com.soblemprolved.orpheus.service.converters
+package com.soblemprolved.orpheus.service.old.converters
 
 import com.soblemprolved.orpheus.model.*
-import okhttp3.ResponseBody
+import com.soblemprolved.orpheus.service.models.AO3Error
+import okhttp3.Response
 import org.jsoup.Jsoup
-import retrofit2.Converter
 import java.time.LocalDate
 
-object WorkConverter : Converter<ResponseBody, WorkConverter.Result> {
-    data class Result(
-        val work: Work,
-        val csrfToken: String
-    )
+object WorkConverter : Converter<WorkConverter.Result> {
+    data class Result(val work: Work, val csrfToken: String)
 
-    override fun convert(value: ResponseBody): Result {
-        val html = value.string()
-        val doc = Jsoup.parse(html)
+    override fun convert(response: Response): Result {
+        when (response.code) {
+            302 -> {
+                if (response.headers["location"] == "https://archiveofourown.org/users/login?restricted=true") {
+                    throw AO3Error.NotLoggedInError
+                } else {
+                    TODO()  // I am not sure what this means yet, and I am not sure if this is even possible
+                }
+            }
+            200 -> return parseWork(response.body!!.string())
+            else -> TODO()
+        }
+    }
+
+    fun parseWork(workHtml: String): Result {
+        val doc = Jsoup.parse(workHtml)
         val metadataTree = doc.select("dl.work.meta.group")
         val statisticsTree = metadataTree.select("dl.stats")
 
@@ -265,7 +275,7 @@ object WorkConverter : Converter<ResponseBody, WorkConverter.Result> {
             )
         }
 
-        val csrfToken = JsoupHelper.getCsrfFromJsoupDoc(doc)
+        val csrfToken = Converter.getCsrfFromJsoupDoc(doc)
 
         return Result(work, csrfToken)
     }

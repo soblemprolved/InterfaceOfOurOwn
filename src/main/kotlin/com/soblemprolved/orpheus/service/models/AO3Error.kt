@@ -19,6 +19,8 @@ sealed class AO3Error: Throwable() {
          */
         data class TagNotFilterableError(override val redirectUrl: String): RedirectError(redirectUrl)
 
+        data class GenericRedirectError(override val redirectUrl: String): RedirectError(redirectUrl)
+
     /**
      * Represents a 404 error.
      */

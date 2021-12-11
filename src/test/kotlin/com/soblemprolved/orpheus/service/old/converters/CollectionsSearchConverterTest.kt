@@ -1,4 +1,4 @@
-package com.soblemprolved.orpheus.service.converters
+package com.soblemprolved.orpheus.service.old.converters
 
 import com.soblemprolved.orpheus.model.ChallengeType
 import org.junit.jupiter.api.Assertions.*

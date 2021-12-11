@@ -1,38 +1,19 @@
 package com.soblemprolved.orpheus.service.converters
 
-import com.soblemprolved.orpheus.model.*
-import okhttp3.HttpUrl.Companion.toHttpUrl
-import okhttp3.Response
+import com.soblemprolved.orpheus.model.WorkBlurb
+import okhttp3.ResponseBody
 import org.jsoup.Jsoup
-import com.soblemprolved.orpheus.service.models.AO3Error
-import java.lang.IllegalStateException
+import retrofit2.Converter
 
-object WorksByTagConverter : Converter<WorksByTagConverter.Result> {
+object WorksByTagConverter : Converter<ResponseBody, WorksByTagConverter.Result> {
     data class Result(
         val tag: String,
         val workCount: Int,
         val workBlurbs: List<WorkBlurb>,
     )
 
-    override fun convert(response: Response): Result {
-        when (response.code) {
-            in 500..599 -> throw AO3Error.ServerSideError
-            in 400..499 -> throw AO3Error.NotFoundError   // not complete
-            302, 304 -> with (response.headers["location"] ?: throw AO3Error.NotFoundError) {
-                val segments = this.toHttpUrl().pathSegments
-                if (segments.last() == "works") {
-                    val mainTag = segments[segments.lastIndex - 1]
-                    throw AO3Error.TagSynonymError(mainTag, this)
-                } else {
-                    throw AO3Error.TagNotFilterableError(this)
-                }
-            }
-            in 200..299 -> return parse(response.body!!.string())
-            else -> TODO()
-        }
-    }
-
-    fun parse(html: String): Result {
+    override fun convert(value: ResponseBody): Result {
+        val html = value.string()
         val doc = Jsoup.parse(html)
 
         val heading = doc.selectFirst("div#main > h2.heading")
@@ -50,7 +31,7 @@ object WorksByTagConverter : Converter<WorksByTagConverter.Result> {
         val workIndexList = doc.select("ol.work.index.group > li.work.blurb.group")
         val workBlurbs: List<WorkBlurb> = workIndexList.map { workIndex ->
             // declarations of subtrees beforehand to make assignment clearer
-            Converter.parseWorkBlurbElement(workIndex)
+            JsoupHelper.parseWorkBlurbElement(workIndex)
         }
 
         return Result(tagName, workCount, workBlurbs)

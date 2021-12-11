@@ -1,6 +1,6 @@
 package com.soblemprolved.orpheus.service.requests
 
-import com.soblemprolved.orpheus.service.converters.LogoutConverter
+import com.soblemprolved.orpheus.service.old.converters.LogoutConverter
 import okhttp3.FormBody
 
 internal class LogoutRequest(

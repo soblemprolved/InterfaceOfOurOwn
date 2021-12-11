@@ -1,18 +1,23 @@
-package com.soblemprolved.orpheus.service.converters
+package com.soblemprolved.orpheus.service.old.converters
 
 import com.soblemprolved.orpheus.model.CollectionBlurb
-import okhttp3.ResponseBody
+import okhttp3.Response
 import org.jsoup.Jsoup
-import retrofit2.Converter
 
-object CollectionsSearchConverter : Converter<ResponseBody, CollectionsSearchConverter.Result> {
+object CollectionsSearchConverter: Converter<CollectionsSearchConverter.Result> {
     data class Result(
         val collectionCount: Int,
         val collections: List<CollectionBlurb>
     )
 
-    override fun convert(value: ResponseBody): Result {
-        val html = value.string()
+    override fun convert(response: Response): Result {
+        when (response.code) {
+            200 -> return parse(response.body!!.string())
+            else -> TODO()
+        }
+    }
+
+    fun parse(html: String): Result {
         val doc = Jsoup.parse(html)
         val collectionCount = doc.selectFirst("div#main > h3.heading")
             .text()
@@ -27,7 +32,7 @@ object CollectionsSearchConverter : Converter<ResponseBody, CollectionsSearchCon
                 }
             }
         val blurbElements = doc.select("div#main > ul.collection > li.collection.blurb")
-        val collectionBlurbs = blurbElements.map { JsoupHelper.parseCollectionBlurbElement(it) }
+        val collectionBlurbs = blurbElements.map { Converter.parseCollectionBlurbElement(it) }
 
         return Result(collectionCount, collectionBlurbs)
     }

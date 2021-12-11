@@ -1,6 +1,6 @@
 package com.soblemprolved.orpheus.service.requests
 
-import com.soblemprolved.orpheus.service.converters.CsrfConverter
+import com.soblemprolved.orpheus.service.old.converters.CsrfConverter
 import com.soblemprolved.orpheus.service.requests.AO3Request.Companion.HTML_HEADERS
 import okhttp3.HttpUrl
 import okhttp3.HttpUrl.Companion.toHttpUrl

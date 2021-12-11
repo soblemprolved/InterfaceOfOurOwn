@@ -1,8 +1,8 @@
 package com.soblemprolved.orpheus.service.requests
 
 import com.soblemprolved.orpheus.model.BookmarkFilterParameters
-import com.soblemprolved.orpheus.service.converters.BookmarksByTagConverter
-import com.soblemprolved.orpheus.service.converters.Converter
+import com.soblemprolved.orpheus.service.old.converters.BookmarksByTagConverter
+import com.soblemprolved.orpheus.service.old.converters.Converter
 import com.soblemprolved.orpheus.service.query.BookmarkFilterQueryMap
 import com.soblemprolved.orpheus.service.requests.AO3Request.Companion.BASE_HTTP_URL_BUILDER_CONFIGURATION
 import com.soblemprolved.orpheus.service.requests.AO3Request.Companion.HTML_HEADERS
