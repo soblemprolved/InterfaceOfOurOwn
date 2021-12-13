@@ -9,16 +9,16 @@ import retrofit2.Response
  * This call is adapted from the solution here: https://stackoverflow.com/a/57816819/16271427
  * This will help us in adapting suspend functions.
  */
-class AO3Call<T>(proxy: Call<T>) : CallDelegate<T, RetrofitResponse<T>>(proxy) {
-    override fun enqueueImpl(callback: Callback<RetrofitResponse<T>>) = proxy.enqueue(object: Callback<T> {
+class AO3Call<T>(proxy: Call<T>) : CallDelegate<T, AO3Response<T>>(proxy) {
+    override fun enqueueImpl(callback: Callback<AO3Response<T>>) = proxy.enqueue(object: Callback<T> {
         override fun onResponse(call: Call<T>, response: Response<T>) {
             val code = response.code()
             val result = if (code in 200 until 300) {
                 val body = response.body()!!
-                val successResult: RetrofitResponse<T> = RetrofitResponse.Success(body) // unnecessary repeating code?
+                val successResult: AO3Response<T> = AO3Response.Success(body) // unnecessary repeating code?
                 successResult
             } else {
-                RetrofitResponse.Failure(code, response)
+                AO3Response.Failure(call, response)
             }
 
             callback.onResponse(this@AO3Call, Response.success(result))
@@ -26,9 +26,9 @@ class AO3Call<T>(proxy: Call<T>) : CallDelegate<T, RetrofitResponse<T>>(proxy) {
 
         override fun onFailure(call: Call<T>, t: Throwable) {
             val result = if (t is IOException) {
-                RetrofitResponse.NetworkError
+                AO3Response.NetworkError
             } else {
-                RetrofitResponse.UnknownError
+                AO3Response.UnknownError
             }
 
             callback.onResponse(this@AO3Call, Response.success(result))

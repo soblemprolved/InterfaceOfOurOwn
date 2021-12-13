@@ -4,13 +4,7 @@ import retrofit2.Call
 import retrofit2.CallAdapter
 import java.lang.reflect.Type
 
-class AO3CallAdapter<T> : CallAdapter<T, AO3Call<T>> {
-    override fun responseType(): Type {
-        TODO("Not yet implemented")
-    }
-
-    override fun adapt(call: Call<T>): AO3Call<T> {
-        TODO("Not yet implemented")
-    }
-
+class AO3ResponseAdapter(private val type: Type) : CallAdapter<Type, Call<AO3Response<Type>>> {
+    override fun responseType(): Type = type
+    override fun adapt(call: Call<Type>): Call<AO3Response<Type>> = AO3Call(call)
 }
