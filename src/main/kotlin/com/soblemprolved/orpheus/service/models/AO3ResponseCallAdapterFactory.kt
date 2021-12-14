@@ -6,7 +6,7 @@ import retrofit2.Retrofit
 import java.lang.reflect.ParameterizedType
 import java.lang.reflect.Type
 
-class AO3CallAdapterFactory : CallAdapter.Factory() {
+class AO3ResponseCallAdapterFactory : CallAdapter.Factory() {
     override fun get(
         returnType: Type,
         annotations: Array<out Annotation>,
@@ -17,7 +17,7 @@ class AO3CallAdapterFactory : CallAdapter.Factory() {
             when (getRawType(callType)) {
                 AO3Response::class.java -> {
                     val resultType = getParameterUpperBound(0, callType as ParameterizedType)
-                    AO3ResponseAdapter(resultType)
+                    AO3ResponseCallAdapter(resultType)
                 }
                 else -> null
             }

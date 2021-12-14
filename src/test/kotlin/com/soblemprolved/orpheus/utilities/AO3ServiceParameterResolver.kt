@@ -2,17 +2,17 @@ package com.soblemprolved.orpheus.utilities
 
 import com.soblemprolved.orpheus.service.AO3Service
 import com.soblemprolved.orpheus.service.converters.AO3ConverterFactory
-import com.soblemprolved.orpheus.service.models.AO3CallAdapterFactory
+import com.soblemprolved.orpheus.service.models.AO3ResponseCallAdapterFactory
 import org.junit.jupiter.api.extension.ExtensionContext
 import org.junit.jupiter.api.extension.ParameterContext
 import org.junit.jupiter.api.extension.ParameterResolver
 import retrofit2.Retrofit
 
-object AO3ServiceParameterResolver : ParameterResolver {
+internal object AO3ServiceParameterResolver : ParameterResolver {
     private val retrofit = Retrofit.Builder()
         .baseUrl("https://archiveofourown.org/")
         .addConverterFactory(AO3ConverterFactory())
-        .addCallAdapterFactory(AO3CallAdapterFactory())
+        .addCallAdapterFactory(AO3ResponseCallAdapterFactory())
         .build()
     private val service = retrofit.create(AO3Service::class.java)
 
