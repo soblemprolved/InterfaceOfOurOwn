@@ -69,7 +69,7 @@ publishing {
     publications {
         create<MavenPublication>("maven") {
             groupId = "com.github.soblemprolved"
-            artifactId = "orpheus"
+            artifactId = "interfaceofourown"
 
             from(components["java"])
         }
