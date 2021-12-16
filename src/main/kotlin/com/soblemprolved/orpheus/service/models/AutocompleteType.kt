@@ -9,7 +9,4 @@ enum class AutocompleteType(
     CHARACTER("character"),
     FREEFORM("freeform"),
     PSEUD("pseud");
-
-    internal val value: String
-        get() = pathSegment
 }

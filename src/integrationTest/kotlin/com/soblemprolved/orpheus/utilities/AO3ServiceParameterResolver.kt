@@ -3,17 +3,28 @@ package com.soblemprolved.orpheus.utilities
 import com.soblemprolved.orpheus.service.AO3Service
 import com.soblemprolved.orpheus.service.converters.AO3ConverterFactory
 import com.soblemprolved.orpheus.service.models.AO3ResponseCallAdapterFactory
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import org.junit.jupiter.api.extension.ExtensionContext
 import org.junit.jupiter.api.extension.ParameterContext
 import org.junit.jupiter.api.extension.ParameterResolver
 import retrofit2.Retrofit
 
 internal object AO3ServiceParameterResolver : ParameterResolver {
+    private val interceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC)
+
+    private val client = OkHttpClient.Builder()
+        .addInterceptor(interceptor)
+        .followRedirects(false)
+        .build()
+
     private val retrofit = Retrofit.Builder()
         .baseUrl("https://archiveofourown.org/")
+        .client(client)
         .addConverterFactory(AO3ConverterFactory())
         .addCallAdapterFactory(AO3ResponseCallAdapterFactory())
         .build()
+
     private val service = retrofit.create(AO3Service::class.java)
 
     override fun supportsParameter(parameterContext: ParameterContext?, extensionContext: ExtensionContext?): Boolean {

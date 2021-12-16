@@ -3,14 +3,10 @@ package com.soblemprolved.orpheus.service
 import com.soblemprolved.orpheus.model.BookmarkFilterParameters
 import com.soblemprolved.orpheus.model.CollectionFilterParameters
 import com.soblemprolved.orpheus.model.WorkFilterParameters
-import com.soblemprolved.orpheus.service.converters.BookmarksByTagConverter
-import com.soblemprolved.orpheus.service.converters.CollectionsSearchConverter
-import com.soblemprolved.orpheus.service.converters.WorkConverter
-import com.soblemprolved.orpheus.service.converters.WorksByTagConverter
+import com.soblemprolved.orpheus.service.converters.*
+import com.soblemprolved.orpheus.service.models.AO3Response
 import com.soblemprolved.orpheus.service.models.AutocompleteType
-import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.http.QueryMap
+import retrofit2.http.*
 
 interface AO3Service {
     /*
@@ -20,25 +16,35 @@ interface AO3Service {
     FIXME: this is a bad explanation
      */
 
-    @GET("tags/{tag}/bookmarks?page={page}")
-    suspend fun browseBookmarksByTag(@Path("tag") encodedTag: String,
-                                     @Path("page") page: Int,
-                                     @QueryMap parameters: BookmarkFilterParameters): BookmarksByTagConverter.Result
+    @GET("tags/{tag}/bookmarks")
+    suspend fun browseBookmarksByTag(
+        @Path("tag") encodedTag: String,
+        @Query("page") page: Int,
+        @QueryMap parameters: BookmarkFilterParameters = BookmarkFilterParameters()
+    ): AO3Response<BookmarksByTagConverter.Result>
 
-    @GET("tags/{tag}/works?page={page}")
-    suspend fun browseWorksByTag(@Path("tag") encodedTag: String,
-                                 @Path("page") page: Int,
-                                 @QueryMap parameters: WorkFilterParameters): WorksByTagConverter.Result
+    @GET("tags/{tag}/works")
+    suspend fun browseWorksByTag(
+        @Path("tag") encodedTag: String,
+        @Query("page") page: Int,
+        @QueryMap parameters: WorkFilterParameters = WorkFilterParameters()
+    ): AO3Response<WorksByTagConverter.Result>
 
     @GET("collections")
-    suspend fun browseCollections(@QueryMap parameters: CollectionFilterParameters): CollectionsSearchConverter.Result
+    suspend fun browseCollections(
+        @Query("page") page: Int,
+        @QueryMap parameters: CollectionFilterParameters = CollectionFilterParameters()
+    ): AO3Response<CollectionsSearchConverter.Result>
 
     @GET("works/{id}?view_adult=true&view_full_work=true")
-    suspend fun getWork(@Path("id") id: Long): WorkConverter.Result
+    suspend fun getWork(@Path("id") id: Long): AO3Response<WorkConverter.Result>
 
-    @GET("autocomplete/{type}?term={query}")
-    suspend fun searchAutocomplete(@Path("type") type: AutocompleteType,
-                                   @Path("query") query: String): List<String>
+    @Headers("Accept: application/json")
+    @GET("autocomplete/{type}")
+    suspend fun searchAutocomplete(
+        @Path("type") type: AutocompleteType,
+        @Query("term") query: String
+    ): AO3Response<AutocompleteConverter.Result>
 
     /*
     // I'm going to list all the functions in the final API here, even if there is no request analog/not complete
