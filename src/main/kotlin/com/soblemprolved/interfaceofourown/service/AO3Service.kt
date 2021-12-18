@@ -9,7 +9,10 @@ import com.soblemprolved.interfaceofourown.service.models.AO3Response
 import com.soblemprolved.interfaceofourown.service.models.AO3ResponseCallAdapterFactory
 import com.soblemprolved.interfaceofourown.service.models.AutocompleteType
 import com.soblemprolved.interfaceofourown.service.models.Tag
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import retrofit2.CallAdapter
+import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.http.*
 
@@ -32,7 +35,7 @@ interface AO3Service {
      */
     @GET("tags/{tag}/bookmarks")
     suspend fun browseBookmarksByTag(
-        @Path("tag") tag: Tag,
+        @Path("tag") tag: Tag, // TODO: consider using interceptors to encode tags instead
         @Query("page") page: Int,
         @QueryMap parameters: BookmarkFilterParameters = BookmarkFilterParameters()
     ): AO3Response<BookmarksByTagConverter.Result>
@@ -44,7 +47,7 @@ interface AO3Service {
      */
     @GET("tags/{tag}/works")
     suspend fun browseWorksByTag(
-        @Path("tag") encodedTag: String,
+        @Path("tag") tag: Tag,
         @Query("page") page: Int,
         @QueryMap parameters: WorkFilterParameters = WorkFilterParameters()
     ): AO3Response<WorksByTagConverter.Result>
@@ -143,4 +146,61 @@ interface AO3Service {
 
     /* Collections and collection-related stuff */
     */
+
+    companion object {
+        /**
+         * Factory method to create an instance of an [AO3Service].
+         *
+         * Specify the [baseUrl] if you wish to use this to perform testing.
+         *
+         * Specify the [okHttpClient] if you have an existing [OkHttpClient] in your application. Retrofit will share resources
+         * with the existing client, but it will use its own configuration for its own requests.
+         */
+        fun create(
+            baseUrl: String = "https://archiveofourown.org/",
+            okHttpClient: OkHttpClient? = null,
+            interceptors: List<Interceptor> = listOf(),
+            converterFactories: List<Converter.Factory> = listOf(),
+            callAdapterFactories: List<CallAdapter.Factory> = listOf()
+        ) : AO3Service {
+            val client = if (okHttpClient == null) {
+                OkHttpClient.Builder()
+                    .apply {
+                        for (interceptor in interceptors) {
+                            this.addInterceptor(interceptor)
+                        }
+                    }
+                    .followRedirects(false)
+                    .build()
+            } else {
+                okHttpClient.newBuilder()
+                    .apply {
+                        for (interceptor in interceptors) {
+                            this.addInterceptor(interceptor)
+                        }
+                    }
+                    .followRedirects(false)
+                    .build()
+            }
+
+            val retrofit = Retrofit.Builder()
+                .baseUrl(baseUrl)
+                .client(client)
+                .addConverterFactory(AO3ConverterFactory())
+                .addCallAdapterFactory(AO3ResponseCallAdapterFactory())
+                .apply {
+                    for (converterFactory in converterFactories) {
+                        this.addConverterFactory(converterFactory)
+                    }
+                }
+                .apply {
+                    for (callAdapterFactory in callAdapterFactories) {
+                        this.addCallAdapterFactory(callAdapterFactory)
+                    }
+                }
+                .build()
+
+            return retrofit.create(AO3Service::class.java) // TODO: should I also return the retrofit and okhttp client?
+        }
+    }
 }

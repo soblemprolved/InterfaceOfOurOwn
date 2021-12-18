@@ -1,6 +1,7 @@
 package com.soblemprolved.interfaceofourown.service
 
 import com.soblemprolved.interfaceofourown.service.models.AO3Response
+import com.soblemprolved.interfaceofourown.service.models.Tag
 import com.soblemprolved.interfaceofourown.utilities.AO3ServiceParameterResolver
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.assertTrue
@@ -14,7 +15,7 @@ internal class BrowseBookmarksByTagTest(private val service: AO3Service) {
     @Test
     fun `should not throw error external works`() {
         val response = runBlocking {
-            service.browseBookmarksByTag("Riza Hawkeye/Roy Mustang", 3)
+            service.browseBookmarksByTag(Tag("Riza Hawkeye/Roy Mustang"), 3)
         }
         assertTrue(response is AO3Response.Success)
     }
@@ -22,7 +23,7 @@ internal class BrowseBookmarksByTagTest(private val service: AO3Service) {
     @Test
     fun `should not throw error series`() {
         val response = runBlocking {
-            service.browseBookmarksByTag("Marvel", 1)
+            service.browseBookmarksByTag(Tag("Marvel"), 1)
         }
         assertTrue(response is AO3Response.Success)
     }

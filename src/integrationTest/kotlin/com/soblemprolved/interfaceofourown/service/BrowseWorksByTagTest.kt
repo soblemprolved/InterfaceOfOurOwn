@@ -3,6 +3,7 @@ package com.soblemprolved.interfaceofourown.service
 import com.soblemprolved.interfaceofourown.model.WorkFilterParameters
 import com.soblemprolved.interfaceofourown.service.models.AO3Error
 import com.soblemprolved.interfaceofourown.service.models.AO3Response
+import com.soblemprolved.interfaceofourown.service.models.Tag
 import com.soblemprolved.interfaceofourown.utilities.AO3ServiceParameterResolver
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.assertTrue
@@ -16,7 +17,7 @@ internal class BrowseWorksByTagTest(private val service: AO3Service) {
     @Test
     fun `(Integration) Successfully request works from tag`() {
         val response = runBlocking {
-            service.browseWorksByTag("F/M", 1)
+            service.browseWorksByTag(Tag("F/M"), 1)
         }
         assertTrue(response is AO3Response.Success)
         // TODO: add more stuff
@@ -26,7 +27,7 @@ internal class BrowseWorksByTagTest(private val service: AO3Service) {
     fun `(Integration) Successfully request works with non-standard rating names`() {
         val response = runBlocking {
             service.browseWorksByTag(
-                "F/M",
+                Tag("F/M"),
                 1,
                 WorkFilterParameters(
                     showRatingGeneral = false,
@@ -44,7 +45,7 @@ internal class BrowseWorksByTagTest(private val service: AO3Service) {
     fun `(Integration) Successfully request works with multiple arguments`() {
         val response = runBlocking {
             service.browseWorksByTag(
-                "F/M",
+                Tag("F/M"),
                 1,
                 WorkFilterParameters(
                     includedTags = listOf("Romance", "Pepper Potts/Tony Stark").toMutableList(),
@@ -58,7 +59,7 @@ internal class BrowseWorksByTagTest(private val service: AO3Service) {
     @Test
     fun `Return a TagSynonymError when requesting works from a synonym`() {
         val response = runBlocking {
-            service.browseWorksByTag("Roy Mustang/Riza Hawkeye", 1)
+            service.browseWorksByTag(Tag("Roy Mustang/Riza Hawkeye"), 1)
         }
         assertTrue(response is AO3Response.Failure && response.error is AO3Error.TagSynonymError)
     }
@@ -67,7 +68,7 @@ internal class BrowseWorksByTagTest(private val service: AO3Service) {
     fun `Return a TagNotFilterableError when requesting works from a tag that is not marked common`() {
         val response = runBlocking {
             service.browseWorksByTag(
-                "the sea and the land as concepts of fear and desire in the face of infinity",
+                Tag("the sea and the land as concepts of fear and desire in the face of infinity"),
                 1
             )
         }
@@ -77,7 +78,7 @@ internal class BrowseWorksByTagTest(private val service: AO3Service) {
     @Test
     fun `Return an empty list when the page requested exceeds the total number of pages`() {
         val response = runBlocking {
-            service.browseWorksByTag("009-1 (Manga)", 2)
+            service.browseWorksByTag(Tag("009-1 (Manga)"), 2)
         }
         assertTrue(response is AO3Response.Success)
         assertTrue((response as AO3Response.Success).value.workBlurbs.isEmpty())
