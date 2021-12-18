@@ -10,6 +10,9 @@ import org.junit.jupiter.api.extension.ParameterContext
 import org.junit.jupiter.api.extension.ParameterResolver
 import retrofit2.Retrofit
 
+/**
+ * Injects a shared [AO3Service] instance into test classes that require it as a parameter in the constructor.
+ */
 internal object AO3ServiceParameterResolver : ParameterResolver {
     private val interceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC)
 

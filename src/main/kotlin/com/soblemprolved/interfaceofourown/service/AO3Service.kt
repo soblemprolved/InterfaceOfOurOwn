@@ -3,11 +3,21 @@ package com.soblemprolved.interfaceofourown.service
 import com.soblemprolved.interfaceofourown.model.BookmarkFilterParameters
 import com.soblemprolved.interfaceofourown.model.CollectionFilterParameters
 import com.soblemprolved.interfaceofourown.model.WorkFilterParameters
+import com.soblemprolved.interfaceofourown.service.converters.AO3ConverterFactory
 import com.soblemprolved.interfaceofourown.service.converters.responsebody.*
 import com.soblemprolved.interfaceofourown.service.models.AO3Response
+import com.soblemprolved.interfaceofourown.service.models.AO3ResponseCallAdapterFactory
 import com.soblemprolved.interfaceofourown.service.models.AutocompleteType
+import com.soblemprolved.interfaceofourown.service.models.Tag
+import okhttp3.OkHttpClient
+import retrofit2.Retrofit
 import retrofit2.http.*
 
+/**
+ * This is the retrofit interface for generating the retrofit service that interacts with AO3.
+ *
+ * All functions in here are suspending for now. Calls will be included at a later date.
+ */
 interface AO3Service {
     /*
     There is a specific naming system for the methods.
@@ -16,13 +26,22 @@ interface AO3Service {
     FIXME: this is a bad explanation
      */
 
+    /**
+     * Retrieves a list of up to 20 bookmark blurbs at the specified [page] that are associated with the specified tag.
+     * Additional arguments can be specified in [parameters] with a [WorkFilterParameters] object.
+     */
     @GET("tags/{tag}/bookmarks")
     suspend fun browseBookmarksByTag(
-        @Path("tag") encodedTag: String,
+        @Path("tag") tag: Tag,
         @Query("page") page: Int,
         @QueryMap parameters: BookmarkFilterParameters = BookmarkFilterParameters()
     ): AO3Response<BookmarksByTagConverter.Result>
 
+
+    /**
+     * Retrieves a list of up to 20 work blurbs at the specified [page] that are associated with the specified tag.
+     * Additional arguments can be specified in [parameters] with a [WorkFilterParameters] object.
+     */
     @GET("tags/{tag}/works")
     suspend fun browseWorksByTag(
         @Path("tag") encodedTag: String,
@@ -30,15 +49,29 @@ interface AO3Service {
         @QueryMap parameters: WorkFilterParameters = WorkFilterParameters()
     ): AO3Response<WorksByTagConverter.Result>
 
+    /**
+     * Retrieves a list of up to 20 collection blurbs at the specified [page] from all collections.
+     * Additional arguments can be specified in [parameters] with a [CollectionFilterParameters] object.
+     */
     @GET("collections")
     suspend fun browseCollections(
         @Query("page") page: Int,
         @QueryMap parameters: CollectionFilterParameters = CollectionFilterParameters()
     ): AO3Response<CollectionsSearchConverter.Result>
 
+    /**
+     * Retrieves the work with the specified [id].
+     *
+     * May throw an error if the user is not logged in, and is trying to access a restricted work.
+     */
     @GET("works/{id}?view_adult=true&view_full_work=true")
     suspend fun getWork(@Path("id") id: Long): AO3Response<WorkConverter.Result>
 
+    /**
+     * Retrieves a list of up to 15 tags that match the search [query].
+     *
+     * The types of the returned tags are constrained by the [type] specified.
+     */
     @Headers("Accept: application/json")
     @GET("autocomplete/{type}")
     suspend fun searchAutocomplete(

@@ -6,7 +6,10 @@ import retrofit2.Retrofit
 import java.lang.reflect.ParameterizedType
 import java.lang.reflect.Type
 
-class AO3ResponseCallAdapterFactory : CallAdapter.Factory() {
+/**
+ * A [CallAdapter.Factory] to create [AO3ResponseCallAdapter] instances.
+ */
+internal class AO3ResponseCallAdapterFactory : CallAdapter.Factory() {
     override fun get(
         returnType: Type,
         annotations: Array<out Annotation>,

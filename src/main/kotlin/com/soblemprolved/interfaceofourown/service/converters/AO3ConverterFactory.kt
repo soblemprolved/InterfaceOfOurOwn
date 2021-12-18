@@ -2,7 +2,9 @@ package com.soblemprolved.interfaceofourown.service.converters
 
 import com.soblemprolved.interfaceofourown.service.converters.responsebody.*
 import com.soblemprolved.interfaceofourown.service.converters.string.AutocompleteTypeConverter
+import com.soblemprolved.interfaceofourown.service.converters.string.TagUrlConverter
 import com.soblemprolved.interfaceofourown.service.models.AutocompleteType
+import com.soblemprolved.interfaceofourown.service.models.Tag
 import okhttp3.ResponseBody
 import retrofit2.Converter
 import retrofit2.Retrofit
@@ -30,8 +32,9 @@ class AO3ConverterFactory : Converter.Factory() {
         retrofit: Retrofit
     ): Converter<*, String>? {
         return when (type) {
-            AutocompleteType::class.java -> AutocompleteTypeConverter
-            else -> super.stringConverter(type, annotations, retrofit)
+            AutocompleteType::class.java ->     AutocompleteTypeConverter
+            Tag::class.java ->                  TagUrlConverter
+            else ->                             super.stringConverter(type, annotations, retrofit)
         }
     }
 }

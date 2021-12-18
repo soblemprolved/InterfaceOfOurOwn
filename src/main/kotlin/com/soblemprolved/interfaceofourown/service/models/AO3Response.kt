@@ -4,6 +4,15 @@ import okhttp3.HttpUrl.Companion.toHttpUrl
 import retrofit2.Call
 import retrofit2.Response
 
+/**
+ * Represents a response from the service. An [AO3Response] can either be a [Success] or a [Failure].
+ *
+ * A [Success] response encapsulates the deserialised response obtained from a successful request
+ * in its [Success.value].
+ *
+ * A [Failure] response encapsulates the specific error thrown when the request fails for any reason
+ * in its [Failure.error].
+ */
 sealed class AO3Response<out T> {
     /**
      * Represents a success scenario. The expected result of the call is represented by [value].

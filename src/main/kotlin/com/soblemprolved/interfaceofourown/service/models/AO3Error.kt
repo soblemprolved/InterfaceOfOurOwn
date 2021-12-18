@@ -1,5 +1,8 @@
 package com.soblemprolved.interfaceofourown.service.models
 
+/**
+ * Represents all the possible errors that may crop up in the process of interacting with AO3.
+ */
 sealed class AO3Error: Throwable() {
     sealed class ConnectionError: AO3Error()
         /**
