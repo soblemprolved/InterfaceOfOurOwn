@@ -71,6 +71,18 @@ interface AO3Service {
     suspend fun getWork(@Path("id") id: Long): AO3Response<WorkConverter.Result>
 
     /**
+     * Logs in to AO3 with the specified username and password.
+     */
+    @POST("login")
+    suspend fun login(username: String, password: String) // TODO
+
+    /**
+     * Logs out of AO3.
+     */
+    @POST("logout")
+    suspend fun logout() // TODO
+
+    /**
      * Retrieves a list of up to 15 tags that match the search [query].
      *
      * The types of the returned tags are constrained by the [type] specified.
@@ -147,7 +159,7 @@ interface AO3Service {
     /* Collections and collection-related stuff */
     */
 
-    companion object {
+    companion object Factory {
         /**
          * Factory method to create an instance of an [AO3Service].
          *
@@ -163,25 +175,14 @@ interface AO3Service {
             converterFactories: List<Converter.Factory> = listOf(),
             callAdapterFactories: List<CallAdapter.Factory> = listOf()
         ) : AO3Service {
-            val client = if (okHttpClient == null) {
-                OkHttpClient.Builder()
-                    .apply {
-                        for (interceptor in interceptors) {
-                            this.addInterceptor(interceptor)
-                        }
+            val client = (okHttpClient?.newBuilder() ?: OkHttpClient.Builder())
+                .apply {
+                    for (interceptor in interceptors) {
+                        this.addInterceptor(interceptor)
                     }
-                    .followRedirects(false)
-                    .build()
-            } else {
-                okHttpClient.newBuilder()
-                    .apply {
-                        for (interceptor in interceptors) {
-                            this.addInterceptor(interceptor)
-                        }
-                    }
-                    .followRedirects(false)
-                    .build()
-            }
+                }
+                .followRedirects(false)
+                .build()
 
             val retrofit = Retrofit.Builder()
                 .baseUrl(baseUrl)
