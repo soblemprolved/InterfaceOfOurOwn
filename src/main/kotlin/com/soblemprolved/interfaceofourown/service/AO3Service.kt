@@ -5,9 +5,8 @@ import com.soblemprolved.interfaceofourown.model.CollectionFilterParameters
 import com.soblemprolved.interfaceofourown.model.WorkFilterParameters
 import com.soblemprolved.interfaceofourown.service.converters.AO3ConverterFactory
 import com.soblemprolved.interfaceofourown.service.converters.responsebody.*
-import com.soblemprolved.interfaceofourown.service.models.AO3Response
-import com.soblemprolved.interfaceofourown.service.models.AO3ResponseCallAdapterFactory
-import com.soblemprolved.interfaceofourown.service.models.AutocompleteType
+import com.soblemprolved.interfaceofourown.service.models.*
+import com.soblemprolved.interfaceofourown.service.models.LoginFieldMap
 import com.soblemprolved.interfaceofourown.service.models.Tag
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -73,14 +72,24 @@ interface AO3Service {
     /**
      * Logs in to AO3 with the specified username and password.
      */
-    @POST("login")
-    suspend fun login(username: String, password: String) // TODO
+    @FormUrlEncoded
+    @POST("users/login")
+    suspend fun login(
+        @Field("user[login]") username: String,
+        @Field("user[password]") password: String,
+        @Field("authenticity_token") csrf: Csrf,
+        @FieldMap(encoded = false) defaultFormParameters: LoginFieldMap = LoginFieldMap()
+    )
 
     /**
      * Logs out of AO3.
      */
-    @POST("logout")
-    suspend fun logout() // TODO
+    @FormUrlEncoded
+    @POST("users/logout")
+    suspend fun logout(
+        @Field("authenticity_token") csrf: Csrf,
+        @FieldMap(encoded = false) defaultFormParameters: LogoutFieldMap = LogoutFieldMap()
+    )
 
     /**
      * Retrieves a list of up to 15 tags that match the search [query].
