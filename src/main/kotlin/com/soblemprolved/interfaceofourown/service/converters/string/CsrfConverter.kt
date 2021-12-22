@@ -4,7 +4,7 @@ import com.soblemprolved.interfaceofourown.service.models.Csrf
 import retrofit2.Converter
 
 /**
- * Converts `Csrf` objects into their string representations.
+ * Converts [Csrf] objects into their string representations.
  * This object only applies to parameters.
  */
 object CsrfConverter : Converter<Csrf, String> {
