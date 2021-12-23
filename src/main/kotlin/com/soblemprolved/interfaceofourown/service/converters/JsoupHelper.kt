@@ -1,6 +1,7 @@
 package com.soblemprolved.interfaceofourown.service.converters
 
 import com.soblemprolved.interfaceofourown.model.*
+import com.soblemprolved.interfaceofourown.service.models.Csrf
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
 import java.time.LocalDate
@@ -8,9 +9,10 @@ import java.time.format.DateTimeFormatter
 
 class JsoupHelper {
     companion object {
-        fun getCsrfFromJsoupDoc(doc: Document): String {
-            return doc.selectFirst("meta[name=csrf-token]")
-                .attr("content")
+        fun getCsrfFromJsoupDoc(doc: Document): Csrf {
+            return Csrf(
+                doc.selectFirst("meta[name=csrf-token]").attr("content")
+            )
         }
 
         fun decodeTag(encodedTag: String): String {

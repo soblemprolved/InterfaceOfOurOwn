@@ -61,6 +61,9 @@ interface AO3Service {
         @QueryMap parameters: CollectionFilterParameters = CollectionFilterParameters()
     ): AO3Response<CollectionsSearchConverter.Result>
 
+    @GET
+    suspend fun getCsrfToken(): AO3Response<Csrf>
+
     /**
      * Retrieves the work with the specified [id].
      *

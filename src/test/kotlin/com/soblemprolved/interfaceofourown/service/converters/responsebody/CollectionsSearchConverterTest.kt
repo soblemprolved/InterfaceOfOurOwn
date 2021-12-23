@@ -1,7 +1,6 @@
-package com.soblemprolved.interfaceofourown.service.converters
+package com.soblemprolved.interfaceofourown.service.converters.responsebody
 
 import com.soblemprolved.interfaceofourown.model.ChallengeType
-import com.soblemprolved.interfaceofourown.service.converters.responsebody.CollectionsSearchConverter
 import okhttp3.ResponseBody.Companion.toResponseBody
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test

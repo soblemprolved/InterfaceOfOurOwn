@@ -2,6 +2,7 @@ package com.soblemprolved.interfaceofourown.service.converters.responsebody
 
 import com.soblemprolved.interfaceofourown.model.*
 import com.soblemprolved.interfaceofourown.service.converters.JsoupHelper
+import com.soblemprolved.interfaceofourown.service.models.Csrf
 import okhttp3.ResponseBody
 import org.jsoup.Jsoup
 import retrofit2.Converter
@@ -10,7 +11,7 @@ import java.time.LocalDate
 object WorkConverter : Converter<ResponseBody, WorkConverter.Result> {
     data class Result(
         val work: Work,
-        val csrfToken: String
+        val csrfToken: Csrf
     )
 
     override fun convert(value: ResponseBody): Result {
