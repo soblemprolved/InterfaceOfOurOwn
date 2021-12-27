@@ -24,6 +24,7 @@ class AO3ConverterFactory : Converter.Factory() {
             CollectionsSearchConverter.Result::class.java ->    CollectionsSearchConverter
             WorkConverter.Result::class.java ->                 WorkConverter
             WorksByTagConverter.Result::class.java ->           WorksByTagConverter
+            Csrf::class.java ->                                 GetCsrfConverter
             else ->                                             super.responseBodyConverter(type, annotations, retrofit)
         }
     }

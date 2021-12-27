@@ -10,4 +10,6 @@ import java.lang.reflect.Type
 class AO3ResponseCallAdapter(private val type: Type) : CallAdapter<Type, Call<AO3Response<Type>>> {
     override fun responseType(): Type = type
     override fun adapt(call: Call<Type>): Call<AO3Response<Type>> = AO3Call(call)
+    // TODO: specify the alternative http code handling scheme here
+    // basically just pass in a custom onResponse handler
 }

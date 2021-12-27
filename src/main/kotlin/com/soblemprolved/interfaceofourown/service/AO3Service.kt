@@ -61,7 +61,7 @@ interface AO3Service {
         @QueryMap parameters: CollectionFilterParameters = CollectionFilterParameters()
     ): AO3Response<CollectionsSearchConverter.Result>
 
-    @GET
+    @GET(".")
     suspend fun getCsrfToken(): AO3Response<Csrf>
 
     /**
