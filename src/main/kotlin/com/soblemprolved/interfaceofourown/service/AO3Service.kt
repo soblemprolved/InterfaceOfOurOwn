@@ -9,11 +9,14 @@ import com.soblemprolved.interfaceofourown.service.models.*
 import com.soblemprolved.interfaceofourown.service.models.LoginFieldMap
 import com.soblemprolved.interfaceofourown.service.models.Tag
 import okhttp3.Interceptor
+import okhttp3.JavaNetCookieJar
 import okhttp3.OkHttpClient
 import retrofit2.CallAdapter
 import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.http.*
+import java.net.CookieManager
+import java.net.CookiePolicy
 
 /**
  * This is the retrofit interface for generating the retrofit service that interacts with AO3.
@@ -61,7 +64,7 @@ interface AO3Service {
         @QueryMap parameters: CollectionFilterParameters = CollectionFilterParameters()
     ): AO3Response<CollectionsSearchConverter.Result>
 
-    @GET(".")
+    @GET("token_dispenser.json")
     suspend fun getCsrfToken(): AO3Response<Csrf>
 
     /**
@@ -82,7 +85,7 @@ interface AO3Service {
         @Field("user[password]") password: String,
         @Field("authenticity_token") csrf: Csrf,
         @FieldMap(encoded = false) defaultFormParameters: LoginFieldMap = LoginFieldMap()
-    )
+    ): AO3Response<Login>
 
     /**
      * Logs out of AO3.
@@ -187,6 +190,9 @@ interface AO3Service {
             converterFactories: List<Converter.Factory> = listOf(),
             callAdapterFactories: List<CallAdapter.Factory> = listOf()
         ) : AO3Service {
+            val cookieManager = CookieManager()
+            cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ALL)
+
             val client = (okHttpClient?.newBuilder() ?: OkHttpClient.Builder())
                 .apply {
                     for (interceptor in interceptors) {
@@ -194,6 +200,7 @@ interface AO3Service {
                     }
                 }
                 .followRedirects(false)
+                .cookieJar(JavaNetCookieJar(cookieManager))
                 .build()
 
             val retrofit = Retrofit.Builder()

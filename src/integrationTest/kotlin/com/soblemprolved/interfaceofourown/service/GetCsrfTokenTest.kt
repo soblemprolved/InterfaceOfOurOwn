@@ -16,11 +16,8 @@ import org.junit.jupiter.api.extension.ExtendWith
 internal class GetCsrfTokenTest(private val service: AO3Service) {
     @Test
     fun `Should retrieve a csrf token`() {
-        for (type in AutocompleteType.values()) {
-            runBlocking {
-                val response = service.getCsrfToken()
-                assertTrue(response is AO3Response.Success<Csrf>)
-            }
-        }
+        val response = runBlocking { service.getCsrfToken() }
+        assertTrue(response is AO3Response.Success<Csrf>)
+        println(response)
     }
 }

@@ -64,3 +64,8 @@ class LogoutFieldMap internal constructor() : AbstractMap<String, String>() {
             return backingSet
         }
 }
+
+/**
+ * This is used to represent a login.
+ */
+object Login

@@ -6,6 +6,7 @@ import com.soblemprolved.interfaceofourown.service.converters.string.CsrfConvert
 import com.soblemprolved.interfaceofourown.service.converters.string.TagUrlConverter
 import com.soblemprolved.interfaceofourown.service.models.AutocompleteType
 import com.soblemprolved.interfaceofourown.service.models.Csrf
+import com.soblemprolved.interfaceofourown.service.models.Login
 import com.soblemprolved.interfaceofourown.service.models.Tag
 import okhttp3.ResponseBody
 import retrofit2.Converter
@@ -25,6 +26,7 @@ class AO3ConverterFactory : Converter.Factory() {
             WorkConverter.Result::class.java ->                 WorkConverter
             WorksByTagConverter.Result::class.java ->           WorksByTagConverter
             Csrf::class.java ->                                 GetCsrfConverter
+            Login::class.java ->                                LoginConverter
             else ->                                             super.responseBodyConverter(type, annotations, retrofit)
         }
     }
