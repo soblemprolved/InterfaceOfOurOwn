@@ -14,11 +14,12 @@ class AO3LoginCall(proxy: Call<Login>) : CallDelegate<Login, AO3Response<Login>>
         object: Callback<Login> {
             override fun onResponse(call: Call<Login>, response: Response<Login>) {
                 // dynamically dispatch to the correct handler based on the url
-                // FIXME: the below line is NOT being reached?
                 val result = when (response.code()) {
                     302 -> {
                         if (response.headers()["location"] == "https://archiveofourown.org/auth_error") {
-                            AO3Response.Failure(AO3Error.GenericRedirectError(response.headers()["location"]!!))
+                            // TODO: change the error thrown to specify that it is a cookie/session error?
+                            // e.g. SessionError
+                            AO3Response.Failure(AO3Error.AuthenticationError)
                         } else {
                             AO3Response.Success(Login)
                         }

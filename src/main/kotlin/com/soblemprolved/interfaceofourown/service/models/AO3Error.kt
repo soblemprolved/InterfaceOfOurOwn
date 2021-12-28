@@ -58,4 +58,11 @@ sealed class AO3Error: Throwable() {
          * Represents a failure to log the user in due to a mismatch in credentials.
          */
         object LoginError: HttpError()
+
+        /**
+         * Represents an error that arises from having mismatched CSRF tokens and session cookies.
+         *
+         * This can be resolved by retrieving a new CSRF token and session cookie using getCsrfToken().
+         */
+        object AuthenticationError: HttpError()
 }

@@ -69,3 +69,8 @@ class LogoutFieldMap internal constructor() : AbstractMap<String, String>() {
  * This is used to represent a login.
  */
 object Login
+
+/**
+ * This is used to represent a logout.
+ */
+object Logout

@@ -4,10 +4,7 @@ import com.soblemprolved.interfaceofourown.service.converters.responsebody.*
 import com.soblemprolved.interfaceofourown.service.converters.string.AutocompleteTypeConverter
 import com.soblemprolved.interfaceofourown.service.converters.string.CsrfConverter
 import com.soblemprolved.interfaceofourown.service.converters.string.TagUrlConverter
-import com.soblemprolved.interfaceofourown.service.models.AutocompleteType
-import com.soblemprolved.interfaceofourown.service.models.Csrf
-import com.soblemprolved.interfaceofourown.service.models.Login
-import com.soblemprolved.interfaceofourown.service.models.Tag
+import com.soblemprolved.interfaceofourown.service.models.*
 import okhttp3.ResponseBody
 import retrofit2.Converter
 import retrofit2.Retrofit
@@ -27,6 +24,7 @@ class AO3ConverterFactory : Converter.Factory() {
             WorksByTagConverter.Result::class.java ->           WorksByTagConverter
             Csrf::class.java ->                                 GetCsrfConverter
             Login::class.java ->                                LoginConverter
+            Logout::class.java ->                               LogoutConverter
             else ->                                             super.responseBodyConverter(type, annotations, retrofit)
         }
     }

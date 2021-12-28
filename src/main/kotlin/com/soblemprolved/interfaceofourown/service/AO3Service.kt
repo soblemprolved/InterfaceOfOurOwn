@@ -64,6 +64,9 @@ interface AO3Service {
         @QueryMap parameters: CollectionFilterParameters = CollectionFilterParameters()
     ): AO3Response<CollectionsSearchConverter.Result>
 
+    /**
+     * Retrieves a CSRF token and sets the session cookie to match the token.
+     */
     @GET("token_dispenser.json")
     suspend fun getCsrfToken(): AO3Response<Csrf>
 
@@ -77,6 +80,8 @@ interface AO3Service {
 
     /**
      * Logs in to AO3 with the specified username and password.
+     *
+     * This changes the
      */
     @FormUrlEncoded
     @POST("users/login")
@@ -95,7 +100,7 @@ interface AO3Service {
     suspend fun logout(
         @Field("authenticity_token") csrf: Csrf,
         @FieldMap(encoded = false) defaultFormParameters: LogoutFieldMap = LogoutFieldMap()
-    )
+    ): AO3Response<Logout>
 
     /**
      * Retrieves a list of up to 15 tags that match the search [query].
