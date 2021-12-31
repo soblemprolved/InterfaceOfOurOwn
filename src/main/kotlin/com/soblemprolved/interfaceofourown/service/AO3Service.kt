@@ -67,6 +67,7 @@ interface AO3Service {
     /**
      * Retrieves a CSRF token and sets the session cookie to match the token.
      */
+    @Headers("Accept: application/json")
     @GET("token_dispenser.json")
     suspend fun getCsrfToken(): AO3Response<Csrf>
 
@@ -81,7 +82,8 @@ interface AO3Service {
     /**
      * Logs in to AO3 with the specified username and password.
      *
-     * This changes the
+     * All further network calls to AO3 made using the backing [OkHttpClient] (e.g. this [AO3Service] instance)
+     * will be treated as if the user is logged in, until [logout] is called.
      */
     @FormUrlEncoded
     @POST("users/login")
@@ -94,6 +96,9 @@ interface AO3Service {
 
     /**
      * Logs out of AO3.
+     *
+     * All further network calls to AO3 made using the backing [OkHttpClient] (e.g. this [AO3Service] instance
+     * will be treated as if the user is logged out.
      */
     @FormUrlEncoded
     @POST("users/logout")
