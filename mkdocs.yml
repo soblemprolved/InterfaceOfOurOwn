@@ -1,0 +1,46 @@
+site_name: Interface Of Our Own
+site_author: Soblem Prolved
+theme:
+  name: material
+  icon:
+    logo: material/rocket-launch-outline
+    repo: fontawesome/brands/github
+  palette:
+    primary: pink
+  # TODO: decide on the fonts below.
+  #       These are a pretty good start, but I'm not going to waste time on them.
+  #       Alternatively, we could always stick with the defaults, which are pretty good ngl
+  # font:
+  #   text: Open Sans
+  #   code: Source Code Pro
+  features:
+    - navigation.tabs
+
+# Common
+repo_url: https://github.com/soblemprolved/InterfaceOfOurOwn
+repo_name: soblemprolved/InterfaceOfOurOwn
+copyright: Copyright &copy; 2021 Soblem Prolved
+edit_uri: ""
+
+markdown_extensions:
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true 
+
+nav:
+  - Home: 'index.md'
+  - Getting Started:
+    - Installation: 'getting-started/installation.md'
+    - Initialisation: 'getting-started/initialisation.md'
+    - Response handling: 'getting-started/response-handling.md'
+  - Recipes:
+    - Overview: 'recipes/overview.md'
+    # TODO: categorise them into their own subcategories later
+    - Get a work: 'recipes/get-work.md'
+    - Browse works by tag: 'recipes/browse-works-under-tag.md'
+    - Browse bookmarks by tag: 'recipes/browse-bookmarks-under-tag.md'
+    - Browse collections: 'recipes/browse-collections.md'
+    - View collection information: 'recipes/get-collection-info.md'
+    - Browse works in a collection: 'recipes/browse-works-under-collection.md'
+
+  - Documentation: 'https://www.github.com/soblemprolved/InterfaceOfOurOwn'
