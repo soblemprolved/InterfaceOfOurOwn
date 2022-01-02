@@ -1,4 +1,5 @@
 # Installation
+
 InterfaceOfOurOwn is distributed via Jitpack only. Include jitpack as a source repo like so:
 
 === "Groovy (build.gradle)"

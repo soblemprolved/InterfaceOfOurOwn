@@ -2,6 +2,7 @@ package com.soblemprolved.interfaceofourown.model
 
 import java.util.AbstractMap.SimpleEntry
 
+// TODO: should I move parameter classes to service/models?
 data class BookmarkFilterParameters(
     var sortCriterion: BookmarkSortCriterion = BookmarkSortCriterion.DATE_BOOKMARKED,
 

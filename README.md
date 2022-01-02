@@ -122,7 +122,7 @@ An example workflow for processing a `Success` is shown below.
 ```kotlin
 when (workResponse) {
     is Success -> {
-        val (work, csrf) = workResponse
+        val (work, csrf) = workResponse.value
         // Perform your own processing on the work below
         when (work) {
             is SingleChapterWork -> // this is a oneshot
@@ -139,10 +139,10 @@ when (workResponse) {
 a finite number of states. This allows us to handle errors in a type-safe 
 manner and avoid try-catch hell at the same time.
 
-A sample usage of `AO3Response.Failure` is shown below.
+A sample usage of `Failure` is shown below.
 
 ```kotlin
-is AO3Response.Failure -> {
+is Failure -> {
     when (response.error) {
         is ConnectionError -> // retry
         is NotFoundError -> // handle 404
