@@ -1,0 +1,22 @@
+name: Build and Test
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build Project
+        run: ./gradlew build
+      - name: Run Unit Tests
+        run: ./gradlew test
+      - name: Run Integration Tests
+        env:
+          AO3_USERNAME: ${{ secrets.AO3_USERNAME }}
+          AO3_PASSWORD: ${{ secrets.AO3_PASSWORD }}
+        run: ./gradlew integrationTest
