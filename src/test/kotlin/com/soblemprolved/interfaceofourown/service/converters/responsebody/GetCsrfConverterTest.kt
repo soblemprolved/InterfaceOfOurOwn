@@ -10,11 +10,11 @@ import java.io.File
 internal class GetCsrfConverterTest {
     @Test
     fun `Should return the CSRF Token`() {
-        val html = File("src/test/resources/responses/bookmarks-by-tag/bookmarks-with-ext-works.in")
+        val json = File("src/test/resources/responses/csrf/sample-token-dispenser-result.json")
             .readText()
-        val responseBody = html.toResponseBody()
+        val responseBody = json.toResponseBody()
         val csrf = GetCsrfConverter.convert(responseBody)
-        val actualCsrf = "YSRk7BlkWlxe0WvOdOGakq8dzY4yWhXXgS4q_rsOi4Ix---gEYV7Vowlqt7bkMYjTLM5qJEfluACzKpD2sNHVw"
+        val actualCsrf = "iY2Nj31QMBZv1oaTsHP2EIJZDzTo4LgW1dNtpDYe9l527X-lDQ1Vz4lmbSOUwAKznr_7-yd-z17DAv9OSPacKQ"
         assertEquals(actualCsrf, csrf.value)
     }
 }
