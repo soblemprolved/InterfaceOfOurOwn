@@ -5,7 +5,7 @@ on:
     branches:
       - master
     paths:
-      - 'build.yml'
+      - 'mkdocs.yml'
       - 'docs/**'
 
 jobs:
