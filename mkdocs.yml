@@ -43,4 +43,4 @@ nav:
     - View collection information: 'recipes/get-collection-info.md'
     - Browse works in a collection: 'recipes/browse-works-under-collection.md'
 
-  - Documentation: 'https://www.github.com/soblemprolved/InterfaceOfOurOwn'
+  - API Reference: 'https://www.github.com/soblemprolved/InterfaceOfOurOwn'
