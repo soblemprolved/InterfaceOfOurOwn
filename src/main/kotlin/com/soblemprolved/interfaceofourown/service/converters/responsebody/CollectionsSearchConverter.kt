@@ -15,7 +15,7 @@ object CollectionsSearchConverter : Converter<ResponseBody, CollectionsSearchCon
     override fun convert(value: ResponseBody): Result {
         val html = value.string()
         val doc = Jsoup.parse(html)
-        val collectionCount = doc.selectFirst("div#main > h3.heading")
+        val collectionCount = doc.selectFirst("div#main > h3.heading")!!
             .text()
             .removeSuffix(" Collections")
             .split(" of ")

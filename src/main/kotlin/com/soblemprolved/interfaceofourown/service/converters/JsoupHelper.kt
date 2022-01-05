@@ -11,7 +11,7 @@ class JsoupHelper {
     companion object {
         fun getCsrfFromJsoupDoc(doc: Document): Csrf {
             return Csrf(
-                doc.selectFirst("meta[name=csrf-token]").attr("content")
+                doc.selectFirst("meta[name=csrf-token]")!!.attr("content")
             )
         }
 
@@ -29,7 +29,7 @@ class JsoupHelper {
          * 2. `<li id="bookmark_$ID" class="bookmark blurb group" role="article">`
          */
         fun parseWorkBlurbElement(workBlurbElement: Element): WorkBlurb {
-            val heading = workBlurbElement.selectFirst("div.header.module > h4.heading")
+            val heading = workBlurbElement.selectFirst("div.header.module > h4.heading")!!
             val fandomElements = workBlurbElement.select("h5.fandoms.heading").select("a.tag")
             val requiredTags = workBlurbElement.select("ul.required-tags").select("span.text")
             val userTags = workBlurbElement.select("ul.tags.commas")
@@ -37,11 +37,11 @@ class JsoupHelper {
             val chapterInfo = stats.select("dd.chapters").text().split("/")
 
             // actual work data
-            val id = heading.selectFirst("h4.heading > a[href]")
+            val id = heading.selectFirst("h4.heading > a[href]")!!
                 .attr("href")
                 .removePrefix("/works/")
                 .toLong()
-            val title = heading.selectFirst("h4.heading > a[href]").text()
+            val title = heading.selectFirst("h4.heading > a[href]")!!.text()
             val authors = heading.select("a[rel=author]").let {
                 if (it.isEmpty()) {
                     heading.ownText()   // "by Anonymous for"
@@ -59,7 +59,7 @@ class JsoupHelper {
             val giftees = heading.select("h4.heading > a[href$=/gifts]")   // ending with /gifts
                 .map { UserName.from(it.text(), hasUrl = true) }   // pseuds can be parsed based on names alone
 
-            val datetime = workBlurbElement.selectFirst("li.blurb.group > div.header > p.datetime")
+            val datetime = workBlurbElement.selectFirst("li.blurb.group > div.header > p.datetime")!!
                 .text()
                 .let {
                     LocalDate.parse(
@@ -114,7 +114,7 @@ class JsoupHelper {
         }
 
         fun parseExternalWorkBlurbElement(externalWorkBlurbElement: Element): ExternalWorkBlurb {
-            val heading = externalWorkBlurbElement.selectFirst("div.header.module > h4.heading")
+            val heading = externalWorkBlurbElement.selectFirst("div.header.module > h4.heading")!!
             val fandomElements = externalWorkBlurbElement.select("h5.fandoms.heading")
                 .select("a.tag")
             val requiredTags = externalWorkBlurbElement.select("ul.required-tags")
@@ -123,7 +123,7 @@ class JsoupHelper {
             val stats = externalWorkBlurbElement.select("dl.stats")
 
             /* the below section of code is same as work parsing code*/
-            val title = heading.selectFirst("h4.heading > a[href]").text()
+            val title = heading.selectFirst("h4.heading > a[href]")!!.text()
             val authors = heading.select("a[rel=author]").let {
                 if (it.isEmpty()) {
                     heading.ownText()   // "by Anonymous for"
@@ -138,7 +138,7 @@ class JsoupHelper {
                 }
             }
 
-            val datetime = externalWorkBlurbElement.selectFirst("li.blurb.group > div.header > p.datetime")
+            val datetime = externalWorkBlurbElement.selectFirst("li.blurb.group > div.header > p.datetime")!!
                 .text()
                 .let {
                     LocalDate.parse(
@@ -159,7 +159,7 @@ class JsoupHelper {
                 .let { Html(it) }
 
             /* Code unique to external work parsing */
-            val id = heading.selectFirst("h4.heading > a[href]")
+            val id = heading.selectFirst("h4.heading > a[href]")!!
                 .attr("href")
                 .removePrefix("/external_works/")
                 .toLong()
@@ -188,14 +188,14 @@ class JsoupHelper {
         }
 
         fun parseSeriesBlurbElement(seriesBlurbElement: Element): SeriesBlurb {
-            val heading = seriesBlurbElement.selectFirst("div.header.module > h4.heading")
+            val heading = seriesBlurbElement.selectFirst("div.header.module > h4.heading")!!
             val fandomElements = seriesBlurbElement.select("h5.fandoms.heading").select("a.tag")
             val requiredTags = seriesBlurbElement.select("ul.required-tags").select("span.text")
             val userTags = seriesBlurbElement.select("ul.tags.commas")
             val stats = seriesBlurbElement.select("dl.stats")
 
             /* the below section of code is same as work parsing code*/
-            val title = heading.selectFirst("h4.heading > a[href]").text()
+            val title = heading.selectFirst("h4.heading > a[href]")!!.text()
             val authors = heading.select("a[rel=author]").let {
                 if (it.isEmpty()) {
                     heading.ownText()   // "by Anonymous for"
@@ -210,7 +210,7 @@ class JsoupHelper {
                 }
             }
 
-            val datetime = seriesBlurbElement.selectFirst("li.blurb.group > div.header > p.datetime")
+            val datetime = seriesBlurbElement.selectFirst("li.blurb.group > div.header > p.datetime")!!
                 .text()
                 .let {
                     LocalDate.parse(
@@ -228,7 +228,7 @@ class JsoupHelper {
             val freeforms = userTags.select("li.freeforms").map { it.text() }
 
             /* Code below is unique to series */
-            val id = heading.selectFirst("h4.heading > a[href]")
+            val id = heading.selectFirst("h4.heading > a[href]")!!
                 .attr("href")
                 .removePrefix("/series/")
                 .toLong()
@@ -275,16 +275,16 @@ class JsoupHelper {
          * 1. `<li class="collection picture blurb group" role="article">`
          */
         fun parseCollectionBlurbElement(collectionBlurbElement: Element): CollectionBlurb {
-            val heading = collectionBlurbElement.selectFirst("li.collection.blurb > div.header > h4.heading")
-            val title = heading.selectFirst("h4.heading > a[href]")
+            val heading = collectionBlurbElement.selectFirst("li.collection.blurb > div.header > h4.heading")!!
+            val title = heading.selectFirst("h4.heading > a[href]")!!
                 .text()
-            val id = heading.selectFirst("h4.heading > span.name")
+            val id = heading.selectFirst("h4.heading > span.name")!!
                 .text()
                 .removePrefix("(")
                 .removeSuffix(")")
             val users = heading.select("h4.heading > a[href^=/users/]")
                 .map { UserName.from(it.text(), true) }
-            val date = collectionBlurbElement.selectFirst("li.collection.blurb > div.header > p.datetime")
+            val date = collectionBlurbElement.selectFirst("li.collection.blurb > div.header > p.datetime")!!
                 .text()
                 .let {
                     LocalDate.parse(
@@ -292,10 +292,10 @@ class JsoupHelper {
                         DateTimeFormatter.ofPattern("dd MMM yyyy")
                     )
                 }
-            val summary = collectionBlurbElement.selectFirst("li.collection.blurb > blockquote.userstuff.summary")
+            val summary = collectionBlurbElement.selectFirst("li.collection.blurb > blockquote.userstuff.summary")!!
                 .html()
                 .let { Html(it) }
-            val types = collectionBlurbElement.selectFirst("li.collection.blurb > p.type")
+            val types = collectionBlurbElement.selectFirst("li.collection.blurb > p.type")!!
                 .text()
                 .removePrefix("(")
                 .removeSuffix(")")
@@ -333,10 +333,10 @@ class JsoupHelper {
             val user = bookmarkElement.select("div.header > h5.byline > a[href]")
                 .text()
                 .let { displayName -> UserName.from(displayName, true) }
-            val bookmarkDate = bookmarkElement.selectFirst("div.header > p.datetime")
+            val bookmarkDate = bookmarkElement.selectFirst("div.header > p.datetime")!!
                 .text()
                 .let { LocalDate.parse(it, DateTimeFormatter.ofPattern("dd MMM yyyy")) }
-            val type = bookmarkElement.selectFirst("div.header > p.status > a > span")
+            val type = bookmarkElement.selectFirst("div.header > p.status > a > span")!!
                 .className()
                 .let { className ->
                     when (className) {

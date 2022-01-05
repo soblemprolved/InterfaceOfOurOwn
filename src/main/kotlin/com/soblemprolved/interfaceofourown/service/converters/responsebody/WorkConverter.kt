@@ -21,11 +21,11 @@ object WorkConverter : Converter<ResponseBody, WorkConverter.Result> {
         val statisticsTree = metadataTree.select("dl.stats")
 
         val chapterCountArray = statisticsTree.select("dd.chapters")
-            .first()
+            .first()!!
             .text()
             .split("/")
 
-        val id = doc.selectFirst("div#main > ul.work.navigation.actions > li.share > a[href]")
+        val id = doc.selectFirst("div#main > ul.work.navigation.actions > li.share > a[href]")!!
             .attr("href")
             .removePrefix("/works/")
             .removeSuffix("/share")
@@ -33,7 +33,7 @@ object WorkConverter : Converter<ResponseBody, WorkConverter.Result> {
 
         val rating = metadataTree.select("dd.rating.tags")
             .select("a.tag")
-            .first()
+            .first()!!
             .text()
             .let { Rating.fromName(it) }
         val warnings = metadataTree.select("dd.warning.tags")
@@ -55,12 +55,12 @@ object WorkConverter : Converter<ResponseBody, WorkConverter.Result> {
             .select("a.tag")
             .map { it.text() }
         val language = metadataTree.select("dd.language")
-            .first()
+            .first()!!
             .text()
             .let { Language.fromName(it) }
 
         val publishDate = statisticsTree.select("dd.published")
-            .first()
+            .first()!!
             .text()
             .let { LocalDate.parse(it) }
 
@@ -70,7 +70,7 @@ object WorkConverter : Converter<ResponseBody, WorkConverter.Result> {
             ?.let { LocalDate.parse(it) }
             ?: publishDate
         val wordCount = statisticsTree.select("dd.words")
-            .first()
+            .first()!!
             .text()
             .toInt()
         val currentChapterCount = chapterCountArray[0].toInt()
@@ -91,17 +91,17 @@ object WorkConverter : Converter<ResponseBody, WorkConverter.Result> {
             ?.toInt()
             ?: 0
         val hits = statisticsTree.select("dd.hits")
-            .first()
+            .first()!!
             .text()
             .toInt()
 
         val title = doc
             .select("div#workskin > div.preface.group > h2.title.heading")
-            .first()
+            .first()!!
             .text()
 
         val summary = Html(
-            doc.selectFirst("div#workskin > div.preface.group > div.summary.module > blockquote.userstuff")
+            doc.selectFirst("div#workskin > div.preface.group > div.summary.module > blockquote.userstuff")!!
                 .html()
         )
 
@@ -148,7 +148,7 @@ object WorkConverter : Converter<ResponseBody, WorkConverter.Result> {
             // This is a single-chapter completed work
 
             val chapterText = doc.select("div#chapters > div.userstuff")
-                .first()
+                .first()!!
                 .html()
                 .let { Html(it) }
 
@@ -191,12 +191,12 @@ object WorkConverter : Converter<ResponseBody, WorkConverter.Result> {
             val chapters = chapterTrees.map {
                 val chapterTitle = it
                     .select("div.chapter.preface.group > h3.title")
-                    .first()
+                    .first()!!
                     .ownText()  // gets the text enclosed within the element that is *not* nested in other elements
                     .removePrefix(": ")
 
                 val chapterId = it
-                    .selectFirst("div.chapter.preface.group > h3.title > a[href]")
+                    .selectFirst("div.chapter.preface.group > h3.title > a[href]")!!
                     .attr("href")
                     .removePrefix("/works/$id/chapters/")
                     .toLong()
@@ -216,7 +216,7 @@ object WorkConverter : Converter<ResponseBody, WorkConverter.Result> {
                     ?: Html("")
                 val chapterText = it
                     .select("div.userstuff.module")
-                    .first()
+                    .first()!!
                     .apply { this.getElementById("work")?.remove() }
                     .html()
                     .let { Html(it) }

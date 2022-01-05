@@ -17,8 +17,8 @@ object WorksByTagConverter : Converter<ResponseBody, WorksByTagConverter.Result>
         val html = value.string()
         val doc = Jsoup.parse(html)
 
-        val heading = doc.selectFirst("div#main > h2.heading")
-        val tagName = heading.selectFirst("h2.heading > a")
+        val heading = doc.selectFirst("div#main > h2.heading")!!
+        val tagName = heading.selectFirst("h2.heading > a")!!
             .ownText()
         val workCount = heading.ownText()
             .split(" of ")

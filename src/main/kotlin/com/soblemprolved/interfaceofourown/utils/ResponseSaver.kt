@@ -2,7 +2,7 @@ package com.soblemprolved.interfaceofourown.utils
 
 import okhttp3.OkHttpClient
 
-internal fun main(args: Array<String>) {
+internal fun main() {
     val client = OkHttpClient()
 
     // get response

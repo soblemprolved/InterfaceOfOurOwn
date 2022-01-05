@@ -19,8 +19,8 @@ object BookmarksByTagConverter : Converter<ResponseBody, BookmarksByTagConverter
     override fun convert(value: ResponseBody): Result {
         val html = value.string()
         val doc = Jsoup.parse(html)
-        val heading = doc.selectFirst("div#main > h2.heading")
-        val tagName = heading.selectFirst("h2.heading > a")
+        val heading = doc.selectFirst("div#main > h2.heading")!!
+        val tagName = heading.selectFirst("h2.heading > a")!!
             .ownText()
         val totalBookmarkedItemCount = heading.ownText()
             .split(" of ")
@@ -35,15 +35,15 @@ object BookmarksByTagConverter : Converter<ResponseBody, BookmarksByTagConverter
         val bookmarkBlurbs = bookmarkTrees.map { workIndex ->
             // declarations of subtrees beforehand to make assignment clearer
             val bookmarkElements = workIndex
-                .selectFirst("div.recent.module.group")
-                .selectFirst("ul.bookmark.index.group")
+                .selectFirst("div.recent.module.group")!!
+                .selectFirst("ul.bookmark.index.group")!!
                 .select("li.user.short.blurb.group")
             val bookmarkSummaries = bookmarkElements.map { element ->
                 JsoupHelper.parseBookmarkElement(element)
             }
 
             // execute code based on type of item
-            val titleLink = workIndex.selectFirst("h4.heading > a[href]")
+            val titleLink = workIndex.selectFirst("h4.heading > a[href]")!!
                 .attr("href")
             with(titleLink) {
                 when {
