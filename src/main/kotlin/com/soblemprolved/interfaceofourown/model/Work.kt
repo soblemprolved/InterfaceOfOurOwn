@@ -3,34 +3,140 @@ package com.soblemprolved.interfaceofourown.model
 import java.time.LocalDate
 
 sealed interface Work {
+    /**
+     * The unique ID of the entire work.
+     */
     val id: Long
+
+    /**
+     * The title of the work.
+     */
     val title: String
+
+    /**
+     * The list of authors of the work.
+     */
     val authors: List<UserName>
+
+    /**
+     * The list of giftees for the work.
+     */
     val giftees: List<UserName>
+
+    /**
+     * The date of publication of this work.
+     */
     val publishedDate: LocalDate
+
+    /**
+     * The date of update of this work.
+     */
     val lastUpdatedDate: LocalDate   // only found in work
+
+    /**
+     * The content rating of this work (e.g. General, Teens, etc.).
+     */
     val rating: Rating
+
+    /**
+     * The content warnings for the work (e.g. Graphic Depictions of Violence, etc.).
+     */
     val warnings: List<Warning>
+
+    /**
+     * The categories of the relationships featured in this work.
+     */
     val categories: List<Category>
+
+    /**
+     * The fandom tags associated with this work.
+     */
     val fandoms: List<String>
+
+    /**
+     * The relationship tags associated with this work.
+     */
     val relationships: List<String>
+
+    /**
+     * The character tags associated with this work.
+     */
     val characters: List<String>
+
+    /**
+     * The freeform tags associated with the work.
+     */
     val freeforms: List<String>
+
+    /**
+     * The raw HTML of the summary.
+     */
     val summary: Html
+
+    /**
+     * The language in which the work was written in.
+     */
     val language: Language
+
+    /**
+     * The total number of words in the entire work.
+     */
     val wordCount: Int
+
+    /**
+     * The current number of chapters for the work.
+     */
     val chapterCount: Int
+
+    /**
+     * The projected number of chapters for the work.
+     * If the number is unknown (represented as a "?" on AO3), then [maxChapterCount] is 0.
+     */
     val maxChapterCount: Int
+
+    /**
+     * The number of comments left on the work.
+     */
     val commentCount: Int
+
+    /**
+     * The number of kudos that this work has received.
+     */
     val kudosCount: Int   // kudos is singular, from the Greek.
+
+    /**
+     * The number of bookmarks that this work has received.
+     */
     val bookmarkCount: Int
+
+    /**
+     * The number of hits that this work has received.
+     */
     val hitCount: Int
+
+    /**
+     * The raw HTML of the pre-work notes.
+     */
     val preWorkNotes: Html
+
+    /**
+     * The raw HTML of the post-work notes.
+     */
     val postWorkNotes: Html
+
+    /**
+     * The raw HTML of the workskin.
+     */
     val workskin: Css
+
+    /**
+     * Indicates whether the work is complete.
+     * A completed work has the same [chapterCount] and [maxChapterCount].
+     */
     val isComplete: Boolean
 }
 
+// TODO: do I really need to split single chapter and multi chapter works
 data class SingleChapterWork(
     override val id: Long,
     override val title: String,
@@ -58,6 +164,9 @@ data class SingleChapterWork(
     override val postWorkNotes: Html,
     override val workskin: Css,
     // single-chapter specific properties
+    /**
+     * The raw HTML of the body of the work.
+     */
     val body: Html   // oneshots only need a body
 ) : Work {
     override val isComplete: Boolean = chapterCount == maxChapterCount

@@ -25,7 +25,7 @@ edit_uri: ""
 markdown_extensions:
   - pymdownx.superfences
   - pymdownx.tabbed:
-      alternate_style: true 
+      alternate_style: true
 
 nav:
   - Home: 'index.md'
@@ -42,5 +42,4 @@ nav:
     - Browse collections: 'recipes/browse-collections.md'
     - View collection information: 'recipes/get-collection-info.md'
     - Browse works in a collection: 'recipes/browse-works-under-collection.md'
-
-  - API Reference: 'api'
+  - API Reference: api" target="_blank  # opens api in a new tab
