@@ -4,8 +4,13 @@ import java.time.LocalDate
 import java.util.AbstractMap.SimpleEntry
 
 /**
- * Represents the parameters used to filter works when requesting a list of works associated with a tag.
- * The default [WorkFilterParameters] does not place any restrictions on the works returned; all works will be returned.
+ * Represents the parameters used to filter works when browsing works by tag. The default values match AO3's defaults.
+ *
+ * Most parameters that appear in AO3's filter dialog appear here. The only exceptions are for ratings; the
+ * include/exclude rating options were merged together into one showRating<name> for each rating, as it makes no sense
+ * to include and exclude ratings for works.
+ *
+ * Additional parameters for filtering works are also available, and they will be marked as such in the documentation.
  */
 data class WorkFilterParameters(
     // ratings do not need include/exclude because a work can only have a single rating
@@ -41,17 +46,53 @@ data class WorkFilterParameters(
     var excludeCategoryMulti: Boolean = false,
     var excludeCategoryOther: Boolean = false,
 
+    /**
+     * Additional parameter.
+     *
+     * Determines if the results should be restricted to oneshots only.
+     */
     var showSingleChapterWorksOnly: Boolean = false,
     var showCrossovers: Boolean? = null,
     var showCompletedWorks: Boolean? = null,
 
+    /**
+     * Additional parameter.
+     */
     var hitsMin: Int = -1,
+
+    /**
+     * Additional parameter.
+     */
     var hitsMax: Int = -1,
+
+    /**
+     * Additional parameter.
+     */
     var kudosMin: Int = -1,
+
+    /**
+     * Additional parameter.
+     */
     var kudosMax: Int = -1,
+
+    /**
+     * Additional parameter.
+     */
     var commentsMin: Int = -1,
+
+    /**
+     * Additional parameter.
+     */
     var commentsMax: Int = -1,
+
+    /**
+     * Additional parameter.
+     */
     var bookmarksMin: Int = -1,
+
+    /**
+     * Additional parameter.
+     */
     var bookmarksMax: Int = -1,
     var wordCountMin: Int = -1,
     var wordCountMax: Int = -1,

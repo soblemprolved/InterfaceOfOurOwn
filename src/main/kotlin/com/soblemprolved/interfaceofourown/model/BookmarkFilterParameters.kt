@@ -2,7 +2,12 @@ package com.soblemprolved.interfaceofourown.model
 
 import java.util.AbstractMap.SimpleEntry
 
-// TODO: should I move parameter classes to service/models?
+/**
+ * Represents the additional filter parameters for browsing bookmarks by tag.
+ *
+ * All the parameters appear in the filter page; browse AO3 for more details. The default values are set to match
+ * AO3's defaults.
+ */
 data class BookmarkFilterParameters(
     var sortCriterion: BookmarkSortCriterion = BookmarkSortCriterion.DATE_BOOKMARKED,
 

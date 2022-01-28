@@ -2,6 +2,12 @@ package com.soblemprolved.interfaceofourown.model
 
 import java.util.AbstractMap.SimpleEntry
 
+/**
+ * Represents the additional filter parameters for browsing collections.
+ *
+ * All the parameters appear in the filter page; browse AO3 for more details. The default values are set to match
+ * AO3's defaults.
+ */
 data class CollectionFilterParameters(
     val sortCriterion: CollectionsSortCriterion = CollectionsSortCriterion.DATE_CREATED,
     val sortDirection: SortDirection = SortDirection.DESCENDING,

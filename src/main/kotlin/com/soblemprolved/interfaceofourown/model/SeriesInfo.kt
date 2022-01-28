@@ -7,15 +7,55 @@ import java.time.LocalDate
  * Should be paired with WorkBlurbs when converted from HTML.
  */
 data class SeriesInfo(
-    val id: Long, // can this be a long?
+
+    /**
+     * Unique ID of the series.
+     */
+    val id: Long,
+
+    /**
+     * List of creators of the series.
+     */
     val creators: List<UserName>,
+
+    /**
+     * Date of creation of the series.
+     */
     val beginDate: LocalDate,
+
+    /**
+     * Date of last update of the series.
+     */
     val lastUpdatedDate: LocalDate,
+
+    /**
+     * Raw HTML of the description blurb.
+     */
     val description: Html,
+
+    /**
+     * Raw HTML of the notes blurb.
+     */
     val notes: Html,
+
+    /**
+     * Number of words across all works in the series.
+     */
     val wordCount: Int,
+
+    /**
+     * Number of works in the series.
+     */
     val worksCount: Int,
+
+    /**
+     * Number of bookmarks across all works in the series.
+     */
     val bookmarksCount: Int,
+
+    /**
+     * Indicates if the series is complete.
+     */
     val completionStatus: Boolean,
 )
 
