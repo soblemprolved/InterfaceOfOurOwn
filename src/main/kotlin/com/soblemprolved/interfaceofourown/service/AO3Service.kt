@@ -33,34 +33,69 @@ interface AO3Service {
 
     /**
      * Retrieves a list of up to 20 bookmark blurbs at the specified [page] that are associated with the specified tag.
+     *
      * Additional arguments can be specified in [parameters] with a [WorkFilterParameters] object.
      */
     @GET("tags/{tag}/bookmarks")
     suspend fun browseBookmarksByTag(
+
+        /**
+         * Name of the tag.
+         */
         @Path("tag") tag: Tag, // TODO: consider using interceptors to encode tags instead
+
+        /**
+         * Page to be retrieved.
+         */
         @Query("page") page: Int,
+
+        /**
+         * Additional parameters for filtering the results.
+         */
         @QueryMap parameters: BookmarkFilterParameters = BookmarkFilterParameters()
     ): AO3Response<BookmarksByTagConverter.Result>
 
 
     /**
      * Retrieves a list of up to 20 work blurbs at the specified [page] that are associated with the specified tag.
+     *
      * Additional arguments can be specified in [parameters] with a [WorkFilterParameters] object.
      */
     @GET("tags/{tag}/works")
     suspend fun browseWorksByTag(
+
+        /**
+         * Name of the tag.
+         */
         @Path("tag") tag: Tag,
+
+        /**
+         * Page to be retrieved.
+         */
         @Query("page") page: Int,
+
+        /**
+         * Additional parameters for filtering the results
+         */
         @QueryMap parameters: WorkFilterParameters = WorkFilterParameters()
     ): AO3Response<WorksByTagConverter.Result>
 
     /**
      * Retrieves a list of up to 20 collection blurbs at the specified [page] from all collections.
+     *
      * Additional arguments can be specified in [parameters] with a [CollectionFilterParameters] object.
      */
     @GET("collections")
     suspend fun browseCollections(
+
+        /**
+         * Page to be retrieved
+         */
         @Query("page") page: Int,
+
+        /**
+         * Additional parameters for filtering the results.
+         */
         @QueryMap parameters: CollectionFilterParameters = CollectionFilterParameters()
     ): AO3Response<CollectionsSearchConverter.Result>
 
@@ -88,9 +123,27 @@ interface AO3Service {
     @FormUrlEncoded
     @POST("users/login")
     suspend fun login(
+
+        /**
+         * Username of the user.
+         */
         @Field("user[login]") username: String,
+
+        /**
+         * Password of the user.
+         */
         @Field("user[password]") password: String,
+
+        /**
+         * Most recent CSRF token.
+         *
+         * Use [getCsrfToken] to retrieve the latest CSRF token immediately before calling this method.
+         */
         @Field("authenticity_token") csrf: Csrf,
+
+        /**
+         * Non-accessible field used to pass in additional parameters required by AO3.
+         */
         @FieldMap(encoded = false) defaultFormParameters: LoginFieldMap = LoginFieldMap()
     ): AO3Response<Login>
 
@@ -103,7 +156,16 @@ interface AO3Service {
     @FormUrlEncoded
     @POST("users/logout")
     suspend fun logout(
+        /**
+         * Most recent CSRF token.
+         *
+         * Use [getCsrfToken] to retrieve the latest CSRF token immediately before calling this method.
+         */
         @Field("authenticity_token") csrf: Csrf,
+
+        /**
+         * Non-accessible field used to pass in additional parameters required by AO3.
+         */
         @FieldMap(encoded = false) defaultFormParameters: LogoutFieldMap = LogoutFieldMap()
     ): AO3Response<Logout>
 
@@ -115,7 +177,15 @@ interface AO3Service {
     @Headers("Accept: application/json")
     @GET("autocomplete/{type}")
     suspend fun searchAutocomplete(
+
+        /**
+         * Restricts the type of results that are returned from this function.
+         */
         @Path("type") type: AutocompleteType,
+
+        /**
+         * Search term.
+         */
         @Query("term") query: String
     ): AO3Response<AutocompleteConverter.Result>
 

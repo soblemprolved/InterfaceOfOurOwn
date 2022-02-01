@@ -237,7 +237,7 @@ object WorkConverter : Converter<ResponseBody, WorkConverter.Result> {
                 )
             }
 
-            MultiChapterOrIncompleteWork(
+            MultiChapterWork(
                 id = id,
                 title = title,
                 authors = authors,

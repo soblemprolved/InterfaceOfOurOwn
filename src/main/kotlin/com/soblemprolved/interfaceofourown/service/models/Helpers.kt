@@ -25,8 +25,16 @@ value class Tag(val tag: String) {
     }
 }
 
+/**
+ * Represents a CSRF token.
+ */
 @JvmInline
-value class Csrf(val value: String)
+value class Csrf(
+    /**
+     * The string literal of the CSRF token.
+     */
+    val value: String
+)
 
 /**
  * This is a helper class that encapsulates the default form parameters required by the login request to AO3.
@@ -66,11 +74,11 @@ class LogoutFieldMap internal constructor() : AbstractMap<String, String>() {
 }
 
 /**
- * This is used to represent a login.
+ * A dummy object that represents a Login.
  */
 object Login
 
 /**
- * This is used to represent a logout.
+ * A dummy object that represents a Logout.
  */
 object Logout

@@ -8,8 +8,21 @@ import retrofit2.Converter
 
 object WorksByTagConverter : Converter<ResponseBody, WorksByTagConverter.Result> {
     data class Result(
+
+        /**
+         * Name of the tag.
+         */
         val tag: String,
+
+        /**
+         * Number of works associated with the tag.
+         */
         val workCount: Int,
+
+        /**
+         * Summary blurbs of the works associated with the tag. As the results are paginated, this will only
+         * retrieve the blurbs corresponding to the page specified in the corresponding request.
+         */
         val workBlurbs: List<WorkBlurb>,
     )
 

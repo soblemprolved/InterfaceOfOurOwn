@@ -37,9 +37,9 @@ nav:
     - Overview: 'recipes/overview.md'
     # TODO: categorise them into their own subcategories later
     - Get a work: 'recipes/get-work.md'
-    - Browse works by tag: 'recipes/browse-works-under-tag.md'
-    - Browse bookmarks by tag: 'recipes/browse-bookmarks-under-tag.md'
-    - Browse collections: 'recipes/browse-collections.md'
-    - View collection information: 'recipes/get-collection-info.md'
-    - Browse works in a collection: 'recipes/browse-works-under-collection.md'
+#    - Browse works by tag: 'recipes/browse-works-under-tag.md'
+#    - Browse bookmarks by tag: 'recipes/browse-bookmarks-under-tag.md'
+#    - Browse collections: 'recipes/browse-collections.md'
+#    - View collection information: 'recipes/get-collection-info.md'
+#    - Browse works in a collection: 'recipes/browse-works-under-collection.md'
   - API Reference: api" target="_blank  # opens api in a new tab

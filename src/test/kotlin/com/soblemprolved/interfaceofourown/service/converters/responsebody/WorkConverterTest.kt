@@ -1,6 +1,6 @@
 package com.soblemprolved.interfaceofourown.service.converters.responsebody
 
-import com.soblemprolved.interfaceofourown.model.MultiChapterOrIncompleteWork
+import com.soblemprolved.interfaceofourown.model.MultiChapterWork
 import com.soblemprolved.interfaceofourown.model.SingleChapterWork
 import okhttp3.ResponseBody.Companion.toResponseBody
 import org.junit.jupiter.api.Assertions.*
@@ -43,7 +43,7 @@ internal class WorkConverterTest {
         val responseBody = html.toResponseBody()
         val result = WorkConverter.convert(responseBody)
         with (result.work) {
-            require(this is MultiChapterOrIncompleteWork)
+            require(this is MultiChapterWork)
             assertTrue(
                 publishedDate.year == 2010
                         && publishedDate.month == java.time.Month.APRIL

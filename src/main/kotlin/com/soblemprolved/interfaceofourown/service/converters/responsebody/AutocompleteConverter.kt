@@ -7,7 +7,14 @@ import okhttp3.ResponseBody
 import retrofit2.Converter
 
 object AutocompleteConverter : Converter<ResponseBody, AutocompleteConverter.Result> {
-    data class Result(val autocompleteResults: List<String>)
+    data class Result(
+
+        /**
+         * List of up results of the requested type that match the search term.
+         * The maximum number of results that can be returned is 15.
+         */
+        val autocompleteResults: List<String>
+    )
 
     private val format = Json { ignoreUnknownKeys = true }
 

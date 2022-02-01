@@ -11,8 +11,21 @@ import retrofit2.Converter
 
 object BookmarksByTagConverter : Converter<ResponseBody, BookmarksByTagConverter.Result> {
     data class Result(
+
+        /**
+         * Name of the tag.
+         */
         val tag: String,
+
+        /**
+         * Number of bookmarks associated with the tag.
+         */
         val bookmarkedItemCount: Int,
+
+        /**
+         * Summary blurbs of the bookmarks associated with the tag. As the results are paginated, this will only
+         * retrieve the blurbs corresponding to the page specified in the corresponding request.
+         */
         val bookmarkedItems: List<BookmarksBlurb>
     )
 

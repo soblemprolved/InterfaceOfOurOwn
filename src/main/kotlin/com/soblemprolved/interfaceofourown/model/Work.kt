@@ -172,7 +172,10 @@ data class SingleChapterWork(
     override val isComplete: Boolean = chapterCount == maxChapterCount
 }
 
-data class MultiChapterOrIncompleteWork(
+/**
+ * Note that [MultiChapterWork]s may be incomplete.
+ */
+data class MultiChapterWork(
     override val id: Long,
     override val title: String,
     override val authors: List<UserName>,

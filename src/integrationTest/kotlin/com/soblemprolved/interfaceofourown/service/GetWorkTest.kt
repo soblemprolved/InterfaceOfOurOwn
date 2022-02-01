@@ -1,6 +1,6 @@
 package com.soblemprolved.interfaceofourown.service
 
-import com.soblemprolved.interfaceofourown.model.MultiChapterOrIncompleteWork
+import com.soblemprolved.interfaceofourown.model.MultiChapterWork
 import com.soblemprolved.interfaceofourown.model.SingleChapterWork
 import com.soblemprolved.interfaceofourown.service.models.AO3Response
 import com.soblemprolved.interfaceofourown.utilities.AO3ServiceParameterResolver
@@ -28,10 +28,10 @@ internal class GetWorkTest(private val service: AO3Service) {
     @Test
     fun `Successfully request work with anonymous author`() {
         val response = runBlocking { service.getWork(32734699) }
-        assertTrue(response is AO3Response.Success && response.value.work is MultiChapterOrIncompleteWork)
+        assertTrue(response is AO3Response.Success && response.value.work is MultiChapterWork)
         require(response is AO3Response.Success)
         with (response.value.work) {
-            require(this is MultiChapterOrIncompleteWork)
+            require(this is MultiChapterWork)
             require(this.authors.size == 1)
 //            require(this.giftees.size == 1)   // this shit dont work yet!
         }
@@ -40,18 +40,18 @@ internal class GetWorkTest(private val service: AO3Service) {
     @Test
     fun `Successfully request non-adult multi-chapter completed work`() {
         val response = runBlocking { service.getWork(8337607) }
-        assertTrue(response is AO3Response.Success && response.value.work is MultiChapterOrIncompleteWork)
+        assertTrue(response is AO3Response.Success && response.value.work is MultiChapterWork)
     }
 
     @Test
     fun `Successfully request adult multi-chapter incomplete work`() {
         val response = runBlocking { service.getWork(537876) }
-        assertTrue(response is AO3Response.Success && response.value.work is MultiChapterOrIncompleteWork)
+        assertTrue(response is AO3Response.Success && response.value.work is MultiChapterWork)
     }
 
     @Test
     fun `Successfully request adult single-chapter incomplete work`() {
         val response = runBlocking { service.getWork(602) }
-        assertTrue(response is AO3Response.Success && response.value.work is MultiChapterOrIncompleteWork)
+        assertTrue(response is AO3Response.Success && response.value.work is MultiChapterWork)
     }
 }
