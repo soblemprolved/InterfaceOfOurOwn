@@ -16,7 +16,7 @@ data class SeriesInfo(
     /**
      * List of creators of the series.
      */
-    val creators: List<UserName>,
+    val creators: List<UserReference>,
 
     /**
      * Date of creation of the series.

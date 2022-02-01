@@ -52,7 +52,7 @@ data class Collection(
     /**
      * Maintainers of the collection.
      */
-    val maintainers: List<UserName>,
+    val maintainers: List<UserReference>,
 
     /**
      * Number of subcollections of this collection.

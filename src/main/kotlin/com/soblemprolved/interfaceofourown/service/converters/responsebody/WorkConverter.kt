@@ -110,9 +110,9 @@ object WorkConverter : Converter<ResponseBody, WorkConverter.Result> {
             .let {
                 if (it.isEmpty()) {
                     doc.select("div#workskin > div.preface.group > h3.byline.heading")
-                        .map{ element -> UserName.from(element.text(), hasUrl = false) }
+                        .map{ element -> UserReference.from(element.text(), hasUrl = false) }
                 } else {
-                    it.map { element -> UserName.from(element.text(), hasUrl = true) }
+                    it.map { element -> UserReference.from(element.text(), hasUrl = true) }
                 }
             }
 
@@ -120,7 +120,7 @@ object WorkConverter : Converter<ResponseBody, WorkConverter.Result> {
             // select the first li, its either gifts or inspirations
             .selectFirst("#workskin > div.preface.group > div.notes.module > ul.associations > li")
             ?.select("li > a[href$=/gifts]")
-            ?.map { UserName.from(it.text(), hasUrl = true) }  // pseuds can be parsed based on names alone
+            ?.map { UserReference.from(it.text(), hasUrl = true) }  // pseuds can be parsed based on names alone
             ?: listOf()
 
         val preWorkNotes = Html(

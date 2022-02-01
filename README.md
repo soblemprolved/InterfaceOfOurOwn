@@ -1,16 +1,15 @@
 # Interface Of Our Own
 
-[![Release](https://jitpack.io/v/soblemprolved/orpheus.svg)](https://jitpack.io/#soblemprolved/orpheus)
+[![](https://jitpack.io/v/soblemprolved/interfaceofourown.svg)](https://jitpack.io/#soblemprolved/interfaceofourown)
 
 An unofficial API for interfacing with the Archive of Our Own. Written in Kotlin
-for the JVM (that is, it can be used on JVM and Android projects, but not
-Multiplatform).
+for the JVM and Android. Requires at least Java 8 or Android API 21.
 
 This library uses `kotlinx.coroutines` under the hood, and relies on `Retrofit`
 for networking, `jsoup` for parsing HTML responses, and `kotlinx.serialization`
 for deserializing JSON responses.
 
-Requires at least Java 8 or Android API 21, due to the requirements of`OkHttp`.
+See the [website](https://soblemprolved.github.io/InterfaceOfOurOwn/) for more information and code documentation.
 
 ## Download
 Add `jitpack` to your project root `build.gradle.kts`:
@@ -104,7 +103,7 @@ val service = AO3Service.create(interceptors = listOf(interceptor1, interceptor2
                                 callAdapterFactories = listOf(callAdapterFactory))
 ```
 
-## Retrieving Works
+## Example: Retrieving Works
 We can retrieve a `Work` from the Archive, given that we know its work ID, like so. 
 Note that the API is suspending, so methods have to be launched from 
 within coroutines.
@@ -126,7 +125,7 @@ when (workResponse) {
         // Perform your own processing on the work below
         when (work) {
             is SingleChapterWork -> // this is a oneshot
-            is MultiChapterOrIncompleteWork -> // this is a multi-chapter/incomplete work
+            is MultiChapterWork ->  // this is a multi-chapter/incomplete work
         }
         // Use the CSRF token to comment, give kudos, and login.
     }
@@ -142,12 +141,13 @@ manner and avoid try-catch hell at the same time.
 A sample usage of `Failure` is shown below.
 
 ```kotlin
+// ...continued from above.
 is Failure -> {
     when (response.error) {
         is ConnectionError -> // retry
         is NotFoundError -> // handle 404
         is NotLoggedInError -> // prompt user for login
-        ...
+        // etc...
         else -> // use some generic error handling strategy
     }
 }

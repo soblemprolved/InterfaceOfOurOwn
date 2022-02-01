@@ -33,10 +33,10 @@ nav:
     - Installation: 'getting-started/installation.md'
     - Initialisation: 'getting-started/initialisation.md'
     - Response handling: 'getting-started/response-handling.md'
-  - Recipes:
-    - Overview: 'recipes/overview.md'
+#  - Recipes:
+#    - Overview: 'recipes/overview.md'
     # TODO: categorise them into their own subcategories later
-    - Get a work: 'recipes/get-work.md'
+#    - Get a work: 'recipes/get-work.md'
 #    - Browse works by tag: 'recipes/browse-works-under-tag.md'
 #    - Browse bookmarks by tag: 'recipes/browse-bookmarks-under-tag.md'
 #    - Browse collections: 'recipes/browse-collections.md'

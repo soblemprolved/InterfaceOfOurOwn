@@ -16,12 +16,12 @@ sealed interface Work {
     /**
      * The list of authors of the work.
      */
-    val authors: List<UserName>
+    val authors: List<UserReference>
 
     /**
      * The list of giftees for the work.
      */
-    val giftees: List<UserName>
+    val giftees: List<UserReference>
 
     /**
      * The date of publication of this work.
@@ -29,17 +29,17 @@ sealed interface Work {
     val publishedDate: LocalDate
 
     /**
-     * The date of update of this work.
+     * The date of the most recent update to this work.
      */
     val lastUpdatedDate: LocalDate   // only found in work
 
     /**
-     * The content rating of this work (e.g. General, Teens, etc.).
+     * The content rating of this work (e.g. General).
      */
     val rating: Rating
 
     /**
-     * The content warnings for the work (e.g. Graphic Depictions of Violence, etc.).
+     * The content warnings for the work (e.g. Graphic Depictions of Violence).
      */
     val warnings: List<Warning>
 
@@ -140,8 +140,8 @@ sealed interface Work {
 data class SingleChapterWork(
     override val id: Long,
     override val title: String,
-    override val authors: List<UserName>,
-    override val giftees: List<UserName>,
+    override val authors: List<UserReference>,
+    override val giftees: List<UserReference>,
     override val publishedDate: LocalDate,
     override val lastUpdatedDate: LocalDate, // only found in work
     override val rating: Rating,
@@ -178,8 +178,8 @@ data class SingleChapterWork(
 data class MultiChapterWork(
     override val id: Long,
     override val title: String,
-    override val authors: List<UserName>,
-    override val giftees: List<UserName>,
+    override val authors: List<UserReference>,
+    override val giftees: List<UserReference>,
     override val publishedDate: LocalDate,
     override val lastUpdatedDate: LocalDate, // only found in work
     override val rating: Rating,

@@ -50,14 +50,14 @@ class JsoupHelper {
                         .removeSuffix("for")
                         .trim()
                         .split(", ")
-                        .map { name -> UserName.from(name, hasUrl = false) }
+                        .map { name -> UserReference.from(name, hasUrl = false) }
                 } else {
-                    it.map { element -> UserName.from(element.text(), hasUrl = true) }
+                    it.map { element -> UserReference.from(element.text(), hasUrl = true) }
                 }
             }
 
             val giftees = heading.select("h4.heading > a[href$=/gifts]")   // ending with /gifts
-                .map { UserName.from(it.text(), hasUrl = true) }   // pseuds can be parsed based on names alone
+                .map { UserReference.from(it.text(), hasUrl = true) }   // pseuds can be parsed based on names alone
 
             val datetime = workBlurbElement.selectFirst("li.blurb.group > div.header > p.datetime")!!
                 .text()
@@ -132,9 +132,9 @@ class JsoupHelper {
                         .removeSuffix("for")
                         .trim()
                         .split(", ")
-                        .map { name -> UserName.from(name, hasUrl = false) }
+                        .map { name -> UserReference.from(name, hasUrl = false) }
                 } else {
-                    it.map { element -> UserName.from(element.text(), hasUrl = true) }
+                    it.map { element -> UserReference.from(element.text(), hasUrl = true) }
                 }
             }
 
@@ -204,9 +204,9 @@ class JsoupHelper {
                         .removeSuffix("for")
                         .trim()
                         .split(", ")
-                        .map { name -> UserName.from(name, hasUrl = false) }
+                        .map { name -> UserReference.from(name, hasUrl = false) }
                 } else {
-                    it.map { element -> UserName.from(element.text(), hasUrl = true) }
+                    it.map { element -> UserReference.from(element.text(), hasUrl = true) }
                 }
             }
 
@@ -283,7 +283,7 @@ class JsoupHelper {
                 .removePrefix("(")
                 .removeSuffix(")")
             val users = heading.select("h4.heading > a[href^=/users/]")
-                .map { UserName.from(it.text(), true) }
+                .map { UserReference.from(it.text(), true) }
             val date = collectionBlurbElement.selectFirst("li.collection.blurb > div.header > p.datetime")!!
                 .text()
                 .let {
@@ -317,7 +317,7 @@ class JsoupHelper {
                 dateCreated = date,
                 isOpen = isOpen,
                 isModerated = isModerated,
-                isUnrevealed = isUnrevealed,
+                isRevealed = !isUnrevealed,
                 isAnonymous = isAnonymous,
                 challenge = challengeType,
                 summary = summary,
@@ -332,7 +332,7 @@ class JsoupHelper {
         fun parseBookmarkElement(bookmarkElement: Element): Bookmark {
             val user = bookmarkElement.select("div.header > h5.byline > a[href]")
                 .text()
-                .let { displayName -> UserName.from(displayName, true) }
+                .let { displayName -> UserReference.from(displayName, true) }
             val bookmarkDate = bookmarkElement.selectFirst("div.header > p.datetime")!!
                 .text()
                 .let { LocalDate.parse(it, DateTimeFormatter.ofPattern("dd MMM yyyy")) }
@@ -355,14 +355,14 @@ class JsoupHelper {
                     val url = it.attr("href")
                     val id = url.removePrefix("/collections/")
                     val name = it.text()
-                    CollectionName(id = id, name = name)
+                    CollectionReference(id = id, name = name)
                 }
 
             val tags = bookmarkElement.select("ul.meta.tags.commas > li > a")
                 .map { it.text() }
 
             return Bookmark(
-                userName = user,
+                userReference = user,
                 tags = tags,
                 collections = collections,
                 date = bookmarkDate,

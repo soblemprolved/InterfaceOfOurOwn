@@ -57,7 +57,7 @@ is Failure -> {
         is ConnectionError -> // retry
         is NotFoundError -> // handle 404
         is NotLoggedInError -> // prompt user for login
-        ...
+        // etc...
         else -> // use some generic error handling strategy
     }
 }
