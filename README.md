@@ -98,7 +98,8 @@ passed to the method as lists. They will be added to the retrofit instance
 during initialisation.
 
 ```kotlin
-val service = AO3Service.create(interceptors = listOf(interceptor1, interceptor2),
+val service = AO3Service.create(okHttpClient = existingOkHttpClient,
+                                interceptors = listOf(interceptor1, interceptor2),
                                 converterFactories = listOf(factory1, factory2),
                                 callAdapterFactories = listOf(callAdapterFactory))
 ```

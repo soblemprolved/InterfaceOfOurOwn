@@ -12,11 +12,7 @@ A `Success` represents a response from the server that successfully fulfills
 the request. It holds the result in its `value` field.
 
 We will examine how to process a `Success` below when retrieving a `Work` from
-the Archive, for example. Other operations are also processed in a similar
-manner, albeit with different destructuring declarations based on the return
-type of the operation.
-
-First, we make the network call to the Archive.
+the Archive. First, we make the network call like so.
 
 ```kotlin
 val workResponse: AO3Response<WorkConverter.Result> = viewModelScope.launch { service.getWork(id = 12345) }
@@ -39,6 +35,11 @@ when (workResponse) {
     is Failure -> ... // continued in Error Handling
 }
 ```
+
+Note that [destructuring declarations](https://kotlinlang.org/docs/destructuring-declarations.html)
+are used in lieu of `WorkConverter.Result` for ease of readability. The return types
+differ for all functions in the interface, so be sure to read the API reference for
+each return type.
 
 ## Failure
 
