@@ -1,13 +1,11 @@
 package com.soblemprolved.interfaceofourown
 
-import com.soblemprolved.interfaceofourown.model.BookmarkFilterParameters
-import com.soblemprolved.interfaceofourown.model.CollectionFilterParameters
-import com.soblemprolved.interfaceofourown.model.WorkFilterParameters
 import com.soblemprolved.interfaceofourown.converters.AO3ConverterFactory
 import com.soblemprolved.interfaceofourown.converters.responsebody.*
+import com.soblemprolved.interfaceofourown.model.*
+import com.soblemprolved.interfaceofourown.model.Tag
 import com.soblemprolved.interfaceofourown.service.*
 import com.soblemprolved.interfaceofourown.service.LoginFieldMap
-import com.soblemprolved.interfaceofourown.service.Tag
 import okhttp3.Interceptor
 import okhttp3.JavaNetCookieJar
 import okhttp3.OkHttpClient
@@ -104,7 +102,7 @@ interface AO3Service {
      */
     @Headers("Accept: application/json")
     @GET("token_dispenser.json")
-    suspend fun getCsrfToken(): AO3Response<Csrf>
+    suspend fun getCsrfToken(): AO3Response<com.soblemprolved.interfaceofourown.model.Csrf>
 
     /**
      * Retrieves the work with the specified [id].
@@ -139,7 +137,7 @@ interface AO3Service {
          *
          * Use [getCsrfToken] to retrieve the latest CSRF token immediately before calling this method.
          */
-        @Field("authenticity_token") csrf: Csrf,
+        @Field("authenticity_token") csrf: com.soblemprolved.interfaceofourown.model.Csrf,
 
         /**
          * Non-accessible field used to pass in additional parameters required by AO3.
@@ -161,7 +159,7 @@ interface AO3Service {
          *
          * Use [getCsrfToken] to retrieve the latest CSRF token immediately before calling this method.
          */
-        @Field("authenticity_token") csrf: Csrf,
+        @Field("authenticity_token") csrf: com.soblemprolved.interfaceofourown.model.Csrf,
 
         /**
          * Non-accessible field used to pass in additional parameters required by AO3.

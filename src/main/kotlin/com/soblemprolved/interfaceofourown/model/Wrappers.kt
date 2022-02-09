@@ -18,3 +18,28 @@ value class Html(val data: String)
  */
 @JvmInline
 value class Css(val data: String)
+
+@JvmInline
+value class Tag(val tag: String) {
+    val urlEncodedTag: String
+        get() = encodeTag(tag)
+
+    private fun encodeTag(tag: String): String {
+        return tag.replace("/", "*s*")
+            .replace("&", "*a*")
+            .replace(".", "*d*")
+            .replace("?", "*q*")
+            .replace("#", "*h*")
+    }
+}
+
+/**
+ * Represents a CSRF token.
+ */
+@JvmInline
+value class Csrf(
+    /**
+     * The string literal of the CSRF token.
+     */
+    val value: String
+)

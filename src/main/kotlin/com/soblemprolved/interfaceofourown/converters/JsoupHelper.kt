@@ -1,7 +1,7 @@
 package com.soblemprolved.interfaceofourown.converters
 
 import com.soblemprolved.interfaceofourown.model.*
-import com.soblemprolved.interfaceofourown.service.Csrf
+import com.soblemprolved.interfaceofourown.model.Csrf
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
 import java.time.LocalDate

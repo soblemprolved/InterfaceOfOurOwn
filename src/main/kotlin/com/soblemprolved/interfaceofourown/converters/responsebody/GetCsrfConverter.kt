@@ -1,6 +1,6 @@
 package com.soblemprolved.interfaceofourown.converters.responsebody
 
-import com.soblemprolved.interfaceofourown.service.Csrf
+import com.soblemprolved.interfaceofourown.model.Csrf
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json

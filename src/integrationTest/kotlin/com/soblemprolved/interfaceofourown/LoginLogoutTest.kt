@@ -1,7 +1,7 @@
 package com.soblemprolved.interfaceofourown
 
 import com.soblemprolved.interfaceofourown.service.AO3Response
-import com.soblemprolved.interfaceofourown.service.Csrf
+import com.soblemprolved.interfaceofourown.model.Csrf
 import com.soblemprolved.interfaceofourown.service.Login
 import com.soblemprolved.interfaceofourown.service.Logout
 import com.soblemprolved.interfaceofourown.utilities.AO3ServiceParameterResolver

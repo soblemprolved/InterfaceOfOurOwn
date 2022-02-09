@@ -1,41 +1,5 @@
 package com.soblemprolved.interfaceofourown.service
 
-enum class AutocompleteType(
-    val pathSegment: String
-) {
-    TAG("tag"),
-    FANDOM("fandom"),
-    RELATIONSHIP("relationship"),
-    CHARACTER("character"),
-    FREEFORM("freeform"),
-    PSEUD("pseud");
-}
-
-@JvmInline
-value class Tag(val tag: String) {
-    val urlEncodedTag: String
-        get() = encodeTag(tag)
-
-    private fun encodeTag(tag: String): String {
-        return tag.replace("/", "*s*")
-            .replace("&", "*a*")
-            .replace(".", "*d*")
-            .replace("?", "*q*")
-            .replace("#", "*h*")
-    }
-}
-
-/**
- * Represents a CSRF token.
- */
-@JvmInline
-value class Csrf(
-    /**
-     * The string literal of the CSRF token.
-     */
-    val value: String
-)
-
 /**
  * This is a helper class that encapsulates the default form parameters required by the login request to AO3.
  * The constructor is internal in order to prevent the end user from instantiating it. This way, it can be

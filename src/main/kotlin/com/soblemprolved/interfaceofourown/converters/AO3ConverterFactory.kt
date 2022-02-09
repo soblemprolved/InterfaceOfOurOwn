@@ -4,6 +4,9 @@ import com.soblemprolved.interfaceofourown.converters.responsebody.*
 import com.soblemprolved.interfaceofourown.converters.string.AutocompleteTypeConverter
 import com.soblemprolved.interfaceofourown.converters.string.CsrfConverter
 import com.soblemprolved.interfaceofourown.converters.string.TagUrlConverter
+import com.soblemprolved.interfaceofourown.model.AutocompleteType
+import com.soblemprolved.interfaceofourown.model.Csrf
+import com.soblemprolved.interfaceofourown.model.Tag
 import com.soblemprolved.interfaceofourown.service.*
 import okhttp3.ResponseBody
 import retrofit2.Converter

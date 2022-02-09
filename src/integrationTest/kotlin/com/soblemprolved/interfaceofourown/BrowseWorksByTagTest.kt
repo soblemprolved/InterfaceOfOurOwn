@@ -3,7 +3,7 @@ package com.soblemprolved.interfaceofourown
 import com.soblemprolved.interfaceofourown.model.WorkFilterParameters
 import com.soblemprolved.interfaceofourown.service.AO3Error
 import com.soblemprolved.interfaceofourown.service.AO3Response
-import com.soblemprolved.interfaceofourown.service.Tag
+import com.soblemprolved.interfaceofourown.model.Tag
 import com.soblemprolved.interfaceofourown.utilities.AO3ServiceParameterResolver
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.assertTrue

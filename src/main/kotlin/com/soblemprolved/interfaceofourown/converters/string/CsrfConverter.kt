@@ -1,6 +1,6 @@
 package com.soblemprolved.interfaceofourown.converters.string
 
-import com.soblemprolved.interfaceofourown.service.Csrf
+import com.soblemprolved.interfaceofourown.model.Csrf
 import retrofit2.Converter
 
 /**

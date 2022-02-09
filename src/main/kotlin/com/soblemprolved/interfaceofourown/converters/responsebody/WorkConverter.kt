@@ -2,7 +2,7 @@ package com.soblemprolved.interfaceofourown.converters.responsebody
 
 import com.soblemprolved.interfaceofourown.model.*
 import com.soblemprolved.interfaceofourown.converters.JsoupHelper
-import com.soblemprolved.interfaceofourown.service.Csrf
+import com.soblemprolved.interfaceofourown.model.Csrf
 import okhttp3.ResponseBody
 import org.jsoup.Jsoup
 import retrofit2.Converter
