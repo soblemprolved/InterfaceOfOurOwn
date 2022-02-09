@@ -1,6 +1,6 @@
 package com.soblemprolved.interfaceofourown.utilities
 
-import com.soblemprolved.interfaceofourown.service.AO3Service
+import com.soblemprolved.interfaceofourown.AO3Service
 import okhttp3.logging.HttpLoggingInterceptor
 import org.junit.jupiter.api.extension.ExtensionContext
 import org.junit.jupiter.api.extension.ParameterContext
