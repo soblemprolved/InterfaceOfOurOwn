@@ -2,9 +2,9 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSet
 
 plugins {
-    kotlin("jvm") version "1.6.0"
-    kotlin("plugin.serialization") version "1.6.0"
-    id("org.jetbrains.dokka") version "1.6.0"
+    kotlin("jvm") version "1.9.22"
+    kotlin("plugin.serialization") version "1.9.22"
+    id("org.jetbrains.dokka") version "1.9.10"
     `maven-publish`
 }
 
@@ -15,20 +15,24 @@ repositories {
 }
 
 dependencies {
-    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.9.3"))
+    val kotlinCoroutinesVersion = "1.7.3"
+    val kotlinSerializationVersion = "1.6.2"
+    val junitVersion = "5.8.2"
 
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
+    implementation(platform("com.squareup.okhttp3:okhttp-bom:5.0.0-alpha.12"))
+
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinCoroutinesVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinSerializationVersion")
     implementation("com.squareup.okhttp3:okhttp")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.okhttp3:okhttp-urlconnection")
-    implementation("org.jsoup:jsoup:1.14.3")
-    implementation("org.junit.jupiter:junit-jupiter:5.8.2")
+    implementation("org.jsoup:jsoup:1.15.3")
+    implementation("org.junit.jupiter:junit-jupiter:$junitVersion")
 
-    testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
+    testImplementation("org.junit.jupiter:junit-jupiter:$junitVersion")
     testImplementation("com.squareup.okhttp3:logging-interceptor")
     testImplementation("com.squareup.okhttp3:mockwebserver")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.0")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlinCoroutinesVersion")
 }
 
 tasks.test {

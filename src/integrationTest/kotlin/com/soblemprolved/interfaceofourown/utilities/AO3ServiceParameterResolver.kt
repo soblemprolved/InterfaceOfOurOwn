@@ -10,7 +10,7 @@ import org.junit.jupiter.api.extension.ParameterResolver
  * Injects a shared [AO3Service] instance into test classes that require it as a parameter in the constructor.
  */
 internal object AO3ServiceParameterResolver : ParameterResolver {
-    private val interceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.HEADERS)
+    private val interceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
 
     private val service = AO3Service.create(interceptors = listOf(interceptor))
 
