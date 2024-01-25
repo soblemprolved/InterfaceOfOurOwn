@@ -22,6 +22,8 @@ class AO3Call<T>(proxy: Call<T>) : CallDelegate<T, AO3Response<T>>(proxy) {
             }
 
             override fun onFailure(call: Call<T>, t: Throwable) {
+                System.err.println("LMAOOOOOOOOOOO: " + t)
+
                 val result = if (t is IOException) {
                     AO3Response.Failure<T>(AO3Error.NetworkError)
                 } else {

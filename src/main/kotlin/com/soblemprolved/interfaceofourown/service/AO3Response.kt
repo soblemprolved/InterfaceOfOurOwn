@@ -58,6 +58,7 @@ sealed class AO3Response<out T> {
                                     }
                     404 ->          AO3Error.NotFoundError
                     429 ->          AO3Error.TooManyRequestsError
+                    503 ->          AO3Error.ServiceUnavailableError
                     in 500..599 ->  TODO("Not implemented yet")
                     else ->         TODO("Not implemented yet")
                 }

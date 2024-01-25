@@ -8,6 +8,9 @@ import com.soblemprolved.interfaceofourown.converters.JsoupHelper
 import okhttp3.ResponseBody
 import org.jsoup.Jsoup
 import retrofit2.Converter
+import java.text.DecimalFormat
+import java.text.NumberFormat
+import java.util.*
 
 object BookmarksByTagConverter : Converter<ResponseBody, BookmarksByTagConverter.Result> {
     data class Result(
@@ -41,7 +44,12 @@ object BookmarksByTagConverter : Converter<ResponseBody, BookmarksByTagConverter
             .split(" ")
             .first()    // this should give a number
             .let {
-                if (it.isBlank()) 0 else it.toInt()
+                if (it.isBlank()) {
+                    0
+                } else {
+                    val numberFormat = NumberFormat.getNumberInstance(Locale.ENGLISH) as DecimalFormat
+                    numberFormat.parse(it).toInt()
+                }
             }
 
         val bookmarkTrees = doc.select("div#main > ol.bookmark > li.bookmark.blurb")

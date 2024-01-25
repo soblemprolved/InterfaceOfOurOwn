@@ -5,6 +5,9 @@ import com.soblemprolved.interfaceofourown.converters.JsoupHelper
 import okhttp3.ResponseBody
 import org.jsoup.Jsoup
 import retrofit2.Converter
+import java.text.DecimalFormat
+import java.text.NumberFormat
+import java.util.*
 
 object CollectionsSearchConverter : Converter<ResponseBody, CollectionsSearchConverter.Result> {
     data class Result(
@@ -30,7 +33,8 @@ object CollectionsSearchConverter : Converter<ResponseBody, CollectionsSearchCon
             .split(" of ")
             .let {
                 if (it.size == 2) {
-                    it[1].toInt()
+                    val numberFormat = NumberFormat.getNumberInstance(Locale.ENGLISH) as DecimalFormat
+                    numberFormat.parse(it[1]).toInt()
                 } else {
                     it[0].toIntOrNull()  // if it can be parsed, then there are less than 20 works
                         ?: 0  // if it cannot be parsed, the string is "Sorry, there were no collections found."

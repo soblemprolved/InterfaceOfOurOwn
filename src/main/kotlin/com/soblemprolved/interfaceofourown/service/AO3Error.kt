@@ -45,6 +45,11 @@ sealed class AO3Error: Throwable() {
         object TooManyRequestsError: HttpError()
 
         /**
+         * Represents a 503 error.
+         */
+        object ServiceUnavailableError: HttpError()
+
+        /**
          * Represents a situation where the content can only be accessed if the user is logged in.
          */
         object NotLoggedInError: HttpError()

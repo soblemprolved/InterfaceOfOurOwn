@@ -5,6 +5,9 @@ import com.soblemprolved.interfaceofourown.converters.JsoupHelper
 import okhttp3.ResponseBody
 import org.jsoup.Jsoup
 import retrofit2.Converter
+import java.text.DecimalFormat
+import java.text.NumberFormat
+import java.util.*
 
 object WorksByTagConverter : Converter<ResponseBody, WorksByTagConverter.Result> {
     data class Result(
@@ -39,7 +42,12 @@ object WorksByTagConverter : Converter<ResponseBody, WorksByTagConverter.Result>
             .split(" ")
             .first()    // this should give a number
             .let {
-                if (it.isBlank()) 0 else it.toInt()
+                if (it.isBlank()) {
+                    0
+                } else {
+                    val numberFormat = NumberFormat.getNumberInstance(Locale.ENGLISH) as DecimalFormat
+                    numberFormat.parse(it).toInt()
+                }
             }
 
         val workIndexList = doc.select("ol.work.index.group > li.work.blurb.group")

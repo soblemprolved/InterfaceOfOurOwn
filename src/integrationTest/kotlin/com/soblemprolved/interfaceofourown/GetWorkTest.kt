@@ -15,7 +15,7 @@ import org.junit.jupiter.api.extension.ExtendWith
 internal class GetWorkTest(private val service: AO3Service) {
     @Test
     fun `Successfully request non-adult oneshot work`() {
-        val response = runBlocking { service.getWork(2094438) }
+        val response = runBlocking { service.getWork(30254160) }
         assertTrue(response is AO3Response.Success && response.value.work is SingleChapterWork)
     }
 

@@ -6,7 +6,10 @@ import com.soblemprolved.interfaceofourown.model.Csrf
 import okhttp3.ResponseBody
 import org.jsoup.Jsoup
 import retrofit2.Converter
+import java.text.DecimalFormat
+import java.text.NumberFormat
 import java.time.LocalDate
+import java.util.*
 
 object WorkConverter : Converter<ResponseBody, WorkConverter.Result> {
     data class Result(
@@ -72,28 +75,43 @@ object WorkConverter : Converter<ResponseBody, WorkConverter.Result> {
         val wordCount = statisticsTree.select("dd.words")
             .first()!!
             .text()
-            .toInt()
+            .let {
+                val numberFormat = NumberFormat.getNumberInstance(Locale.ENGLISH) as DecimalFormat
+                numberFormat.parse(it).toInt()
+            }
         val currentChapterCount = chapterCountArray[0].toInt()
         val maxChapterCount = chapterCountArray[1].toIntOrNull() ?: 0
         val comments = statisticsTree.select("dd.comments")
             .first()
             ?.text()
-            ?.toInt()
+            ?.let {
+                val numberFormat = NumberFormat.getNumberInstance(Locale.ENGLISH) as DecimalFormat
+                numberFormat.parse(it).toInt()
+            }
             ?: 0
         val kudos = statisticsTree.select("dd.kudos")
             .first()
             ?.text()
-            ?.toInt()
+            ?.let {
+                val numberFormat = NumberFormat.getNumberInstance(Locale.ENGLISH) as DecimalFormat
+                numberFormat.parse(it).toInt()
+            }
             ?: 0
         val bookmarks = statisticsTree.select("dd.bookmarks")
             .first()
             ?.text()
-            ?.toInt()
+            ?.let {
+                val numberFormat = NumberFormat.getNumberInstance(Locale.ENGLISH) as DecimalFormat
+                numberFormat.parse(it).toInt()
+            }
             ?: 0
         val hits = statisticsTree.select("dd.hits")
             .first()!!
             .text()
-            .toInt()
+            .let {
+                val numberFormat = NumberFormat.getNumberInstance(Locale.ENGLISH) as DecimalFormat
+                numberFormat.parse(it).toInt()
+            }
 
         val title = doc
             .select("div#workskin > div.preface.group > h2.title.heading")
