@@ -7,6 +7,7 @@ import com.soblemprolved.interfaceofourown.converters.string.TagUrlConverter
 import com.soblemprolved.interfaceofourown.model.AutocompleteType
 import com.soblemprolved.interfaceofourown.model.Csrf
 import com.soblemprolved.interfaceofourown.model.Tag
+import com.soblemprolved.interfaceofourown.model.pages.*
 import com.soblemprolved.interfaceofourown.service.*
 import okhttp3.ResponseBody
 import retrofit2.Converter
@@ -20,15 +21,15 @@ class AO3ConverterFactory : Converter.Factory() {
         retrofit: Retrofit
     ): Converter<ResponseBody, *>? {
         return when (type) {
-            AutocompleteConverter.Result::class.java ->         AutocompleteConverter
-            BookmarksByTagConverter.Result::class.java ->       BookmarksByTagConverter
-            CollectionsSearchConverter.Result::class.java ->    CollectionsSearchConverter
-            WorkConverter.Result::class.java ->                 WorkConverter
-            WorksByTagConverter.Result::class.java ->           WorksByTagConverter
-            Csrf::class.java ->                                 GetCsrfConverter
-            Login::class.java ->                                LoginConverter
-            Logout::class.java ->                               LogoutConverter
-            else ->                                             super.responseBodyConverter(type, annotations, retrofit)
+            AutocompletePage::class.java ->             AutocompleteConverter
+            TagBookmarksPage::class.java ->             TagBookmarksConverter
+            SearchCollectionsPage::class.java ->        SearchCollectionsConverter
+            WorkPage::class.java ->                     WorkConverter
+            TagWorksPage::class.java ->                 TagWorksConverter
+            Csrf::class.java ->                         GetCsrfConverter
+            Login::class.java ->                        LoginConverter
+            Logout::class.java ->                       LogoutConverter
+            else ->                                     super.responseBodyConverter(type, annotations, retrofit)
         }
     }
 

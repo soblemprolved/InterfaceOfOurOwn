@@ -2,6 +2,7 @@ package com.soblemprolved.interfaceofourown.converters.responsebody
 
 import com.soblemprolved.interfaceofourown.model.WorkBlurb
 import com.soblemprolved.interfaceofourown.converters.JsoupHelper
+import com.soblemprolved.interfaceofourown.model.pages.TagWorksPage
 import okhttp3.ResponseBody
 import org.jsoup.Jsoup
 import retrofit2.Converter
@@ -9,27 +10,8 @@ import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.util.*
 
-object WorksByTagConverter : Converter<ResponseBody, WorksByTagConverter.Result> {
-    data class Result(
-
-        /**
-         * Name of the tag.
-         */
-        val tag: String,
-
-        /**
-         * Number of works associated with the tag.
-         */
-        val workCount: Int,
-
-        /**
-         * Summary blurbs of the works associated with the tag. As the results are paginated, this will only
-         * retrieve the blurbs corresponding to the page specified in the corresponding request.
-         */
-        val workBlurbs: List<WorkBlurb>,
-    )
-
-    override fun convert(value: ResponseBody): Result {
+object TagWorksConverter : Converter<ResponseBody, TagWorksPage> {
+    override fun convert(value: ResponseBody): TagWorksPage {
         val html = value.string()
         val doc = Jsoup.parse(html)
 
@@ -56,6 +38,24 @@ object WorksByTagConverter : Converter<ResponseBody, WorksByTagConverter.Result>
             JsoupHelper.parseWorkBlurbElement(workIndex)
         }
 
-        return Result(tagName, workCount, workBlurbs)
+        val maxPageCount = doc.selectFirst("ol.pagination.actions")
+            ?.select("li > a")
+            ?.let { it[it.size - 2] }
+            ?.ownText()
+            ?.toInt()
+            ?: 1
+
+        val currentPageCount = doc.selectFirst("ol.pagination.actions > li > span.current")
+            ?.ownText()
+            ?.toInt()
+            ?: 1
+
+        return TagWorksPage(
+            tag = tagName,
+            worksCount = workCount,
+            currentPageCount = currentPageCount,
+            maxPageCount = maxPageCount,
+            workBlurbs = workBlurbs
+        )
     }
 }

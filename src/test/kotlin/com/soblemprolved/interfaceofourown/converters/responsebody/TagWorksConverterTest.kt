@@ -7,13 +7,13 @@ import org.junit.jupiter.api.TestInstance
 import java.io.File
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-internal class WorksByTagConverterTest {
+internal class TagWorksConverterTest {
     @Test
     fun `Should parse normal page correctly`() {
         val html = File("src/test/resources/responses/works-by-tag/normal-page.in")
             .readText()
         val responseBody = html.toResponseBody()
-        val result = WorksByTagConverter.convert(responseBody)
+        val result = TagWorksConverter.convert(responseBody)
         assertEquals(20, result.workBlurbs.size)
         // TODO: fill in the rest
     }
@@ -23,9 +23,9 @@ internal class WorksByTagConverterTest {
         val html = File("src/test/resources/responses/works-by-tag/less-than-20-works.in")
             .readText()
         val responseBody = html.toResponseBody()
-        val result = WorksByTagConverter.convert(responseBody)
+        val result = TagWorksConverter.convert(responseBody)
         assertEquals(1, result.workBlurbs.size)
-        assertEquals(1, result.workCount)
+        assertEquals(1, result.worksCount)
         // TODO: fill in the rest
     }
 
@@ -34,7 +34,7 @@ internal class WorksByTagConverterTest {
         val html = File("src/test/resources/responses/works-by-tag/nonstandard-works-with-no-rating.in")
             .readText()
         val responseBody = html.toResponseBody()
-        val result = WorksByTagConverter.convert(responseBody)
+        val result = TagWorksConverter.convert(responseBody)
         // TODO: fill in the rest
     }
 
@@ -43,7 +43,7 @@ internal class WorksByTagConverterTest {
         val html = File("src/test/resources/responses/works-by-tag/page-num-exceeding-max-pages-normal.in")
             .readText()
         val responseBody = html.toResponseBody()
-        val result = WorksByTagConverter.convert(responseBody)
+        val result = TagWorksConverter.convert(responseBody)
         assertEquals(0, result.workBlurbs.size)
     }
 
@@ -52,7 +52,7 @@ internal class WorksByTagConverterTest {
         val html = File("src/test/resources/responses/works-by-tag/page-num-exceeding-max-pages-less-than-20-works.in")
             .readText()
         val responseBody = html.toResponseBody()
-        val result = WorksByTagConverter.convert(responseBody)
+        val result = TagWorksConverter.convert(responseBody)
         assertEquals(0, result.workBlurbs.size)
     }
 }

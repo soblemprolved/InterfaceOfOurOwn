@@ -2,6 +2,7 @@ package com.soblemprolved.interfaceofourown.converters.responsebody
 
 import com.soblemprolved.interfaceofourown.model.CollectionBlurb
 import com.soblemprolved.interfaceofourown.converters.JsoupHelper
+import com.soblemprolved.interfaceofourown.model.pages.SearchCollectionsPage
 import okhttp3.ResponseBody
 import org.jsoup.Jsoup
 import retrofit2.Converter
@@ -9,22 +10,8 @@ import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.util.*
 
-object CollectionsSearchConverter : Converter<ResponseBody, CollectionsSearchConverter.Result> {
-    data class Result(
-
-        /**
-         * Number of collections matching the filter arguments in the corresponding request.
-         */
-        val collectionCount: Int,
-
-        /**
-         * Summary blurbs of the collections matching the filter arguments. As the results are paginated, this will only
-         * retrieve the blurbs corresponding to the page specified in the corresponding request.
-         */
-        val collections: List<CollectionBlurb>
-    )
-
-    override fun convert(value: ResponseBody): Result {
+object SearchCollectionsConverter : Converter<ResponseBody, SearchCollectionsPage> {
+    override fun convert(value: ResponseBody): SearchCollectionsPage {
         val html = value.string()
         val doc = Jsoup.parse(html)
         val collectionCount = doc.selectFirst("div#main > h3.heading")!!
@@ -43,6 +30,23 @@ object CollectionsSearchConverter : Converter<ResponseBody, CollectionsSearchCon
         val blurbElements = doc.select("div#main > ul.collection > li.collection.blurb")
         val collectionBlurbs = blurbElements.map { JsoupHelper.parseCollectionBlurbElement(it) }
 
-        return Result(collectionCount, collectionBlurbs)
+        val maxPageCount = doc.selectFirst("ol.pagination.actions")
+            ?.select("li > a")
+            ?.let { it[it.size - 2] }
+            ?.ownText()
+            ?.toInt()
+            ?: 1
+
+        val currentPageCount = doc.selectFirst("ol.pagination.actions > li > span.current")
+            ?.ownText()
+            ?.toInt()
+            ?: 1
+
+        return SearchCollectionsPage(
+            collectionCount = collectionCount,
+            currentPageCount = currentPageCount,
+            maxPageCount = maxPageCount,
+            collectionBlurbs = collectionBlurbs
+        )
     }
 }

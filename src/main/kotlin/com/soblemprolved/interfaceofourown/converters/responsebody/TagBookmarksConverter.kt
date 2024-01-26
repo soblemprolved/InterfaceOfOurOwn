@@ -5,6 +5,7 @@ import com.soblemprolved.interfaceofourown.model.ExternalWorkBookmarksBlurb
 import com.soblemprolved.interfaceofourown.model.SeriesBookmarksBlurb
 import com.soblemprolved.interfaceofourown.model.WorkBookmarksBlurb
 import com.soblemprolved.interfaceofourown.converters.JsoupHelper
+import com.soblemprolved.interfaceofourown.model.pages.TagBookmarksPage
 import okhttp3.ResponseBody
 import org.jsoup.Jsoup
 import retrofit2.Converter
@@ -12,7 +13,7 @@ import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.util.*
 
-object BookmarksByTagConverter : Converter<ResponseBody, BookmarksByTagConverter.Result> {
+object TagBookmarksConverter : Converter<ResponseBody, TagBookmarksPage> {
     data class Result(
 
         /**
@@ -32,7 +33,7 @@ object BookmarksByTagConverter : Converter<ResponseBody, BookmarksByTagConverter
         val bookmarkedItems: List<BookmarksBlurb>
     )
 
-    override fun convert(value: ResponseBody): Result {
+    override fun convert(value: ResponseBody): TagBookmarksPage {
         val html = value.string()
         val doc = Jsoup.parse(html)
         val heading = doc.selectFirst("div#main > h2.heading")!!
@@ -85,6 +86,24 @@ object BookmarksByTagConverter : Converter<ResponseBody, BookmarksByTagConverter
             }
         }
 
-        return Result(tag = tagName, bookmarkedItemCount = totalBookmarkedItemCount, bookmarkedItems = bookmarkBlurbs)
+        val maxPageCount = doc.selectFirst("ol.pagination.actions")
+            ?.select("li > a")
+            ?.let { it[it.size - 2] }
+            ?.ownText()
+            ?.toInt()
+            ?: 1
+
+        val currentPageCount = doc.selectFirst("ol.pagination.actions > li > span.current")
+            ?.ownText()
+            ?.toInt()
+            ?: 1
+
+        return TagBookmarksPage(
+            tag = tagName,
+            bookmarksCount = totalBookmarkedItemCount,
+            currentPageCount = currentPageCount,
+            maxPageCount = maxPageCount,
+            bookmarksBlurbs = bookmarkBlurbs
+        )
     }
 }

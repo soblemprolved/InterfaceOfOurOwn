@@ -4,6 +4,7 @@ import com.soblemprolved.interfaceofourown.converters.AO3ConverterFactory
 import com.soblemprolved.interfaceofourown.converters.responsebody.*
 import com.soblemprolved.interfaceofourown.model.*
 import com.soblemprolved.interfaceofourown.model.Tag
+import com.soblemprolved.interfaceofourown.model.pages.*
 import com.soblemprolved.interfaceofourown.service.*
 import com.soblemprolved.interfaceofourown.service.LoginFieldMap
 import okhttp3.Interceptor
@@ -51,7 +52,7 @@ interface AO3Service {
          * Additional parameters for filtering the results.
          */
         @QueryMap parameters: BookmarkFilterParameters = BookmarkFilterParameters()
-    ): AO3Response<BookmarksByTagConverter.Result>
+    ): AO3Response<TagBookmarksPage>
 
 
     /**
@@ -76,7 +77,7 @@ interface AO3Service {
          * Additional parameters for filtering the results
          */
         @QueryMap parameters: WorkFilterParameters = WorkFilterParameters()
-    ): AO3Response<WorksByTagConverter.Result>
+    ): AO3Response<TagWorksPage>
 
     /**
      * Retrieves a list of up to 20 collection blurbs at the specified [page] from all collections.
@@ -95,7 +96,7 @@ interface AO3Service {
          * Additional parameters for filtering the results.
          */
         @QueryMap parameters: CollectionFilterParameters = CollectionFilterParameters()
-    ): AO3Response<CollectionsSearchConverter.Result>
+    ): AO3Response<SearchCollectionsPage>
 
     /**
      * Retrieves a CSRF token and sets the session cookie to match the token.
@@ -110,7 +111,7 @@ interface AO3Service {
      * May throw an error if the user is not logged in, and is trying to access a restricted work.
      */
     @GET("works/{id}?view_adult=true&view_full_work=true")
-    suspend fun getWork(@Path("id") id: Long): AO3Response<WorkConverter.Result>
+    suspend fun getWork(@Path("id") id: Long): AO3Response<WorkPage>
 
     /**
      * Logs in to AO3 with the specified username and password.
@@ -185,7 +186,7 @@ interface AO3Service {
          * Search term.
          */
         @Query("term") query: String
-    ): AO3Response<AutocompleteConverter.Result>
+    ): AO3Response<AutocompletePage>
 
     /*
     // I'm going to list all the functions in the final API here, even if there is no request analog/not complete

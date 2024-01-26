@@ -8,7 +8,7 @@ import org.junit.jupiter.api.TestInstance
 import java.io.File
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-internal class CollectionsSearchConverterTest {
+internal class SearchCollectionsConverterTest {
     @Test
     fun `Should parse a normal page without issue`() {
         /*
@@ -23,8 +23,8 @@ internal class CollectionsSearchConverterTest {
         val html = File("src/test/resources/responses/collections/normal-page.in")
             .readText()
         val responseBody = html.toResponseBody()
-        val response = CollectionsSearchConverter.convert(responseBody)
-        assertEquals(20, response.collections.size)
+        val response = SearchCollectionsConverter.convert(responseBody)
+        assertEquals(20, response.collectionBlurbs.size)
     }
 
     @Test
@@ -33,9 +33,9 @@ internal class CollectionsSearchConverterTest {
         val html = File("src/test/resources/responses/collections/page-with-gift-exchange-challenge.in")
             .readText()
         val responseBody = html.toResponseBody()
-        val response = CollectionsSearchConverter.convert(responseBody)
-        assertEquals(20, response.collections.size)
-        response.collections.forEach { assertEquals(ChallengeType.GIFT_EXCHANGE, it.challenge) }
+        val response = SearchCollectionsConverter.convert(responseBody)
+        assertEquals(20, response.collectionBlurbs.size)
+        response.collectionBlurbs.forEach { assertEquals(ChallengeType.GIFT_EXCHANGE, it.challenge) }
     }
 
     @Test
@@ -43,7 +43,7 @@ internal class CollectionsSearchConverterTest {
         val html = File("src/test/resources/responses/collections/empty-page.in")
             .readText()
         val responseBody = html.toResponseBody()
-        val response = CollectionsSearchConverter.convert(responseBody)
-        assertEquals(0, response.collections.size)
+        val response = SearchCollectionsConverter.convert(responseBody)
+        assertEquals(0, response.collectionBlurbs.size)
     }
 }

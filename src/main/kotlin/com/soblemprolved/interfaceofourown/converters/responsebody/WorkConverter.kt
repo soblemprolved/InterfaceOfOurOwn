@@ -3,6 +3,7 @@ package com.soblemprolved.interfaceofourown.converters.responsebody
 import com.soblemprolved.interfaceofourown.model.*
 import com.soblemprolved.interfaceofourown.converters.JsoupHelper
 import com.soblemprolved.interfaceofourown.model.Csrf
+import com.soblemprolved.interfaceofourown.model.pages.WorkPage
 import okhttp3.ResponseBody
 import org.jsoup.Jsoup
 import retrofit2.Converter
@@ -11,13 +12,8 @@ import java.text.NumberFormat
 import java.time.LocalDate
 import java.util.*
 
-object WorkConverter : Converter<ResponseBody, WorkConverter.Result> {
-    data class Result(
-        val work: Work,
-        val csrfToken: Csrf
-    )
-
-    override fun convert(value: ResponseBody): Result {
+object WorkConverter : Converter<ResponseBody, WorkPage> {
+    override fun convert(value: ResponseBody): WorkPage {
         val html = value.string()
         val doc = Jsoup.parse(html)
         val metadataTree = doc.select("dl.work.meta.group")
@@ -287,6 +283,6 @@ object WorkConverter : Converter<ResponseBody, WorkConverter.Result> {
 
         val csrfToken = JsoupHelper.getCsrfFromJsoupDoc(doc)
 
-        return Result(work, csrfToken)
+        return WorkPage(work, csrfToken)
     }
 }

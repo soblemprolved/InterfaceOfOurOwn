@@ -3,7 +3,7 @@ package com.soblemprolved.interfaceofourown.model
 import java.time.LocalDate
 
 // TODO: start at profile section of collection - add in more fields, esp related to challenges
-data class Collection(
+data class CollectionInfo(
     /**
      * The unique ID of the collection.
      */
