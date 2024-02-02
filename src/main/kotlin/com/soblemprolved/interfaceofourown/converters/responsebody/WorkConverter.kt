@@ -12,7 +12,7 @@ import java.text.NumberFormat
 import java.time.LocalDate
 import java.util.*
 
-object WorkConverter : Converter<ResponseBody, WorkPage> {
+internal object WorkConverter : Converter<ResponseBody, WorkPage> {
     override fun convert(value: ResponseBody): WorkPage {
         val html = value.string()
         val doc = Jsoup.parse(html)

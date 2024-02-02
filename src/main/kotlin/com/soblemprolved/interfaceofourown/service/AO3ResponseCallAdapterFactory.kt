@@ -9,7 +9,7 @@ import java.lang.reflect.Type
 /**
  * A [CallAdapter.Factory] to create [AO3ResponseCallAdapter] instances.
  */
-class AO3ResponseCallAdapterFactory : CallAdapter.Factory() {
+internal class AO3ResponseCallAdapterFactory : CallAdapter.Factory() {
     override fun get(
         returnType: Type,
         annotations: Array<out Annotation>,

@@ -1,5 +1,4 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSet
 
 plugins {
     kotlin("jvm") version "1.9.22"
@@ -43,26 +42,43 @@ tasks.withType<KotlinCompile>() {
     kotlinOptions.jvmTarget = "1.8"
 }
 
-/* Integration test setup. Taken from https://stackoverflow.com/a/52906232/16271427. */
+/* Integration test setup taken from official docs */
 sourceSets {
     create("integrationTest") {
-        withConvention(KotlinSourceSet::class) {
-            kotlin.srcDir("src/integrationTest/kotlin")
-            resources.srcDir("src/integrationTest/resources")
-            compileClasspath += sourceSets["main"].output + configurations["testRuntimeClasspath"]
-            runtimeClasspath += output + compileClasspath + sourceSets["test"].runtimeClasspath
-        }
+        compileClasspath += sourceSets.main.get().output
+        runtimeClasspath += sourceSets.main.get().output
     }
 }
 
-task<Test>("integrationTest") {
+val integrationTestImplementation by configurations.getting {
+    extendsFrom(configurations.implementation.get())
+}
+val integrationTestRuntimeOnly by configurations.getting
+
+configurations["integrationTestRuntimeOnly"].extendsFrom(configurations.runtimeOnly.get())
+
+dependencies {
+    integrationTestImplementation("org.junit.jupiter:junit-jupiter:5.7.1")
+    integrationTestRuntimeOnly("org.junit.platform:junit-platform-launcher")
+}
+
+val integrationTest = task<Test>("integrationTest") {
     description = "Runs the integration tests"
     group = "verification"
     testClassesDirs = sourceSets["integrationTest"].output.classesDirs
     classpath = sourceSets["integrationTest"].runtimeClasspath
-    mustRunAfter(tasks["test"])
+    shouldRunAfter("test")
     useJUnitPlatform()
+    testLogging {
+        events("passed")
+    }
 }
+
+tasks.check { dependsOn(integrationTest) }
+
+/* Allows integrationTest to access internal classes */
+kotlin.target.compilations.getByName("integrationTest")
+    .associateWith(kotlin.target.compilations.getByName("test"))
 
 java {
     sourceCompatibility = JavaVersion.VERSION_1_8

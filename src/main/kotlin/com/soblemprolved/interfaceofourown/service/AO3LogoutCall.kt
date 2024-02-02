@@ -9,7 +9,7 @@ import retrofit2.Response
  * This call is adapted from the solution here: https://stackoverflow.com/a/57816819/16271427
  * This will help us in wrapping the return values of suspend functions in [AO3Response]s.
  */
-class AO3LogoutCall(proxy: Call<Logout>) : CallDelegate<Logout, AO3Response<Logout>>(proxy) {
+internal class AO3LogoutCall(proxy: Call<Logout>) : CallDelegate<Logout, AO3Response<Logout>>(proxy) {
     override fun enqueueImpl(callback: Callback<AO3Response<Logout>>) = proxy.enqueue(
         object: Callback<Logout> {
             override fun onResponse(call: Call<Logout>, response: Response<Logout>) {

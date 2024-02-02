@@ -7,7 +7,7 @@ import org.jsoup.nodes.Element
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
-class JsoupHelper {
+internal class JsoupHelper {
     companion object {
         fun getCsrfFromJsoupDoc(doc: Document): Csrf {
             return Csrf(

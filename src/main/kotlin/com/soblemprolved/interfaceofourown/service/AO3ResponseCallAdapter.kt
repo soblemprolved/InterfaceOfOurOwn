@@ -7,7 +7,7 @@ import java.lang.reflect.Type
 /**
  * A simple call adapter to allow AO3Responses as wrappers for return types.
  */
-class AO3ResponseCallAdapter(private val type: Type) : CallAdapter<Type, Call<AO3Response<Type>>> {
+internal class AO3ResponseCallAdapter(private val type: Type) : CallAdapter<Type, Call<AO3Response<Type>>> {
     override fun responseType(): Type = type
     override fun adapt(call: Call<Type>): Call<AO3Response<Type>> = when (type) {
         Login::class.java -> AO3LoginCall(call as Call<Login>) as Call<AO3Response<Type>>

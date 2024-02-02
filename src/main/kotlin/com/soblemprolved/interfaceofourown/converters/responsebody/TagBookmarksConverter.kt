@@ -13,7 +13,7 @@ import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.util.*
 
-object TagBookmarksConverter : Converter<ResponseBody, TagBookmarksPage> {
+internal object TagBookmarksConverter : Converter<ResponseBody, TagBookmarksPage> {
     data class Result(
 
         /**

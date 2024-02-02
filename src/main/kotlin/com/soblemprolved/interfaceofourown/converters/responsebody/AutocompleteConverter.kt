@@ -7,7 +7,7 @@ import kotlinx.serialization.json.Json
 import okhttp3.ResponseBody
 import retrofit2.Converter
 
-object AutocompleteConverter : Converter<ResponseBody, AutocompletePage> {
+internal object AutocompleteConverter : Converter<ResponseBody, AutocompletePage> {
     private val format = Json { ignoreUnknownKeys = true }
 
     @Serializable

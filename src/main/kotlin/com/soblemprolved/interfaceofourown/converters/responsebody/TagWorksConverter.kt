@@ -10,7 +10,7 @@ import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.util.*
 
-object TagWorksConverter : Converter<ResponseBody, TagWorksPage> {
+internal object TagWorksConverter : Converter<ResponseBody, TagWorksPage> {
     override fun convert(value: ResponseBody): TagWorksPage {
         val html = value.string()
         val doc = Jsoup.parse(html)

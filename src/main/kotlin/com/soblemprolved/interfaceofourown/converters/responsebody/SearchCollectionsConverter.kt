@@ -10,7 +10,7 @@ import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.util.*
 
-object SearchCollectionsConverter : Converter<ResponseBody, SearchCollectionsPage> {
+internal object SearchCollectionsConverter : Converter<ResponseBody, SearchCollectionsPage> {
     override fun convert(value: ResponseBody): SearchCollectionsPage {
         val html = value.string()
         val doc = Jsoup.parse(html)

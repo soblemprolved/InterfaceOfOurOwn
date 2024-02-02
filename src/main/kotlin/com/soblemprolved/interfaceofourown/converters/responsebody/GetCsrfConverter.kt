@@ -7,7 +7,7 @@ import kotlinx.serialization.json.Json
 import okhttp3.ResponseBody
 import retrofit2.Converter
 
-object GetCsrfConverter : Converter<ResponseBody, Csrf> {
+internal object GetCsrfConverter : Converter<ResponseBody, Csrf> {
     @Serializable
     private class Token(val token: String)
 
