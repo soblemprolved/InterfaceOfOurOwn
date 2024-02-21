@@ -2,7 +2,8 @@ package com.soblemprolved.interfaceofourown
 
 import com.soblemprolved.interfaceofourown.model.MultiChapterWork
 import com.soblemprolved.interfaceofourown.model.SingleChapterWork
-import com.soblemprolved.interfaceofourown.service.AO3Response
+import com.soblemprolved.interfaceofourown.service.AO3Service
+import com.soblemprolved.interfaceofourown.service.response.AO3Response
 import com.soblemprolved.interfaceofourown.utilities.AO3ServiceParameterResolver
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.assertTrue

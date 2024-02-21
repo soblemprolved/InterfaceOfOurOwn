@@ -1,9 +1,9 @@
 package com.soblemprolved.interfaceofourown
 
-import com.soblemprolved.interfaceofourown.converters.responsebody.AutocompleteConverter
-import com.soblemprolved.interfaceofourown.service.AO3Response
+import com.soblemprolved.interfaceofourown.service.response.AO3Response
 import com.soblemprolved.interfaceofourown.model.AutocompleteType
-import com.soblemprolved.interfaceofourown.model.pages.AutocompletePage
+import com.soblemprolved.interfaceofourown.features.autocomplete.AutocompletePage
+import com.soblemprolved.interfaceofourown.service.AO3Service
 import com.soblemprolved.interfaceofourown.utilities.AO3ServiceParameterResolver
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.assertTrue

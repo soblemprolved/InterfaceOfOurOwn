@@ -1,9 +1,10 @@
 package com.soblemprolved.interfaceofourown
 
-import com.soblemprolved.interfaceofourown.model.WorkFilterParameters
-import com.soblemprolved.interfaceofourown.service.AO3Error
-import com.soblemprolved.interfaceofourown.service.AO3Response
+import com.soblemprolved.interfaceofourown.features.tags.works.TagWorksFilterParameters
+import com.soblemprolved.interfaceofourown.service.response.AO3Error
+import com.soblemprolved.interfaceofourown.service.response.AO3Response
 import com.soblemprolved.interfaceofourown.model.Tag
+import com.soblemprolved.interfaceofourown.service.AO3Service
 import com.soblemprolved.interfaceofourown.utilities.AO3ServiceParameterResolver
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.assertTrue
@@ -29,7 +30,7 @@ internal class BrowseWorksByTagTest(private val service: AO3Service) {
             service.browseWorksByTag(
                 Tag("F/M"),
                 1,
-                WorkFilterParameters(
+                TagWorksFilterParameters(
                     showRatingGeneral = false,
                     showRatingTeen = false,
                     showRatingMature = false,
@@ -47,7 +48,7 @@ internal class BrowseWorksByTagTest(private val service: AO3Service) {
             service.browseWorksByTag(
                 Tag("F/M"),
                 1,
-                WorkFilterParameters(
+                TagWorksFilterParameters(
                     includedTags = listOf("Romance", "Pepper Potts/Tony Stark").toMutableList(),
                     excludedTags = listOf("Smut", "John Wick").toMutableList()
                 )
