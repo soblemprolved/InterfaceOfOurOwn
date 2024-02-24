@@ -194,6 +194,41 @@ interface AO3Service {
         @QueryMap parameters: WorksFilterParameters = WorksFilterParameters()
     ): AO3Response<UserWorksPage>
 
+    /**
+     * Retrieves a list of up to 20 bookmark blurbs at the specified [page] that are associated with the user.
+     *
+     * Additional arguments can be specified in [parameters] with a [WorksFilterParameters] object.
+     *
+     * @param user Name of the user
+     * @param page Page to be retrieved
+     * @param parameters Additional parameters for filtering the results
+     */
+    @GET("users/{user}/works")
+    suspend fun browseBookmarksByUser(
+        @Path("user") user: String,
+        @Query("page") page: Int,
+        @QueryMap parameters: WorksFilterParameters = WorksFilterParameters()
+    ): AO3Response<UserWorksPage>
+
+    /**
+     * Retrieves a list of up to 20 bookmark blurbs at the specified [page] that are associated with the user.
+     *
+     * Additional arguments can be specified in [parameters] with a [WorksFilterParameters] object.
+     *
+     * Function overloaded to accept a pseudonym.
+     *
+     * @param user Name of the user
+     * @param page Page to be retrieved
+     * @param parameters Additional parameters for filtering the results
+     */
+    @GET("users/{user}/pseuds/{pseud}/works")
+    suspend fun browseBookmarksByUser(
+        @Path("user") user: String,
+        @Path("pseud") pseudonym: String,
+        @Query("page") page: Int,
+        @QueryMap parameters: BookmarksFilterParameters = BookmarksFilterParameters()
+    ): AO3Response<UserWorksPage>
+
 
     /*
     // I'm going to list all the functions in the final API here, even if there is no request analog/not complete
@@ -242,11 +277,11 @@ interface AO3Service {
 
     /* Works and work-related stuff */
     fun getWork()
-    fun getWorkComments()
-    fun getChapterComments()
-    fun commentOnWork()
-    fun giveKudosToWork()
-    fun bookmarkWork()
+    fun getWorkComments()       TODO
+    fun getChapterComments()    TODO
+    fun commentOnWork()         TODO
+    fun giveKudosToWork()       TODO
+    fun bookmarkWork()          TODO
 
     /* Comments */
     fun viewChildComments()

@@ -1,9 +1,9 @@
-package com.soblemprolved.interfaceofourown.features.tags.bookmarks
+package com.soblemprolved.interfaceofourown.features.users.bookmarks
 
+import com.soblemprolved.interfaceofourown.features.common.helpers.JsoupHelper
 import com.soblemprolved.interfaceofourown.model.ExternalWorkBookmarksBlurb
 import com.soblemprolved.interfaceofourown.model.SeriesBookmarksBlurb
 import com.soblemprolved.interfaceofourown.model.WorkBookmarksBlurb
-import com.soblemprolved.interfaceofourown.features.common.helpers.JsoupHelper
 import okhttp3.ResponseBody
 import org.jsoup.Jsoup
 import retrofit2.Converter
@@ -11,13 +11,14 @@ import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.util.*
 
-internal object TagBookmarksConverter : Converter<ResponseBody, TagBookmarksPage> {
-    override fun convert(value: ResponseBody): TagBookmarksPage {
+internal object UserBookmarksConverter : Converter<ResponseBody, UserBookmarksPage> {
+    override fun convert(value: ResponseBody): UserBookmarksPage {
         val html = value.string()
         val doc = Jsoup.parse(html)
         val heading = doc.selectFirst("div#main > h2.heading")!!
-        val tagName = heading.selectFirst("h2.heading > a")!!
-            .ownText()
+        val userName = heading.ownText()
+            .split(" ")
+            .last()
         val totalBookmarkedItemCount = heading.ownText()
             .split(" of ")
             .last()     // this should give the half of the string containing the number
@@ -77,8 +78,8 @@ internal object TagBookmarksConverter : Converter<ResponseBody, TagBookmarksPage
             ?.toInt()
             ?: 1
 
-        return TagBookmarksPage(
-            tag = tagName,
+        return UserBookmarksPage(
+            user = userName,
             bookmarksCount = totalBookmarkedItemCount,
             currentPageCount = currentPageCount,
             maxPageCount = maxPageCount,
