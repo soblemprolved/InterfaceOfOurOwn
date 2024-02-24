@@ -1,20 +1,22 @@
 package com.soblemprolved.interfaceofourown.service
 
-import com.soblemprolved.interfaceofourown.service.parameterconverters.AutocompleteTypeConverter
-import com.soblemprolved.interfaceofourown.service.parameterconverters.CsrfConverter
-import com.soblemprolved.interfaceofourown.service.parameterconverters.TagUrlConverter
+import com.soblemprolved.interfaceofourown.features.common.parameterconverters.AutocompleteTypeConverter
+import com.soblemprolved.interfaceofourown.features.common.parameterconverters.CsrfConverter
+import com.soblemprolved.interfaceofourown.features.common.parameterconverters.TagUrlConverter
 import com.soblemprolved.interfaceofourown.features.authentication.*
 import com.soblemprolved.interfaceofourown.features.authentication.GetCsrfConverter
 import com.soblemprolved.interfaceofourown.features.authentication.LoginConverter
 import com.soblemprolved.interfaceofourown.features.authentication.LogoutConverter
 import com.soblemprolved.interfaceofourown.features.autocomplete.AutocompleteConverter
 import com.soblemprolved.interfaceofourown.features.autocomplete.AutocompletePage
-import com.soblemprolved.interfaceofourown.features.collections.search.CollectionsFilterConverter
-import com.soblemprolved.interfaceofourown.features.collections.search.CollectionsFilterPage
+import com.soblemprolved.interfaceofourown.features.collections.filter.CollectionsFilterConverter
+import com.soblemprolved.interfaceofourown.features.collections.filter.CollectionsFilterPage
 import com.soblemprolved.interfaceofourown.features.tags.bookmarks.TagBookmarksConverter
 import com.soblemprolved.interfaceofourown.features.tags.bookmarks.TagBookmarksPage
 import com.soblemprolved.interfaceofourown.features.tags.works.TagWorksConverter
 import com.soblemprolved.interfaceofourown.features.tags.works.TagWorksPage
+import com.soblemprolved.interfaceofourown.features.users.works.UserWorksConverter
+import com.soblemprolved.interfaceofourown.features.users.works.UserWorksPage
 import com.soblemprolved.interfaceofourown.features.works.WorkConverter
 import com.soblemprolved.interfaceofourown.features.works.WorkPage
 import com.soblemprolved.interfaceofourown.model.AutocompleteType
@@ -40,6 +42,7 @@ internal class AO3ConverterFactory : Converter.Factory() {
             Csrf::class.java                    -> GetCsrfConverter
             Login::class.java                   -> LoginConverter
             Logout::class.java                  -> LogoutConverter
+            UserWorksPage::class.java           -> UserWorksConverter
             else                                -> super.responseBodyConverter(type, annotations, retrofit)
         }
     }

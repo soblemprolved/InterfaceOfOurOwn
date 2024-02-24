@@ -1,4 +1,4 @@
-package com.soblemprolved.interfaceofourown.features.helpers
+package com.soblemprolved.interfaceofourown.features.common.helpers
 
 import com.soblemprolved.interfaceofourown.model.*
 import com.soblemprolved.interfaceofourown.model.Csrf

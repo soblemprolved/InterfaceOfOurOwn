@@ -1,12 +1,12 @@
-package com.soblemprolved.interfaceofourown.features.tags.works
+package com.soblemprolved.interfaceofourown.features.users.works
 
 import com.soblemprolved.interfaceofourown.model.WorkBlurb
 
-data class TagWorksPage(
+data class UserWorksPage(
     /**
      * Name of the tag.
      */
-    val tag: String,
+    val user: String,
     val currentPageCount: Int,
     val maxPageCount: Int,
 

@@ -1,4 +1,4 @@
-package com.soblemprolved.interfaceofourown.features.collections.search
+package com.soblemprolved.interfaceofourown.features.collections.filter
 
 import com.soblemprolved.interfaceofourown.model.CollectionBlurb
 

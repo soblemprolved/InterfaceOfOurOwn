@@ -4,7 +4,7 @@ import com.soblemprolved.interfaceofourown.model.BookmarksBlurb
 import com.soblemprolved.interfaceofourown.model.ExternalWorkBookmarksBlurb
 import com.soblemprolved.interfaceofourown.model.SeriesBookmarksBlurb
 import com.soblemprolved.interfaceofourown.model.WorkBookmarksBlurb
-import com.soblemprolved.interfaceofourown.features.helpers.JsoupHelper
+import com.soblemprolved.interfaceofourown.features.common.helpers.JsoupHelper
 import okhttp3.ResponseBody
 import org.jsoup.Jsoup
 import retrofit2.Converter

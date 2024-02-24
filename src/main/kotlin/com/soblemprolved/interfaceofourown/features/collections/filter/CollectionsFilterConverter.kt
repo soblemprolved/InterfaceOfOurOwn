@@ -1,6 +1,6 @@
-package com.soblemprolved.interfaceofourown.features.collections.search
+package com.soblemprolved.interfaceofourown.features.collections.filter
 
-import com.soblemprolved.interfaceofourown.features.helpers.JsoupHelper
+import com.soblemprolved.interfaceofourown.features.common.helpers.JsoupHelper
 import okhttp3.ResponseBody
 import org.jsoup.Jsoup
 import retrofit2.Converter

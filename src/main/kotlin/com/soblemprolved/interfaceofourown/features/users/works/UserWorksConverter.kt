@@ -1,7 +1,8 @@
-package com.soblemprolved.interfaceofourown.features.tags.works
+package com.soblemprolved.interfaceofourown.features.users.works
 
-import com.soblemprolved.interfaceofourown.model.WorkBlurb
 import com.soblemprolved.interfaceofourown.features.common.helpers.JsoupHelper
+import com.soblemprolved.interfaceofourown.features.users.works.UserWorksPage
+import com.soblemprolved.interfaceofourown.model.WorkBlurb
 import okhttp3.ResponseBody
 import org.jsoup.Jsoup
 import retrofit2.Converter
@@ -9,14 +10,15 @@ import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.util.*
 
-internal object TagWorksConverter : Converter<ResponseBody, TagWorksPage> {
-    override fun convert(value: ResponseBody): TagWorksPage {
+internal object UserWorksConverter : Converter<ResponseBody, UserWorksPage> {
+    override fun convert(value: ResponseBody): UserWorksPage {
         val html = value.string()
         val doc = Jsoup.parse(html)
 
         val heading = doc.selectFirst("div#main > h2.heading")!!
-        val tagName = heading.selectFirst("h2.heading > a")!!
-            .ownText()
+        val userName = heading.ownText()
+            .split(" ")
+            .last()
         val workCount = heading.ownText()
             .split(" of ")
             .last()     // this should give the half of the string containing the number
@@ -49,8 +51,8 @@ internal object TagWorksConverter : Converter<ResponseBody, TagWorksPage> {
             ?.toInt()
             ?: 1
 
-        return TagWorksPage(
-            tag = tagName,
+        return UserWorksPage(
+            user = userName,
             worksCount = workCount,
             currentPageCount = currentPageCount,
             maxPageCount = maxPageCount,

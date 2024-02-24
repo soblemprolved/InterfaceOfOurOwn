@@ -1,6 +1,6 @@
 package com.soblemprolved.interfaceofourown.features
 
-import com.soblemprolved.interfaceofourown.features.collections.search.CollectionsFilterConverter
+import com.soblemprolved.interfaceofourown.features.collections.filter.CollectionsFilterConverter
 import com.soblemprolved.interfaceofourown.model.ChallengeType
 import okhttp3.ResponseBody.Companion.toResponseBody
 import org.junit.jupiter.api.Assertions.*

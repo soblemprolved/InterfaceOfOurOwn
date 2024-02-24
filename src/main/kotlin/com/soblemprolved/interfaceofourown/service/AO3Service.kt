@@ -2,12 +2,12 @@ package com.soblemprolved.interfaceofourown.service
 
 import com.soblemprolved.interfaceofourown.features.authentication.Login
 import com.soblemprolved.interfaceofourown.features.autocomplete.AutocompletePage
-import com.soblemprolved.interfaceofourown.features.collections.search.CollectionsFilterParameters
-import com.soblemprolved.interfaceofourown.features.collections.search.CollectionsFilterPage
-import com.soblemprolved.interfaceofourown.features.tags.bookmarks.TagBookmarksFilterParameters
+import com.soblemprolved.interfaceofourown.features.collections.filter.CollectionsFilterParameters
+import com.soblemprolved.interfaceofourown.features.collections.filter.CollectionsFilterPage
+import com.soblemprolved.interfaceofourown.features.common.filterparameters.BookmarksFilterParameters
 import com.soblemprolved.interfaceofourown.features.tags.bookmarks.TagBookmarksPage
 import com.soblemprolved.interfaceofourown.features.tags.works.TagWorksPage
-import com.soblemprolved.interfaceofourown.features.tags.works.TagWorksFilterParameters
+import com.soblemprolved.interfaceofourown.features.common.filterparameters.WorksFilterParameters
 import com.soblemprolved.interfaceofourown.features.works.WorkPage
 import com.soblemprolved.interfaceofourown.model.*
 import com.soblemprolved.interfaceofourown.model.Tag
@@ -15,6 +15,7 @@ import com.soblemprolved.interfaceofourown.service.*
 import com.soblemprolved.interfaceofourown.features.authentication.LoginFieldMap
 import com.soblemprolved.interfaceofourown.features.authentication.Logout
 import com.soblemprolved.interfaceofourown.features.authentication.LogoutFieldMap
+import com.soblemprolved.interfaceofourown.features.users.works.UserWorksPage
 import com.soblemprolved.interfaceofourown.service.response.AO3Response
 import com.soblemprolved.interfaceofourown.service.response.AO3ResponseCallAdapterFactory
 import okhttp3.Interceptor
@@ -33,80 +34,56 @@ import java.net.CookiePolicy
  * All functions in here are suspending for now. Calls will be included at a later date.
  */
 interface AO3Service {
-    /*
-    There is a specific naming system for the methods.
-    Methods beginning with "browse..." return a set of results, and can accept *optional* parameters for filtering.
-    Methods beginning with "search..." require all parameters to be present.
-    FIXME: this is a bad explanation
-     */
+    /* Tag Actions ****************************************************************************************************/
 
     /**
      * Retrieves a list of up to 20 bookmark blurbs at the specified [page] that are associated with the specified tag.
      *
-     * Additional arguments can be specified in [parameters] with a [TagWorksFilterParameters] object.
+     * Additional arguments can be specified in [parameters] with a [WorksFilterParameters] object.
+     *
+     * @param tag Name of the tag
+     * @param page Page to be retrieved
+     * @param parameters Additional parameters for filtering the results
      */
     @GET("tags/{tag}/bookmarks")
     suspend fun browseBookmarksByTag(
-
-        /**
-         * Name of the tag.
-         */
         @Path("tag") tag: Tag, // TODO: consider using interceptors to encode tags instead
-
-        /**
-         * Page to be retrieved.
-         */
         @Query("page") page: Int,
-
-        /**
-         * Additional parameters for filtering the results.
-         */
-        @QueryMap parameters: TagBookmarksFilterParameters = TagBookmarksFilterParameters()
+        @QueryMap parameters: BookmarksFilterParameters = BookmarksFilterParameters()
     ): AO3Response<TagBookmarksPage>
-
 
     /**
      * Retrieves a list of up to 20 work blurbs at the specified [page] that are associated with the specified tag.
      *
-     * Additional arguments can be specified in [parameters] with a [TagWorksFilterParameters] object.
+     * Additional arguments can be specified in [parameters] with a [WorksFilterParameters] object.
+     *
+     * @param tag Name of the tag
+     * @param page Page to be retrieved
+     * @param parameters Additional parameters for filtering the results
      */
     @GET("tags/{tag}/works")
     suspend fun browseWorksByTag(
-
-        /**
-         * Name of the tag.
-         */
         @Path("tag") tag: Tag,
-
-        /**
-         * Page to be retrieved.
-         */
         @Query("page") page: Int,
-
-        /**
-         * Additional parameters for filtering the results
-         */
-        @QueryMap parameters: TagWorksFilterParameters = TagWorksFilterParameters()
+        @QueryMap parameters: WorksFilterParameters = WorksFilterParameters()
     ): AO3Response<TagWorksPage>
 
     /**
      * Retrieves a list of up to 20 collection blurbs at the specified [page] from all collections.
      *
      * Additional arguments can be specified in [parameters] with a [CollectionsFilterParameters] object.
+     *
+     * @param page Page to be retrieved
+     * @param parameters Additional parameters for filtering the results
      */
     @GET("collections")
     suspend fun browseCollections(
-
-        /**
-         * Page to be retrieved
-         */
         @Query("page") page: Int,
-
-        /**
-         * Additional parameters for filtering the results.
-         */
         @QueryMap parameters: CollectionsFilterParameters = CollectionsFilterParameters()
     ): AO3Response<CollectionsFilterPage>
+
+
+    /* Authentication Actions *****************************************************************************************/
 
     /**
      * Retrieves a CSRF token and sets the session cookie to match the token.
@@ -119,6 +96,8 @@ interface AO3Service {
      * Retrieves the work with the specified [id].
      *
      * May throw an error if the user is not logged in, and is trying to access a restricted work.
+     *
+     * @param id Unique numerical ID of the work
      */
     @GET("works/{id}?view_adult=true&view_full_work=true")
     suspend fun getWork(@Path("id") id: Long): AO3Response<WorkPage>
@@ -128,31 +107,18 @@ interface AO3Service {
      *
      * All further network calls to AO3 made using the backing [OkHttpClient] (e.g. this [AO3Service] instance)
      * will be treated as if the user is logged in, until [logout] is called.
+     *
+     * @param username Username of the account
+     * @param password Password of the account
+     * @param csrf Most recent CSRF token. Use [getCsrfToken] to retrieve the latest CSRF token immediately before calling this method.
+     * @param defaultFormParameters Non-accessible field used to pass in additional parameters required by AO3.
      */
     @FormUrlEncoded
     @POST("users/login")
     suspend fun login(
-
-        /**
-         * Username of the user.
-         */
         @Field("user[login]") username: String,
-
-        /**
-         * Password of the user.
-         */
         @Field("user[password]") password: String,
-
-        /**
-         * Most recent CSRF token.
-         *
-         * Use [getCsrfToken] to retrieve the latest CSRF token immediately before calling this method.
-         */
-        @Field("authenticity_token") csrf: com.soblemprolved.interfaceofourown.model.Csrf,
-
-        /**
-         * Non-accessible field used to pass in additional parameters required by AO3.
-         */
+        @Field("authenticity_token") csrf: Csrf,
         @FieldMap(encoded = false) defaultFormParameters: LoginFieldMap = LoginFieldMap()
     ): AO3Response<Login>
 
@@ -161,42 +127,73 @@ interface AO3Service {
      *
      * All further network calls to AO3 made using the backing [OkHttpClient] (e.g. this [AO3Service] instance
      * will be treated as if the user is logged out.
+     *
+     * @param csrf Most recent CSRF token. Use [getCsrfToken] to retrieve the latest CSRF token immediately before calling this method.
+     * @param defaultFormParameters Non-accessible field used to pass in additional parameters required by AO3.
      */
     @FormUrlEncoded
     @POST("users/logout")
     suspend fun logout(
-        /**
-         * Most recent CSRF token.
-         *
-         * Use [getCsrfToken] to retrieve the latest CSRF token immediately before calling this method.
-         */
-        @Field("authenticity_token") csrf: com.soblemprolved.interfaceofourown.model.Csrf,
-
-        /**
-         * Non-accessible field used to pass in additional parameters required by AO3.
-         */
+        @Field("authenticity_token") csrf: Csrf,
         @FieldMap(encoded = false) defaultFormParameters: LogoutFieldMap = LogoutFieldMap()
     ): AO3Response<Logout>
+
+
+    /* Miscellaneous Actions ******************************************************************************************/
 
     /**
      * Retrieves a list of up to 15 tags that match the search [query].
      *
      * The types of the returned tags are constrained by the [type] specified.
+     *
+     * @param type Restricts the type of results that are returned
+     * @param query Search term
      */
     @Headers("Accept: application/json")
     @GET("autocomplete/{type}")
     suspend fun searchAutocomplete(
-
-        /**
-         * Restricts the type of results that are returned from this function.
-         */
         @Path("type") type: AutocompleteType,
-
-        /**
-         * Search term.
-         */
         @Query("term") query: String
     ): AO3Response<AutocompletePage>
+
+
+    /* User Profile Actions *******************************************************************************************/
+
+    /**
+     * Retrieves a list of up to 20 work blurbs at the specified [page] that are associated with the user.
+     *
+     * Additional arguments can be specified in [parameters] with a [WorksFilterParameters] object.
+     *
+     * @param user Name of the user
+     * @param page Page to be retrieved
+     * @param parameters Additional parameters for filtering the results
+     */
+    @GET("users/{user}/works")
+    suspend fun browseWorksByUser(
+        @Path("user") user: String,
+        @Query("page") page: Int,
+        @QueryMap parameters: WorksFilterParameters = WorksFilterParameters()
+    ): AO3Response<UserWorksPage>
+
+    /**
+     * Retrieves a list of up to 20 work blurbs at the specified [page] that are associated with the user.
+     *
+     * Additional arguments can be specified in [parameters] with a [WorksFilterParameters] object.
+     *
+     * Function overloaded to accept a pseudonym.
+     *
+     * @param user Name of the user
+     * @param page Page to be retrieved
+     * @param parameters Additional parameters for filtering the results
+     */
+    @GET("users/{user}/pseuds/{pseud}/works")
+    suspend fun browseWorksByUser(
+        @Path("user") user: String,
+        @Path("pseud") pseudonym: String,
+        @Query("page") page: Int,
+        @QueryMap parameters: WorksFilterParameters = WorksFilterParameters()
+    ): AO3Response<UserWorksPage>
+
 
     /*
     // I'm going to list all the functions in the final API here, even if there is no request analog/not complete

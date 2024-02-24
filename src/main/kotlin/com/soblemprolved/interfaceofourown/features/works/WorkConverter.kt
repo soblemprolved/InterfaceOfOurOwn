@@ -1,7 +1,7 @@
 package com.soblemprolved.interfaceofourown.features.works
 
 import com.soblemprolved.interfaceofourown.model.*
-import com.soblemprolved.interfaceofourown.features.helpers.JsoupHelper
+import com.soblemprolved.interfaceofourown.features.common.helpers.JsoupHelper
 import okhttp3.ResponseBody
 import org.jsoup.Jsoup
 import retrofit2.Converter

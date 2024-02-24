@@ -1,4 +1,4 @@
-package com.soblemprolved.interfaceofourown.features.tags.works
+package com.soblemprolved.interfaceofourown.features.common.filterparameters
 
 import com.soblemprolved.interfaceofourown.model.*
 import java.time.LocalDate
@@ -13,7 +13,7 @@ import java.util.AbstractMap.SimpleEntry
  *
  * Additional parameters for filtering works are also available, and they will be marked as such in the documentation.
  */
-data class TagWorksFilterParameters(
+data class WorksFilterParameters(
     // ratings do not need include/exclude because a work can only have a single rating
     var showRatingGeneral: Boolean = true,
     var showRatingTeen: Boolean = true,

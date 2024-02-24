@@ -1,4 +1,4 @@
-package com.soblemprolved.interfaceofourown.service.parameterconverters
+package com.soblemprolved.interfaceofourown.features.common.parameterconverters
 
 import com.soblemprolved.interfaceofourown.model.Csrf
 import retrofit2.Converter

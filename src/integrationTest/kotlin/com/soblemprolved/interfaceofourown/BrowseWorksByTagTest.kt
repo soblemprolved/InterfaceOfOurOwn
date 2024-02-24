@@ -1,6 +1,6 @@
 package com.soblemprolved.interfaceofourown
 
-import com.soblemprolved.interfaceofourown.features.tags.works.TagWorksFilterParameters
+import com.soblemprolved.interfaceofourown.features.common.filterparameters.WorksFilterParameters
 import com.soblemprolved.interfaceofourown.service.response.AO3Error
 import com.soblemprolved.interfaceofourown.service.response.AO3Response
 import com.soblemprolved.interfaceofourown.model.Tag
@@ -30,7 +30,7 @@ internal class BrowseWorksByTagTest(private val service: AO3Service) {
             service.browseWorksByTag(
                 Tag("F/M"),
                 1,
-                TagWorksFilterParameters(
+                WorksFilterParameters(
                     showRatingGeneral = false,
                     showRatingTeen = false,
                     showRatingMature = false,
@@ -48,7 +48,7 @@ internal class BrowseWorksByTagTest(private val service: AO3Service) {
             service.browseWorksByTag(
                 Tag("F/M"),
                 1,
-                TagWorksFilterParameters(
+                WorksFilterParameters(
                     includedTags = listOf("Romance", "Pepper Potts/Tony Stark").toMutableList(),
                     excludedTags = listOf("Smut", "John Wick").toMutableList()
                 )

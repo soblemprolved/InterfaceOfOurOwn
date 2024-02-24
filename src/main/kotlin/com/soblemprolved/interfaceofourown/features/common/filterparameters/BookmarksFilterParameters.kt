@@ -1,4 +1,4 @@
-package com.soblemprolved.interfaceofourown.features.tags.bookmarks
+package com.soblemprolved.interfaceofourown.features.common.filterparameters
 
 import com.soblemprolved.interfaceofourown.model.*
 import java.util.AbstractMap.SimpleEntry
@@ -9,7 +9,7 @@ import java.util.AbstractMap.SimpleEntry
  * All the parameters appear in the filter page; browse AO3 for more details. The default values are set to match
  * AO3's defaults.
  */
-data class TagBookmarksFilterParameters(
+data class BookmarksFilterParameters(
     var sortCriterion: BookmarkSortCriterion = BookmarkSortCriterion.DATE_BOOKMARKED,
 
     // as bookmarks include series which can contain multiple ratings, this will be split into include/exclude
